@@ -1,21 +1,1210 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Acan的秘密基地</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  
-  <!-- Import lsloader -->
-  <script>!function(){var e="http://"+location.host+"/combo?combo=";window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}},lsloader.removeLS=function(e){try{localStorage.removeItem(e)}catch(e){}},lsloader.setLS=function(e,t){try{localStorage.setItem(e,t)}catch(e){}},lsloader.getLS=function(e){var t="";try{t=localStorage.getItem(e)}catch(e){t=""}return t},lsloader.load=function(e,t,s){s=s||function(){};var n;if(n=this.getLS(e),!/\/\*codestartv1\*\//.test(n))return this.removeLS(e),void this.requestResource(e,t,s);if(n){var a=n.split("/*codestartv1*/")[0];if(a!=t)return console.log("reload:"+t),this.removeLS(e),void this.requestResource(e,t,s);n=n.split("/*codestartv1*/")[1],/\.js?.+$/.test(a)?(this.jsRunSequence.push({name:e,code:n}),this.runjs(t,e,n)):(document.getElementById(e).appendChild(document.createTextNode(n)),s())}else this.requestResource(e,t,s)},lsloader.requestResource=function(e,t,s){var n=this;/\.js?.+$/.test(t)?this.iojs(t,e,function(e,t,s){n.setLS(t,e+"/*codestartv1*/"+s),n.runjs(e,t,s)}):/\.css?.+$/.test(t)&&this.iocss(t,e,function(s){document.getElementById(e).appendChild(document.createTextNode(s)),n.setLS(e,t+"/*codestartv1*/"+s)},s)},lsloader.iojs=function(e,t,s){var n=this;n.jsRunSequence.push({name:t,code:""});try{var a=new XMLHttpRequest;a.open("get",e,!0),a.onreadystatechange=function(){if(4==a.readyState){if((a.status>=200&&a.status<300||304==a.status)&&""!=a.response)return void s(e,t,a.response);n.jsfallback(e,t)}},a.send(null)}catch(s){n.jsfallback(e,t)}},lsloader.iocss=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.iofonts=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.runjs=function(e,t,s){if(t&&s)for(var n in this.jsRunSequence)this.jsRunSequence[n].name==t&&(this.jsRunSequence[n].code=s);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code)),a.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(a),this.jsRunSequence.shift(),this.jsRunSequence.length>0&&this.runjs()}else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var u=this,a=document.createElement("script");a.src=this.jsRunSequence[0].path,a.type="text/javascript",this.jsRunSequence[0].status="loading",a.onload=function(){u.jsRunSequence.shift(),u.jsRunSequence.length>0&&u.runjs()},document.body.appendChild(a)}},lsloader.tagLoad=function(e,t){this.jsRunSequence.push({name:t,code:"",path:e,status:"failed"}),this.runjs()},lsloader.jsfallback=function(e,t){if(!this.jsnamemap[t]){this.jsnamemap[t]=t;for(var s in this.jsRunSequence)this.jsRunSequence[s].name==t&&(this.jsRunSequence[s].code="",this.jsRunSequence[s].status="failed",this.jsRunSequence[s].path=e);this.runjs()}},lsloader.cssfallback=function(e,t,s){if(!this.cssnamemap[t]){this.cssnamemap[t]=1;var n=document.createElement("link");n.type="text/css",n.href=e,n.rel="stylesheet",n.onload=n.onerror=s;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a)}},lsloader.runInlineScript=function(e,t){var s=document.getElementById(t).innerText;this.jsRunSequence.push({name:e,code:s}),this.runjs()},lsloader.loadCombo=function(t){var s="",n={};for(var a in t){var u=this.getLS(t[a].name);if(u)var o=u.split("/*codestartv1*/")[0],c=u.split("/*codestartv1*/")[1];else var o="";o==t[a].path?this.jsRunSequence.push({name:t[a].name,code:c,path:t[a].path}):(this.jsRunSequence.push({name:t[a].name,code:null,path:t[a].path,status:"comboloading"}),n[t[a].name]=!0,s+=(""==s?"":";")+t[a].path)}var i=this;if(s){var r=new XMLHttpRequest;r.open("get",e+s,!0),r.onreadystatechange=function(){if(4==r.readyState)if(r.status>=200&&r.status<300||304==r.status){if(""!=r.response)return void i.runCombo(r.response,n)}else{for(var e in i.jsRunSequence)n[i.jsRunSequence[e].name]&&(i.jsRunSequence[e].status="failed");i.runjs()}},r.send(null)}this.runjs()},lsloader.runCombo=function(e,t){e=e.split("/*combojs*/"),e.shift();for(var s in this.jsRunSequence)t[this.jsRunSequence[s].name]&&e[0]&&(this.jsRunSequence[s].status="comboJS",this.jsRunSequence[s].code=e[0],this.setLS(this.jsRunSequence[s].name,this.jsRunSequence[s].path+"/*codestartv1*/"+e[0]),e.shift());this.runjs()}}();</script>
+    <meta charset="utf-8">
+    
+    <title>Acan的秘密基地</title>
+    
+    
+        <meta name="keywords" content="Acan的秘密基地" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Acan的秘密基地">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Acan的秘密基地">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Acan的秘密基地">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Acan的秘密基地" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="text/javascript">
-    window.rootUrl = "/"
-    window.one = {"site":{"title":"Acan的秘密基地","subtitle":null,"description":null,"author":"Acan","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true}},"theme":{"title":"Acan的秘密基地","subtitle":null,"description":null,"author":"Acan","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"head":{"favicon":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4"},"img":{"avatar":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4","left_pic":["/img/home.jpg"],"right_pic":["/img/right.jpg"],"post_thumbnail":["/img/二次元/下雨.jpg"],"drawerHeaderBg":["/img/WechatIMG9.jpeg"]},"uiux":{"slogan":"人生，是一场修炼！","defaultPrimaryColor":"blue","defaultAccentColor":"red"},"comment":{"disqus":{"shortName":"xyz"}},"Drawer":[{"title":"首页","type":"sitelink","href":"/","icon":"home"},{"title":"hr","type":"hr"},{"title":"关于我","type":"page","name":"关于我","href":"/关于我.md","icon":"account_circle"},{"title":"搜索","type":"sitelink","href":"/search/","icon":"search"},{"title":"联系我","icon":"contact_phone","nested":[{"title":"Jianshu","type":"link","href":"https://www.jianshu.com/u/5a7a5445cb4a","icon":{"type":"svg","date":"<path d=\"M512 1024C229.239467 1024 0 794.760533 0 512S229.239467 0 512 0 1024 229.239467 1024 512 794.760533 1024 512 1024z m-110.227911-750.409956H204.8v486.855112h184.160711c33.314133 0 105.221689 19.2512 105.221689 58.754844V361.745067c0-32.836267-50.426311-88.155022-92.387556-88.155023z m242.733511 0c-42.029511 0-92.433067 55.318756-92.433067 88.155023V819.2c0-39.503644 71.839289-58.754844 105.198934-58.754844h184.160711V273.590044h-196.926578z\" p-id=\"18729\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Github","type":"link","href":"https://github.com/hzsss","icon":{"type":"svg","date":"<path d=\"M941.714 512q0 143.433-83.712 258.011t-216.283 158.574q-15.433 2.853-22.565-3.986t-7.131-17.152v-120.576q0-55.442-29.696-81.152 32.585-3.438 58.587-10.277t53.723-22.272 46.299-37.998 30.281-60.014 11.703-86.016q0-69.157-45.129-117.723 21.138-52.005-4.571-116.553-16.018-5.157-46.299 6.29t-52.553 25.161l-21.723 13.714q-53.138-14.848-109.714-14.848t-109.714 14.848q-9.143-6.29-24.283-15.433t-47.726-22.016-49.152-7.717q-25.161 64.585-3.986 116.553-45.129 48.567-45.129 117.723 0 48.567 11.703 85.723t29.989 60.014 46.007 38.29 53.723 22.272 58.587 10.277q-22.857 20.553-28.014 58.843-11.995 5.705-25.71 8.558t-32.585 2.853-37.413-12.288-31.707-35.73q-10.862-18.286-27.721-29.696t-28.27-13.714l-11.447-1.719q-11.995 0-16.567 2.56t-2.853 6.583 5.157 8.009 7.424 6.839l3.986 2.853q12.581 5.705 24.869 21.723t17.993 29.147l5.705 13.129q7.424 21.723 25.161 35.145t38.29 17.152 39.717 3.986 31.707-2.011l13.129-2.304q0 21.723 0.293 50.871t0.293 30.866q0 10.277-7.424 17.152t-22.857 3.986q-132.571-43.995-216.283-158.574t-83.712-258.011q0-119.442 58.843-220.27t159.707-159.707 220.27-58.843 220.27 58.843 159.707 159.707 58.843 220.27z\" p-id=\"997\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Douban","type":"link","href":"https://www.douban.com/people/180397031/","icon":{"type":"svg","height":"20px","width":"20px","margin":"14px","date":"<path d=\"M512 1024c282.76736 0 512-229.23264 512-512S794.76736 0 512 0 0 229.23264 0 512s229.23264 512 512 512z m256.2048-705.4336H260.608v-51.6096H768.2048v51.6096z m11.69408 455.68H245.30944v-52.18304h159.88736c-19.59936-42.5984-40.30464-79.40096-62.09536-110.3872l41.10336-26.4192h-72.00768V379.16672h406.20032v206.09024h-75.59168l41.10336 27.01312c-19.41504 42.5984-39.60832 79.19616-60.6208 109.7728h156.61056v52.224z m-118.49728-240.88576v-101.10976H368.90624v101.10976h292.49536z m-28.50816 51.89632h-238.1824a1153.41312 1153.41312 0 0 1 69.89824 136.8064h97.19808c29.7984-46.20288 53.49376-91.81184 71.08608-136.8064z\" p-id=\"2131\"></path>","viewBox":"0 0 1024 1024"}}]}],"colorPicker":true,"homeToolBar":[{"icon":"more_vert","items":[{"title":"RSS","type":"link","href":"/atom.xml","icon":"rss_feed"}]}],"footer":["Copyright © 2016 - 2017 Acan",["做更好的自己！","Be youserlf,everyone else is already taken."]]}}
-  </script>
-  <script>lsloader.load("vendor.js","/vendor.js")</script>
-  <script>lsloader.load("bundle.js","/bundle.js")</script>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Acan的秘密基地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main">
+        <article id="post-iOS应用上架遇到的一些坑" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/iOS/">iOS</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/11/28/iOS应用上架遇到的一些坑/">
+            <time datetime="2017-11-28T06:30:47.000Z" itemprop="datePublished">2017-11-28</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/iOS应用上架遇到的一些坑.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/iOS应用上架遇到的一些坑.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/iOS应用上架遇到的一些坑.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/11/28/iOS应用上架遇到的一些坑/">iOS应用上架遇到的一些坑</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>学习iOS开发一年多了，也算是一个入门小菜鸟了，期间也做过一些小项目。最近一个公司的老师让我帮他上架一个App到App Store，我很爽快地答应了。当然，也遇到了一些坑。</p>
+<p>由于这是我第一次上架APP，很多东西都是借鉴学习别人的经验。下面，就让我和大家分享一些上架干货和遇到的问题。</p>
+<h1 id="购买开发者帐号"><a href="#购买开发者帐号" class="headerlink" title="购买开发者帐号"></a>购买开发者帐号</h1><p>老师刚开始让我帮他购买<em>个人</em>开发者帐号，我是参考这篇文章购买的。</p>
+<p><a href="http://blog.csdn.net/a44496913/article/details/54932266" target="_blank" rel="noopener">iOS苹果个人开发者账号购买流程</a></p>
+<p>最后需要使用信用卡支付一年99美元约合人民币688元的账单，只支持带有Visa/MasterCard标志的银联信用卡，也就是支持双币的信用卡。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2017/11/28/iOS应用上架遇到的一些坑/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-逆风飞翔，愿你归来仍是少年" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/10/20/逆风飞翔，愿你归来仍是少年/">
+            <time datetime="2017-10-20T15:07:47.000Z" itemprop="datePublished">2017-10-20</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/逆风飞翔，愿你归来仍是少年.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/逆风飞翔，愿你归来仍是少年.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/逆风飞翔，愿你归来仍是少年.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/10/20/逆风飞翔，愿你归来仍是少年/">逆风飞翔，愿你归来仍是少年</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>这两天的心情，真的很沉重。期盼已久的新赛季好不容易到了，以为又可以看书豪在球场上打球的。昨天是篮网新赛季的第一场球，比赛前书豪还在ins上发了一张图，是队友伸手将他拉起来，然后写道：我们回来了。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-58ebfb564ae55656?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这赛季篮网的阵容深度又加强了，书豪经过这几年的NBA生涯，终于当上了球队的首发控卫，自己也变得更加强壮和成熟。今年本是书豪带队冲击季后赛的最好机会，也本是书豪生涯的巅峰时期。他信心满满地想要在这个赛季证明自己。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-782d21dc702ecf12?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在揭幕战打了25分钟便拿下18分，但如今书豪这个赛季的出场时间，也定格在了25分钟。</p>
+<p>书豪在一次突破上篮中，身体失去平衡，然后摔倒在地。书豪用手捂着膝盖愣了两秒钟，感受着膝盖传来的痛楚，然后露出了惶恐的眼神，连喊了六遍”I’m done，I’m done”（我完了），然后捶着地板掩面哭泣。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-4d366a79b7c83f88?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>真的，看到这个场景，我的心瞬间就凉了。为什么书豪这么优秀，哈佛毕业，NBA首发控卫，这一点放到我们任何人身上都可以吹嘘一辈子。但书豪却依旧那么刻苦，一年比一年进步，终于当上了球队老大。这本是一个充满希望的赛季，可是，在这一刻，所有的希望都破灭了。也许书豪哭泣，不是因为痛苦，而是眼看着梦想就要起航，却又在瞬间支离破碎。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-1bd80a4267fd3d6b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2017/10/20/逆风飞翔，愿你归来仍是少年/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-移动应用创新赛决赛之旅" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/活动/">活动</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/29/移动应用创新赛决赛之旅/">
+            <time datetime="2017-09-29T11:22:40.000Z" itemprop="datePublished">2017-09-29</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/移动应用创新赛决赛之旅.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/移动应用创新赛决赛之旅.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/移动应用创新赛决赛之旅.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/09/29/移动应用创新赛决赛之旅/">移动应用创新赛决赛之旅</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>中国高校计算机大赛(China Collegiate Computing Contest，简称 C4)是面向全国高校各专业在校学生的科技类竞赛活动，由教育部高等学校计算机类专业教学指导委员会、教育部高等学校软件工程专业教学指导委员会、教育部高等学校大学计算机课程教学指导委员会、全国高等学校计算机教育研究会联合主办，2017 年设五个竞赛模块，其中“移动应用创新赛”由浙江大学、Apple联合主办。</p>
+<p>比赛分为初赛、复赛和决赛，当时一听赛制这么繁琐，初赛到复赛中间隔了好几个月，全国参赛人数之多，瞬间就感觉希望渺茫了，不报名又会挨骂，于是就临时想了个idea报名了。</p>
+<p>没想到很顺利就通过了初赛，复赛的时候要求提交部分代码，于是暑假就和小伙伴们留在了学校，每天都在实验室完善自己的比赛作品。我们组有三个人，我是组长，负责所有的代码编写，还有两个女生，一个就叫猪猪女孩吧，另一个就叫狄仁杰吧，负责前端UI。</p>
+<p>那一段经历还是很有趣的，中间遇到过困难，也出现过分歧。我平常都是脾气超好的，但是有的时候太认真也太固执了，不知道这样是好是坏。好几次队友做的图我都不是很满意，怎么改都不符合我的要求，比如刚开始的启动界面是这样的。。。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-ec6e20d74d37da16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动.PNG"></p>
+<p>后来还因为这个事情把猪猪女孩给骂哭了，现在想想，不就是一张图么，不就是一个比赛么，竟然对人家女孩子发脾气。在这里给猪猪女孩道个歉，你还是最棒（胖）的~不过队友还是很给力的，最终的成品是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-da1474010296c294.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="launch.jpg"></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2017/09/29/移动应用创新赛决赛之旅/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-iOS-club夏令营" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/活动/">活动</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/02/iOS-club夏令营/">
+            <time datetime="2017-09-02T07:40:19.000Z" itemprop="datePublished">2017-09-02</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/iOS-club夏令营.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/iOS-club夏令营.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/iOS-club夏令营.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/09/02/iOS-club夏令营/">iOS club夏令营</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。</p>
+<p>8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-ae6929dd1bd2a2b1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-25a083cf6da0371d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向我们介绍了这次的夏令营，以及这所东莞理工学院城市学院。然后让我们每一组的组长进行介绍。我是第11组的组长，我们组名字叫做“晓组织”。介绍完之后，组长上台挑选T恤，我们组挑的是黑色的衣服。其实这个时候我还不知道我的组员到底长什么样，不过心里的紧张感却渐渐减弱了。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2017/09/02/iOS-club夏令营/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-如果我们不曾相遇" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/活动/">活动</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2016/08/29/如果我们不曾相遇/">
+            <time datetime="2016-08-29T11:40:45.000Z" itemprop="datePublished">2016-08-29</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/如果我们不曾相遇.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/如果我们不曾相遇.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/如果我们不曾相遇.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2016/08/29/如果我们不曾相遇/">如果我们不曾相遇</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>阿信唱《温柔》时，不打电话给心中的那个人，才是这首歌的意义。</p>
+<p>大一暑假一个人去鸟巢看五月天的演唱会，很震撼。。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-67ae38be635b353b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-9c19a1fec53e4ee0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-56e1c7a90e013f96.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2016/08/29/如果我们不曾相遇/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-十一月的肖邦" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/12/07/十一月的肖邦/">
+            <time datetime="2015-12-07T14:53:59.000Z" itemprop="datePublished">2015-12-07</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/十一月的肖邦.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/十一月的肖邦.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/十一月的肖邦.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/12/07/十一月的肖邦/">十一月的肖邦</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。</p>
+<p>以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。</p>
+<p>来到一座陌生的城市，所有的一切都是新奇的。陌生的街道，陌生的商场，陌生的广场和公园。还有许多陌生的行人，他们也用好奇的眼神看着你。用自以为标准的普通话向过路的人问路，却被嘲笑成平翘舌不分。内心有一点小小的沮丧，就好像我是去荒岛上捉三只眼的那个人，却被他们捉了起来，自己反而成了两只眼的怪人。</p>
+<p>但慢慢的，我认识了一群人，熟知了一座城。内心的躁动与不安渐渐平息下去，似乎重温了“家”的感觉。记住的街道越来越多，走在大街上，也不会轻易地迷路。跟别人讲话也有了一点本地人的口音。记住了哪里有好看的风景，哪里有美味的食物，公交车路线也记得清清楚楚。突然有一种感觉，就好像，这是我前世的故乡，却也终将成为我的第二故乡。</p>
+<p>曾经在高中的无数个夜晚里，想象着大学生活的美好。但当我们走过那座独木桥，当我们真正来到大学时，却发现和自己的想象大相庭径。以为自己逃出了高中的牢笼，反而进了一个更加森严的监狱。生活并没有比高中轻松多少，事实也总是没有想象中那么美好。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2015/12/07/十一月的肖邦/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-梨花落" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2015/03/06/梨花落/">
+            <time datetime="2015-03-06T14:44:00.000Z" itemprop="datePublished">2015-03-06</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/梨花落.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/梨花落.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/梨花落.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2015/03/06/梨花落/">梨花落</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>三月，草长莺飞的季节。</p>
+<p>五点半，准时起床，窗外下着雨。三月的雨，不像夏天“骤雨过，珍珠乱撒，打遍新荷”般猛烈，而是细密缠绵得让人不舒服。每天都这样，匆忙地赶到学校，然后新的一天又开始了。</p>
+<p>现在距离高考早已没有一百天，百日势师大会上郑重地签下自己的名字，也已经是前几天的事了。每个人似乎都充满着斗志，连最坏的学生也安静下来，因为再也没有人会陪他闹了。其实都很疲倦，只是彼此心照不宣。</p>
+<p>学校的梨花开了，大片大片的浅红色，似乎给校园渲染了些许浪漫色彩。但我们无瑕欣赏，为了高考，我们放弃了许多，新出的电影，未完结的动漫，甚至新闻……都与我们绝缘。以前见到学长们张口闭口都是学习，心里便十分鄙夷。但现在我渐渐发现，自己也变得跟他们一样，原来我们都是被现实所迫。现在的我，可以对语文试卷上的文章抒发的情感看得十分透彻，然而再也不能用文章随心所欲地表达自己的情感。</p>
+<p>千军万马过独木桥注定是一件残忍的事。如今我们已经是箭在弦上。这种感觉，就像小时候排队打针，轮到自己时，心里总会有一种莫名的恐惧。教学楼前贴着写有“黎明前的黑暗最黑”的横幅。在这黑暗中，有的人看不到希望，有的人迷失了方向，有的人踌躇满志，决胜千里。而更多的人，像我一样，在黑暗中摸索、挣扎，企图抓住一根救命稻草，帮助自己渡过难关。然而哪里有什么救命稻草，这完全只能靠自己。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2015/03/06/梨花落/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-高三·考试·心情" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/10/04/高三·考试·心情/">
+            <time datetime="2014-10-04T14:49:16.000Z" itemprop="datePublished">2014-10-04</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/高三·考试·心情.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/高三·考试·心情.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/高三·考试·心情.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/10/04/高三·考试·心情/">高三·考试·心情</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>收录在某不知名电台公众号：<a href="https://mp.weixin.qq.com/s/0-d8IRaHseEMh2MWHiMQrg" target="_blank" rel="noopener">歌单及文章 | 杨富江《考试》</a></p>
+<p>在太阳的余晖照耀之下，铃声宣告着月考的结束。我放下手中的笔，等待着监考老师收走我们的试卷。然后我平静地收拾书包，独自穿过漫长拥挤的走廊，耳边充斥着大家对月考的议论。而我此刻却失去了心情，我知道我又考砸了。看着大家或高兴或气愤的唾沫横飞的情景，一切都像是慢镜头，令人目眩。</p>
+<p>回到班上，月考的答案已经发下来了，大家依旧在讨论，好像谁的声音更大谁的答案就是对的。看到答案后，一方狂笑另一方则叹气或者双方都叹气，不过出现后者的情况多一些。而我面无表情地坐在座位上，抚平因考试做不出来时揉皱的试卷，内心感受着正确答案带给我的冲击。其实我是气愤的，绞尽脑汁写了一大堆公式算出来的答案是错误的，而标准答案上静静地躺着两个公式，放肆地嘲笑我。我逐渐迷惘。学了这么多还是有的题目不会做，该错的还是会错。</p>
+<p>到现在为止我的高三消耗了一个月零三天，而这次月考已经是第二次月考。我觉得应该去掉“月”字。下次“月”考是在一个礼拜后。</p>
+<p>上晚自习的时候，隔壁实验班突然传来一阵爆笑。原来是他们在放电影。我们在暗暗抱怨的时候又自叹不如，谁让人家是实验班的呢，成绩好到每次月考的班级和各科成绩上都写着“实验班除外’。我想我还不能看见烟花就写出烟花绽放时发生反应的化学方程式，我还没有到可以根据小明掉了一枚硬币就能算出太阳质量的程度。我只是一个普通学生，不是用来做实验的小白鼠。所以我们只能默默抱怨，然后埋头继续做题。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2014/10/04/高三·考试·心情/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-致高三" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2014/08/20/致高三/">
+            <time datetime="2014-08-20T00:20:56.000Z" itemprop="datePublished">2014-08-20</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/致高三.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/致高三.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/致高三.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2014/08/20/致高三/">致高三</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>时间的洪流如此迅猛，以至于我还没有来得及实现我的幻想便把我拉回了现实。中考之后的那个暑假，看了许多校园小说，于是整日期待高中生活。而我还没有像小说中的男主角一样谈一场轰轰烈烈的恋爱或者做一些了不起的事情，我便发现我正现在高三的门口。</p>
+<p>还有一天就正式迈入高三了，我身边有些朋友今年就高考完了，这个暑假他们似乎很疯狂，而我却在玩的时候还要时刻担心我的作业。他们买了手机买了电脑然后和一群小伙伴们旅游，而我所谓的娱乐也只是在看书累了的时候对着手机电脑发呆。真的很羡慕他们，逃脱了高三这个牢笼，我甚至也很想跟他们一起疯玩，哪怕一天也好。</p>
+<p>高二结束紧接着的就是一个月的补课，老师说补课是为了让我们尽早适应高三生活。曾经觉得让我一个月不上体育课是很痛苦的一件事，但一个月过后，我才发现原来我真的可以忍受没有体育课的日子。会考过后就连可以让我们打打瞌睡发发呆的政史地课都取消了，于是整天绷紧神经，深怕上课一走神漏掉了某个知识点，下课铃成为了我们的催眠曲，课间大家都趴在桌子上。真的是累得不行，补课就这么辛苦，高三应该会更累吧，不过我相信乐在其中。</p>
+<p>高三的确很紧张，高二的某个晚自习课间，我和同学下楼散步，突发奇想地来到了高三的楼下。办公室出来一个老师，看见了我俩：“同学高三了怎么这么悠闲，不如帮我搬点东西吧，来来来。”搬完后便在高三走廊走了一遍，一种紧张感油然而生。当我们高三的时候，那些从教室门口经过的学弟学妹们也会是这种感觉吧，而我也会忙得没有时间往窗外漂亮的女生多看两眼吧。</p>
+<p>回想起高一高二虽然没有像校园小说那样，但也不失精彩与快乐。同学们就像一个大家庭，校运会或者打班赛大家都很团结努力，某个同学受伤生病了大家都会帮助他，或者某个同学摔倒了大家先笑够了再把他扶起来……最印象深刻的就是暑假补课后布置考场，我和好朋友晚上溜到空荡荡的考场，然后偷偷走进了女厕所。后来在考场外吹口哨吓得某个女老师脸都绿了笔也掉了，最后一路狂奔回到教室。诸如此类，我相信这些经历必将成为我们最好的回忆。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2014/08/20/致高三/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-暑假" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/life/">life</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2013/08/30/暑假/">
+            <time datetime="2013-08-30T14:22:22.000Z" itemprop="datePublished">2013-08-30</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/暑假.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/暑假.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/暑假.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2013/08/30/暑假/">暑假</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><p>经历了三天但却觉得漫长的期末考试以后，暑假如期而至，幻想着暑假的种种快乐和自由，心里自然清凉。但到今天暑假快结束的时候，却觉得与自己的幻想有着天壤之别。毕竟，只是幻想。</p>
+<p>暑假的第一天，就别有兴致的买了一把吉他，还报了培训班，记得周杰伦说过一技之长比学历重要，于是那天晚上便充满了斗志，想象着自己弹吉他给女生听就觉得很帅。第二天准时来到培训班，认真练习了一整天后便觉得很辛苦很无聊。再过几天发现那些老师竟然对我爱理不理，之后的几天感觉什么都没学到，一个礼拜后我很潇洒地离开了，发誓再也不去那种地方见到那种老师。对吉他也有了阴影，不会就不会，我将来又不是靠弹吉他吃饭。现在还是高中生，学习才是重中之重，吉他玩得再好，高考也不会给你加分。</p>
+<p>过了几天，大哥和他同学去了打暑期工，而我则遵守着曾经跟班主任商量的计划每天上午都来学校学习，一开始也是很有斗志，但几天后发现根本没有效率，但还是每天都去，心里想着，暑假嘛，那么认真干嘛。但是现在我明白了，不应该放纵自己，我也明白了 ，老师说的话多数是错误的，我更加不相信老师了。暑假前定制的目标，到现在没有完成几个，比如说一个月写完暑假作业啊，看完《三国演义》和《红楼梦》啊，每天写日记啊之类的。也后悔没有跟大哥去打暑期工，在异地总是能够让自己见识世面，而且还能有钱自由地买东西，真好。</p>
+<p>每天下午都会去打羽毛球，挥洒汗水，不会时不时地玩手机电脑，那时就会觉得很开心很有意义。因为都是些志同道合的同学，更有共同语言，一起切磋，一起交流，一起进步，一起大声地笑。又让我想起了某些女生，只会勾心斗角，只会嫉妒，只会玩心机，或者只会犯忧伤，只会沉迷于所谓的爱，那些真是恶心无聊，人生不只是有心机或者爱恨情仇，还有很多有意义的事。相比之下，我们活的有意义多了。</p>
+<p>看过《中国合伙人》之后，更加对自己一个月来的无所作为后悔，自己真是太窝囊了——做事不好好考虑，不会坚持，遇到困难不会勇敢地面对和想办法解决，满足于现状，不思进取，目光短浅……自己这样一定会一事无成，所以不能再这样下去，如果我不逼自己一下，我永远都不会知道自己有多强大，我可以平凡但绝对不可以平庸，绝对不可以！我也很庆幸自己城府不深，不会勾心斗角。也很谢谢张玺以前能够听我倾诉，开导我，对感情渐渐看淡，明白学习才是重要。</p>
+<p>
+                
+            
+        
+        
+            </div>   
+            <div class="article-more-link">
+                <a href="/2013/08/30/暑假/#more">Read More</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+        </nav>
+    
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Acan &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
 </html>

@@ -1,21 +1,345 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Acan的秘密基地</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  
-  <!-- Import lsloader -->
-  <script>!function(){var e="http://"+location.host+"/combo?combo=";window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}},lsloader.removeLS=function(e){try{localStorage.removeItem(e)}catch(e){}},lsloader.setLS=function(e,t){try{localStorage.setItem(e,t)}catch(e){}},lsloader.getLS=function(e){var t="";try{t=localStorage.getItem(e)}catch(e){t=""}return t},lsloader.load=function(e,t,s){s=s||function(){};var n;if(n=this.getLS(e),!/\/\*codestartv1\*\//.test(n))return this.removeLS(e),void this.requestResource(e,t,s);if(n){var a=n.split("/*codestartv1*/")[0];if(a!=t)return console.log("reload:"+t),this.removeLS(e),void this.requestResource(e,t,s);n=n.split("/*codestartv1*/")[1],/\.js?.+$/.test(a)?(this.jsRunSequence.push({name:e,code:n}),this.runjs(t,e,n)):(document.getElementById(e).appendChild(document.createTextNode(n)),s())}else this.requestResource(e,t,s)},lsloader.requestResource=function(e,t,s){var n=this;/\.js?.+$/.test(t)?this.iojs(t,e,function(e,t,s){n.setLS(t,e+"/*codestartv1*/"+s),n.runjs(e,t,s)}):/\.css?.+$/.test(t)&&this.iocss(t,e,function(s){document.getElementById(e).appendChild(document.createTextNode(s)),n.setLS(e,t+"/*codestartv1*/"+s)},s)},lsloader.iojs=function(e,t,s){var n=this;n.jsRunSequence.push({name:t,code:""});try{var a=new XMLHttpRequest;a.open("get",e,!0),a.onreadystatechange=function(){if(4==a.readyState){if((a.status>=200&&a.status<300||304==a.status)&&""!=a.response)return void s(e,t,a.response);n.jsfallback(e,t)}},a.send(null)}catch(s){n.jsfallback(e,t)}},lsloader.iocss=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.iofonts=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.runjs=function(e,t,s){if(t&&s)for(var n in this.jsRunSequence)this.jsRunSequence[n].name==t&&(this.jsRunSequence[n].code=s);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code)),a.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(a),this.jsRunSequence.shift(),this.jsRunSequence.length>0&&this.runjs()}else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var u=this,a=document.createElement("script");a.src=this.jsRunSequence[0].path,a.type="text/javascript",this.jsRunSequence[0].status="loading",a.onload=function(){u.jsRunSequence.shift(),u.jsRunSequence.length>0&&u.runjs()},document.body.appendChild(a)}},lsloader.tagLoad=function(e,t){this.jsRunSequence.push({name:t,code:"",path:e,status:"failed"}),this.runjs()},lsloader.jsfallback=function(e,t){if(!this.jsnamemap[t]){this.jsnamemap[t]=t;for(var s in this.jsRunSequence)this.jsRunSequence[s].name==t&&(this.jsRunSequence[s].code="",this.jsRunSequence[s].status="failed",this.jsRunSequence[s].path=e);this.runjs()}},lsloader.cssfallback=function(e,t,s){if(!this.cssnamemap[t]){this.cssnamemap[t]=1;var n=document.createElement("link");n.type="text/css",n.href=e,n.rel="stylesheet",n.onload=n.onerror=s;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a)}},lsloader.runInlineScript=function(e,t){var s=document.getElementById(t).innerText;this.jsRunSequence.push({name:e,code:s}),this.runjs()},lsloader.loadCombo=function(t){var s="",n={};for(var a in t){var u=this.getLS(t[a].name);if(u)var o=u.split("/*codestartv1*/")[0],c=u.split("/*codestartv1*/")[1];else var o="";o==t[a].path?this.jsRunSequence.push({name:t[a].name,code:c,path:t[a].path}):(this.jsRunSequence.push({name:t[a].name,code:null,path:t[a].path,status:"comboloading"}),n[t[a].name]=!0,s+=(""==s?"":";")+t[a].path)}var i=this;if(s){var r=new XMLHttpRequest;r.open("get",e+s,!0),r.onreadystatechange=function(){if(4==r.readyState)if(r.status>=200&&r.status<300||304==r.status){if(""!=r.response)return void i.runCombo(r.response,n)}else{for(var e in i.jsRunSequence)n[i.jsRunSequence[e].name]&&(i.jsRunSequence[e].status="failed");i.runjs()}},r.send(null)}this.runjs()},lsloader.runCombo=function(e,t){e=e.split("/*combojs*/"),e.shift();for(var s in this.jsRunSequence)t[this.jsRunSequence[s].name]&&e[0]&&(this.jsRunSequence[s].status="comboJS",this.jsRunSequence[s].code=e[0],this.setLS(this.jsRunSequence[s].name,this.jsRunSequence[s].path+"/*codestartv1*/"+e[0]),e.shift());this.runjs()}}();</script>
+    <meta charset="utf-8">
+    
+    <title>iOS club夏令营 | Acan的秘密基地</title>
+    
+    
+        <meta name="keywords" content="活动" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。 8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。   一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向">
+<meta name="keywords" content="活动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS club夏令营">
+<meta property="og:url" content="http://yoursite.com/2017/09/02/iOS-club夏令营/index.html">
+<meta property="og:site_name" content="Acan的秘密基地">
+<meta property="og:description" content="很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。 8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。   一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-5995017728c9e8ed.png">
+<meta property="og:updated_time" content="2018-08-05T08:16:14.454Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS club夏令营">
+<meta name="twitter:description" content="很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。 8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。   一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6365912-5995017728c9e8ed.png">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Acan的秘密基地" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="text/javascript">
-    window.rootUrl = "/"
-    window.one = {"site":{"title":"Acan的秘密基地","subtitle":null,"description":null,"author":"Acan","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true}},"theme":{"title":"Acan的秘密基地","subtitle":null,"description":null,"author":"Acan","language":null,"timezone":null,"url":"http://yoursite.com","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":10},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"head":{"favicon":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4"},"img":{"avatar":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4","left_pic":["/img/home.jpg"],"right_pic":["/img/right.jpg"],"post_thumbnail":["/img/二次元/下雨.jpg"],"drawerHeaderBg":["/img/WechatIMG9.jpeg"]},"uiux":{"slogan":"人生，是一场修炼！","defaultPrimaryColor":"blue","defaultAccentColor":"red"},"comment":{"disqus":{"shortName":"xyz"}},"Drawer":[{"title":"首页","type":"sitelink","href":"/","icon":"home"},{"title":"hr","type":"hr"},{"title":"关于我","type":"page","name":"关于我","href":"/关于我.md","icon":"account_circle"},{"title":"搜索","type":"sitelink","href":"/search/","icon":"search"},{"title":"联系我","icon":"contact_phone","nested":[{"title":"Jianshu","type":"link","href":"https://www.jianshu.com/u/5a7a5445cb4a","icon":{"type":"svg","date":"<path d=\"M512 1024C229.239467 1024 0 794.760533 0 512S229.239467 0 512 0 1024 229.239467 1024 512 794.760533 1024 512 1024z m-110.227911-750.409956H204.8v486.855112h184.160711c33.314133 0 105.221689 19.2512 105.221689 58.754844V361.745067c0-32.836267-50.426311-88.155022-92.387556-88.155023z m242.733511 0c-42.029511 0-92.433067 55.318756-92.433067 88.155023V819.2c0-39.503644 71.839289-58.754844 105.198934-58.754844h184.160711V273.590044h-196.926578z\" p-id=\"18729\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Github","type":"link","href":"https://github.com/hzsss","icon":{"type":"svg","date":"<path d=\"M941.714 512q0 143.433-83.712 258.011t-216.283 158.574q-15.433 2.853-22.565-3.986t-7.131-17.152v-120.576q0-55.442-29.696-81.152 32.585-3.438 58.587-10.277t53.723-22.272 46.299-37.998 30.281-60.014 11.703-86.016q0-69.157-45.129-117.723 21.138-52.005-4.571-116.553-16.018-5.157-46.299 6.29t-52.553 25.161l-21.723 13.714q-53.138-14.848-109.714-14.848t-109.714 14.848q-9.143-6.29-24.283-15.433t-47.726-22.016-49.152-7.717q-25.161 64.585-3.986 116.553-45.129 48.567-45.129 117.723 0 48.567 11.703 85.723t29.989 60.014 46.007 38.29 53.723 22.272 58.587 10.277q-22.857 20.553-28.014 58.843-11.995 5.705-25.71 8.558t-32.585 2.853-37.413-12.288-31.707-35.73q-10.862-18.286-27.721-29.696t-28.27-13.714l-11.447-1.719q-11.995 0-16.567 2.56t-2.853 6.583 5.157 8.009 7.424 6.839l3.986 2.853q12.581 5.705 24.869 21.723t17.993 29.147l5.705 13.129q7.424 21.723 25.161 35.145t38.29 17.152 39.717 3.986 31.707-2.011l13.129-2.304q0 21.723 0.293 50.871t0.293 30.866q0 10.277-7.424 17.152t-22.857 3.986q-132.571-43.995-216.283-158.574t-83.712-258.011q0-119.442 58.843-220.27t159.707-159.707 220.27-58.843 220.27 58.843 159.707 159.707 58.843 220.27z\" p-id=\"997\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Douban","type":"link","href":"https://www.douban.com/people/180397031/","icon":{"type":"svg","height":"20px","width":"20px","margin":"14px","date":"<path d=\"M512 1024c282.76736 0 512-229.23264 512-512S794.76736 0 512 0 0 229.23264 0 512s229.23264 512 512 512z m256.2048-705.4336H260.608v-51.6096H768.2048v51.6096z m11.69408 455.68H245.30944v-52.18304h159.88736c-19.59936-42.5984-40.30464-79.40096-62.09536-110.3872l41.10336-26.4192h-72.00768V379.16672h406.20032v206.09024h-75.59168l41.10336 27.01312c-19.41504 42.5984-39.60832 79.19616-60.6208 109.7728h156.61056v52.224z m-118.49728-240.88576v-101.10976H368.90624v101.10976h292.49536z m-28.50816 51.89632h-238.1824a1153.41312 1153.41312 0 0 1 69.89824 136.8064h97.19808c29.7984-46.20288 53.49376-91.81184 71.08608-136.8064z\" p-id=\"2131\"></path>","viewBox":"0 0 1024 1024"}}]}],"colorPicker":true,"homeToolBar":[{"icon":"more_vert","items":[{"title":"RSS","type":"link","href":"/atom.xml","icon":"rss_feed"}]}],"footer":["Copyright © 2016 - 2017 Acan",["做更好的自己！","Be youserlf,everyone else is already taken."]]}}
-  </script>
-  <script>lsloader.load("vendor.js","/vendor.js")</script>
-  <script>lsloader.load("bundle.js","/bundle.js")</script>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Acan的秘密基地</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-iOS-club夏令营" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/活动/">活动</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/09/02/iOS-club夏令营/">
+            <time datetime="2017-09-02T07:40:19.000Z" itemprop="datePublished">2017-09-02</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/iOS-club夏令营.md'> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/iOS-club夏令营.md'> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/iOS-club夏令营.md'> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            iOS club夏令营
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。</p>
+<p>8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-ae6929dd1bd2a2b1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-25a083cf6da0371d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向我们介绍了这次的夏令营，以及这所东莞理工学院城市学院。然后让我们每一组的组长进行介绍。我是第11组的组长，我们组名字叫做“晓组织”。介绍完之后，组长上台挑选T恤，我们组挑的是黑色的衣服。其实这个时候我还不知道我的组员到底长什么样，不过心里的紧张感却渐渐减弱了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-34ea99523ad05be5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>提着行李去宿舍楼领钥匙。路上我就遇到了我的组员们，把衣服给他们，又聊了几句。感觉这些人都很不错，甚至有一种莫名的亲切感。收拾好寝室，吃完晚饭，又买了一些生活用品，已经是晚上了。于是我们组几个男生便在寝室里，一直交谈到很晚。此时，我已经确定我能和他们相处得很融洽，开始期待以后到底会擦出怎样的火花。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-62cee902b889a159?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-a1f4aa96ec13d886?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>第二天，一大早便开始上课。果不其然，大多数人在新的环境里还是睡不好的，昨天明明很累，却一直到凌晨两点才睡着。第一节课是赵航老师的Design Thinking，教会我们解决问题的双钻石模型，以及如何制作人物画像。课上还让我们一起合作，用意大利面、绳子和胶带，把棉花糖支到最高，一起进行人物采访，最后让我们上台表演。第一节课不仅没有让我们打瞌睡，还迅速拉近了组员之间的距离。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-549340b11c554ce3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>下午的课是“二次元的与时尚的Free Style”，两位老师给我们讲解了穿衣打扮的一些基本知识，邀请同学和老师上台，进行实战改造。不得不说，穿对衣服真的是可以让一个人的外貌气质发生比较大的变化。老师说了一句话让我印象非常深刻。老师说：be yourself，everyone else has already taken。做你自己，因为别人都有人去做了。是啊，在这个物欲横流，纷纷扰扰的世界，又有多少人能够保持初心，做真正的自己。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-8179a8f74878d025?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这次夏令营要求我们在短短五天之内，做出一个APP方案进行比赛。所以我们组第二天吃完晚饭，全组同学在寝室进行初期的一些计划和内容，包括APP提案的确定，以及组员之间的分工等。虽然才认识不到两天，但我们似乎已经有了一些微妙的默契。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-15557ef5bed64f55?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>接下来的两天，老师在课上向我们介绍了iOS软件开发相关的知识，包括Core Animation以及ARKit。教我们利用keynote制作产品原型。还邀请了苹果公司的面试官给我们讲解了校园招聘的一些情况。总之，如果想要通过Apple公司的面试，必须要有极强的专业能力和综合素质。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-c2340d67d9933561?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>最美好也最忙碌的就是每天的夜晚了，我们一起讨论，一起合作。虽然也会有不同的意见，但这种思想上的碰撞却让我们的作品更加完善。看到这么多志同道合的朋友，在为同一个目标努力，每一个人的心中都充满着斗志。每天都熬夜到很晚。累了的时候，也会停下来，聊聊天。我们似乎是一群合作了很久的好朋友，一切都是那么自然，那么和谐。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-c83ada8e3d99f8c9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>五天的时间很短暂，但是我们却建立了深厚的友谊。最后一天上午，进行小组比赛。可以看得出来每一组都尽了自己最大的努力，老师们给的点评也都十分到位。每一天的辛苦和付出似乎都很值得，虽然很遗憾没有得奖，但这五天得到的收获远远比这实体的奖励更加丰厚。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-2e37dd5b27c1a182?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-bff2505bdc6a3ab9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-ca783c400fd6bb71?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-3bebad4d96373ba5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2017/09/29/移动应用创新赛决赛之旅/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    移动应用创新赛决赛之旅
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2016/08/29/如果我们不曾相遇/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">如果我们不曾相遇</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Acan &copy; 2018 
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
 </body>
 </html>

@@ -174,7 +174,7 @@ IdentityFile ~/.ssh/id_rsa_work
 <pre><code>ssh -T git@personal.github.com
 ssh -T git@company.github.com
 </code></pre><p>如果输出以下内容：</p>
-<pre><code>Hi xxx! You&apos;ve successfully authenticated
+<pre><code>Hi xxx! You&#39;ve successfully authenticated
 </code></pre><p>恭喜你，已经配置成功了！慢着慢着，刚才把全局设置给取消了，现在是不是要单独设置回来，没错，取消了全局设置的用户和邮箱后，我们要为每一个项目进行单独设置。我先给大家讲一下现在该如何对项目进行设置。</p>
 <h4 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h4><p>由于我们设置了 Host，这就相当于是 HostName 的别名。比如现在对个人 GitHub 上的 repo 进行 clone 的时候，要改成 <code>git clone git@personal.github.com:xxx/xxx.git</code>。如果是已经克隆到本地的项目，则可以在项目中修改：</p>
 <pre><code>$ git remote rm origin

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    iOS应用上架遇到的一些坑 | Acan_Dev
+  </title>
+  <meta name="description" content="You only live once">
+  
+  <meta name="keywords" content="
+  iOS
+  ">
+  
+  <meta name="author" content="Acan_Dev">
+
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+
+  
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+</head>
+
+<body id="replica-app">
+
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
+
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://octodex.github.com/images/baracktocat.jpg"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 20 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 5 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Acan_Dev</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
+</header>
+
+
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    Acan_Dev
+
+    <span class="post-date float-right" title="{{moment(1511850647000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1511850647000).fromNow()}}
+    </span>
+  </h3>
+
+  <article class="post-content">
+    <h1>iOS应用上架遇到的一些坑</h1>
+    <p>学习iOS开发一年多了，也算是一个入门小菜鸟了，期间也做过一些小项目。最近一个公司的老师让我帮他上架一个App到App Store，我很爽快地答应了。当然，也遇到了一些坑。</p>
+<p>由于这是我第一次上架APP，很多东西都是借鉴学习别人的经验。下面，就让我和大家分享一些上架干货和遇到的问题。</p>
+<h1 id="购买开发者帐号"><a href="#购买开发者帐号" class="headerlink" title="购买开发者帐号"></a>购买开发者帐号</h1><p>老师刚开始让我帮他购买<em>个人</em>开发者帐号，我是参考这篇文章购买的。</p>
+<p><a href="http://blog.csdn.net/a44496913/article/details/54932266" target="_blank" rel="noopener">iOS苹果个人开发者账号购买流程</a></p>
+<p>最后需要使用信用卡支付一年99美元约合人民币688元的账单，只支持带有Visa/MasterCard标志的银联信用卡，也就是支持双币的信用卡。</p>
+<p>购买完成后，本应该显示的是这个界面。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-17a0275049118839?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>可是我的一直停留在这个界面。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-090792a1638401c1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>一直显示我还有订单未完成。可是我只有这一份订单，难道是我支付的时候出问题了？可是电子发票已经发给我了。于是我去问苹果客服，态度都蛮好的，说是刷新几次就好了。可是我一直刷新似乎都没有反应。网上有说等48小时之后就好了。于是我又等了两天。</p>
+<p>三天后继续问苹果客服，客服说订单没有任何问题，让我拨打开发者部门的电话<strong>400-670-1855*</strong>，*果然开发者的问题还是需要开发者来解决。打完电话后不久，就收到了邮件。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-df855127aa050b49?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>原来是我的信息填错了，简直太粗心了。于是我又问老师到底想购买个人开发者帐号还是公司开发者帐号。老师又改变注意想要购买公司开发者帐号。于是我回复邮件后，客服回复我已经在处理退款了。回到Apple Developer主页，已经回到最初没有购买的状态了。</p>
+<h1 id="申请邓白氏编码"><a href="#申请邓白氏编码" class="headerlink" title="申请邓白氏编码"></a>申请邓白氏编码</h1><p>购买公司开发者帐号有很重要的一步，那就是需要提交公司的邓白氏编码。很多公司第一次发布App的话，需要去申请邓白氏编码。</p>
+<p><a href="http://www.cocoachina.com/ios/20161214/18225.html" target="_blank" rel="noopener">申请邓白氏编码的超详细流程介绍</a></p>
+<p><a href="http://blog.csdn.net/sinat_35861727/article/details/69141285" target="_blank" rel="noopener">iOS公司开发者账号申请教程</a></p>
+<p>期间没有遇到任何的问题，只是需要等待较长的时间。中途会发送邮件让你确认信息，只有三个小时左右的时间让你回复邮件，你需要提前准备确认信息。包括以下信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-711bae437f24f16c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>至此，公司开发者帐号购买完毕。</p>
+<h1 id="App打包上架"><a href="#App打包上架" class="headerlink" title="App打包上架"></a>App打包上架</h1><p>帐号都准备完毕后，接下来就是App的上架流程了。中途老师也让我帮他更新了一个已经上架的App，我参考了这位同学写的两篇文章。</p>
+<p><a href="http://www.jianshu.com/p/843ffbd79700" target="_blank" rel="noopener">[iOS]AppStore最新上架流程梳理</a></p>
+<p><a href="http://www.jianshu.com/p/c278a4ad8bc3" target="_blank" rel="noopener">[iOS]AppStore中APP版本更新流程梳理</a></p>
+<p>注意，更新App的时候，打包ipa文件的时候使用的App ID是之前那个。只有上架App的时候才需要新建一个。</p>
+<p>打包的时候也遇到了一个错误，显示<em>the Info.plist in the package must contain the CFBundleVersion key. </em>上网搜了一下，说是在在info.plist表中找到CFBundle Version并给其填写Build version值即可。</p>
+<p><a href="http://www.jianshu.com/p/e0a54b7a6461?nomobile=yes" target="_blank" rel="noopener">iOS进行项目上传时遇到The Info.plist in the package must contain the CFBundleVersion key的解决方法</a></p>
+<p>但好像在打包完成后的包中直接更改无效。我是退出更改后，重新Archive后解决的。</p>
+<p>所有的信息都填写完毕后，提交Apple需要你确认两个信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-5839f4c478920aea?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>出口合规要求，我在网上搜索的答案是，大多数人都是安全点NO，大家也可以根据自己的情况去搜索或者询问。</p>
+<p>广告标识符，我在网上看到有很多检测iOS项目中是否使用IDFA的方法，分享其中一篇：</p>
+<p><a href="http://www.jianshu.com/p/78d1fbc24e77" target="_blank" rel="noopener">检查iOS项目中是否使用了IDFA</a></p>
+<p>但我的检测输出结果是：./Classes/Unity/DeviceSettings.mm: NSString* adid = [[manager performSelector:<a href="http://www.jianshu.com/users/a1a20aeeba44" target="_blank" rel="noopener">@Selector</a>(advertisingIdentifier)] UUIDString];</p>
+<p>有人回答说这个方法就是获取idfa的实现，如果不是自已的代码，应该是包含IDFA了。但我在他回答之前已经点击『是』提交了。估计将会被拒绝，以上流程我又要重新来一遍。悲催。</p>
+<p>这些就是我给大家分享的关于App上架的干货和我遇到的一些问题。希望对大家有帮助。</p>
+
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://github.com/hzsss" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2018 Acan_Dev</li>
+      <li><a href="https://github.com/hzsss">Home</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
+    </div>
+    </div>
+    
+  </footer>
+</div>
+
+
+
+
+<script src="/js/main.js"></script>
+
+</body>
+</html>

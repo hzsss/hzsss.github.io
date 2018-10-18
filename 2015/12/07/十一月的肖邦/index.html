@@ -1,431 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
+
+
 <head>
-    <meta charset="utf-8">
-    
-    <title>十一月的肖邦 | Acan的秘密基地</title>
-    
-    
-        <meta name="keywords" content="life" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。 以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。 来到一座">
-<meta name="keywords" content="life">
-<meta property="og:type" content="article">
-<meta property="og:title" content="十一月的肖邦">
-<meta property="og:url" content="http://yoursite.com/2015/12/07/十一月的肖邦/index.html">
-<meta property="og:site_name" content="Acan的秘密基地">
-<meta property="og:description" content="九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。 以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。 来到一座">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/img/shiyiyuedexiaobang.jpg">
-<meta property="og:updated_time" content="2018-08-05T06:24:13.728Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="十一月的肖邦">
-<meta name="twitter:description" content="九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。 以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。 来到一座">
-<meta name="twitter:image" content="http://yoursite.com/img/shiyiyuedexiaobang.jpg">
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>
+    十一月的肖邦 | Acan_Dev
+  </title>
+  <meta name="description" content="You only live once">
+  
+  <meta name="keywords" content="
+  life
+  ">
+  
+  <meta name="author" content="Acan">
 
-    
-        <link rel="alternate" href="/atom.xml" title="Acan的秘密基地" type="application/atom+xml" />
-    
+  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-siteapp">
 
-    
-        <link rel="icon" href="/favicon.ico" />
-    
+  <link rel="icon" type="image/x-icon" href="">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
 
-    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/libs/open-sans/styles.css">
-    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+  
 
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
-    
-    
-        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
-    
-    
-        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
-    
-    
-    
-    
-
-
-    
-        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    
+  <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 </head>
 
-<body>
-    <div id="container">
-        <header id="header">
-    <div id="header-main" class="header-inner">
-        <div class="outer">
-            <a href="/" id="logo">
-                <i class="logo"></i>
-                <span class="site-title">Acan的秘密基地</span>
-            </a>
-            <nav id="main-nav">
-                
-                    <a class="main-nav-link" href="/.">首页</a>
-                
-                    <a class="main-nav-link" href="/archives">归档</a>
-                
-                    <a class="main-nav-link" href="/categories">分类</a>
-                
-                    <a class="main-nav-link" href="/tags">标签</a>
-                
-                    <a class="main-nav-link" href="/about">关于</a>
-                
-            </nav>
-            
-                
-                <nav id="sub-nav">
-                    <div class="profile" id="profile-nav">
-                        <a id="profile-anchor" href="javascript:;">
-                            <img class="avatar" src="https://www.gravatar.com/avatar/801b5fd632e95da59d6dbb8f45eff705" />
-                            <i class="fa fa-caret-down"></i>
-                        </a>
-                    </div>
-                </nav>
-            
-            <div id="search-form-wrap">
+<body id="replica-app">
 
-    <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-        <button type="submit" class="search-form-submit"></button>
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..." />
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-<script src="/js/insight.js"></script>
+<nav class="navbar-wrapper">
+  <div class="navbar">
+    <div class="container clearfix">
+      <a href="/" class="navbar-logo"><i class="fa fa-github"></i></a>
 
-</div>
+      <div class="navbar-search float-left desktop-only">
+        <div class="navbar-search-form">
+          <label for="gsc-i-id1">This website</label>
+          <div id="google-search">
+            <gcse:search></gcse:search>
+          </div>
         </div>
-    </div>
-    <div id="main-nav-mobile" class="header-sub header-inner">
-        <table class="menu outer">
-            <tr>
-                
-                    <td><a class="main-nav-link" href="/.">首页</a></td>
-                
-                    <td><a class="main-nav-link" href="/archives">归档</a></td>
-                
-                    <td><a class="main-nav-link" href="/categories">分类</a></td>
-                
-                    <td><a class="main-nav-link" href="/tags">标签</a></td>
-                
-                    <td><a class="main-nav-link" href="/about">关于</a></td>
-                
-                <td>
-                    
-    <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
-    </div>
+      </div>
 
-                </td>
-            </tr>
-        </table>
+      <ul class="navbar-nav float-left">
+        
+        <li><a href="/archives">Archives</a></li>
+        
+        
+        <li><a href="/categories">Categories</a></li>
+        
+        
+        <li><a href="/tags">Tags</a></li>
+        
+        
+        <li class="desktop-only"><a href="/atom.xml" target="_blank">RSS</a></li>
+        
+      </ul>
+
+      <ul class="navbar-nav user-nav float-right desktop-only">
+        <li class="user-nav-notification">
+          <a><span class="user-nav-unread"></span><i class="fa fa-bell"></i></a>
+        </li>
+        <li>
+          <a><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
+        </li>
+        <li class="user-nav-logo">
+          <a><img src="https://avatars2.githubusercontent.com/u/5300359?v=4&amp;s=460"> <i class="fa fa-caret-down"></i></i></a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<div class="main-container">
+  <header class="header-wrapper desktop-only">
+  <div class="container header-site-detail">
+    <ul class="header-toolbar">
+      <li class="clearfix">
+        <a href="/archives" class="header-toolbar-left"><i
+                  class="fa fa-file-text"></i> Posts </a>
+        <a href="/archives"
+           class="header-toolbar-right"> 20 </a>
+      </li>
+      <li>
+        <a href="/tags" class="header-toolbar-left"><i
+                  class="fa fa-tags"></i> Tags </a>
+        <a href="/tags"
+           class="header-toolbar-right"> 5 </a>
+      </li>
+      <li>
+        <a href="/categories" class="header-toolbar-left"><i
+                  class="fa fa-folder-open"></i> Categories </a>
+        <a href="/categories"
+           class="header-toolbar-right"> 0 </a>
+      </li>
+    </ul>
+    <h2 class="header-title">
+      <i class="fa fa-book text-muted"></i>
+      <a href="/">Acan_Dev</a>
+      
+      
+    </h2>
+  </div>
+
+  <div class="container">
+    <div class="header-tab-wrapper clearfix">
+      <span class="header-tab header-tab-selected"><i class="fa fa-thumbs-o-up"></i> Like</span>
+      <span class="header-tab"><i class="fa fa-share-alt"></i> Share</span>
+      <span class="header-tab"><i class="fa fa-comments-o"></i> Discussion</span>
+      <span class="header-tab"><i class="fa fa-bookmark-o"></i> Bookmark </span>
+      <span class="header-tab"><i class="fa fa-smile-o"></i> Smile <i class="fa fa-caret-down"></i></span>
+    </div>
+  </div>
 </header>
 
-        <div class="outer">
-            
-                
 
-<aside id="profile">
-    <div class="inner profile-inner">
-        <div class="base-info profile-block">
-            <img id="avatar" src="https://www.gravatar.com/avatar/801b5fd632e95da59d6dbb8f45eff705?s=128" />
-            <h2 id="name">zthxxx</h2>
-            <h3 id="title">Designer &amp; Programmer</h3>
-            <span id="location"><i class="fa fa-map-marker"></i>Jiangxi, China</span>
-            <a id="follow" target="_blank" href="https://github.com/zthxxx/">FOLLOW</a>
-        </div>
-        <div class="article-info profile-block">
-            <div class="article-info-block">
-                20
-                <span>posts</span>
-            </div>
-            <div class="article-info-block">
-                5
-                <span>tags</span>
-            </div>
-        </div>
-        
-        <div class="profile-block social-links">
-            <table>
-                <tr>
-                    
-                    
-                    <td>
-                        <a href="https://github.com/zthxxx/zthxxx.github.io" target="_blank" title="github" class=tooltip>
-                            <i class="fa fa-github"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="http://stackoverflow.com/users/7277090/zthxxx?tab=profile" target="_blank" title="stack-overflow" class=tooltip>
-                            <i class="fa fa-stack-overflow"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="http://codepen.io/zthxxx/" target="_blank" title="codepen" class=tooltip>
-                            <i class="fa fa-codepen"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/atom.xml" target="_blank" title="rss" class=tooltip>
-                            <i class="fa fa-rss"></i>
-                        </a>
-                    </td>
-                    
-                </tr>
-            </table>
-        </div>
-        
-    </div>
-</aside>
+<div class="post-container container">
+  <h3>
+    <i class="fa fa-user-o"></i>
+    Acan
 
-            
-            
-                <aside id="sidebar">
-   
-        
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title"><span>recent</span></h3>
-        <div class="widget">
-            <ul id="recent-post" class="">
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/09/25/操作系统学习笔记/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
+    <span class="post-date float-right" title="{{moment(1449500039000).format('MMM DD, YYYY, h:mm:ss A')}}">
+      <i class="fa fa-pencil-square-o"></i>
+      {{moment(1449500039000).fromNow()}}
+    </span>
+  </h3>
 
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/09/25/操作系统学习笔记/" class="title">操作系统学习笔记</a></p>
-                            <p class="item-date"><time datetime="2018-09-25T10:25:43.000Z" itemprop="datePublished">2018-09-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/08/01/Mac-OS下配置多个GitHub账号/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/github.jpg)" alt="Mac OS下配置多个GitHub账号" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/08/01/Mac-OS下配置多个GitHub账号/" class="title">Mac OS下配置多个GitHub账号</a></p>
-                            <p class="item-date"><time datetime="2018-08-01T08:07:49.000Z" itemprop="datePublished">2018-08-01</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/07/16/在-Mac-OSX-上安装-Oh-My-Zsh/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/omzh.png)" alt="在 Mac OSX 上安装 Oh My Zsh" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/07/16/在-Mac-OSX-上安装-Oh-My-Zsh/" class="title">在 Mac OSX 上安装 Oh My Zsh</a></p>
-                            <p class="item-date"><time datetime="2018-07-16T08:05:37.000Z" itemprop="datePublished">2018-07-16</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/06/15/weak原理探索/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://upload-images.jianshu.io/upload_images/6365912-be5dc3924e9a8e0d.png)" alt="weak原理探索" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/06/15/weak原理探索/" class="title">weak原理探索</a></p>
-                            <p class="item-date"><time datetime="2018-06-15T07:56:48.000Z" itemprop="datePublished">2018-06-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/06/15/关于-block的一些思考/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95)" alt="关于__block的一些思考" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/06/15/关于-block的一些思考/" class="title">关于__block的一些思考</a></p>
-                            <p class="item-date"><time datetime="2018-06-15T07:48:51.000Z" itemprop="datePublished">2018-06-15</time></p>
-                        </div>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title"><span>archives</span></h3>
-        <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">October 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">August 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/08/">August 2013</a><span class="archive-list-count">1</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title"><span>tags</span></h3>
-        <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Operation-System/">Operation System</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/活动/">活动</a><span class="tag-list-count">3</span></li></ul>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap">
-        <h3 class="widget-title"><span>tag cloud</span></h3>
-        <div class="widget tagcloud">
-            <a href="/tags/Operation-System/" style="font-size: 10px;">Operation System</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a> <a href="/tags/life/" style="font-size: 17.5px;">life</a> <a href="/tags/技术/" style="font-size: 12.5px;">技术</a> <a href="/tags/活动/" style="font-size: 15px;">活动</a>
-        </div>
-    </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title"><span>links</span></h3>
-        <div class="widget">
-            <ul>
-                
-            </ul>
-        </div>
-    </div>
-
-
-    
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-            
-            <section id="main"><article id="post-十一月的肖邦" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/life/">life</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2015/12/07/十一月的肖邦/">
-            <time datetime="2015-12-07T14:53:59.000Z" itemprop="datePublished">2015-12-07</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href='https://github.com/zthxxx/Wiki-site/raw/writing/source/_posts/十一月的肖邦.md'> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href='https://github.com/zthxxx/Wiki-site/edit/writing/source/_posts/十一月的肖邦.md'> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href='https://github.com/zthxxx/Wiki-site/commits/writing/source/_posts/十一月的肖邦.md'> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 class="article-title" itemprop="name">
-            十一月的肖邦
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-        
-        
-            <p>九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。</p>
+  <article class="post-content">
+    <h1>十一月的肖邦</h1>
+    <p>九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。</p>
 <p>以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。</p>
 <p>来到一座陌生的城市，所有的一切都是新奇的。陌生的街道，陌生的商场，陌生的广场和公园。还有许多陌生的行人，他们也用好奇的眼神看着你。用自以为标准的普通话向过路的人问路，却被嘲笑成平翘舌不分。内心有一点小小的沮丧，就好像我是去荒岛上捉三只眼的那个人，却被他们捉了起来，自己反而成了两只眼的怪人。</p>
 <p>但慢慢的，我认识了一群人，熟知了一座城。内心的躁动与不安渐渐平息下去，似乎重温了“家”的感觉。记住的街道越来越多，走在大街上，也不会轻易地迷路。跟别人讲话也有了一点本地人的口音。记住了哪里有好看的风景，哪里有美味的食物，公交车路线也记得清清楚楚。突然有一种感觉，就好像，这是我前世的故乡，却也终将成为我的第二故乡。</p>
@@ -439,110 +149,45 @@
 <p>可是成长是必然的，也许经常被人说成幼稚，可是内心是知道的，自己已经是小时候幻想过无数次的大人了。又想起无意中在网上看过的一段话“多年前的某一天，坐在课堂上发呆的你，老师的声音越飘越远，那时候的你觉得2008年的奥运遥远的不可想象，也不知道2015年的自己身在何方，窗外的树上，一群麻雀叽喳着飞过，粉笔砸中你的头，老师让你站着听课，同学们在窃窃私语，窗外的树叶滑落，没有人注意到时间它那么仓促，再次想起，是否想重新来过。”当完成了童年理想,童年又成了理想，也许是一种悲哀吧。</p>
 <p>相比于高中，大学有更多可以自己支配的时间，读了更多书，明白了更多道理，体验了更多不曾有过的生活。可是却发现，手中的笔无法描写天马行空的思想，无法随心所欲地写出自己的想法。十一月的肖邦，十二月的飘雪，还有许多的话，不是假装沉默，只是无力诉说。</p>
 
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
+  </article>
+</div>
+
+
+    
+
+
+
+
+</div>
+
+<div class="footer-wrapper container">
+  <footer class="footer clearfix">
+    <div class="clearfix">
+    <a href="https://hzsss.github.io" class="footer-logo">
+      <i class="fa fa-github"></i>
+    </a>
+    <ul class="footer-social-link">
+      <li>© 2018 Acan</li>
+      <li><a href="https://hzsss.github.io">Home</a></li>
+      
+      <li><a href="https://github.com/sabrinaluo">Github</a></li>
+      
+      <li><a href="http://weibo.com/206663121">Weibo</a></li>
+      
+    </ul>
+    <div class="footer-theme-info">
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
     </div>
-</article>
-
-
-    
-<nav id="article-nav">
-    
-        <a href="/2016/08/29/如果我们不曾相遇/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    如果我们不曾相遇
-                
-            </div>
-        </a>
-    
-    
-        <a href="/2015/03/06/梨花落/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">梨花落</div>
-        </a>
-    
-</nav>
-
-
-
-
-
-    
-    
-
-
-
-
-<!-- baidu url auto push script -->
-<script type="text/javascript">
-    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
-</script>     
-</section>
-        </div>
-        <footer id="footer">
-    <div class="outer">
-        <div id="footer-info" class="inner">
-            Acan &copy; 2018 
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
-            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
-            
-                <br>
-                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
-                &nbsp;|&nbsp;
-                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
-            
-        </div>
     </div>
-</footer>
-
-        
-
     
-        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
-        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
-    
-    
-        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
-    
-    
-        <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true,
-            TeX: {
-                equationNumbers: {
-                  autoNumber: 'AMS'
-                }
-            }
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+  </footer>
+</div>
 
 
 
-<!-- Custom Scripts -->
+
 <script src="/js/main.js"></script>
 
-    </div>
 </body>
 </html>

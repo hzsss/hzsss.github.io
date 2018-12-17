@@ -1,21 +1,335 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Acan_Dev</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
   
-  <!-- Import lsloader -->
-  <script>!function(){var e="http://"+location.host+"/combo?combo=";window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}},lsloader.removeLS=function(e){try{localStorage.removeItem(e)}catch(e){}},lsloader.setLS=function(e,t){try{localStorage.setItem(e,t)}catch(e){}},lsloader.getLS=function(e){var t="";try{t=localStorage.getItem(e)}catch(e){t=""}return t},lsloader.load=function(e,t,s){s=s||function(){};var n;if(n=this.getLS(e),!/\/\*codestartv1\*\//.test(n))return this.removeLS(e),void this.requestResource(e,t,s);if(n){var a=n.split("/*codestartv1*/")[0];if(a!=t)return console.log("reload:"+t),this.removeLS(e),void this.requestResource(e,t,s);n=n.split("/*codestartv1*/")[1],/\.js?.+$/.test(a)?(this.jsRunSequence.push({name:e,code:n}),this.runjs(t,e,n)):(document.getElementById(e).appendChild(document.createTextNode(n)),s())}else this.requestResource(e,t,s)},lsloader.requestResource=function(e,t,s){var n=this;/\.js?.+$/.test(t)?this.iojs(t,e,function(e,t,s){n.setLS(t,e+"/*codestartv1*/"+s),n.runjs(e,t,s)}):/\.css?.+$/.test(t)&&this.iocss(t,e,function(s){document.getElementById(e).appendChild(document.createTextNode(s)),n.setLS(e,t+"/*codestartv1*/"+s)},s)},lsloader.iojs=function(e,t,s){var n=this;n.jsRunSequence.push({name:t,code:""});try{var a=new XMLHttpRequest;a.open("get",e,!0),a.onreadystatechange=function(){if(4==a.readyState){if((a.status>=200&&a.status<300||304==a.status)&&""!=a.response)return void s(e,t,a.response);n.jsfallback(e,t)}},a.send(null)}catch(s){n.jsfallback(e,t)}},lsloader.iocss=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.iofonts=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.runjs=function(e,t,s){if(t&&s)for(var n in this.jsRunSequence)this.jsRunSequence[n].name==t&&(this.jsRunSequence[n].code=s);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code)),a.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(a),this.jsRunSequence.shift(),this.jsRunSequence.length>0&&this.runjs()}else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var u=this,a=document.createElement("script");a.src=this.jsRunSequence[0].path,a.type="text/javascript",this.jsRunSequence[0].status="loading",a.onload=function(){u.jsRunSequence.shift(),u.jsRunSequence.length>0&&u.runjs()},document.body.appendChild(a)}},lsloader.tagLoad=function(e,t){this.jsRunSequence.push({name:t,code:"",path:e,status:"failed"}),this.runjs()},lsloader.jsfallback=function(e,t){if(!this.jsnamemap[t]){this.jsnamemap[t]=t;for(var s in this.jsRunSequence)this.jsRunSequence[s].name==t&&(this.jsRunSequence[s].code="",this.jsRunSequence[s].status="failed",this.jsRunSequence[s].path=e);this.runjs()}},lsloader.cssfallback=function(e,t,s){if(!this.cssnamemap[t]){this.cssnamemap[t]=1;var n=document.createElement("link");n.type="text/css",n.href=e,n.rel="stylesheet",n.onload=n.onerror=s;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a)}},lsloader.runInlineScript=function(e,t){var s=document.getElementById(t).innerText;this.jsRunSequence.push({name:e,code:s}),this.runjs()},lsloader.loadCombo=function(t){var s="",n={};for(var a in t){var u=this.getLS(t[a].name);if(u)var o=u.split("/*codestartv1*/")[0],c=u.split("/*codestartv1*/")[1];else var o="";o==t[a].path?this.jsRunSequence.push({name:t[a].name,code:c,path:t[a].path}):(this.jsRunSequence.push({name:t[a].name,code:null,path:t[a].path,status:"comboloading"}),n[t[a].name]=!0,s+=(""==s?"":";")+t[a].path)}var i=this;if(s){var r=new XMLHttpRequest;r.open("get",e+s,!0),r.onreadystatechange=function(){if(4==r.readyState)if(r.status>=200&&r.status<300||304==r.status){if(""!=r.response)return void i.runCombo(r.response,n)}else{for(var e in i.jsRunSequence)n[i.jsRunSequence[e].name]&&(i.jsRunSequence[e].status="failed");i.runjs()}},r.send(null)}this.runjs()},lsloader.runCombo=function(e,t){e=e.split("/*combojs*/"),e.shift();for(var s in this.jsRunSequence)t[this.jsRunSequence[s].name]&&e[0]&&(this.jsRunSequence[s].status="comboJS",this.jsRunSequence[s].code=e[0],this.setLS(this.jsRunSequence[s].name,this.jsRunSequence[s].path+"/*codestartv1*/"+e[0]),e.shift());this.runjs()}}();</script>
+  <title>App Store被拒的一次经历（附解决方案） | Acan_Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件ITC.date.dateAtTime ITC.apps.resolutionCenter.header.from 3. 1.4 Business: Payments - Content Codes4. 3 Design: Spam5. 1.1 Legal: Privacy - Data Collection and StorageGui">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App Store被拒的一次经历（附解决方案）">
+<meta property="og:url" content="https://github.com/hzsss/App-Store被拒的一次经历（附解决方案）/index.html">
+<meta property="og:site_name" content="Acan_Dev">
+<meta property="og:description" content="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件ITC.date.dateAtTime ITC.apps.resolutionCenter.header.from 3. 1.4 Business: Payments - Content Codes4. 3 Design: Spam5. 1.1 Legal: Privacy - Data Collection and StorageGui">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-05T08:15:08.242Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App Store被拒的一次经历（附解决方案）">
+<meta name="twitter:description" content="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件ITC.date.dateAtTime ITC.apps.resolutionCenter.header.from 3. 1.4 Business: Payments - Content Codes4. 3 Design: Spam5. 1.1 Legal: Privacy - Data Collection and StorageGui">
+  
+    <link rel="alternate" href="/atom.xml" title="Acan_Dev" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="text/javascript">
-    window.rootUrl = "/"
-    window.one = {"site":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true}},"theme":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"head":{"favicon":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4"},"img":{"avatar":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4","left_pic":["/img/home.jpg"],"right_pic":["/img/right.jpg"],"post_thumbnail":["/img/二次元/下雨.jpg"],"drawerHeaderBg":["/img/WechatIMG9.jpeg"]},"uiux":{"slogan":"人生，是一场修炼！","defaultPrimaryColor":"blue","defaultAccentColor":"red"},"comment":{"disqus":{"shortName":"xyz"}},"Drawer":[{"title":"首页","type":"sitelink","href":"/","icon":"home"},{"title":"hr","type":"hr"},{"title":"关于我","type":"page","name":"关于我","href":"/关于我.md","icon":"account_circle"},{"title":"搜索","type":"sitelink","href":"/search/","icon":"search"},{"title":"联系我","icon":"contact_phone","nested":[{"title":"Jianshu","type":"link","href":"https://www.jianshu.com/u/5a7a5445cb4a","icon":{"type":"svg","date":"<path d=\"M512 1024C229.239467 1024 0 794.760533 0 512S229.239467 0 512 0 1024 229.239467 1024 512 794.760533 1024 512 1024z m-110.227911-750.409956H204.8v486.855112h184.160711c33.314133 0 105.221689 19.2512 105.221689 58.754844V361.745067c0-32.836267-50.426311-88.155022-92.387556-88.155023z m242.733511 0c-42.029511 0-92.433067 55.318756-92.433067 88.155023V819.2c0-39.503644 71.839289-58.754844 105.198934-58.754844h184.160711V273.590044h-196.926578z\" p-id=\"18729\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Github","type":"link","href":"https://github.com/hzsss","icon":{"type":"svg","date":"<path d=\"M941.714 512q0 143.433-83.712 258.011t-216.283 158.574q-15.433 2.853-22.565-3.986t-7.131-17.152v-120.576q0-55.442-29.696-81.152 32.585-3.438 58.587-10.277t53.723-22.272 46.299-37.998 30.281-60.014 11.703-86.016q0-69.157-45.129-117.723 21.138-52.005-4.571-116.553-16.018-5.157-46.299 6.29t-52.553 25.161l-21.723 13.714q-53.138-14.848-109.714-14.848t-109.714 14.848q-9.143-6.29-24.283-15.433t-47.726-22.016-49.152-7.717q-25.161 64.585-3.986 116.553-45.129 48.567-45.129 117.723 0 48.567 11.703 85.723t29.989 60.014 46.007 38.29 53.723 22.272 58.587 10.277q-22.857 20.553-28.014 58.843-11.995 5.705-25.71 8.558t-32.585 2.853-37.413-12.288-31.707-35.73q-10.862-18.286-27.721-29.696t-28.27-13.714l-11.447-1.719q-11.995 0-16.567 2.56t-2.853 6.583 5.157 8.009 7.424 6.839l3.986 2.853q12.581 5.705 24.869 21.723t17.993 29.147l5.705 13.129q7.424 21.723 25.161 35.145t38.29 17.152 39.717 3.986 31.707-2.011l13.129-2.304q0 21.723 0.293 50.871t0.293 30.866q0 10.277-7.424 17.152t-22.857 3.986q-132.571-43.995-216.283-158.574t-83.712-258.011q0-119.442 58.843-220.27t159.707-159.707 220.27-58.843 220.27 58.843 159.707 159.707 58.843 220.27z\" p-id=\"997\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Douban","type":"link","href":"https://www.douban.com/people/180397031/","icon":{"type":"svg","height":"20px","width":"20px","margin":"14px","date":"<path d=\"M512 1024c282.76736 0 512-229.23264 512-512S794.76736 0 512 0 0 229.23264 0 512s229.23264 512 512 512z m256.2048-705.4336H260.608v-51.6096H768.2048v51.6096z m11.69408 455.68H245.30944v-52.18304h159.88736c-19.59936-42.5984-40.30464-79.40096-62.09536-110.3872l41.10336-26.4192h-72.00768V379.16672h406.20032v206.09024h-75.59168l41.10336 27.01312c-19.41504 42.5984-39.60832 79.19616-60.6208 109.7728h156.61056v52.224z m-118.49728-240.88576v-101.10976H368.90624v101.10976h292.49536z m-28.50816 51.89632h-238.1824a1153.41312 1153.41312 0 0 1 69.89824 136.8064h97.19808c29.7984-46.20288 53.49376-91.81184 71.08608-136.8064z\" p-id=\"2131\"></path>","viewBox":"0 0 1024 1024"}}]}],"colorPicker":true,"homeToolBar":[{"icon":"more_vert","items":[{"title":"RSS","type":"link","href":"/atom.xml","icon":"rss_feed"}]}],"footer":["Copyright © 2016 - 2017 Acan",["做更好的自己！","Be youserlf,everyone else is already taken."]]}}
-  </script>
-  <script>lsloader.load("vendor.js","/vendor.js")</script>
-  <script>lsloader.load("bundle.js","/bundle.js")</script>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-App-Store被拒的一次经历（附解决方案）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/App-Store被拒的一次经历（附解决方案）/" class="article-date">
+  <time class="post-time" datetime="2018-03-12T06:42:32.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      App Store被拒的一次经历（附解决方案）
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件"><a href="#第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件" class="headerlink" title="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件"></a>第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件</h3><p>ITC.date.dateAtTime</p>
+<p>ITC.apps.resolutionCenter.header.from</p>
+<h4 id="3-1-4-Business-Payments-Content-Codes"><a href="#3-1-4-Business-Payments-Content-Codes" class="headerlink" title="3. 1.4 Business: Payments - Content Codes"></a>3. 1.4 Business: Payments - Content Codes</h4><h4 id="4-3-Design-Spam"><a href="#4-3-Design-Spam" class="headerlink" title="4. 3 Design: Spam"></a>4. 3 Design: Spam</h4><h4 id="5-1-1-Legal-Privacy-Data-Collection-and-Storage"><a href="#5-1-1-Legal-Privacy-Data-Collection-and-Storage" class="headerlink" title="5. 1.1 Legal: Privacy - Data Collection and Storage"></a>5. 1.1 Legal: Privacy - Data Collection and Storage</h4><h4 id="Guideline-3-1-4-Business-Payments-Content-Codes"><a href="#Guideline-3-1-4-Business-Payments-Content-Codes" class="headerlink" title="Guideline 3.1.4 - Business - Payments - Content Codes"></a>Guideline 3.1.4 - Business - Payments - Content Codes</h4><p>Your app enables additional features or functionality when used with augmented reality markers. However, those features are not available in the app to users without the necessary markers.</p>
+<h4 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h4><p>To resolve this issue, please provide a means to access the augmented reality features from within the app, such as through achievements or in-app purchase. If they can be freely obtained, such as through a link to a website, please revise your app to include clear instructions for obtaining the necessary markers.</p>
+<p>Please note that apps cannot require users to purchase unrelated products or engage in advertising or marketing activities to unlock app functionality.</p>
+<h4 id="Request-a-phone-call-from-App-Review"><a href="#Request-a-phone-call-from-App-Review" class="headerlink" title="Request a phone call from App Review"></a>Request a phone call from App Review</h4><p>At your request, we can arrange for an Apple Representative to call you within the next three to five business days to discuss your App Review issue. Our representative will be able to discuss the issue in English or Chinese.</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">Request a call to discuss your app’s review.</a></p>
+<h4 id="申请应用审核团队致电联系"><a href="#申请应用审核团队致电联系" class="headerlink" title="申请应用审核团队致电联系"></a>申请应用审核团队致电联系</h4><p>如果您有需要，我们将根据您的要求在三到五个工作日内安排一位精通中文的苹果公司代表致电与您联系，讨论您的应用审核结果。</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">申请应用审核团队致电联系</a></p>
+<h4 id="申請應用審核團隊致電聯繫"><a href="#申請應用審核團隊致電聯繫" class="headerlink" title="申請應用審核團隊致電聯繫"></a>申請應用審核團隊致電聯繫</h4><p>如果您有需要，我們將根據您的要求在三到五個工作日內安排一位精通中文的蘋果公司代表致電與您聯繫，討論您的應用審核結果。</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">申請應用審核團隊致電聯繫</a></p>
+<h3 id="Guideline-4-3-Design"><a href="#Guideline-4-3-Design" class="headerlink" title="Guideline 4.3 - Design"></a>Guideline 4.3 - Design</h3><p>This app duplicates the content and functionality of other apps submitted by you or another developer to the App Store, which is considered a form of spam.</p>
+<p>Apps that simply duplicate content or functionality create clutter, diminish the overall experience for the end user, and reduce the ability of developers to market their apps.</p>
+<p>The next submission of this app may require a longer review time, and this app will not be eligible for an expedited review until this issue is resolved.</p>
+<h4 id="Next-Steps-1"><a href="#Next-Steps-1" class="headerlink" title="Next Steps"></a>Next Steps</h4><ul>
+<li><p>Review the Design section of the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>.</p>
+</li>
+<li><p>Ensure your app is compliant with all sections of the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>and the<a href="https://developer.apple.com/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>of the Apple Developer Program.</p>
+</li>
+<li><p>Once your app is fully compliant, resubmit your app for review.</p>
+</li>
+</ul>
+<p>Submitting apps designed to mislead or harm customers or evade the review process may result in the termination of your Apple Developer Program account. Review the<a href="https://developer.apple.com/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>of the Apple Developer Program to learn more about our policies regarding termination.</p>
+<p>If you believe your app is compliant with the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>, you may submit an appeal. Alternatively, you may provide additional details about your app by replying directly to this message.</p>
+<h3 id="Guideline-5-1-1-Legal-Privacy-Data-Collection-and-Storage"><a href="#Guideline-5-1-1-Legal-Privacy-Data-Collection-and-Storage" class="headerlink" title="Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage"></a>Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage</h3><p>We noticed that your app requests the user’s consent to access their camera but does not clarify the use of this feature in the permission modal alert.</p>
+<p>Please see attached screenshots for details.</p>
+<h4 id="Next-Steps-2"><a href="#Next-Steps-2" class="headerlink" title="Next Steps"></a>Next Steps</h4><p>To resolve this issue, please revise the permission modal alert to specify why the app is requesting access to the user’s camera.</p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><p>To learn more about requesting the user’s permission to access app features, visit the<a href="https://developer.apple.com/ios/human-interface-guidelines/app-architecture/requesting-permission/" target="_blank" rel="noopener">iOS Human Interface Guidelines</a>. You may also want to review the<a href="https://developer.apple.com/library/content/qa/qa1937/_index.html" target="_blank" rel="noopener">Technical Q&amp;A QA1937: Resolving the Privacy-Sensitive Data App Rejection</a>page for details on how to provide a usage description for permission request alerts.</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>其中此次提交违反了<a href="https://developer.apple.com/cn/app-store/review/guidelines/#content-codes" target="_blank" rel="noopener">苹果审核指南</a>中的3.1.4，4.3以及5.1.1。</p>
+<p><strong>3.1.4 内容代码</strong></p>
+<p>App 不得使用自身机制来解锁内容或功能，如许可证密钥、增强现实标记、二维码等。在为数不多的情形中，例如当功能依赖于特定的硬件功能时，app 可在不使用 App 内购买项目的情况下解锁该功能 (例如，天文 app 会在与望远镜同步后增加功能)。与经过批准的实际产品 (如玩具) 配合使用的<em>可选</em> app 功能可在不使用 App 内购买项目的情况下解锁特定功能，前提是同时也提供 App 内购买项目选项。您不得要求用户通过购买无关产品或参与广告或市场活动来解锁 app 功能。</p>
+<p><strong>4.3 重复 App</strong></p>
+<p>请不要为同一个 app 创建多个套装 ID。如果您的 app 针对特定位置、运动队、大学等存在不同版本，请考虑提交单个 app，并提供 App 内购买项目以提供不同的功能。同时，请避免继续在已有大量类似 app 的类别下进行开发；App Store 上已经有太多模拟放屁、打嗝声音的 app，以及手电筒和爱经 app。上传大量相似版本 app 的开发者会遭到 Apple Developer Program 的除名。</p>
+<p><strong>5.1.1 数据收集和存储</strong></p>
+<p><strong>(i)</strong> App 须先制定隐私政策，并征得用户的同意，才能对用户信息或使用数据进行收集。这包括 (但不限于) 以下 app：实施 HealthKit 或其他健康/医疗技术、使用 ARKit、相机 API、照片 API 或其他软件功能以获取深度面谱信息的 app，HomeKit、Keyboard 扩展、Apple Pay、Stickers和 iMessage 扩展的 app；包含登录信息的 app；或访问设备上用户数据的 app。App 描述中应当注明 app 会要求访问哪些内容类型 (例如，位置、通讯录和日历等)，并说明当用户不授予许可时，app 的哪些功能会无法正常工作。</p>
+<p><strong>(ii)</strong> 如果 app 不包含基于帐户的重要功能，请允许用户在不登录的情况下使用。App 不得要求用户提供个人信息才能正常使用，除非个人信息与 app 的核心功能直接相关，或是法律要求时。如果您的核心 app 功能与特定的社交网络 (如 Facebook、微信、微博或 Twitter 等) 不相关，您必须提供无需登录或其他类似机制的访问权限。调取基本档案信息、分享到社交网络或邀请朋友使用 app 等不视为核心 app 功能。</p>
+<p><strong>(iii)</strong> 如果开发者开发的 app 试图暗中收集用户密码或其他用户私人数据，那么该开发者会遭到 Apple Developer Program 的除名。</p>
+<p><strong>(iv)</strong> 必须使用 SafariViewController 在显著位置向用户显示信息；不得隐藏该控制器，也不能被其他视图或图层遮挡。此外，未经用户的知情和同意，app 不得私下利用 SafariViewController 来追踪用户。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>大致参考了一下苹果审核指南，再结合本次上架的App，是扫描实体图书中的图片，识别成功后播放对应的介绍视频和音频。</p>
+<p>这其中就涉及到两项，其一是需要在App中说明或添加要扫描的标记对象，其二就是需要对相机权限进行更加详细的说明。申请苹果的中文技术支持后，和她电话确认了3.1.4和5.1.1的解决方案。分别是添加电子书的下载链接，和对相机权限的描述进行更改。</p>
+<p>关于4.3，苹果这几年加大了对重复应用和马甲包的审核力度。搜索App Store中类似的App，也有很多针对各个博物馆的App，功能都是类似的，但是却都顺利上架了。第二次和技术支持通电话后，她很干脆地说出此次提交的版本是与其他两个帐号提交的版本高度类似。此时Boss才想起来，原来之前用过两个个人开发者帐号提交过，但都被拒了，一直放在那里。</p>
+<p>原来只要提交过，不管有没有上架的版本，后来别人提交的就不能与之类似。后来针对4.3给出的解决方案是，在那两个提交过的帐号下，在各自的解决方案中心，申请放弃审核此版本。然后在需要上架的开发者帐号中，说明与其他两个帐号的关系。</p>
+<p>信心满满地第三次提交，延迟审核了十天，结果被拒，没有道理呀，我明明都按要求改了。结果第二天一大早，又发邮件通知我在重新审核。到了晚上终于告诉我审核通过了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/App-Store被拒的一次经历（附解决方案）/" data-id="cjps5wm08001a20fybjqq3fqo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/Object-C-Runtime-及消息发送与转发/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Object-C Runtime 及消息发送与转发
+        
+      </div>
+    </a>
+  
+  
+    <a href="/iOS应用上架遇到的一些坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">iOS应用上架遇到的一些坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Acan_Dev</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/ShanaMaid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 Acan_Dev<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>

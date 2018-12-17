@@ -1,21 +1,880 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Acan_Dev</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
   
-  <!-- Import lsloader -->
-  <script>!function(){var e="http://"+location.host+"/combo?combo=";window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}},lsloader.removeLS=function(e){try{localStorage.removeItem(e)}catch(e){}},lsloader.setLS=function(e,t){try{localStorage.setItem(e,t)}catch(e){}},lsloader.getLS=function(e){var t="";try{t=localStorage.getItem(e)}catch(e){t=""}return t},lsloader.load=function(e,t,s){s=s||function(){};var n;if(n=this.getLS(e),!/\/\*codestartv1\*\//.test(n))return this.removeLS(e),void this.requestResource(e,t,s);if(n){var a=n.split("/*codestartv1*/")[0];if(a!=t)return console.log("reload:"+t),this.removeLS(e),void this.requestResource(e,t,s);n=n.split("/*codestartv1*/")[1],/\.js?.+$/.test(a)?(this.jsRunSequence.push({name:e,code:n}),this.runjs(t,e,n)):(document.getElementById(e).appendChild(document.createTextNode(n)),s())}else this.requestResource(e,t,s)},lsloader.requestResource=function(e,t,s){var n=this;/\.js?.+$/.test(t)?this.iojs(t,e,function(e,t,s){n.setLS(t,e+"/*codestartv1*/"+s),n.runjs(e,t,s)}):/\.css?.+$/.test(t)&&this.iocss(t,e,function(s){document.getElementById(e).appendChild(document.createTextNode(s)),n.setLS(e,t+"/*codestartv1*/"+s)},s)},lsloader.iojs=function(e,t,s){var n=this;n.jsRunSequence.push({name:t,code:""});try{var a=new XMLHttpRequest;a.open("get",e,!0),a.onreadystatechange=function(){if(4==a.readyState){if((a.status>=200&&a.status<300||304==a.status)&&""!=a.response)return void s(e,t,a.response);n.jsfallback(e,t)}},a.send(null)}catch(s){n.jsfallback(e,t)}},lsloader.iocss=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.iofonts=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.runjs=function(e,t,s){if(t&&s)for(var n in this.jsRunSequence)this.jsRunSequence[n].name==t&&(this.jsRunSequence[n].code=s);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code)),a.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(a),this.jsRunSequence.shift(),this.jsRunSequence.length>0&&this.runjs()}else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var u=this,a=document.createElement("script");a.src=this.jsRunSequence[0].path,a.type="text/javascript",this.jsRunSequence[0].status="loading",a.onload=function(){u.jsRunSequence.shift(),u.jsRunSequence.length>0&&u.runjs()},document.body.appendChild(a)}},lsloader.tagLoad=function(e,t){this.jsRunSequence.push({name:t,code:"",path:e,status:"failed"}),this.runjs()},lsloader.jsfallback=function(e,t){if(!this.jsnamemap[t]){this.jsnamemap[t]=t;for(var s in this.jsRunSequence)this.jsRunSequence[s].name==t&&(this.jsRunSequence[s].code="",this.jsRunSequence[s].status="failed",this.jsRunSequence[s].path=e);this.runjs()}},lsloader.cssfallback=function(e,t,s){if(!this.cssnamemap[t]){this.cssnamemap[t]=1;var n=document.createElement("link");n.type="text/css",n.href=e,n.rel="stylesheet",n.onload=n.onerror=s;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a)}},lsloader.runInlineScript=function(e,t){var s=document.getElementById(t).innerText;this.jsRunSequence.push({name:e,code:s}),this.runjs()},lsloader.loadCombo=function(t){var s="",n={};for(var a in t){var u=this.getLS(t[a].name);if(u)var o=u.split("/*codestartv1*/")[0],c=u.split("/*codestartv1*/")[1];else var o="";o==t[a].path?this.jsRunSequence.push({name:t[a].name,code:c,path:t[a].path}):(this.jsRunSequence.push({name:t[a].name,code:null,path:t[a].path,status:"comboloading"}),n[t[a].name]=!0,s+=(""==s?"":";")+t[a].path)}var i=this;if(s){var r=new XMLHttpRequest;r.open("get",e+s,!0),r.onreadystatechange=function(){if(4==r.readyState)if(r.status>=200&&r.status<300||304==r.status){if(""!=r.response)return void i.runCombo(r.response,n)}else{for(var e in i.jsRunSequence)n[i.jsRunSequence[e].name]&&(i.jsRunSequence[e].status="failed");i.runjs()}},r.send(null)}this.runjs()},lsloader.runCombo=function(e,t){e=e.split("/*combojs*/"),e.shift();for(var s in this.jsRunSequence)t[this.jsRunSequence[s].name]&&e[0]&&(this.jsRunSequence[s].status="comboJS",this.jsRunSequence[s].code=e[0],this.setLS(this.jsRunSequence[s].name,this.jsRunSequence[s].path+"/*codestartv1*/"+e[0]),e.shift());this.runjs()}}();</script>
+  <title>Acan_Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="You only live once">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Acan_Dev">
+<meta property="og:url" content="https://github.com/hzsss/page/2/index.html">
+<meta property="og:site_name" content="Acan_Dev">
+<meta property="og:description" content="You only live once">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Acan_Dev">
+<meta name="twitter:description" content="You only live once">
+  
+    <link rel="alternate" href="/atom.xml" title="Acan_Dev" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="text/javascript">
-    window.rootUrl = "/"
-    window.one = {"site":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true}},"theme":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"head":{"favicon":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4"},"img":{"avatar":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4","left_pic":["/img/home.jpg"],"right_pic":["/img/right.jpg"],"post_thumbnail":["/img/二次元/下雨.jpg"],"drawerHeaderBg":["/img/WechatIMG9.jpeg"]},"uiux":{"slogan":"人生，是一场修炼！","defaultPrimaryColor":"blue","defaultAccentColor":"red"},"comment":{"disqus":{"shortName":"xyz"}},"Drawer":[{"title":"首页","type":"sitelink","href":"/","icon":"home"},{"title":"hr","type":"hr"},{"title":"关于我","type":"page","name":"关于我","href":"/关于我.md","icon":"account_circle"},{"title":"搜索","type":"sitelink","href":"/search/","icon":"search"},{"title":"联系我","icon":"contact_phone","nested":[{"title":"Jianshu","type":"link","href":"https://www.jianshu.com/u/5a7a5445cb4a","icon":{"type":"svg","date":"<path d=\"M512 1024C229.239467 1024 0 794.760533 0 512S229.239467 0 512 0 1024 229.239467 1024 512 794.760533 1024 512 1024z m-110.227911-750.409956H204.8v486.855112h184.160711c33.314133 0 105.221689 19.2512 105.221689 58.754844V361.745067c0-32.836267-50.426311-88.155022-92.387556-88.155023z m242.733511 0c-42.029511 0-92.433067 55.318756-92.433067 88.155023V819.2c0-39.503644 71.839289-58.754844 105.198934-58.754844h184.160711V273.590044h-196.926578z\" p-id=\"18729\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Github","type":"link","href":"https://github.com/hzsss","icon":{"type":"svg","date":"<path d=\"M941.714 512q0 143.433-83.712 258.011t-216.283 158.574q-15.433 2.853-22.565-3.986t-7.131-17.152v-120.576q0-55.442-29.696-81.152 32.585-3.438 58.587-10.277t53.723-22.272 46.299-37.998 30.281-60.014 11.703-86.016q0-69.157-45.129-117.723 21.138-52.005-4.571-116.553-16.018-5.157-46.299 6.29t-52.553 25.161l-21.723 13.714q-53.138-14.848-109.714-14.848t-109.714 14.848q-9.143-6.29-24.283-15.433t-47.726-22.016-49.152-7.717q-25.161 64.585-3.986 116.553-45.129 48.567-45.129 117.723 0 48.567 11.703 85.723t29.989 60.014 46.007 38.29 53.723 22.272 58.587 10.277q-22.857 20.553-28.014 58.843-11.995 5.705-25.71 8.558t-32.585 2.853-37.413-12.288-31.707-35.73q-10.862-18.286-27.721-29.696t-28.27-13.714l-11.447-1.719q-11.995 0-16.567 2.56t-2.853 6.583 5.157 8.009 7.424 6.839l3.986 2.853q12.581 5.705 24.869 21.723t17.993 29.147l5.705 13.129q7.424 21.723 25.161 35.145t38.29 17.152 39.717 3.986 31.707-2.011l13.129-2.304q0 21.723 0.293 50.871t0.293 30.866q0 10.277-7.424 17.152t-22.857 3.986q-132.571-43.995-216.283-158.574t-83.712-258.011q0-119.442 58.843-220.27t159.707-159.707 220.27-58.843 220.27 58.843 159.707 159.707 58.843 220.27z\" p-id=\"997\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Douban","type":"link","href":"https://www.douban.com/people/180397031/","icon":{"type":"svg","height":"20px","width":"20px","margin":"14px","date":"<path d=\"M512 1024c282.76736 0 512-229.23264 512-512S794.76736 0 512 0 0 229.23264 0 512s229.23264 512 512 512z m256.2048-705.4336H260.608v-51.6096H768.2048v51.6096z m11.69408 455.68H245.30944v-52.18304h159.88736c-19.59936-42.5984-40.30464-79.40096-62.09536-110.3872l41.10336-26.4192h-72.00768V379.16672h406.20032v206.09024h-75.59168l41.10336 27.01312c-19.41504 42.5984-39.60832 79.19616-60.6208 109.7728h156.61056v52.224z m-118.49728-240.88576v-101.10976H368.90624v101.10976h292.49536z m-28.50816 51.89632h-238.1824a1153.41312 1153.41312 0 0 1 69.89824 136.8064h97.19808c29.7984-46.20288 53.49376-91.81184 71.08608-136.8064z\" p-id=\"2131\"></path>","viewBox":"0 0 1024 1024"}}]}],"colorPicker":true,"homeToolBar":[{"icon":"more_vert","items":[{"title":"RSS","type":"link","href":"/atom.xml","icon":"rss_feed"}]}],"footer":["Copyright © 2016 - 2017 Acan",["做更好的自己！","Be youserlf,everyone else is already taken."]]}}
-  </script>
-  <script>lsloader.load("vendor.js","/vendor.js")</script>
-  <script>lsloader.load("bundle.js","/bundle.js")</script>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main">
+  
+    <article id="post-iOS应用上架遇到的一些坑" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS应用上架遇到的一些坑/" class="article-date">
+  <time class="post-time" datetime="2017-11-28T06:30:47.000Z" itemprop="datePublished">
+    <span class="post-month">11月</span><br/>
+    <span class="post-day">28</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS应用上架遇到的一些坑/">iOS应用上架遇到的一些坑</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>学习iOS开发一年多了，也算是一个入门小菜鸟了，期间也做过一些小项目。最近一个公司的老师让我帮他上架一个App到App Store，我很爽快地答应了。当然，也遇到了一些坑。</p>
+<p>由于这是我第一次上架APP，很多东西都是借鉴学习别人的经验。下面，就让我和大家分享一些上架干货和遇到的问题。</p>
+<h1 id="购买开发者帐号"><a href="#购买开发者帐号" class="headerlink" title="购买开发者帐号"></a>购买开发者帐号</h1><p>老师刚开始让我帮他购买<em>个人</em>开发者帐号，我是参考这篇文章购买的。</p>
+<p><a href="http://blog.csdn.net/a44496913/article/details/54932266" target="_blank" rel="noopener">iOS苹果个人开发者账号购买流程</a></p>
+<p>最后需要使用信用卡支付一年99美元约合人民币688元的账单，只支持带有Visa/MasterCard标志的银联信用卡，也就是支持双币的信用卡。</p>
+<p>购买完成后，本应该显示的是这个界面。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-17a0275049118839?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>可是我的一直停留在这个界面。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-090792a1638401c1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>一直显示我还有订单未完成。可是我只有这一份订单，难道是我支付的时候出问题了？可是电子发票已经发给我了。于是我去问苹果客服，态度都蛮好的，说是刷新几次就好了。可是我一直刷新似乎都没有反应。网上有说等48小时之后就好了。于是我又等了两天。</p>
+<p>三天后继续问苹果客服，客服说订单没有任何问题，让我拨打开发者部门的电话<strong>400-670-1855*</strong>，*果然开发者的问题还是需要开发者来解决。打完电话后不久，就收到了邮件。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-df855127aa050b49?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>原来是我的信息填错了，简直太粗心了。于是我又问老师到底想购买个人开发者帐号还是公司开发者帐号。老师又改变注意想要购买公司开发者帐号。于是我回复邮件后，客服回复我已经在处理退款了。回到Apple Developer主页，已经回到最初没有购买的状态了。</p>
+<h1 id="申请邓白氏编码"><a href="#申请邓白氏编码" class="headerlink" title="申请邓白氏编码"></a>申请邓白氏编码</h1><p>购买公司开发者帐号有很重要的一步，那就是需要提交公司的邓白氏编码。很多公司第一次发布App的话，需要去申请邓白氏编码。</p>
+<p><a href="http://www.cocoachina.com/ios/20161214/18225.html" target="_blank" rel="noopener">申请邓白氏编码的超详细流程介绍</a></p>
+<p><a href="http://blog.csdn.net/sinat_35861727/article/details/69141285" target="_blank" rel="noopener">iOS公司开发者账号申请教程</a></p>
+<p>期间没有遇到任何的问题，只是需要等待较长的时间。中途会发送邮件让你确认信息，只有三个小时左右的时间让你回复邮件，你需要提前准备确认信息。包括以下信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-711bae437f24f16c?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>至此，公司开发者帐号购买完毕。</p>
+<h1 id="App打包上架"><a href="#App打包上架" class="headerlink" title="App打包上架"></a>App打包上架</h1><p>帐号都准备完毕后，接下来就是App的上架流程了。中途老师也让我帮他更新了一个已经上架的App，我参考了这位同学写的两篇文章。</p>
+<p><a href="http://www.jianshu.com/p/843ffbd79700" target="_blank" rel="noopener">[iOS]AppStore最新上架流程梳理</a></p>
+<p><a href="http://www.jianshu.com/p/c278a4ad8bc3" target="_blank" rel="noopener">[iOS]AppStore中APP版本更新流程梳理</a></p>
+<p>注意，更新App的时候，打包ipa文件的时候使用的App ID是之前那个。只有上架App的时候才需要新建一个。</p>
+<p>打包的时候也遇到了一个错误，显示<em>the Info.plist in the package must contain the CFBundleVersion key. </em>上网搜了一下，说是在在info.plist表中找到CFBundle Version并给其填写Build version值即可。</p>
+<p><a href="http://www.jianshu.com/p/e0a54b7a6461?nomobile=yes" target="_blank" rel="noopener">iOS进行项目上传时遇到The Info.plist in the package must contain the CFBundleVersion key的解决方法</a></p>
+<p>但好像在打包完成后的包中直接更改无效。我是退出更改后，重新Archive后解决的。</p>
+<p>所有的信息都填写完毕后，提交Apple需要你确认两个信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-5839f4c478920aea?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>出口合规要求，我在网上搜索的答案是，大多数人都是安全点NO，大家也可以根据自己的情况去搜索或者询问。</p>
+<p>广告标识符，我在网上看到有很多检测iOS项目中是否使用IDFA的方法，分享其中一篇：</p>
+<p><a href="http://www.jianshu.com/p/78d1fbc24e77" target="_blank" rel="noopener">检查iOS项目中是否使用了IDFA</a></p>
+<p>但我的检测输出结果是：./Classes/Unity/DeviceSettings.mm: NSString* adid = [[manager performSelector:<a href="http://www.jianshu.com/users/a1a20aeeba44" target="_blank" rel="noopener">@Selector</a>(advertisingIdentifier)] UUIDString];</p>
+<p>有人回答说这个方法就是获取idfa的实现，如果不是自已的代码，应该是包含IDFA了。但我在他回答之前已经点击『是』提交了。估计将会被拒绝，以上流程我又要重新来一遍。悲催。</p>
+<p>这些就是我给大家分享的关于App上架的干货和我遇到的一些问题。希望对大家有帮助。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/iOS应用上架遇到的一些坑/" data-id="cjps5wlzk001820fy05h5jvj0" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-逆风飞翔，愿你归来仍是少年" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/逆风飞翔，愿你归来仍是少年/" class="article-date">
+  <time class="post-time" datetime="2017-10-20T15:07:47.000Z" itemprop="datePublished">
+    <span class="post-month">10月</span><br/>
+    <span class="post-day">20</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/逆风飞翔，愿你归来仍是少年/">逆风飞翔，愿你归来仍是少年</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这两天的心情，真的很沉重。期盼已久的新赛季好不容易到了，以为又可以看书豪在球场上打球的。昨天是篮网新赛季的第一场球，比赛前书豪还在ins上发了一张图，是队友伸手将他拉起来，然后写道：我们回来了。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-58ebfb564ae55656?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这赛季篮网的阵容深度又加强了，书豪经过这几年的NBA生涯，终于当上了球队的首发控卫，自己也变得更加强壮和成熟。今年本是书豪带队冲击季后赛的最好机会，也本是书豪生涯的巅峰时期。他信心满满地想要在这个赛季证明自己。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-782d21dc702ecf12?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在揭幕战打了25分钟便拿下18分，但如今书豪这个赛季的出场时间，也定格在了25分钟。</p>
+<p>书豪在一次突破上篮中，身体失去平衡，然后摔倒在地。书豪用手捂着膝盖愣了两秒钟，感受着膝盖传来的痛楚，然后露出了惶恐的眼神，连喊了六遍”I’m done，I’m done”（我完了），然后捶着地板掩面哭泣。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-4d366a79b7c83f88?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>真的，看到这个场景，我的心瞬间就凉了。为什么书豪这么优秀，哈佛毕业，NBA首发控卫，这一点放到我们任何人身上都可以吹嘘一辈子。但书豪却依旧那么刻苦，一年比一年进步，终于当上了球队老大。这本是一个充满希望的赛季，可是，在这一刻，所有的希望都破灭了。也许书豪哭泣，不是因为痛苦，而是眼看着梦想就要起航，却又在瞬间支离破碎。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-1bd80a4267fd3d6b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>赛后，书豪被确诊为髌骨肌腱断裂，赛季报销···</p>
+<p>忠于上帝的你，明明那么努力地准备，换来的却是一次又一次的考验。书豪，你的上帝，对你真的很严格。</p>
+<p>又是一年看不到你在球场上飞驰，可是书豪，我们等你。</p>
+<p>逆风飞翔，愿你归来仍是少年。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-f11094ea392009c4.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/逆风飞翔，愿你归来仍是少年/" data-id="cjps5wly3001120fy65lgajec" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-移动应用创新赛决赛之旅" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/移动应用创新赛决赛之旅/" class="article-date">
+  <time class="post-time" datetime="2017-09-29T11:22:40.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">29</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/移动应用创新赛决赛之旅/">移动应用创新赛决赛之旅</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>中国高校计算机大赛(China Collegiate Computing Contest，简称 C4)是面向全国高校各专业在校学生的科技类竞赛活动，由教育部高等学校计算机类专业教学指导委员会、教育部高等学校软件工程专业教学指导委员会、教育部高等学校大学计算机课程教学指导委员会、全国高等学校计算机教育研究会联合主办，2017 年设五个竞赛模块，其中“移动应用创新赛”由浙江大学、Apple联合主办。</p>
+<p>比赛分为初赛、复赛和决赛，当时一听赛制这么繁琐，初赛到复赛中间隔了好几个月，全国参赛人数之多，瞬间就感觉希望渺茫了，不报名又会挨骂，于是就临时想了个idea报名了。</p>
+<p>没想到很顺利就通过了初赛，复赛的时候要求提交部分代码，于是暑假就和小伙伴们留在了学校，每天都在实验室完善自己的比赛作品。我们组有三个人，我是组长，负责所有的代码编写，还有两个女生，一个就叫猪猪女孩吧，另一个就叫狄仁杰吧，负责前端UI。</p>
+<p>那一段经历还是很有趣的，中间遇到过困难，也出现过分歧。我平常都是脾气超好的，但是有的时候太认真也太固执了，不知道这样是好是坏。好几次队友做的图我都不是很满意，怎么改都不符合我的要求，比如刚开始的启动界面是这样的。。。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-ec6e20d74d37da16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="启动.PNG"></p>
+<p>后来还因为这个事情把猪猪女孩给骂哭了，现在想想，不就是一张图么，不就是一个比赛么，竟然对人家女孩子发脾气。在这里给猪猪女孩道个歉，你还是最棒（胖）的~不过队友还是很给力的，最终的成品是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-da1474010296c294.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="launch.jpg"></p>
+<p>最后把作品提交上去了，等待了差不多半个月吧，最后竟然进了决赛，收到了浙江大学的决赛邀请函，哇，当时真的是高兴地要跳起来。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-84ba6551f347f306.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="作品海报"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-8cfb92942e579238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="决赛邀请函.png"></p>
+<p>后来去了浙江大学参加比赛，比赛提供的环境还是很不错的，四星级酒店，每天都是自助餐。由于我的答辩时间是在第二天，于是前一天晚上都是在房间里做最后的准备。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-056aa29f0749a533.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-de50ea669c9f282b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-2a94b02572577334.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-9ce7bcfeac5ab074.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="准备比赛"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-9ba79d61a67e8dc6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="准备比赛"></p>
+<p>中间还抽空去了西湖玩，虽然下着大雨，全身都淋湿了，不过回想起这一段经历，和大学同学在雨中骑车，还是蛮有趣的。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-d599cadd4a9d4a63.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="西湖"></p>
+<p>虽然只得了个优秀奖，奖品是一个 beats 耳机。不过这一次比赛，见识了很多非常厉害的同龄人，对自己来说，也得到了一次很大的提升。之前准备作品的时候每天都在coding，这一次也算出来放松一下了。</p>
+<p>最后再上几张图吧：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-ee6b4460073fda57.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-9b8ff3a47d7f6da0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-4853176d55616d03.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-cc76bd085fb6dd89.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/移动应用创新赛决赛之旅/" data-id="cjps5wly1000x20fyczezp4bt" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/活动/">活动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-iOS-club夏令营" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS-club夏令营/" class="article-date">
+  <time class="post-time" datetime="2017-09-02T07:40:19.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">02</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS-club夏令营/">iOS club夏令营</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>很幸运自己能够参加2017年iOS club的夏令营，这次夏令营不仅让我认识了很多朋友，也让我学到了很多知识。给我这个夏天留下了最美好的回忆。</p>
+<p>8月21日上午，我们一行人抵达广州。中午赶到天环广场签到集合。看到这么多人，想到未来五天要和他们打交道，心里难免有点紧张。然后排队上车，经历一个小时的车程，终于到了期待已久的东莞理工学院。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-ae6929dd1bd2a2b1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-25a083cf6da0371d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>一下车并没有立即去宿舍，而是带我们到了学术交流中心。老师先是向我们介绍了这次的夏令营，以及这所东莞理工学院城市学院。然后让我们每一组的组长进行介绍。我是第11组的组长，我们组名字叫做“晓组织”。介绍完之后，组长上台挑选T恤，我们组挑的是黑色的衣服。其实这个时候我还不知道我的组员到底长什么样，不过心里的紧张感却渐渐减弱了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-34ea99523ad05be5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>提着行李去宿舍楼领钥匙。路上我就遇到了我的组员们，把衣服给他们，又聊了几句。感觉这些人都很不错，甚至有一种莫名的亲切感。收拾好寝室，吃完晚饭，又买了一些生活用品，已经是晚上了。于是我们组几个男生便在寝室里，一直交谈到很晚。此时，我已经确定我能和他们相处得很融洽，开始期待以后到底会擦出怎样的火花。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-62cee902b889a159?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-a1f4aa96ec13d886?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>第二天，一大早便开始上课。果不其然，大多数人在新的环境里还是睡不好的，昨天明明很累，却一直到凌晨两点才睡着。第一节课是赵航老师的Design Thinking，教会我们解决问题的双钻石模型，以及如何制作人物画像。课上还让我们一起合作，用意大利面、绳子和胶带，把棉花糖支到最高，一起进行人物采访，最后让我们上台表演。第一节课不仅没有让我们打瞌睡，还迅速拉近了组员之间的距离。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-549340b11c554ce3?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>下午的课是“二次元的与时尚的Free Style”，两位老师给我们讲解了穿衣打扮的一些基本知识，邀请同学和老师上台，进行实战改造。不得不说，穿对衣服真的是可以让一个人的外貌气质发生比较大的变化。老师说了一句话让我印象非常深刻。老师说：be yourself，everyone else has already taken。做你自己，因为别人都有人去做了。是啊，在这个物欲横流，纷纷扰扰的世界，又有多少人能够保持初心，做真正的自己。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-8179a8f74878d025?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>这次夏令营要求我们在短短五天之内，做出一个APP方案进行比赛。所以我们组第二天吃完晚饭，全组同学在寝室进行初期的一些计划和内容，包括APP提案的确定，以及组员之间的分工等。虽然才认识不到两天，但我们似乎已经有了一些微妙的默契。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-15557ef5bed64f55?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>接下来的两天，老师在课上向我们介绍了iOS软件开发相关的知识，包括Core Animation以及ARKit。教我们利用keynote制作产品原型。还邀请了苹果公司的面试官给我们讲解了校园招聘的一些情况。总之，如果想要通过Apple公司的面试，必须要有极强的专业能力和综合素质。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-c2340d67d9933561?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>最美好也最忙碌的就是每天的夜晚了，我们一起讨论，一起合作。虽然也会有不同的意见，但这种思想上的碰撞却让我们的作品更加完善。看到这么多志同道合的朋友，在为同一个目标努力，每一个人的心中都充满着斗志。每天都熬夜到很晚。累了的时候，也会停下来，聊聊天。我们似乎是一群合作了很久的好朋友，一切都是那么自然，那么和谐。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-c83ada8e3d99f8c9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>五天的时间很短暂，但是我们却建立了深厚的友谊。最后一天上午，进行小组比赛。可以看得出来每一组都尽了自己最大的努力，老师们给的点评也都十分到位。每一天的辛苦和付出似乎都很值得，虽然很遗憾没有得奖，但这五天得到的收获远远比这实体的奖励更加丰厚。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-2e37dd5b27c1a182?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-bff2505bdc6a3ab9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-ca783c400fd6bb71?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-3bebad4d96373ba5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/iOS-club夏令营/" data-id="cjps5wlwu000220fyy2ei0iq3" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/活动/">活动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-如果我们不曾相遇" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/如果我们不曾相遇/" class="article-date">
+  <time class="post-time" datetime="2016-08-29T11:40:45.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">29</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/如果我们不曾相遇/">如果我们不曾相遇</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>阿信唱《温柔》时，不打电话给心中的那个人，才是这首歌的意义。</p>
+<p>大一暑假一个人去鸟巢看五月天的演唱会，很震撼。。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-67ae38be635b353b.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-9c19a1fec53e4ee0.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-56e1c7a90e013f96.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-e40b5676847d25bd.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-eb4b5c9b7e853d02.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-efbc34b196847358.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-d7552fe6a64bc307.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-f14a5ddf19454e29.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-3263a8793df6986c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-dc6b37a478741fb6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-3b90a70bf6a46c64.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-a29af88790a237c9.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-ac40db3fee5ce437.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-ee923ad173368957.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-bf633ad69f5d652c.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-d438db5699d440f6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/如果我们不曾相遇/" data-id="cjps5wlx5000c20fyag5y77fr" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/活动/">活动</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-十一月的肖邦" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/十一月的肖邦/" class="article-date">
+  <time class="post-time" datetime="2015-12-07T14:53:59.000Z" itemprop="datePublished">
+    <span class="post-month">12月</span><br/>
+    <span class="post-day">07</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/十一月的肖邦/">十一月的肖邦</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>九月，踏上离别的火车，内心充满了好奇和惶恐不安。经度，可以改变日出时间；纬度，却可以掌握四季变换。千里之外的城市，将是我四年落脚的地方。</p>
+<p>以前我们总是抱怨高中生活的苦累，期盼着高考早日结束。而现在，我们早已走上人生新的旅程。于是便深刻地感受到时间飞逝的速度。仿佛一瞬间，记忆不停地倒带，从前经历过的欢乐和苦痛历历在目。无奈我们无法打破时间和空间的逻辑，只能任由记忆盘旋，留下我们深深的叹息。</p>
+<p>来到一座陌生的城市，所有的一切都是新奇的。陌生的街道，陌生的商场，陌生的广场和公园。还有许多陌生的行人，他们也用好奇的眼神看着你。用自以为标准的普通话向过路的人问路，却被嘲笑成平翘舌不分。内心有一点小小的沮丧，就好像我是去荒岛上捉三只眼的那个人，却被他们捉了起来，自己反而成了两只眼的怪人。</p>
+<p>但慢慢的，我认识了一群人，熟知了一座城。内心的躁动与不安渐渐平息下去，似乎重温了“家”的感觉。记住的街道越来越多，走在大街上，也不会轻易地迷路。跟别人讲话也有了一点本地人的口音。记住了哪里有好看的风景，哪里有美味的食物，公交车路线也记得清清楚楚。突然有一种感觉，就好像，这是我前世的故乡，却也终将成为我的第二故乡。</p>
+<p>曾经在高中的无数个夜晚里，想象着大学生活的美好。但当我们走过那座独木桥，当我们真正来到大学时，却发现和自己的想象大相庭径。以为自己逃出了高中的牢笼，反而进了一个更加森严的监狱。生活并没有比高中轻松多少，事实也总是没有想象中那么美好。</p>
+<p>时间总是不以人的意志为转移，按照惯例飞快地流逝着。转眼间三个月过去了，回家的车票也已经订好。依旧坚持每天写日记，手写而不是电子文档，当我回头看的时候，吹掉日记本上的灰尘，打开泛黄的纸，这种感觉是电子文档不能比的。也许是高中生活太过单调，那时候日记本上总是一段话就结束了一天的经历，而现在日记本写得满满的，似乎每天都过得很累却很充实。但当我真正回想起来，却不知道做那些事的目的是什么，自欺欺人么？也许吧。想起一句话，最可怕的不是无事可做，而是不知道自己要做什么。像我这样自欺欺人是否才是最可怕的呢？</p>
+<p>在大家面前总是表现出笑容，给人一种乐天派的印象。快乐是真的，孤独也是真的。行走在寒夜的冷风中，感受着家里从来没有过的零下温度，孤独和着寒意袭来，真真切切地感受到自己的渺小。偌大的城市，没有亲人，也没有昔日无话不说的朋友，要说不孤独，连自己都骗不过。</p>
+<p>我不是那种喜欢活在精神世界的人，孤独也好，喧闹也罢。最终我们还是得着手于现实，还是得学会成长。生活处处有阳光，我也懂得了生活，懂得了善待自己。《后会无期》中有这么一句话“我们听过无数的道理，却依然过不好这一生”。可是如果我们能用尽一生去恪守一个道理，那么人生依旧会很美好。</p>
+<p>一个人在外地，难免会受到许多委屈。和陌生人相处，和同学相处，和室友相处，我都时常提醒自己，这里不是家，不能像在家里那样随意，在这里没有人能原谅我的任性。有一次，我一个人来到百脑汇，那里的气氛特别不对劲，就好像是一个传销组织的基地，见到人便把人拉得去他的店铺。我在找客梯，又一个讨厌的人想拉我去他那里，我没有理他，他却突然开口骂我，还说脏话，在千里之外的老妈无辜躺枪。我转身走开，并不想跟他有任何纠葛。</p>
+<p>这就是所谓的没有教养吧。“教养”是一个何其古老，于今天何其陌生的字眼啊，这个词本来才是品位的绝配，不过，由于教养困难，奢华容易，我们今天才会把品位许给了奢华，让空洞的无止境的消费去遮掩教养的匮乏。教养不必来自家教，更不是贵族的专利，上进的人更看重后天的自我育成。奢华和教养的分界点在哪里？一个向外——求胜。一个向内——求安。无时无刻不在和他人相比，自然就倾慕奢华。无时无刻不在要求自己进步，自然就有了教养。</p>
+<p>我觉得我是一个很没有主见的人，总是想着成为某个人。打篮球时想成为林书豪，唱歌时想成为周杰伦，写作时想成为韩寒，生活上又想成为李易峰。迷失自我，觉得别人的才是好的。明知道这样不好，却摆脱不了别人的影子。每天都在思考，我到底是怎样的人，要到底要成为怎样的人。有人说我傻有人说我幼稚，可也有人说我很聪明。此时的我，就像迷路的孩子提着灯笼，孤独地站在起了大雾的十字路口。</p>
+<p>可是成长是必然的，也许经常被人说成幼稚，可是内心是知道的，自己已经是小时候幻想过无数次的大人了。又想起无意中在网上看过的一段话“多年前的某一天，坐在课堂上发呆的你，老师的声音越飘越远，那时候的你觉得2008年的奥运遥远的不可想象，也不知道2015年的自己身在何方，窗外的树上，一群麻雀叽喳着飞过，粉笔砸中你的头，老师让你站着听课，同学们在窃窃私语，窗外的树叶滑落，没有人注意到时间它那么仓促，再次想起，是否想重新来过。”当完成了童年理想,童年又成了理想，也许是一种悲哀吧。</p>
+<p>相比于高中，大学有更多可以自己支配的时间，读了更多书，明白了更多道理，体验了更多不曾有过的生活。可是却发现，手中的笔无法描写天马行空的思想，无法随心所欲地写出自己的想法。十一月的肖邦，十二月的飘雪，还有许多的话，不是假装沉默，只是无力诉说。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/十一月的肖邦/" data-id="cjps5wlx2000920fy8g2m350m" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-梨花落" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/梨花落/" class="article-date">
+  <time class="post-time" datetime="2015-03-06T14:44:00.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">06</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/梨花落/">梨花落</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>三月，草长莺飞的季节。</p>
+<p>五点半，准时起床，窗外下着雨。三月的雨，不像夏天“骤雨过，珍珠乱撒，打遍新荷”般猛烈，而是细密缠绵得让人不舒服。每天都这样，匆忙地赶到学校，然后新的一天又开始了。</p>
+<p>现在距离高考早已没有一百天，百日势师大会上郑重地签下自己的名字，也已经是前几天的事了。每个人似乎都充满着斗志，连最坏的学生也安静下来，因为再也没有人会陪他闹了。其实都很疲倦，只是彼此心照不宣。</p>
+<p>学校的梨花开了，大片大片的浅红色，似乎给校园渲染了些许浪漫色彩。但我们无瑕欣赏，为了高考，我们放弃了许多，新出的电影，未完结的动漫，甚至新闻……都与我们绝缘。以前见到学长们张口闭口都是学习，心里便十分鄙夷。但现在我渐渐发现，自己也变得跟他们一样，原来我们都是被现实所迫。现在的我，可以对语文试卷上的文章抒发的情感看得十分透彻，然而再也不能用文章随心所欲地表达自己的情感。</p>
+<p>千军万马过独木桥注定是一件残忍的事。如今我们已经是箭在弦上。这种感觉，就像小时候排队打针，轮到自己时，心里总会有一种莫名的恐惧。教学楼前贴着写有“黎明前的黑暗最黑”的横幅。在这黑暗中，有的人看不到希望，有的人迷失了方向，有的人踌躇满志，决胜千里。而更多的人，像我一样，在黑暗中摸索、挣扎，企图抓住一根救命稻草，帮助自己渡过难关。然而哪里有什么救命稻草，这完全只能靠自己。</p>
+<p>数学老师是个胖子，数学课代表也是个胖子。我讨厌他们，我并不讨厌胖子，我只是讨厌数学，久而久之连老师和课代表一起讨厌了。有些数学问题我就是不会做，有些甚至连题目都看不懂，但他们就这样硬生生地解出来了，还说得头头是道。没错，我的数学成绩很差。这本来就不公平，英语是我的强项，我目睹同学亲手撕掉理综试卷，他的理综三科总分还没我英语一科那么高。纵使我们再不喜欢哪一门科目，我们也别无选择。</p>
+<p>难得元宵节有半天假期，从老家回来的路上，依旧下着雨。尽管早已过了春节，收音机里仍播放着电台的新年祝福。车窗外面，有人冒着雨前行。我们都一样，每个人都在为自己的生活奔波劳累。雨越下越大，心中竟不由得担心起梨花来。</p>
+<p>第二天来到学校，只剩下光秃秃的枝桠，地面上铺满梨花。雨下一整晚，梨花终究还是凋落了。但它至少让我记住了它曾经的美丽，也许夏天，它会更枝繁叶茂。</p>
+<p>拾起一片花瓣，夹在书里。 我回到教室，又开始了学习。不论结果怎样，这些日子像梨花般终会逝去，成为心中最美的记忆。这个夏天，一定会非常美丽。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/梨花落/" data-id="cjps5wly0000v20fywanvfuyf" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-高三·考试·心情" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/高三·考试·心情/" class="article-date">
+  <time class="post-time" datetime="2014-10-04T14:49:16.000Z" itemprop="datePublished">
+    <span class="post-month">10月</span><br/>
+    <span class="post-day">04</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/高三·考试·心情/">高三·考试·心情</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>收录在某不知名电台公众号：<a href="https://mp.weixin.qq.com/s/0-d8IRaHseEMh2MWHiMQrg" target="_blank" rel="noopener">歌单及文章 | 杨富江《考试》</a></p>
+<p>在太阳的余晖照耀之下，铃声宣告着月考的结束。我放下手中的笔，等待着监考老师收走我们的试卷。然后我平静地收拾书包，独自穿过漫长拥挤的走廊，耳边充斥着大家对月考的议论。而我此刻却失去了心情，我知道我又考砸了。看着大家或高兴或气愤的唾沫横飞的情景，一切都像是慢镜头，令人目眩。</p>
+<p>回到班上，月考的答案已经发下来了，大家依旧在讨论，好像谁的声音更大谁的答案就是对的。看到答案后，一方狂笑另一方则叹气或者双方都叹气，不过出现后者的情况多一些。而我面无表情地坐在座位上，抚平因考试做不出来时揉皱的试卷，内心感受着正确答案带给我的冲击。其实我是气愤的，绞尽脑汁写了一大堆公式算出来的答案是错误的，而标准答案上静静地躺着两个公式，放肆地嘲笑我。我逐渐迷惘。学了这么多还是有的题目不会做，该错的还是会错。</p>
+<p>到现在为止我的高三消耗了一个月零三天，而这次月考已经是第二次月考。我觉得应该去掉“月”字。下次“月”考是在一个礼拜后。</p>
+<p>上晚自习的时候，隔壁实验班突然传来一阵爆笑。原来是他们在放电影。我们在暗暗抱怨的时候又自叹不如，谁让人家是实验班的呢，成绩好到每次月考的班级和各科成绩上都写着“实验班除外’。我想我还不能看见烟花就写出烟花绽放时发生反应的化学方程式，我还没有到可以根据小明掉了一枚硬币就能算出太阳质量的程度。我只是一个普通学生，不是用来做实验的小白鼠。所以我们只能默默抱怨，然后埋头继续做题。</p>
+<p>我上高三了，我发现我渐渐屈服了。我再也不会在球场上为多得几分而宁愿崴到脚了，再也不会追最新一集的动漫了，再也不会认为语文课不重要而看小说了，再也不会不懂装懂了。我只希望能够有多一点点时间，多做一道题，多背一个单词，在高考中多得一分。</p>
+<p>正如一句话所说的那样“天空没有留下翅膀的痕迹，但我知道我已经飞过”。高考，无论结果如何，我都不会后悔，因为我知道我努力过。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/高三·考试·心情/" data-id="cjps5wlyi001320fyzwp9r1fb" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-致高三" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/致高三/" class="article-date">
+  <time class="post-time" datetime="2014-08-20T00:20:56.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">20</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/致高三/">致高三</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>时间的洪流如此迅猛，以至于我还没有来得及实现我的幻想便把我拉回了现实。中考之后的那个暑假，看了许多校园小说，于是整日期待高中生活。而我还没有像小说中的男主角一样谈一场轰轰烈烈的恋爱或者做一些了不起的事情，我便发现我正现在高三的门口。</p>
+<p>还有一天就正式迈入高三了，我身边有些朋友今年就高考完了，这个暑假他们似乎很疯狂，而我却在玩的时候还要时刻担心我的作业。他们买了手机买了电脑然后和一群小伙伴们旅游，而我所谓的娱乐也只是在看书累了的时候对着手机电脑发呆。真的很羡慕他们，逃脱了高三这个牢笼，我甚至也很想跟他们一起疯玩，哪怕一天也好。</p>
+<p>高二结束紧接着的就是一个月的补课，老师说补课是为了让我们尽早适应高三生活。曾经觉得让我一个月不上体育课是很痛苦的一件事，但一个月过后，我才发现原来我真的可以忍受没有体育课的日子。会考过后就连可以让我们打打瞌睡发发呆的政史地课都取消了，于是整天绷紧神经，深怕上课一走神漏掉了某个知识点，下课铃成为了我们的催眠曲，课间大家都趴在桌子上。真的是累得不行，补课就这么辛苦，高三应该会更累吧，不过我相信乐在其中。</p>
+<p>高三的确很紧张，高二的某个晚自习课间，我和同学下楼散步，突发奇想地来到了高三的楼下。办公室出来一个老师，看见了我俩：“同学高三了怎么这么悠闲，不如帮我搬点东西吧，来来来。”搬完后便在高三走廊走了一遍，一种紧张感油然而生。当我们高三的时候，那些从教室门口经过的学弟学妹们也会是这种感觉吧，而我也会忙得没有时间往窗外漂亮的女生多看两眼吧。</p>
+<p>回想起高一高二虽然没有像校园小说那样，但也不失精彩与快乐。同学们就像一个大家庭，校运会或者打班赛大家都很团结努力，某个同学受伤生病了大家都会帮助他，或者某个同学摔倒了大家先笑够了再把他扶起来……最印象深刻的就是暑假补课后布置考场，我和好朋友晚上溜到空荡荡的考场，然后偷偷走进了女厕所。后来在考场外吹口哨吓得某个女老师脸都绿了笔也掉了，最后一路狂奔回到教室。诸如此类，我相信这些经历必将成为我们最好的回忆。</p>
+<p>高中生涯的最后一个暑假就要结束了， 再见了动漫，再见了懒觉，再见了手机。老师说高三要拒绝一切诱惑，一切都是为了高考。说了这么多次努力，这次由不得你再说大话了，你不说你也得努力。士兵总有上战场的那一天，到时候身不由己也没有退路了。</p>
+<p>既然回忆过去，痛苦的相思忘不了，不如活在当下，珍惜眼前的一切。至于未来，高考后再来幻想吧，毕竟，未来，未曾来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/致高三/" data-id="cjps5wly2000z20fyouqqkj6z" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-暑假" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/暑假/" class="article-date">
+  <time class="post-time" datetime="2013-08-30T14:22:22.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">30</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/暑假/">暑假</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>经历了三天但却觉得漫长的期末考试以后，暑假如期而至，幻想着暑假的种种快乐和自由，心里自然清凉。但到今天暑假快结束的时候，却觉得与自己的幻想有着天壤之别。毕竟，只是幻想。</p>
+<p>暑假的第一天，就别有兴致的买了一把吉他，还报了培训班，记得周杰伦说过一技之长比学历重要，于是那天晚上便充满了斗志，想象着自己弹吉他给女生听就觉得很帅。第二天准时来到培训班，认真练习了一整天后便觉得很辛苦很无聊。再过几天发现那些老师竟然对我爱理不理，之后的几天感觉什么都没学到，一个礼拜后我很潇洒地离开了，发誓再也不去那种地方见到那种老师。对吉他也有了阴影，不会就不会，我将来又不是靠弹吉他吃饭。现在还是高中生，学习才是重中之重，吉他玩得再好，高考也不会给你加分。</p>
+<p>过了几天，大哥和他同学去了打暑期工，而我则遵守着曾经跟班主任商量的计划每天上午都来学校学习，一开始也是很有斗志，但几天后发现根本没有效率，但还是每天都去，心里想着，暑假嘛，那么认真干嘛。但是现在我明白了，不应该放纵自己，我也明白了 ，老师说的话多数是错误的，我更加不相信老师了。暑假前定制的目标，到现在没有完成几个，比如说一个月写完暑假作业啊，看完《三国演义》和《红楼梦》啊，每天写日记啊之类的。也后悔没有跟大哥去打暑期工，在异地总是能够让自己见识世面，而且还能有钱自由地买东西，真好。</p>
+<p>每天下午都会去打羽毛球，挥洒汗水，不会时不时地玩手机电脑，那时就会觉得很开心很有意义。因为都是些志同道合的同学，更有共同语言，一起切磋，一起交流，一起进步，一起大声地笑。又让我想起了某些女生，只会勾心斗角，只会嫉妒，只会玩心机，或者只会犯忧伤，只会沉迷于所谓的爱，那些真是恶心无聊，人生不只是有心机或者爱恨情仇，还有很多有意义的事。相比之下，我们活的有意义多了。</p>
+<p>看过《中国合伙人》之后，更加对自己一个月来的无所作为后悔，自己真是太窝囊了——做事不好好考虑，不会坚持，遇到困难不会勇敢地面对和想办法解决，满足于现状，不思进取，目光短浅……自己这样一定会一事无成，所以不能再这样下去，如果我不逼自己一下，我永远都不会知道自己有多强大，我可以平凡但绝对不可以平庸，绝对不可以！我也很庆幸自己城府不深，不会勾心斗角。也很谢谢张玺以前能够听我倾诉，开导我，对感情渐渐看淡，明白学习才是重要。</p>
+<p>八月，我回到龙岭，第一天就去了初中时每个周末都会去的球场打球，没想到初中时的好朋友都来了，一年了，大家都变了好多，但是彼此之间的感情是不会变的。那天打球，仿佛又回到了从前那无忧无虑的日子，阳光照耀着少年，那时的天空依旧很蓝。</p>
+<p>第二天，我们几个朋友去了赣州，其中一个在赣州读书，于是便到他学校去玩，竟然还有几个外国人，我们自然很是兴奋，他说他有个日本同学叫叉叉君，于是我们商量着要不要我们几个人揍他一顿，直到他跪下来求饶并说出“钓鱼岛是中国的”，我们才肯罢休。学校好多树，很有夏天的感觉。然后去了八镜台那古城墙，想象着古时候赶考书生与二姑娘在柳树下吟诗作对，谈笑风生，就觉得很羡慕。沿着城墙走，忽然看到一棵树紧贴着城墙生长，于是我们几个伙伴们马上爬了上去，哈哈，那感觉真好。在城墙上走着，于是又联想到《御龙在天》里攻城的壮观景象，越来越想回到古时候，十二年前的白日梦，十二年后的才高八斗。</p>
+<p>然后又来到江边，风吹动着我们的头发，水汽扑面，让我们更加清爽，我相信几年后回想起来一定是青春的感觉。</p>
+<p>终于决定不去学校学习了，因为没有效率，在我看来是错误的，我现在一定要改变，虽然被班主任纠缠着叫我回去学校学习，但被我拒绝了，我想改变就从现在开始。每天我都在一高三朋友家和他一起认真学习，下午就和他还有他同学一起打篮球，慢慢的就有认识了他同学，球技和身体也有了提高，很喜欢那些天单纯而又充实的日子。</p>
+<p>说到动漫, 这个看得最多的就是哆啦a梦了，真的很好看。最喜欢的还是太空和海底了，真希望也能去探险，和小伙伴们一起。可是现在，我的小伙伴呢？大多数时间还是一个人，不说悲伤孤独之类的话了，男人嘛，何必伤春悲秋的！像大雄和胖虎还有小夫静香一样，做个单纯的人，有小伙伴们，随时可以感到温暖，一起探险，一起经历，一起感动。也真希望身边有一个哆啦a梦，能够用任意门去探险，最后总是平安无事。那些道具，那些探险，那些梦幻，或许只存在于我的想象中吧。我不会失去想象力，因为我相信属于我的哆啦a梦存在于此。</p>
+<p>发现自己变了，至少不会像去年一样玩忧郁了，爱情什么的，高中是不可能的，因为高考之后还是难逃分开的命运，这一点我理解深刻，也还是因为有张玺开导呐，真心想说一句thank you very much！记得自己初中的时候是多么的无忧无虑，整天瞎闹还有放肆地笑，这个学期终于有点回到当初的感觉。至今还认为今年遇到的许多同学朋友都是命运，也许改变注定要发生。这个学期成绩一直不如意，自己也很着急。这个暑假看了一本书《高考季》，那些状元们的成绩绝对不是盖的，而他们的努力我想我做不到，但是我不甘堕落，无论怎样我都会努力的。也许家人也许同学会嘲笑我，我的目标是浙大！</p>
+<p>暑假快要结束了，评价的话也只能说不如意了。但何必去遗憾，只有反思自己的缺点，勇敢迈出“改变”这一步，自己的梦想才可能实现。——“如果连尝试都不敢的话，那你就真的太懦落了。”</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/暑假/" data-id="cjps5wlxy000s20fyp33suyiv" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/life/">life</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; pre</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Acan_Dev</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/ShanaMaid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 Acan_Dev<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>

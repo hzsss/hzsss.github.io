@@ -1,21 +1,2546 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Acan_Dev</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8">
   
-  <!-- Import lsloader -->
-  <script>!function(){var e="http://"+location.host+"/combo?combo=";window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}},lsloader.removeLS=function(e){try{localStorage.removeItem(e)}catch(e){}},lsloader.setLS=function(e,t){try{localStorage.setItem(e,t)}catch(e){}},lsloader.getLS=function(e){var t="";try{t=localStorage.getItem(e)}catch(e){t=""}return t},lsloader.load=function(e,t,s){s=s||function(){};var n;if(n=this.getLS(e),!/\/\*codestartv1\*\//.test(n))return this.removeLS(e),void this.requestResource(e,t,s);if(n){var a=n.split("/*codestartv1*/")[0];if(a!=t)return console.log("reload:"+t),this.removeLS(e),void this.requestResource(e,t,s);n=n.split("/*codestartv1*/")[1],/\.js?.+$/.test(a)?(this.jsRunSequence.push({name:e,code:n}),this.runjs(t,e,n)):(document.getElementById(e).appendChild(document.createTextNode(n)),s())}else this.requestResource(e,t,s)},lsloader.requestResource=function(e,t,s){var n=this;/\.js?.+$/.test(t)?this.iojs(t,e,function(e,t,s){n.setLS(t,e+"/*codestartv1*/"+s),n.runjs(e,t,s)}):/\.css?.+$/.test(t)&&this.iocss(t,e,function(s){document.getElementById(e).appendChild(document.createTextNode(s)),n.setLS(e,t+"/*codestartv1*/"+s)},s)},lsloader.iojs=function(e,t,s){var n=this;n.jsRunSequence.push({name:t,code:""});try{var a=new XMLHttpRequest;a.open("get",e,!0),a.onreadystatechange=function(){if(4==a.readyState){if((a.status>=200&&a.status<300||304==a.status)&&""!=a.response)return void s(e,t,a.response);n.jsfallback(e,t)}},a.send(null)}catch(s){n.jsfallback(e,t)}},lsloader.iocss=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.iofonts=function(e,t,s,n){var a=this;try{var u=new XMLHttpRequest;u.open("get",e,!0),u.onreadystatechange=function(){if(4==u.readyState){if((u.status>=200&&u.status<300||304==u.status)&&""!=u.response)return s(u.response),void n();a.cssfallback(e,t,n)}},u.send(null)}catch(s){a.cssfallback(e,t,n)}},lsloader.runjs=function(e,t,s){if(t&&s)for(var n in this.jsRunSequence)this.jsRunSequence[n].name==t&&(this.jsRunSequence[n].code=s);if(this.jsRunSequence[0]&&this.jsRunSequence[0].code&&"failed"!=this.jsRunSequence[0].status){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code)),a.type="text/javascript",document.getElementsByTagName("head")[0].appendChild(a),this.jsRunSequence.shift(),this.jsRunSequence.length>0&&this.runjs()}else if(this.jsRunSequence[0]&&"failed"==this.jsRunSequence[0].status){var u=this,a=document.createElement("script");a.src=this.jsRunSequence[0].path,a.type="text/javascript",this.jsRunSequence[0].status="loading",a.onload=function(){u.jsRunSequence.shift(),u.jsRunSequence.length>0&&u.runjs()},document.body.appendChild(a)}},lsloader.tagLoad=function(e,t){this.jsRunSequence.push({name:t,code:"",path:e,status:"failed"}),this.runjs()},lsloader.jsfallback=function(e,t){if(!this.jsnamemap[t]){this.jsnamemap[t]=t;for(var s in this.jsRunSequence)this.jsRunSequence[s].name==t&&(this.jsRunSequence[s].code="",this.jsRunSequence[s].status="failed",this.jsRunSequence[s].path=e);this.runjs()}},lsloader.cssfallback=function(e,t,s){if(!this.cssnamemap[t]){this.cssnamemap[t]=1;var n=document.createElement("link");n.type="text/css",n.href=e,n.rel="stylesheet",n.onload=n.onerror=s;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(n,a)}},lsloader.runInlineScript=function(e,t){var s=document.getElementById(t).innerText;this.jsRunSequence.push({name:e,code:s}),this.runjs()},lsloader.loadCombo=function(t){var s="",n={};for(var a in t){var u=this.getLS(t[a].name);if(u)var o=u.split("/*codestartv1*/")[0],c=u.split("/*codestartv1*/")[1];else var o="";o==t[a].path?this.jsRunSequence.push({name:t[a].name,code:c,path:t[a].path}):(this.jsRunSequence.push({name:t[a].name,code:null,path:t[a].path,status:"comboloading"}),n[t[a].name]=!0,s+=(""==s?"":";")+t[a].path)}var i=this;if(s){var r=new XMLHttpRequest;r.open("get",e+s,!0),r.onreadystatechange=function(){if(4==r.readyState)if(r.status>=200&&r.status<300||304==r.status){if(""!=r.response)return void i.runCombo(r.response,n)}else{for(var e in i.jsRunSequence)n[i.jsRunSequence[e].name]&&(i.jsRunSequence[e].status="failed");i.runjs()}},r.send(null)}this.runjs()},lsloader.runCombo=function(e,t){e=e.split("/*combojs*/"),e.shift();for(var s in this.jsRunSequence)t[this.jsRunSequence[s].name]&&e[0]&&(this.jsRunSequence[s].status="comboJS",this.jsRunSequence[s].code=e[0],this.setLS(this.jsRunSequence[s].name,this.jsRunSequence[s].path+"/*codestartv1*/"+e[0]),e.shift());this.runjs()}}();</script>
+  <title>Acan_Dev</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="You only live once">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Acan_Dev">
+<meta property="og:url" content="https://github.com/hzsss/index.html">
+<meta property="og:site_name" content="Acan_Dev">
+<meta property="og:description" content="You only live once">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Acan_Dev">
+<meta name="twitter:description" content="You only live once">
+  
+    <link rel="alternate" href="/atom.xml" title="Acan_Dev" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
 </head>
+
 <body>
-  <div id="app"></div>
-  <script type="text/javascript">
-    window.rootUrl = "/"
-    window.one = {"site":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true}},"theme":{"title":"Acan_Dev","subtitle":null,"description":"You only live once","author":"Acan_Dev","language":"zh-CN","timezone":"Asia/Shanghai","url":"https://github.com/hzsss","root":"/","permalink":":title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":year:month:day-:title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":10,"pagination_dir":"page","theme":"one","deploy":{"type":"git","repository":"git@github.com:hzsss/hzsss.github.io.git","branch":"master"},"ignore":[],"keywords":null,"index_generator":{"per_page":10,"order_by":"-date","path":""},"category_generator":{"per_page":10},"archive_generator":{"per_page":10,"yearly":true,"monthly":true,"daily":false},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"tag_generator":{"per_page":10},"server":{"port":4000,"log":false,"ip":"0.0.0.0","compress":false,"header":true},"head":{"favicon":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4"},"img":{"avatar":"https://avatars0.githubusercontent.com/u/27425237?s=460&v=4","left_pic":["/img/home.jpg"],"right_pic":["/img/right.jpg"],"post_thumbnail":["/img/二次元/下雨.jpg"],"drawerHeaderBg":["/img/WechatIMG9.jpeg"]},"uiux":{"slogan":"人生，是一场修炼！","defaultPrimaryColor":"blue","defaultAccentColor":"red"},"comment":{"disqus":{"shortName":"xyz"}},"Drawer":[{"title":"首页","type":"sitelink","href":"/","icon":"home"},{"title":"hr","type":"hr"},{"title":"关于我","type":"page","name":"关于我","href":"/关于我.md","icon":"account_circle"},{"title":"搜索","type":"sitelink","href":"/search/","icon":"search"},{"title":"联系我","icon":"contact_phone","nested":[{"title":"Jianshu","type":"link","href":"https://www.jianshu.com/u/5a7a5445cb4a","icon":{"type":"svg","date":"<path d=\"M512 1024C229.239467 1024 0 794.760533 0 512S229.239467 0 512 0 1024 229.239467 1024 512 794.760533 1024 512 1024z m-110.227911-750.409956H204.8v486.855112h184.160711c33.314133 0 105.221689 19.2512 105.221689 58.754844V361.745067c0-32.836267-50.426311-88.155022-92.387556-88.155023z m242.733511 0c-42.029511 0-92.433067 55.318756-92.433067 88.155023V819.2c0-39.503644 71.839289-58.754844 105.198934-58.754844h184.160711V273.590044h-196.926578z\" p-id=\"18729\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Github","type":"link","href":"https://github.com/hzsss","icon":{"type":"svg","date":"<path d=\"M941.714 512q0 143.433-83.712 258.011t-216.283 158.574q-15.433 2.853-22.565-3.986t-7.131-17.152v-120.576q0-55.442-29.696-81.152 32.585-3.438 58.587-10.277t53.723-22.272 46.299-37.998 30.281-60.014 11.703-86.016q0-69.157-45.129-117.723 21.138-52.005-4.571-116.553-16.018-5.157-46.299 6.29t-52.553 25.161l-21.723 13.714q-53.138-14.848-109.714-14.848t-109.714 14.848q-9.143-6.29-24.283-15.433t-47.726-22.016-49.152-7.717q-25.161 64.585-3.986 116.553-45.129 48.567-45.129 117.723 0 48.567 11.703 85.723t29.989 60.014 46.007 38.29 53.723 22.272 58.587 10.277q-22.857 20.553-28.014 58.843-11.995 5.705-25.71 8.558t-32.585 2.853-37.413-12.288-31.707-35.73q-10.862-18.286-27.721-29.696t-28.27-13.714l-11.447-1.719q-11.995 0-16.567 2.56t-2.853 6.583 5.157 8.009 7.424 6.839l3.986 2.853q12.581 5.705 24.869 21.723t17.993 29.147l5.705 13.129q7.424 21.723 25.161 35.145t38.29 17.152 39.717 3.986 31.707-2.011l13.129-2.304q0 21.723 0.293 50.871t0.293 30.866q0 10.277-7.424 17.152t-22.857 3.986q-132.571-43.995-216.283-158.574t-83.712-258.011q0-119.442 58.843-220.27t159.707-159.707 220.27-58.843 220.27 58.843 159.707 159.707 58.843 220.27z\" p-id=\"997\"></path>","viewBox":"0 0 1024 1024"}},{"title":"Douban","type":"link","href":"https://www.douban.com/people/180397031/","icon":{"type":"svg","height":"20px","width":"20px","margin":"14px","date":"<path d=\"M512 1024c282.76736 0 512-229.23264 512-512S794.76736 0 512 0 0 229.23264 0 512s229.23264 512 512 512z m256.2048-705.4336H260.608v-51.6096H768.2048v51.6096z m11.69408 455.68H245.30944v-52.18304h159.88736c-19.59936-42.5984-40.30464-79.40096-62.09536-110.3872l41.10336-26.4192h-72.00768V379.16672h406.20032v206.09024h-75.59168l41.10336 27.01312c-19.41504 42.5984-39.60832 79.19616-60.6208 109.7728h156.61056v52.224z m-118.49728-240.88576v-101.10976H368.90624v101.10976h292.49536z m-28.50816 51.89632h-238.1824a1153.41312 1153.41312 0 0 1 69.89824 136.8064h97.19808c29.7984-46.20288 53.49376-91.81184 71.08608-136.8064z\" p-id=\"2131\"></path>","viewBox":"0 0 1024 1024"}}]}],"colorPicker":true,"homeToolBar":[{"icon":"more_vert","items":[{"title":"RSS","type":"link","href":"/atom.xml","icon":"rss_feed"}]}],"footer":["Copyright © 2016 - 2017 Acan",["做更好的自己！","Be youserlf,everyone else is already taken."]]}}
-  </script>
-  <script>lsloader.load("vendor.js","/vendor.js")</script>
-  <script>lsloader.load("bundle.js","/bundle.js")</script>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main">
+  
+    <article id="post-操作系统学习笔记" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/操作系统学习笔记/" class="article-date">
+  <time class="post-time" datetime="2018-09-25T10:25:43.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">25</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/操作系统学习笔记/">操作系统学习笔记</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一章-操作系统引论"><a href="#第一章-操作系统引论" class="headerlink" title="第一章 操作系统引论"></a>第一章 操作系统引论</h3><h4 id="1-1-操作系统的目标和作用"><a href="#1-1-操作系统的目标和作用" class="headerlink" title="1.1 操作系统的目标和作用"></a>1.1 操作系统的目标和作用</h4><h5 id="1-1-1-操作系统的目标"><a href="#1-1-1-操作系统的目标" class="headerlink" title="1.1.1 操作系统的目标"></a>1.1.1 操作系统的目标</h5><ol>
+<li>有效性</li>
+</ol>
+<p>操作系统的有效性可包含如下两方面的含意：</p>
+<p>(1) 提高系统资源利用率。配置了 OS 之后，可使 CPU 和 I/O 设备由于能保持忙碌状态而得到有效的利用，且可使内存和外存中存放的数据因有序而节省了存储空间。</p>
+<p>(2) 提高系统的吞吐量。操作系统还可以通过合理地组织计算机的工作流程，而进一步改善资源的利用率，加速程序的运行，缩短程序的运行周期，从而提高系统的吞吐量。</p>
+<ol start="2">
+<li>方便性</li>
+</ol>
+<p>配置 OS 后可使计算机系统更容易使用。</p>
+<ol start="3">
+<li>可扩充性</li>
+</ol>
+<p>OS 必须具有很好的可扩充性，方能适应计算机硬件、体系结构以及应用发展的要求。</p>
+<ol start="4">
+<li>开放性</li>
+</ol>
+<p>为使来自不同厂家的计算机和设备能通过网络加以集成化，并能正确、有效地协同工作，实现应用的可移植性和互操作性，要求操作系统必须提供统一的开放环境，进而要求 OS 具有开放性。</p>
+<p>开放性是指系统能遵循世界标准规范，特别是遵循开放系统互连(OSI)国际标准。凡遵循国际标准所开发的硬件和软件，均能彼此兼容，可方便地实现互连。</p>
+<h5 id="1-1-2-操作系统的作用"><a href="#1-1-2-操作系统的作用" class="headerlink" title="1.1.2 操作系统的作用"></a>1.1.2 操作系统的作用</h5><ol>
+<li>OS 作为用户与计算机硬件系统之间的接口</li>
+</ol>
+<p>OS 作为用户与计算机硬件系统之间接口的含义是：OS 处于用户与计算机硬件系统之间，用户通过 OS 来使用计算机系统。或者说，用户在 OS 帮助下，能够方便、快捷、安全、可靠地操纵计算机硬件和运行自己的程序。</p>
+<p>用户可通过以下三种方式使用计算机：</p>
+<p>(1) 命令方式。这是指由 OS 提供了一组联机命令接口，以允许用户通过键盘输入有关命令来取得操作系统的服务，并控制用户程序的运行。</p>
+<p>(2) 系统调用方式。OS 提供了一组系统调用，用户可在自己的应用程序中通过相应的系统调用，来实现与操作系统的通信，并取得它的服务。</p>
+<p>(3) 图形、窗口方式。这是当前使用最为方便、最为广泛的接口，它允许用户通过屏幕上的窗口和图标来实现与操作系统的通信，并取得它的服务。<br><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p480" alt="c86b76b4228b1a2c1f71d858298ba8b7.png"></p>
+<ol start="2">
+<li>OS 作为计算机系统资源的管理者</li>
+</ol>
+<p>在一个计算机系统中，通常都含有各种各样的硬件和软件资源。归纳起来可将资源分为四类：处理器、存储器、I/O 设备以及信息(数据和程序)。</p>
+<p>(1) 处理机管理，用于分配和控制处理机；</p>
+<p>(2) 存储器管理，主要负责内存的分配与回收；</p>
+<p>(3) I/O 设备管理，负责 I/O 设备的分配与操纵；</p>
+<p>(4) 文件管理，负责文件的存取、共享和保护。</p>
+<ol start="3">
+<li>OS 实现了对计算机资源的抽象</li>
+</ol>
+<p>OS 是铺设在计算机硬件上的多层系统软件，它们不仅增强了系统的功能，而且还隐藏了对硬件操作的细节，由它们实现了对计算机硬件操作的多个层次的抽象。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p481" alt="ccdd6db7655087d30900a7dfdc746ba1.png"></p>
+<h4 id="1-2-操作系统的发展过程"><a href="#1-2-操作系统的发展过程" class="headerlink" title="1.2 操作系统的发展过程"></a>1.2 操作系统的发展过程</h4><h5 id="1-2-1-无操作系统的计算机系统"><a href="#1-2-1-无操作系统的计算机系统" class="headerlink" title="1.2.1 无操作系统的计算机系统"></a>1.2.1 无操作系统的计算机系统</h5><h5 id="1-2-2-单道批处理系统"><a href="#1-2-2-单道批处理系统" class="headerlink" title="1.2.2 单道批处理系统"></a>1.2.2 单道批处理系统</h5><ol>
+<li>单道批处理系统的处理过程</li>
+</ol>
+<p>其自动处理过程是：首先，由监督程序将磁带上的第一个作业装入内存，并把运行控制权交给该作业。当该作业处理完成时，又把控制权交还给监督程序，再由监督程序把磁带(盘)上的第二个作业调入内存。计算机系统就这样自动地一个作业一个作业地进行处理，直至磁带(盘)上的所有作业全部完成，这样便形成了早期的批处理系统。由于系统对作业的处理都是成批地进行的，且在内存中始终只保持一道作业，故称此系统为单道批处理系统(Simple Batch Processing System)。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p482" alt="e7ffbe05c4bdfe4e212de0fd72a07636.png"></p>
+<ol start="2">
+<li>单道批处理系统的特征</li>
+</ol>
+<p>(1) 自动性。在顺利情况下，在磁带上的一批作业能自动地逐个地依次运行，而无需人工预。</p>
+<p>(2) 顺序性。磁带上的各道作业是顺序地进入内存，各道作业的完成顺序与它们进入内存的顺序，在正常情况下应完全相同，亦即先调入内存的作业先完成。</p>
+<p>(3) 单道性。内存中仅有一道程序运行，即监督程序每次从磁带上只调入一道程序进入内存运行，当该程序完成或发生异常情况时，才换入其后继程序进入内存运行。</p>
+<h5 id="1-2-3-多道批处理系统"><a href="#1-2-3-多道批处理系统" class="headerlink" title="1.2.3 多道批处理系统"></a>1.2.3 多道批处理系统</h5><ol>
+<li>多道批处理系统的基本概念</li>
+</ol>
+<p>在引入多道程序设计技术后，由于同时在内存中装有若干道程序，并使它们交替地运行，这样，当正在运行的程序因 I/O 而暂停执行时，系统可调度另一道程序运行，从而保持了 CPU 处于忙碌状态。</p>
+<p>宏观上并行：同时进入系统的多道程序都处于运行过程中，即它们先后开始了各自的运行，但都未运行完毕。</p>
+<p>微观上串行：内存中的多道程序轮流占有 CPU，交替执行。</p>
+<ol start="2">
+<li>多道批处理系统的优点</li>
+</ol>
+<p>(1) 提高 CPU 的利用率。</p>
+<p>(2) 可提高内存和 I/O 设备利用率。许在内存中装入多道程序，并允许它们并发执行，则无疑会大大提高内存和 I/O 设备的利用率。</p>
+<p>(3) 增加系统吞吐量。在保持 CPU、I/O 设备不断忙碌的同时，也必然会大幅度地提高系统的吞吐量，从而降低作业加工所需的费用。</p>
+<ol start="3">
+<li>多道批处理系统的优点</li>
+</ol>
+<p>(1) 平均周转时间长。在批处理系统中，由于作业要排队，依次进行处理，因而作业的周转时间较长，通常需几个小时，甚至几天</p>
+<p>(2) 无交互能力。用户一旦把作业提交给系统后，直至作业完成，用户都不能与自己的作业进行交互，这对修改和调试程序是极不方便的。</p>
+<h5 id="1-2-4-分时系统"><a href="#1-2-4-分时系统" class="headerlink" title="1.2.4 分时系统"></a>1.2.4 分时系统</h5><ol>
+<li>分时系统的概念</li>
+</ol>
+<p>在操作系统中釆用分时技术就形成了分时系统。所谓分时技术就是把处理器的运行时间分成很短的时间片，按时间片轮流把处理器分配给各联机作业使用。若某个作业在分配给它的时间片内不能完成其计算，则该作业暂时停止运行，把处理器让给其他作业使用，等待下一轮再继续运行。由于计算机速度很快，作业运行轮转得很快，给每个用户的感觉好像是自己独占一台计算机。</p>
+<ol start="2">
+<li>分时系统的特征</li>
+</ol>
+<p>(1) 多路性。允许在一台主机上同时联接多台联机终端，系统按分时原则为每个用户服务。宏观上，是多个用户同时工作，共享系统资源；而微观上，则是每个用户作业轮流运行一个时间片。多路性即同时性，它提高了资源利用率，降低了使用费用，从而促进了计算机更广泛的应用。</p>
+<p>(2) 独立性。每个用户各占一个终端，彼此独立操作，互不干扰。因此，用户所感觉到的，就像是他一人独占主机。</p>
+<p>(3) 及时性。用户的请求能在很短的时间内获得响应。此时间间隔是以人们所能接受的等待时间来确定的，通常仅为 1～3 秒钟。</p>
+<p>(4) 交互性。用户可通过终端与系统进行广泛的人机对话。其广泛性表现在：用户可以请求系统提供多方面的服务，如文件编辑、数据处理和资源共享等。</p>
+<h5 id="1-2-5-实时系统"><a href="#1-2-5-实时系统" class="headerlink" title="1.2.5 实时系统"></a>1.2.5 实时系统</h5><p>所谓“实时”，是表示“及时”，而实时系统(Real Time System)是指系统能及时(或即时)<br>响应外部事件的请求，在规定的时间内完成对该事件的处理，并控制所有实时任务协调一<br>致地运行。</p>
+<h5 id="1-2-6-微机操作系统的发展"><a href="#1-2-6-微机操作系统的发展" class="headerlink" title="1.2.6 微机操作系统的发展"></a>1.2.6 微机操作系统的发展</h5><p>配置在微型机上的操作系统称为微机操作系统。</p>
+<ol>
+<li>单用户单任务操作系统</li>
+</ol>
+<p>单用户单任务操作系统的含义是，只允许一个用户上机，且只允许用户程序作为一个任务运行。最有代表性的单用户单任务微机操作系统是 CP/M 和 MS-DOS。</p>
+<ol start="2">
+<li>单用户多任务操作系统</li>
+</ol>
+<p>单用户多任务操作系统的含义是，只允许一个用户上机，但允许用户把程序分为若干个任务，使它们并发执行，从而有效地改善了系统的性能。目前在 32 位微机上配置的操作系统基本上都是单用户多任务操作系统，其中最有代表性的是由微软公司推出的 Windows。</p>
+<ol start="3">
+<li>多用户多任务操作系统</li>
+</ol>
+<p>多用户多任务操作系统的含义是，允许多个用户通过各自的终端使用同一台机器，共享主机系统中的各种资源，而每个用户程序又可进一步分为几个任务，使它们能并发执行，从而可进一步提高资源利用率和系统吞吐量。</p>
+<p>其中最有代表性的是 UNIX OS。现在最有影响的两个能运行在微机上的 UNIX 操作系统的变型是 Solaris OS 和 Linux OS。</p>
+<h4 id="1-3-操作系统的基本特性"><a href="#1-3-操作系统的基本特性" class="headerlink" title="1.3 操作系统的基本特性"></a>1.3 操作系统的基本特性</h4><h5 id="1-3-1-并发性"><a href="#1-3-1-并发性" class="headerlink" title="1.3.1 并发性"></a>1.3.1 并发性</h5><ol>
+<li>并行与并发</li>
+</ol>
+<p>并行性和并发性(Concurrence)是既相似又有区别的两个概念，并行性是指两个或多个事件在同一时刻发生；而并发性是指两个或多个事件在同一时间间隔内发生。</p>
+<p>在多道程序环境下，并发性是指在一段时间内宏观上有多个程序在同时运行，但在单处理机系统中，每一时刻却仅能有一道程序执行，故微观上这些程序只能是分时地交替执行。</p>
+<p>倘若在计算机系统中有多个处理机，则这些可以并发执行的程序便可被分配到多个处理机上，实现并行执行，即利用每个处理机来处理一个可并发执行的程序，这样，多个程序便可同时执行。</p>
+<ol start="2">
+<li>引入进程</li>
+</ol>
+<p>应当指出，通常的程序是静态实体(Passive Entity)，在多道程序系统中，它们是不能独立运行的，更不能和其它程序并发执行。在操作系统中引入进程的目的，就是为了使多个程序能并发执行。</p>
+<p>为使多个程序能并发执行，系统必须分别为每个程序建立进程(Process)。简单说来，进程是指在系统中能独立运行并作为资源分配的基本单位，它是由一组机器指令、数据和堆栈等组成的，是一个能独立运行的活动实体。多个进程之间可以并发执行和交换信息。一个进程在运行时需要一定的资源，如 CPU、存储空间及 I/O 设备等。</p>
+<ol start="3">
+<li>引入线程</li>
+</ol>
+<p>通常在一个进程中可以包含若干个线程，它们可以利用进程所拥有的资源。在引入线程的 OS 中，通常都是把进程作为分配资源的基本单位，而把线程作为独立运行和独立调度的基本单位。</p>
+<h5 id="1-3-2-共享性"><a href="#1-3-2-共享性" class="headerlink" title="1.3.2 共享性"></a>1.3.2 共享性</h5><p>在操作系统环境下，所谓共享(Sharing)，是指系统中的资源可供内存中多个并发执行的进程(线程)共同使用，相应地，把这种资源共同使用称为资源共享，或称为资源复用。</p>
+<ol>
+<li>互斥共享方式</li>
+</ol>
+<p>系统中的某些资源，如打印机、磁带机，虽然它们可以提供给多个进程(线程)使用，但为使所打印或记录的结果不致造成混淆，应规定在一段时间内只允许一个进程(线程)访问该资源。为此，系统中应建立一种机制，以保证对这类资源的互斥访问。</p>
+<p>为此，系统中应建立一种机制，以保证对这类资源的互斥访问。当一个进程 A 要访问某资源时，必须先提出请求。如果此时该资源空闲，系统便可将之分配给请求进程 A 使用。此后若再有其它进程也要访问该资源时(只要 A 未用完)，则必须等待。仅当 A 进程访问完并释放该资源后，才允许另一进程对该资源进行访问。</p>
+<p>我们把这种资源共享方式称为互斥式共享，而把在一段时间内只允许一个进程访问的资源称为临界资源或独占资源。计算机系统中的大多数物理设备，以及某些软件中所用的栈、变量和表格，都属于临界资源，它们要求被互斥地共享。为此，在系统中必需配置某种机制来保证诸进程互斥地使用独占资源。</p>
+<p>临界资源是定义在共享资源上的，临界资源一定是共享资源。</p>
+<ol start="2">
+<li>同时共享方式</li>
+</ol>
+<p>系统中还有另一类资源，允许在一段时间内由多个进程“同时”对它们进行访问。这里所谓的“同时”，在单处理机环境下往往是宏观上的，而在微观上，这些进程可能是交替地对该资源进行访问。典型的可供多个进程“同时”访问的资源是磁盘设备，一些用重入码编写的文件也可以被“同时”共享，即若干个用户同时访问该文件。</p>
+<h5 id="虚拟性"><a href="#虚拟性" class="headerlink" title="虚拟性"></a>虚拟性</h5><ol>
+<li>时分复用技术</li>
+</ol>
+<p>在虚拟处理机技术中，利用多道程序设计技术，为每道程序建立一个进程，让多道程序并发地执行，以此来分时使用一台处理机。此时，虽然系统中只有一台处理机，但它却能同时为多个用户服务，使每个终端用户都认为是有一个处理机在专门为他服务。</p>
+<ol start="2">
+<li>空分复用技术</li>
+</ol>
+<p>如果说时分复用技术是利用处理机的空闲时间来运行其它的程序，使处理机的利用率得以提高，那么空分复用则是利用存储器的空闲空间来存放其它的程序，以提高内存的利用率。</p>
+<h5 id="1-3-4-异步性"><a href="#1-3-4-异步性" class="headerlink" title="1.3.4 异步性"></a>1.3.4 异步性</h5><p>进程是以人们不可预知的速度向前推进，此即进程的异步性(Asynchronism)。</p>
+<h4 id="1-4-操作系统的主要功能"><a href="#1-4-操作系统的主要功能" class="headerlink" title="1.4 操作系统的主要功能"></a>1.4 操作系统的主要功能</h4><h5 id="1-4-1-处理机管理功能"><a href="#1-4-1-处理机管理功能" class="headerlink" title="1.4.1 处理机管理功能"></a>1.4.1 处理机管理功能</h5><ol>
+<li>进程控制</li>
+</ol>
+<p>进程控制的主要功能是为作业创建进程，撤消已结束的进程，以及控制进程在运行过程中的状态转换。在现代 OS 中，进程控制还应具有为一个进程创建若干个线程的功能和撤消(终止)已完成任务的线程的功能。</p>
+<ol start="2">
+<li>进程同步</li>
+</ol>
+<p>前已述及，进程是以异步方式运行的，并以人们不可预知的速度向前推进。为使多个进程能有条不紊地运行，系统中必须设置进程同步机制。</p>
+<p>(1) 进程互斥方式。这是指诸进程(线程)在对临界资源进行访问时，应采用互斥方式；</p>
+<p>(2) 进程同步方式。这是指在相互合作去完成共同任务的诸进程(线程)间，由同步机构对它们的执行次序加以协调。</p>
+<ol start="3">
+<li>进程通信</li>
+</ol>
+<p>当相互合作的进程(线程)处于同一计算机系统时，通常在它们之间是采用直接通信方式，即由源进程利用发送命令直接将消息(Message)挂到目标进程的消息队列上，以后由目标进程利用接收命令从其消息队列中取出消息。</p>
+<ol start="4">
+<li>调度</li>
+</ol>
+<p>在后备队列上等待的每个作业都需经过调度才能执行。在传统的操作系统中，包括作业调度和进程调度两步。</p>
+<h5 id="1-4-2-存储器管理功能"><a href="#1-4-2-存储器管理功能" class="headerlink" title="1.4.2 存储器管理功能"></a>1.4.2 存储器管理功能</h5><ol>
+<li>内存分配</li>
+</ol>
+<p>内存分配的主要任务是为每道程序分配内存空间，使它们“各得其所”；提高存储器的利用率，以减少不可用的内存空间；允许正在运行的程序申请附加的内存空间，以适应程序和数据动态增长的需要。</p>
+<ol start="2">
+<li>内存保护</li>
+</ol>
+<p>内存保护的主要任务是确保每道用户程序都只在自己的内存空间内运行，彼此互不干扰；绝不允许用户程序访问操作系统的程序和数据；也不允许用户程序转移到非共享的其它用户程序中去执行。</p>
+<ol start="3">
+<li>地址映射</li>
+</ol>
+<p>为使程序能正确运行，存储器管理必须提供地址映射功能，以将地址空间中的逻辑地址转换为内存空间中与之对应的物理地址。该功能应在硬件的支持下完成。</p>
+<ol start="4">
+<li>内存扩充</li>
+</ol>
+<p>存储器管理中的内存扩充任务并非是去扩大物理内存的容量，而是借助于虚拟存储技术，从逻辑上去扩充内存容量，使用户所感觉到的内存容量比实际内存容量大得多，以便让更多的用户程序并发运行。</p>
+<p>(1) 请求调入功能。允许在装入一部分用户程序和数据的情况下，便能启动该程序运行。在程序运行过程中，若发现要继续运行时所需的程序和数据尚未装入内存，可向 OS 发出请求，由 OS 从磁盘中将所需部分调入内存，以便继续运行。</p>
+<p>(2) 置换功能。若发现在内存中已无足够的空间来装入需要调入的程序和数据时，系统应能将内存中的一部分暂时不用的程序和数据调至盘上，以腾出内存空间，然后再将所需调入的部分装入内存。</p>
+<h5 id="1-4-3-设备管理功能"><a href="#1-4-3-设备管理功能" class="headerlink" title="1.4.3 设备管理功能"></a>1.4.3 设备管理功能</h5><p>设备管理用于管理计算机系统中所有的外围设备，而设备管理的主要任务是：完成用户进程提出的 I/O 请求；为用户进程分配其所需的 I/O 设备；提高 CPU 和 I/O 设备的利用率；提高I/O 速度；方便用户使用 I/O 设备。</p>
+<ol>
+<li>缓冲功能</li>
+</ol>
+<p>CPU 运行的高速性和 I/O 低速性间的矛盾自计算机诞生时起便已存在了。如果在 I/O 设备和 CPU之间引入缓冲，则可有效地缓和 CPU 与 I/O 设备速度不匹配的矛盾，提高 CPU 的利用率，进而提高系统吞吐量。提高 CPU 与设备之间的并行程度。</p>
+<ol start="2">
+<li>设备分配</li>
+</ol>
+<p>设备分配的基本任务是根据用户进程的 I/O 请求、系统的现有资源情况以及按照某种设备的分配策略，为之分配其所需的设备。</p>
+<ol start="3">
+<li>设备处理</li>
+</ol>
+<p>设备处理程序又称为设备驱动程序。其基本任务是用于实现 CPU 和设备控制器之间的通信，即由 CPU 向设备控制器发出 I/O 命令，要求它完成指定的 I/O 操作；反之，由 CPU 接收从控制器发来的中断请求，并给予迅速的响应和相应的处理。</p>
+<h5 id="1-4-4-文件管理功能"><a href="#1-4-4-文件管理功能" class="headerlink" title="1.4.4 文件管理功能"></a>1.4.4 文件管理功能</h5><ol>
+<li>文件存储空间的管理</li>
+</ol>
+<p>系统应设置相应的数据结构，用于记录文件存储空间的使用情况，以供分配存储空间时参考；系统还应具有对存储空间进行分配和回收的功能。为了提高存储空间的利用率，对存储空间的分配，通常是采用离散分配方式，以减少外存零头，并以盘块为基本分配单位。盘块的大小通常为 1～8 KB。</p>
+<ol start="2">
+<li>目录管理</li>
+</ol>
+<p>为了使用户能方便地在外存上找到自己所需的文件，通常由系统为每个文件建立一个目录项。目录项包括文件名、文件属性、文件在磁盘上的物理位置等。由若干个目录项又可构成一个目录文件。其次，目录管理还应能实现文件共享，这样，只须在外存上保留一份该共享文件的副本。此外，还应能提供快速的目录查询手段，以提高对文件的检索速度。</p>
+<ol start="3">
+<li>文件的读/写管理和保护</li>
+</ol>
+<h5 id="1-4-5-操作系统与用户之间的接口"><a href="#1-4-5-操作系统与用户之间的接口" class="headerlink" title="1.4.5 操作系统与用户之间的接口"></a>1.4.5 操作系统与用户之间的接口</h5><ol>
+<li>用户接口</li>
+</ol>
+<p>它是提供给用户使用的接口，用户可通过该接口取得操作系统的服务；</p>
+<ol start="2">
+<li>程序接口</li>
+</ol>
+<p>它是提供给程序员在编程时使用的接口，是用户程序取得操作系统服务的惟一途径。</p>
+<h4 id="1-5"><a href="#1-5" class="headerlink" title="1.5"></a>1.5</h4><h5 id="1-5-1-微内核-OS-结构"><a href="#1-5-1-微内核-OS-结构" class="headerlink" title="1.5.1 微内核 OS 结构"></a>1.5.1 微内核 OS 结构</h5><ol>
+<li>微内核操作系统的优点</li>
+</ol>
+<p>(1) 提高了系统的可扩展性</p>
+<p>(2) 增强了系统的可靠性</p>
+<p>(3) 可移植性</p>
+<p>(4) 提供了对分布式系统的支持</p>
+<p>(5) 融入了面向对象技术</p>
+<ol start="2">
+<li>微内核操作系统存在的问题</li>
+</ol>
+<p>微内核 OS 的运行效率有所降低。效率降低的最主要的原因是，在完成一次客户对 OS 提出的服务请求时，需要利用消息实现多次交互和进行用户/内核模式及上下文的多次切换。</p>
+<h3 id="第二章-进程管理"><a href="#第二章-进程管理" class="headerlink" title="第二章 进程管理"></a>第二章 进程管理</h3><h4 id="2-1-进程的基本概念"><a href="#2-1-进程的基本概念" class="headerlink" title="2.1 进程的基本概念"></a>2.1 进程的基本概念</h4><h5 id="2-1-1-程序的顺序执行及其特征"><a href="#2-1-1-程序的顺序执行及其特征" class="headerlink" title="2.1.1 程序的顺序执行及其特征"></a>2.1.1 程序的顺序执行及其特征</h5><ol>
+<li>程序顺序执行时的特征</li>
+</ol>
+<p>(1) 顺序性：处理机的操作严格按照程序所规定的顺序执行，即每一操作必须在上一个操作结束之后开始。</p>
+<p>(2) 封闭性：程序是在封闭的环境下执行的，即程序运行时独占全机资源，资源的状态(除初始状态外)只有本程序才能改变它。程序一旦开始执行，其执行结果不受外界因素影响。</p>
+<p>(3) 可再现性：只要程序执行时的环境和初始条件相同，当程序重复执行时，不论它是从头到尾不停顿地执行，还是“停停走走”地执行，都将获得相同的结果。</p>
+<h5 id="2-1-2-程序的并发执行及其特征"><a href="#2-1-2-程序的并发执行及其特征" class="headerlink" title="2.1.2 程序的并发执行及其特征"></a>2.1.2 程序的并发执行及其特征</h5><ol>
+<li>程序的并发执行时的特征</li>
+</ol>
+<p>(1) 间断性：程序在并发执行时，由于它们共享系统资源，以及为完成同一项任务而相互合作，致使在这些并发执行的程序之间，形成了相互制约的关系。</p>
+<p>(2) 失去封闭性：程序在并发执行时，是多个程序共享系统中的各种资源，因而这些资源的状态将由多个程序来改变，致使程序的运行失去了封闭性。这样，某程序在执行时，必然会受到其它程序的影响。例如，当处理机这一资源已被某个程序占有时，另一程序必须等待。</p>
+<p>(3) 不可再现性：程序在并发执行时，由于失去了封闭性，也将导致其再失去可再现性。程序经过多次执行后，虽然它们执行时的环境和初始条件相同，但得到的结果却各不相同。</p>
+<h5 id="2-1-3-进程的特征与状态"><a href="#2-1-3-进程的特征与状态" class="headerlink" title="2.1.3 进程的特征与状态"></a>2.1.3 进程的特征与状态</h5><ol>
+<li>进程的特征和定义</li>
+</ol>
+<p>为使程序能并发执行，且为了对并发执行的程序加以描述和控制，人们引入了“进程”的概念。下面对进程的特征加以描述。</p>
+<p>(1) 结构特征：</p>
+<p>通常的程序是不能并发执行的。为使程序(含数据)能独立运行，应为之配置一进程控制块，即 PCB(Process Control Block)；而由程序段、相关的数据段和 PCB三部分便构成了进程实体。在早期的 UNIX 版本中，把这三部分总称为“进程映像”。值得指出的是，在许多情况下所说的进程，实际上是指进程实体，例如，所谓创建进程，实质上是创建进程实体中的 PCB；而撤消进程，实质上是撤消进程的 PCB。</p>
+<p>(2) 动态性：</p>
+<p>进程的实质是进程实体的一次执行过程，因此，动态性是进程的最基本的特征。动态性还表现在：“它由创建而产生，由调度而执行，由撤消而消亡”。可见，进程实体有一定的生命期，而程序则只是一组有序指令的集合，并存放于某种介质上，其本身并不具有运动的含义，因而是静态的。</p>
+<p>(3) 并发性：</p>
+<p>这是指多个进程实体同存于内存中，且能在一段时间内同时运行。并发性是进程的重要特征，同时也成为 OS 的重要特征。引入进程的目的也正是为了使其进程实体能和其它进程实体并发执行；而程序(没有建立 PCB)是不能并发执行的。</p>
+<p>(4) 独立性：</p>
+<p>在传统的 OS 中，独立性是指进程实体是一个能独立运行、独立分配资源和独立接受调度的基本单位。凡未建立 PCB 的程序都不能作为一个独立的单位参与运行。</p>
+<p>(5) 异步性：</p>
+<p>这是指进程按各自独立的、 不可预知的速度向前推进，或说进程实体按异步方式运行。</p>
+<p>现在我们再来讨论进程的定义。曾有许多人从不同的角度对进程下过定义，其中较典<br>型的进程定义有：</p>
+<p>(1) 进程是程序的一次执行。</p>
+<p>(2) 进程是一个程序及其数据在处理机上顺序执行时所发生的活动。</p>
+<p>(3) 进程是程序在一个数据集合上运行的过程，它是系统进行资源分配和调度的一个独立单位。</p>
+<p>在引入了进程实体的概念后，我们可以把传统 OS 中的进程定义为：“进程是进程实体的运行过程，是系统进行资源分配和调度的一个独立单位”。</p>
+<ol start="2">
+<li>进程的三种基本状态</li>
+</ol>
+<p>(1) 就绪（ready）状态：</p>
+<p>当进程已分配到除 CPU 以外的所有必要资源后，只要再获得 CPU，便可立即执行，进程这时的状态称为就绪状态。在一个系统中处于就绪状态的进程可能有多个，通常将它们排成一个队列，称为就绪队列。</p>
+<p>(2) 执行状态：</p>
+<p>进程已获得 CPU，其程序正在执行。在单处理机系统中，只有一个进程处于执行状态；在多处理机系统中，则有多个进程处于执行状态。</p>
+<p>(3) 阻塞状态：</p>
+<p>正在执行的进程由于发生某事件而暂时无法继续执行时，便放弃处理机而处于暂停状态，亦即进程的执行受到阻塞，把这种暂停状态称为阻塞状态，有时也称为等待状态或封锁状态。致使进程阻塞的典型事件有：请求 I/O，申请缓冲空间等。通常将这种处于阻塞状态的进程也排成一个队列。有的系统则根据阻塞原因的不同而把处于阻塞状态的进程排成多个队列。</p>
+<p>处于就绪状态的进程，在调度程序为之分配了处理机之后，该进程便可执行，相应地，它就由就绪状态转变为执行状态。正在执行的进程也称为当前进程，如果因分配给它的时间片已完而被暂停执行时，该进程便由执行状态又回复到就绪状态；如果因发生某事件而使进程的执行受阻(例如，进程请求访问某临界资源，而该资源正被其它进程访问时)，使之无法继续执行，该进程将由执行状态转变为阻塞状态。图 2-5 示出了进程的三种基本状态以及各状态之间的转换关系。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p483" alt="b7fbd2560285affd106a48c0ed12552e.png"></p>
+<ol start="3">
+<li>挂起状态</li>
+</ol>
+<p>在引入挂起状态后，又将增加从挂起状态(又称为静止状态)到非挂起状态(又称为活动状态)的转换；或者相反。可有以下几种情况：</p>
+<p>(1) 活动就绪→静止就绪。</p>
+<p>(2) 活动阻塞→静止阻塞。</p>
+<p>(3) 静止就绪→活动就绪。</p>
+<p>(4) 静止阻塞→活动阻塞。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p484" alt="58e257893019bf39b8d722fdfc895135.png"></p>
+<ol start="4">
+<li>创建状态和终止状态</li>
+</ol>
+<p>(1) 创建状态：创建一个进程一般要通过两个步骤：首先，为一个新进程创建 PCB，并填写必要的管理信息；</p>
+<p>其次，把该进程转入就绪状态并插入就绪队列之中。</p>
+<p>当一个新进程被创建时，系统已为其分配了 PCB，填写了进程标识等信息，但由于该进程所必需的资源或其它信息，如主存资源尚未分配等，一般而言，此时的进程已拥有了自己的 PCB，但进程自身还未进入主存，即创建工作尚未完成，进程还不能被调度运行，其所处的状态就是创建状态。</p>
+<p>(2) 终止状态：进程的终止也要通过两个步骤：首先等待操作系统进行善后处理，然后将其 PCB 清零，并将 PCB 空间返还系统。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p485" alt="6072916050ccf384b1cfd3b8c3fc0cbd.png"></p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p486" alt="d43fb5a4616625f5cd3b906a93a00748.png"></p>
+<h5 id="2-1-4-进程控制块（PCB）"><a href="#2-1-4-进程控制块（PCB）" class="headerlink" title="2.1.4 进程控制块（PCB）"></a>2.1.4 进程控制块（PCB）</h5><ol>
+<li>进程控制块的作用</li>
+</ol>
+<p>为了描述和控制进程的运行，系统为每个进程定义了一个数据结构——进程控制块<br>PCB(Process Control Block)，它是进程实体的一部分，是操作系统中最重要的记型数据结构。</p>
+<p>PCB 中记录了操作系统所需的、用于描述进程的当前情况以及控制进程运行的全部信息。进程控制块的作用是使一个在多道程序环境下不能独立运行的程序(含数据)，成为一个能独立运行的基本单位，一个能与其它进程并发执行的进程。或者说，OS 是根据 PCB 来对并发执行的进程进行控制和管理的。</p>
+<p>可见，在进程的整个生命期中，系统总是通过 PCB 对进程进行控制的，亦即，系统是根据进程的 PCB 而不是任何别的什么而感知到该进程的存在的。所以说，<u>PCB 是进程存在的惟一标志。</u></p>
+<p>当系统创建一个新进程时，就为它建立了一个 PCB；进程结束时又回收其 PCB，进程于是也随之消亡。PCB 可以被操作系统中的多个模块读或修改，如被调度程序、资源分配程序、中断处理程序以及监督和分析程序等读或修改。因为 PCB 经常被系统访问，尤其是被运行频率很高的进程及分派程序访问，故 PCB 应常驻内存。系统将所有的 PCB 组织成若干个链表(或队列)，存放在操作系统中专门开辟的 PCB 区内。</p>
+<ol start="2">
+<li>进程控制块中的信息</li>
+</ol>
+<p>(1) 进程标识符：</p>
+<p>进程标识符用于惟一地标识一个进程。一个进程通常有两种标识符：</p>
+<p>内部标识符。在所有的操作系统中，都为每一个进程赋予了一个惟一的数字标识符，它通常是一个进程的序号。设置内部标识符主要是为了方便系统使用。</p>
+<p>外部标识符。它由创建者提供，通常是由字母、数字组成，往往是由用户(进程)在访问该进程时使用。为了描述进程的家族关系，还应设置父进程标识及子进程标识。此外，还可设置用户标识，以指示拥有该进程的用户。</p>
+<p>(2) 处理机状态：</p>
+<p>处理机状态信息主要是由处理机的各种寄存器中的内容组成的。处理机在运行时，许多信息都放在寄存器中。当处理机被中断时，所有这些信息都必须保存在 PCB 中，以便在该进程重新执行时，能从断点继续执行。</p>
+<p>(3) 进程调度信息：</p>
+<p>在 PCB 中还存放一些与进程调度和进程对换有关的信息，包括：</p>
+<p>① 进程状态，指明进程的当前状态，作为进程调度和对换时的依据；</p>
+<p>② 进程优先级，用于描述进程使用处理机的优先级别的一个整数，优先级高的进程应优先获得处理机；</p>
+<p>③ 进程调度所需的其它信息，它们与所采用的进程调度算法有关，比如，进程已等待 CPU 的时间总和、进程已执行的时间总和等；</p>
+<p>④ 事件，指进程由执行状态转变为阻塞状态所等待发生的事件，即阻塞原因。</p>
+<p>(4) 进程控制信息：</p>
+<p>进程控制信息包括：① 程序和数据的地址，指进程的程序和数据所在的内存或外存地<br>(首)址，以便再调度到该进程执行时，能从 PCB 中找到其程序和数据；</p>
+<p>② 进程同步和通信机制，指实现进程同步和进程通信时必需的机制，如消息队列指针、信号量等，它们可能全部或部分地放在 PCB 中；</p>
+<p>③ 资源清单，即一张列出了除 CPU 以外的、进程所需的全部资源及已经分配到该进程的资源的清单；</p>
+<p>④ 链接指针，它给出了本进程(PCB)所在队列中的下一个进程的 PCB 的首地址。</p>
+<h4 id="2-2-进程控制"><a href="#2-2-进程控制" class="headerlink" title="2.2 进程控制"></a>2.2 进程控制</h4><p>进程控制一般是由 OS 的内核中的原语来实现的。</p>
+<p>原语(Primitive)是由若干条指令组成的，用于完成一定功能的一个过程。它与一般过程的区别在于：它们是“原子操作(Action Operation)”。所谓原子操作，是指一个操作中所有动作要么全做，要么全不做。换言之，它是一个不可分割的基本单位，因此，在执行过程中不允许被中断。原子操作在管态下执行，常驻内存。</p>
+<p>原语的作用是为了实现进程的通信和控制，系统对进程的控制如不使用原语，就会造成其状态的不确定性，从而达不到进程控制的目的。</p>
+<p>管态又叫特权态，系统态或核心态。CPU在管态下可以执行指令系统的全集。通常，操作系统在管态下运行。 </p>
+<p>目态又叫常态或用户态。机器处于目态时，程序只能执行非特权指令。用户程序只能在目态下运行，如果用户程序在目态下执行特权指令，硬件将发生中断，由操作系统获得控制，特权指令执行被禁止，这样可以防止用户程序有意或无意的破坏系统。</p>
+<p>从目态转换为管态的唯一途径是中断。 </p>
+<p>从管态到目态可以通过修改程序状态字来实现，这将伴随这由操作系统程序到用户程序的转换。</p>
+<h5 id="2-2-1-进程的创建"><a href="#2-2-1-进程的创建" class="headerlink" title="2.2.1 进程的创建"></a>2.2.1 进程的创建</h5><ol>
+<li>进程图</li>
+</ol>
+<p>进程图是用于描述一个进程的家族关系的有向树，如图 2-11 所示。图中的结点(圆圈)代表进程。在进程 D 创建了进程 I 之后，称 D 是 I 的父进程(Parent Process)，I 是 D 的子进程(Progeny Process)。这里可用一条由父进程指向子进程的有向边来描述它们之间的父子关系。创建父进程的进程称为祖先进程，这样便形成了一棵进程树，把树的根结点作为进程家族的祖先(Ancestor)。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p487" alt="9a169c93b38c7e4e9abc02f9f6c94202.png"></p>
+<p>了解进程间的这种关系是十分重要的。因为子进程可以继承父进程所拥有的资源，例如，继承父进程打开的文件，继承父进程所分配到的缓冲区等。当子进程被撤消时，应将其从父进程那里获得的资源归还给父进程。此外，在撤消父进程时，也必须同时撤消其所有的子进程。为了标识进程之间的家族关系，在 PCB 中都设置了家族关系表项，以标明自己的父进程及所有的子进程。</p>
+<ol start="2">
+<li>引起创建进程的事件</li>
+</ol>
+<p>在多道程序环境中，只有(作为)进程(时)才能在系统中运行。因此，为使程序能运行，就必须为它创建进程。导致一个进程去创建另一个进程的典型事件，可有以下四类：</p>
+<p>(1) 用户登录。在分时系统中，用户在终端键入登录命令后，如果是合法用户，系统将为该终端建立一个进程，并把它插入就绪队列中。</p>
+<p>(2) 作业调度。在批处理系统中，当作业调度程序按一定的算法调度到某作业时，便将作业装入内存，为它分配必要的资源，并立即为它创建进程，再插入就绪队列中。</p>
+<p>(3) 提供服务。当运行中的用户程序提出某种请求后，系统将专门创建一个进程来提供用户所需要的服务，例如，用户程序要求进行文件打印，操作系统将为它创建一个打印进程，这样，不仅可使打印进程与该用户进程并发执行，而且还便于计算出为完成打印任务所花费的时间。</p>
+<p>(4) 应用请求。在上述三种情况下，都是由系统内核为它创建一个新进程；而第 4 类事件则是基于应用进程的需求，由它自己创建一个新进程，以便使新进程以并发运行方式完成特定任务。例如，某应用程序需要不断地从键盘终端输入数据，继而又要对输入数据进行相应的处理，然后，再将处理结果以表格形式在屏幕上显示。该应用进程为使这几个操作能并发执行，以加速任务的完成，可以分别建立键盘输入进程、表格输出进程。</p>
+<ol start="3">
+<li>进程的创建</li>
+</ol>
+<p>一旦操作系统发现了要求创建新进程的事件后，便调用进程创建原语 Creat() 按下述步骤创建一个新进程。</p>
+<p>(1) 申请空白 PCB。为新进程申请获得惟一的数字标识符，并从 PCB 集合中索取一个空白 PCB。</p>
+<p>(2) 为新进程分配资源。为新进程的程序和数据以及用户栈分配必要的内存空间。</p>
+<p>(3) 初始化进程控制块。PCB 的初始化包括：</p>
+<p>① 初始化标识信息，将系统分配的标识符和父进程标识符填入新 PCB 中；</p>
+<p>② 初始化处理机状态信息，使程序计数器指向程序的入口地址，使栈指针指向栈顶；</p>
+<p>③ 初始化处理机控制信息，将进程的状态设置为就绪状态或静止就绪状态，对于优先级，通常是将它设置为最低优先级，除非用户以显式方式提出高优先级要求。</p>
+<p>(4) 将新进程插入就绪队列，如果进程就绪队列能够接纳新进程，便将新进程插入就绪队列。</p>
+<h5 id="2-2-2-进程的终止"><a href="#2-2-2-进程的终止" class="headerlink" title="2.2.2 进程的终止"></a>2.2.2 进程的终止</h5><ol>
+<li>进程的终止过程</li>
+</ol>
+<p>如果系统中发生了上述要求终止进程的某事件，OS 便调用进程终止原语，按下述过程<br>去终止指定的进程。</p>
+<p>(1) 根据被终止进程的标识符，从 PCB 集合中检索出该进程的 PCB，从中读出该进程的状态。</p>
+<p>(2) 若被终止进程正处于执行状态，应立即终止该进程的执行，并置调度标志为真，用于指示该进程被终止后应重新进行调度。</p>
+<p>(3) 若该进程还有子孙进程，还应将其所有子孙进程予以终止，以防它们成为不可控的进程。</p>
+<p>(4) 将被终止进程所拥有的全部资源，或者归还给其父进程，或者归还给系统。</p>
+<p>(5) 将被终止进程(PCB)从所在队列(或链表)中移出，等待其他程序来搜集信息。</p>
+<h5 id="2-2-3-进程的阻塞与唤醒"><a href="#2-2-3-进程的阻塞与唤醒" class="headerlink" title="2.2.3 进程的阻塞与唤醒"></a>2.2.3 进程的阻塞与唤醒</h5><ol>
+<li>进程阻塞过程</li>
+</ol>
+<p>正在执行的进程，当发现上述某事件时，由于无法继续执行，于是进程便通过调用阻塞原语 block 把自己阻塞。可见，进程的阻塞是进程自身的一种主动行为。进入 block过程后，由于此时该进程还处于执行状态，所以应先立即停止执行，把进程控制块中的现行状态由“执行”改为“阻塞”，并将 PCB 插入阻塞队列。如果系统中设置了因不同事件而阻塞的多个阻塞队列，则应将本进程插入到具有相同事件的阻塞(等待)队列。最后，转调度程序进行重新调度，将处理机分配给另一就绪进程并进行切换，亦即，保留被阻塞进程的处理机状态(在 PCB 中)，再按新进程的 PCB 中的处理机状态设置 CPU 的环境。</p>
+<ol start="2">
+<li>进程唤醒状态</li>
+</ol>
+<p>当被阻塞进程所期待的事件出现时，如 I/O 完成或其所期待的数据已经到达，则由有关进程(比如用完并释放了该 I/O 设备的进程)调用唤醒原语 wakeup( )，将等待该事件的进程唤醒。唤醒原语执行的过程是：首先把被阻塞的进程从等待该事件的阻塞队列中移出，将其PCB 中的现行状态由阻塞改为就绪，然后再将该 PCB 插入到就绪队列中。</p>
+<p>应当指出，block 原语和 wakeup 原语是一对作用刚好相反的原语。因此，如果在某进程中调用了阻塞原语，则必须在与之相合作的另一进程中或其他相关的进程中安排唤醒原语，以能唤醒阻塞进程；否则，被阻塞进程将会因不能被唤醒而长久地处于阻塞状态，从<br>而再无机会继续运行。</p>
+<h4 id="2-3-进程同步"><a href="#2-3-进程同步" class="headerlink" title="2.3 进程同步"></a>2.3 进程同步</h4><p>在 OS 中引入进程后，虽然提高了资源的利用率和系统的吞吐量，但由于进程的异步性，也会给系统造成混乱，尤其是在他们争用临界资源时。</p>
+<p>进程同步的主要任务是对多个相关进程在执行次序上进行协调，以使并发执行的诸进程之间能有效地共享资源和相互合作，从而使程序的执行具有可再现性。</p>
+<h5 id="2-3-1-进程同步的基本概念"><a href="#2-3-1-进程同步的基本概念" class="headerlink" title="2.3.1 进程同步的基本概念"></a>2.3.1 进程同步的基本概念</h5><ol>
+<li>两种形式的制约关系：在多道程序环境下，当程序并发执行时，由于资源共享和进程合作，使同处于一个系统中的诸进程之间可能存在着以下两种形式的制约关系。</li>
+</ol>
+<p>(1) 间接相互制约关系。</p>
+<p>(2) 直接相互制约关系。</p>
+<ol start="2">
+<li>临界资源</li>
+</ol>
+<p>在第一章中我们曾经介绍过，许多硬件资源如打印机、磁带机等，都属于临界资源<br>(Critical Resouce)，诸进程间应采取互斥方式，实现对这种资源的共享。（临界资源首先是共享资源）。</p>
+<ol start="3">
+<li>临界区</li>
+</ol>
+<p>由前所述可知，不论是硬件临界资源，还是软件临界资源，多个进程必须互斥地对它进行访问。人们把在每个进程中访问临界资源的那段代码称为临界区(critical section)。</p>
+<ol start="4">
+<li>同步机制应遵循的规则</li>
+</ol>
+<p>为实现进程互斥地进入自已的临界区，可用软件方法，更多的是在系统中设置专门的同步机构来协调各进程间的运行。所有同步机制都应遵循下述四条准则：</p>
+<p>(1) 空闲让进。当无进程处于临界区时，表明临界资源处于空闲状态，应允许一个请求进入临界区的进程立即进入自己的临界区，以有效地利用临界资源。</p>
+<p>(2) 忙则等待。当已有进程进入临界区时，表明临界资源正在被访问，因而其它试图进入临界区的进程必须等待，以保证对临界资源的互斥访问。</p>
+<p>(3) 有限等待。对要求访问临界资源的进程，应保证在有限时间内能进入自己的临界区，以免陷入“死等”状态。</p>
+<p>(4) 让权等待。当进程不能进入自己的临界区时，应立即释放处理机，以免进程陷入“忙等”状态。</p>
+<h5 id="2-3-2-信号量机制"><a href="#2-3-2-信号量机制" class="headerlink" title="2.3.2 信号量机制"></a>2.3.2 信号量机制</h5><p>信号量机构是一种功能较强的机制，可用来解决互斥与同步的问题，它只能被两个标准的原语wait(S)和signal(S)来访问，也可以记为“P操作”和“V操作”。</p>
+<h5 id="2-3-3-信号量的应用"><a href="#2-3-3-信号量的应用" class="headerlink" title="2.3.3 信号量的应用"></a>2.3.3 信号量的应用</h5><ol>
+<li><p>利用信号量实现进程互斥。</p>
+</li>
+<li><p>利用信号量实现前趋关系。</p>
+</li>
+</ol>
+<h5 id="2-3-4-管程机制"><a href="#2-3-4-管程机制" class="headerlink" title="2.3.4 管程机制"></a>2.3.4 管程机制</h5><p>虽然信号量机制是一种既方便、又有效的进程同步机制，但每个要访问临界资源的进程都必须自备同步操作 wait(S)和 signal(S)。这就使大量的同步操作分散在各个进程中。这不仅给系统的管理带来了麻烦，而且还会因同步操作的使用不当而导致系统死锁。这样，在解决上述问题的过程中，便产生了一种新的进程同步工具——管程(Monitors)。</p>
+<ol>
+<li>管程的定义</li>
+</ol>
+<p>代表共享资源的数据结构，以及由对该共享数据结构实施操作的一组过程所组成的资源管理程序，共同构成了一个操作系统的资源管理模块，我们称之为管程。管程被请求和释放<br>资源的进程所调用。</p>
+<h4 id="2-4-进程通信（very-important）"><a href="#2-4-进程通信（very-important）" class="headerlink" title="2.4 进程通信（very important）"></a>2.4 进程通信（very important）</h4><p>进程通信，是指进程之间的信息交换，其所交换的信息量少者是一个状态或数值，多者则是成千上万个字节。进程之间的互斥和同步，由于其所交换的信息量少而被归结为低级通信。在进程互斥中，进程通过只修改信号量来向其他进程表明临界资源是否可用。</p>
+<p>应当指出，信号量机制作为同步工具是卓有成效的，但作为通信工具，则不够理想，主要表现在下述两方面：</p>
+<p>(1) 效率低，生产者每次只能向缓冲池投放一个产品(消息)，消费者每次只能从缓冲区中取得一个消息；</p>
+<p>(2) 通信对用户不透明。</p>
+<h5 id="2-4-1-进程通信的类型"><a href="#2-4-1-进程通信的类型" class="headerlink" title="2.4.1 进程通信的类型"></a>2.4.1 进程通信的类型</h5><p>目前，高级通信机制可归结为三大类：共享存储器系统、消息传递系统以及管道通信系统。</p>
+<ol>
+<li>共享存储器系统</li>
+</ol>
+<p>(1) 基于共享数据结构的通信方式。这种通信方式是低效的，只适于传递相对少量的数据。</p>
+<p>(2) 基于共享存储区的通信方式。为了传输大量数据，在存储器中划出了一块共享存储区，诸进程可通过对共享存储区中数据的读或写来实现通信。</p>
+<ol start="2">
+<li>消息传递系统</li>
+</ol>
+<p>消息传递系统(Message passing system)是当前应用最为广泛的一种进程间的通信机制。在该机制中，进程间的数据交换是以格式化的消息(message)为单位的；在计算机网络中，又把 message 称为报文。程序员直接利用操作系统提供的一组通信命令(原语)，不仅能实现大量数据的传递，而且还隐藏了通信的实现细节，使通信过程对用户是透明的，从而大大减化了通信程序编制的复杂性，因而获得了广泛的应用。</p>
+<p>特别值得一提的是，在当今最为流行的微内核操作系统中，微内核与服务器之间的通信，无一例外地都采用了消息传递机制。又由于它能很好地支持多处理机系统、分布式系统和计算机网络，因此它也成为这些领域最主要的通信工具。消息传递系统的通信方式属于高级通信方式。又因其实现方式的不同而进一步分成直接通信方式和间接通信方式两种。</p>
+<ol start="3">
+<li>管道通信</li>
+</ol>
+<p>所谓“管道”，是指用于连接一个读进程和一个写进程以实现它们之间通信的一个共享文件，又名 pipe 文件。向管道(共享文件)提供输入的发送进程(即写进程)，以字符流形式将大量的数据送入管道；而接受管道输出的接收进程(即读进程)，则从管道中接收(读)数据。由于发送进程和接收进程是利用管道进行通信的，故又称为管道通信。这种方式首创于UNIX 系统，由于它能有效地传送大量数据，因而又被引入到许多其它的操作系统中。</p>
+<p>为了协调双方的通信，管道机制必须提供以下三方面的协调能力：</p>
+<p>(1) 互斥，即当一个进程正在对 pipe 执行读/写操作时，其它(另一)进程必须等待。</p>
+<p>(2) 同步，指当写(输入)进程把一定数量(如 4 KB)的数据写入 pipe，便去睡眠等待，直到读(输出)进程取走数据后，再把它唤醒。当读进程读一空 pipe 时，也应睡眠等待，直至写进程将数据写入管道后，才将之唤醒。</p>
+<p>(3) 确定对方是否存在，只有确定了对方已存在时，才能进行通信。</p>
+<h4 id="2-5-线程"><a href="#2-5-线程" class="headerlink" title="2.5 线程"></a>2.5 线程</h4><h5 id="2-5-1-线程的基本概念"><a href="#2-5-1-线程的基本概念" class="headerlink" title="2.5.1 线程的基本概念"></a>2.5.1 线程的基本概念</h5><ol>
+<li>线程的引入</li>
+</ol>
+<p>如果说，在操作系统中引入进程的目的，是为了使多个程序能并发执行，以提高资源<br>利用率和系统吞吐量，那么，在操作系统中再引入线程，则是为了减少程序在并发执行时所付出的时空开销，使 OS 具有更好的并发性。</p>
+<ol start="2">
+<li>线程与进程的比较</li>
+</ol>
+<p>线程具有许多传统进程所具有的特征，所以又称为轻型进程(Light-Weight Process)或进程元，相应地把传统进程称为重型进程(Heavy-Weight Process)，传统进程相当于只有一个线程的任务。在引入了线程的操作系统中，通常一个进程都拥有若干个线程，至少也有一个线程。下面我们从调度性、并发性、系统开销和拥有资源等方面对线程和进程进行比较。</p>
+<p>(1) 调度</p>
+<p>在传统的操作系统中，作为拥有资源的基本单位和独立调度、分派的基本单位都是进程。<u>而在引入线程的操作系统中，则把线程作为调度和分派的基本单位，而进程作为资源拥有的基本单位，把传统进程的两个属性分开，使线程基本上不拥有资源，这样线程便能轻装前进，从而可显著地提高系统的并发程度。</u>在同一进程中，线程的切换不会引起进程的切换，但从一个进程中的线程切换到另一个进程中的线程时，将会引起进程的切换。</p>
+<p>(2) 并发性</p>
+<p>在引入线程的操作系统中，不仅进程之间可以并发执行，而且在一个进程中的多个线程之间亦可并发执行，使得操作系统具有更好的并发性，从而能更加有效地提高系统资源的利用率和系统的吞吐量。</p>
+<p>(3) 拥有资源</p>
+<p>不论是传统的操作系统，还是引入了线程的操作系统，进程都可以拥有资源，是系统中拥有资源的一个基本单位。一般而言，线程自己不拥有系统资源(也有一点必不可少的资源)，但它可以访问其隶属进程的资源，即一个进程的代码段、数据段及所拥有的系统资源，如已打开的文件、I/O 设备等，可以供该进程中的所有线程所共享。</p>
+<p>(4) 系统开销</p>
+<p>在创建或撤消进程时，系统都要为之创建和回收进程控制块，分配或回收资源，如内存空间和 I/O 设备等，操作系统所付出的开销明显大于线程创建或撤消时的开销。</p>
+<ol start="3">
+<li>线程的属性</li>
+</ol>
+<p>(1) 轻型实体。线程中的实体基本上不拥有系统资源，只是有一点必不可少的、 能保证其独立运行的资源，比如，在每个线程中都应具有一个用于控制线程运行的线程控制块TCB，用于指示被执行指令序列的程序计数器，保留局部变量、少数状态参数和返回地址等的一组寄存器和堆栈。</p>
+<p>(2) 独立调度和分派的基本单位。在多线程 OS 中，线程是能独立运行的基本单位，因而也是独立调度和分派的基本单位。由于线程很“轻”，故线程的切换非常迅速且开销小。</p>
+<p>(3) 可并发执行。在一个进程中的多个线程之间可以并发执行，甚至允许在一个进程中的所有线程都能并发执行；同样，不同进程中的线程也能并发执行。</p>
+<p>(4) 共享进程资源。在同一进程中的各个线程都可以共享该进程所拥有的资源，这首先表现在所有线程都具有相同的地址空间(进程的地址空间)。这意味着线程可以访问该地址空间中的每一个虚地址；此外，还可以访问进程所拥有的已打开文件、定时器、信号量机构等。</p>
+<h4 id="2-6-线程间的同步和通信"><a href="#2-6-线程间的同步和通信" class="headerlink" title="2.6 线程间的同步和通信"></a>2.6 线程间的同步和通信</h4><ol>
+<li>互斥锁</li>
+</ol>
+<p>互斥锁是一种比较简单的、用于实现线程间对资源互斥访问的机制。由于操作互斥锁的时间和空间开销都较低，因而较适合于高频度使用的关键共享数据和程序段。</p>
+<ol start="2">
+<li>条件变量</li>
+</ol>
+<p>在许多情况下，只利用 mutex 来实现互斥访问可能会引起死锁，每一个条件变量通常都与一个互斥锁一起使用，亦即，在创建一个互斥锁时便联系着一个条件变量。单纯的互斥锁用于短期锁定，主要是用来保证对临界区的互斥进入。而条件变量则用于线程的长期等待，直至所等待的资源成为可用的资源。</p>
+<ol start="3">
+<li>信号量机制</li>
+</ol>
+<p>前面所介绍的用于实现进程同步的最常用工具——信号量机制，也可用于多线程 OS中，实现诸线程或进程之间的同步。为了提高效率，可为线程和进程分别设置相应的信号量。</p>
+<h3 id="第三章-处理机调度与死锁"><a href="#第三章-处理机调度与死锁" class="headerlink" title="第三章 处理机调度与死锁"></a>第三章 处理机调度与死锁</h3><h4 id="3-1-调度算法"><a href="#3-1-调度算法" class="headerlink" title="3.1 调度算法"></a>3.1 调度算法</h4><h5 id="3-1-1-先来先服务和短作业-进程-优先调度算法"><a href="#3-1-1-先来先服务和短作业-进程-优先调度算法" class="headerlink" title="3.1.1 先来先服务和短作业(进程)优先调度算法"></a>3.1.1 先来先服务和短作业(进程)优先调度算法</h5><ol>
+<li>先来先服务调度算法</li>
+</ol>
+<p>先来先服务(FCFS)调度算法是一种最简单的调度算法，该算法既可用于作业调度，也可用于进程调度。当在作业调度中采用该算法时，每次调度都是从后备作业队列中选择一个或多个最先进入该队列的作业，将它们调入内存，为它们分配资源、创建进程，然后放入就绪队列。</p>
+<p>在进程调度中采用 FCFS 算法时，则每次调度是从就绪队列中选择一个最先进入该队列的进程，为之分配处理机，使之投入运行。该进程一直运行到完成或发生某事件而阻塞后才放弃处理机。FCFS 算法比较有利于长作业(进程)，而不利于短作业(进程)。</p>
+<ol start="2">
+<li>短作业（进程）优先调度算法</li>
+</ol>
+<p>短作业(进程)优先调度算法 SJ(P)F，是指对短作业或短进程优先调度的算法。它们可以分别用于作业调度和进程调度。短作业优先(SJF)的调度算法是从后备队列中选择一个或若干个估计运行时间最短的作业，将它们调入内存运行。而短进程优先(SPF)调度算法则是从就绪队列中选出一个估计运行时间最短的进程，将处理机分配给它，使它立即执行并一直执行到完成，或发生某事件而被阻塞放弃处理机时再重新调度。</p>
+<p>SJ(P)F 调度算法也存在不容忽视的缺点：</p>
+<p>(1) 该算法对长作业不利，如作业 C 的周转时间由 10 增至 16，其带权周转时间由 2 增至 3.1。更严重的是，如果有一长作业(进程)进入系统的后备队列(就绪队列)，由于调度程序总是优先调度那些(即使是后进来的)短作业(进程)，将导致长作业(进程)长期不被调度。</p>
+<p>(2) 该算法完全未考虑作业的紧迫程度，因而不能保证紧迫性作业(进程)会被及时处理。</p>
+<p>(3) 由于作业(进程)的长短只是根据用户所提供的估计执行时间而定的，而用户又可能会有意或无意地缩短其作业的估计运行时间，致使该算法不一定能真正做到短作业优先调度。</p>
+<h5 id="3-1-2-高优先权优先调度算法"><a href="#3-1-2-高优先权优先调度算法" class="headerlink" title="3.1.2 高优先权优先调度算法"></a>3.1.2 高优先权优先调度算法</h5><ol>
+<li>优先权调度算法的类型</li>
+</ol>
+<p>为了照顾紧迫型作业，使之在进入系统后便获得优先处理，引入了最高优先权优先(FPF)调度算法。此算法常被用于批处理系统中，作为作业调度算法，也作为多种操作系统中的进程调度算法，还可用于实时系统中。当把该算法用于作业调度时，系统将从后备队列中选择若干个优先权最高的作业装入内存。当用于进程调度时，该算法是把处理机分配给就绪队列中优先权最高的进程，这时，又可进一步把该算法分成如下两种。</p>
+<p>(1) 非抢占式优先权算法</p>
+<p>在这种方式下，系统一旦把处理机分配给就绪队列中优先权最高的进程后，该进程便一直执行下去，直至完成；或因发生某事件使该进程放弃处理机时，系统方可再将处理机重新分配给另一优先权最高的进程。这种调度算法主要用于批处理系统中；也可用于某些对实时性要求不严的实时系统中。</p>
+<p>(2) 抢占式优先权调度算法</p>
+<p>在这种方式下，系统同样是把处理机分配给优先权最高的进程，使之执行。但在其执行期间，只要又出现了另一个其优先权更高的进程，进程调度程序就立即停止当前进程(原先权最高的进程)的执行，重新将处理机分配给新到的优先权最高的进程。</p>
+<p>显然，这种抢占式的优先权调度算法能更好地满足紧迫作业的要求，故而常用于要求比较严格的实时系统中，以及对性能要求较高的批处理和分时系统中。</p>
+<ol start="2">
+<li>优先权的类型</li>
+</ol>
+<p>(1) 静态优先权</p>
+<p>静态优先权是在创建进程时确定的，且在进程的整个运行期间保持不变。</p>
+<p>确定进程优先权的依据有如下三个方面：</p>
+<p>① 进程类型。通常，系统进程(如接收进程、对换进程、磁盘 I/O 进程)的优先权高于一般用户进程的优先权。</p>
+<p>② 进程对资源的需求。如进程的估计执行时间及内存需要量的多少，对这些要求少的进程应赋予较高的优先权。</p>
+<p>③ 用户要求。这是由用户进程的紧迫程度及用户所付费用的多少来确定优先权的。</p>
+<p>静态优先权法简单易行，系统开销小，但不够精确，很可能出现优先权低的作业(进程)长期没有被调度的情况。因此，仅在要求不高的系统中才使用静态优先权。</p>
+<p>(2) 动态优先权</p>
+<p>动态优先权是指在创建进程时所赋予的优先权，是可以随进程的推进或随其等待时间的增加而改变的，以便获得更好的调度性能。</p>
+<ol start="3">
+<li>高响应比优先调度算法</li>
+</ol>
+<p>如果我们能为每个作业引入前面所述的动态优先权，并使作业的优先级随着等待时间的增加而以速率 a 提高，则长作业在等待一定的时间后，必然有机会分配到处理机。该优先权的变化规律可描述为：</p>
+<p>优先权 = (等待时间 + 要求服务时间) / 要求服务时间</p>
+<p>由于等待时间与服务时间之和就是系统对该作业的响应时间，故该优先权又相当于响应比 RP。据此，又可表示为：</p>
+<p>RP = (等待时间 + 要求服务时间) / 要求服务时间 = 响应时间 / 要求服务时间</p>
+<p>由上式可以看出：</p>
+<p>(1) 如果作业的等待时间相同，则要求服务的时间愈短，其优先权愈高，因而该算法有利于短作业。</p>
+<p>(2) 当要求服务的时间相同时，作业的优先权决定于其等待时间，等待时间愈长，其优先权愈高，因而它实现的是先来先服务。</p>
+<p>(3) 对于长作业，作业的优先级可以随等待时间的增加而提高，当其等待时间足够长时，其优先级便可升到很高，从而也可获得处理机。</p>
+<p>简言之，该算法既照顾了短作业，又考虑了作业到达的先后次序，不会使长作业长期得不到服务。因此，该算法实现了一种较好的折衷。当然，在利用该算法时，每要进行调度之前，都须先做响应比的计算，这会增加系统开销。</p>
+<h5 id="3-1-3-基于时间片的轮转调度算法"><a href="#3-1-3-基于时间片的轮转调度算法" class="headerlink" title="3.1.3 基于时间片的轮转调度算法"></a>3.1.3 基于时间片的轮转调度算法</h5><p>在早期，分时系统中采用的是简单的时间片轮转法；进入 20 世纪 90年代后，广泛采用多级反馈队列调度算法</p>
+<ol>
+<li>时间片轮转法</li>
+</ol>
+<p>在早期的时间片轮转法中，系统将所有的就绪进程按先来先服务的原则排成一个队列，每次调度时，把 CPU 分配给队首进程，并令其执行一个时间片。时间片的大小从几 ms 到几百 ms。当执行的时间片用完时，由一个计时器发出时钟中断请求，调度程序便据此信号来停止该进程的执行，并将它送往就绪队列的末尾；然后，再把处理机分配给就绪队列中新的队首进程，同时也让它执行一个时间片。这样就可以保证就绪队列中的所有进程在一给定的时间内均能获得一时间片的处理机执行时间。换言之，系统能在给定的时间内响应所有用户的请求。</p>
+<ol start="2">
+<li>多级反馈队列调度算法</li>
+</ol>
+<p>前面介绍的各种用作进程调度的算法都有一定的局限性。如短进程优先的调度算法，仅照顾了短进程而忽略了长进程，而且如果并未指明进程的长度，则短进程优先和基于进程长度的抢占式调度算法都将无法使用。而多级反馈队列调度算法则不必事先知道各种进程所需的执行时间，而且还可以满足各种类型进程的需要，因而它是目前被公认的一种较好的进程调度算法。在采用多级反馈队列调度算法的系统中，调度算法的实施过程如下所述。</p>
+<p>(1) 应设置多个就绪队列，并为各个队列赋予不同的优先级。第一个队列的优先级最高，第二个队列次之，其余各队列的优先权逐个降低。该算法赋予各个队列中进程执行时间片的大小也各不相同，在优先权愈高的队列中，为每个进程所规定的执行时间片就愈小。例如，第二个队列的时间片要比第一个队列的时间片长一倍，……，第 i+1 个队列的时间片要比第 i 个队列的时间片长一倍。图 3-7 是多级反馈队列算法的示意。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p488" alt="5b0dd240ebd2d64e432bbec46d319bb9.png"></p>
+<p>(2) 当一个新进程进入内存后，首先将它放入第一队列的末尾，按 FCFS 原则排队等待调度。当轮到该进程执行时，如它能在该时间片内完成，便可准备撤离系统；如果它在一个时间片结束时尚未完成，调度程序便将该进程转入第二队列的末尾，再同样地按 FCFS原则等待调度执行；如果它在第二队列中运行一个时间片后仍未完成，再依次将它放入第三队列，……，如此下去，当一个长作业(进程)从第一队列依次降到第 n 队列后，在第 n 队列中便采取按时间片轮转的方式运行。</p>
+<p>(3) 仅当第一队列空闲时，调度程序才调度第二队列中的进程运行；仅当第 1～(i-1)队列均空时，才会调度第 i 队列中的进程运行。如果处理机正在第 i 队列中为某进程服务时，又有新进程进入优先权较高的队列(第 1～(i-1)中的任何一个队列)，则此时新进程将抢占正在运行进程的处理机，即由调度程序把正在运行的进程放回到第 i 队列的末尾，把处理机分配给新到的高优先权进程。</p>
+<ol start="3">
+<li>多级反馈队列调度算法的性能</li>
+</ol>
+<p>多级反馈队列调度算法具有较好的性能，能很好地满足各种类型用户的需要。</p>
+<p>(1) 终端型作业用户。由于终端型作业用户所提交的作业大多属于交互型作业，作业通常较小，系统只要能使这些作业(进程)在第一队列所规定的时间片内完成，便可使终端型作业用户都感到满意。</p>
+<p>(2) 短批处理作业用户。对于很短的批处理型作业，开始时像终端型作业一样，如果仅在第一队列中执行一个时间片即可完成，便可获得与终端型作业一样的响应时间。对于稍长的作业，通常也只需在第二队列和第三队列各执行一个时间片即可完成，其周转时间仍然较短。</p>
+<p>(3) 长批处理作业用户。对于长作业，它将依次在第 1，2，…，n 个队列中运行，然后再按轮转方式运行，用户不必担心其作业长期得不到处理。</p>
+<h4 id="3-2-实时调度"><a href="#3-2-实时调度" class="headerlink" title="3.2 实时调度"></a>3.2 实时调度</h4><p>由于在实时系统中都存在着若干个实时进程或任务，它们用来反应或控制某个(些)外部事件，往往带有某种程度的紧迫性，因而对实时系统中的调度提出了某些特殊要求。前面所介绍的多种调度算法并不能很好地满足实时系统对调度的要求，为此，需要引入一种新的调度，即实时调度。</p>
+<h5 id="3-2-1-实现实时调度的基本条件"><a href="#3-2-1-实现实时调度的基本条件" class="headerlink" title="3.2.1 实现实时调度的基本条件"></a>3.2.1 实现实时调度的基本条件</h5><p>1．提供必要的信息</p>
+<p>(1) 就绪时间。这是该任务成为就绪状态的起始时间，在周期任务的情况下，它就是事先预知的一串时间序列；而在非周期任务的情况下，它也可能是预知的。</p>
+<p>(2) 开始截止时间和完成截止时间。对于典型的实时应用，只须知道开始截止时间，或者知道完成截止时间。</p>
+<p>(3) 处理时间。这是指一个任务从开始执行直至完成所需的时间。在某些情况下，该时间也是系统提供的。</p>
+<p>(4) 资源要求。这是指任务执行时所需的一组资源。</p>
+<p>(5) 优先级。如果某任务的开始截止时间已经错过，就会引起故障，则应为该任务赋予“绝对”优先级；如果开始截止时间的推迟对任务的继续运行无重大影响，则可为该任务赋予“相对”优先级，供调度程序参考。</p>
+<ol start="2">
+<li>处理能力强</li>
+</ol>
+<p>在实时系统中，通常都有着多个实时任务。若处理机的处理能力不够强，则有可能因处理机忙不过来而使某些实时任务不能得到及时处理，从而导致发生难以预料的后果。</p>
+<ol start="3">
+<li>采用抢占式调度机制</li>
+</ol>
+<p>在含有硬实时任务的实时系统中，广泛采用抢占机制。当一个优先权更高的任务到达时，允许将当前任务暂时挂起，而令高优先权任务立即投入运行，这样便可满足该硬实时任务对截止时间的要求。但这种调度机制比较复杂。</p>
+<p>对于一些小型实时系统，如果能预知任务的开始截止时间，则对实时任务的调度可采用非抢占调度机制，以简化调度程序和对任务调度时所花费的系统开销。但在设计这种调度机制时，应使所有的实时任务都比较小，并在执行完关键性程序和临界区后，能及时地将自己阻塞起来，以便释放出处理机，供调度程序去调度那种开始截止时间即将到达的任务。</p>
+<ol start="4">
+<li>具有快速切换机制</li>
+</ol>
+<p>为保证要求较高的硬实时任务能及时运行，在实时系统中还应具有快速切换机制，以保证能进行任务的快速切换。该机制应具有如下两方面的能力：</p>
+<p>(1) 对外部中断的快速响应能力。</p>
+<p>(2) 快速的任务分派能力。</p>
+<h5 id="3-2-2-常用的几种实时调度算法"><a href="#3-2-2-常用的几种实时调度算法" class="headerlink" title="3.2.2 常用的几种实时调度算法"></a>3.2.2 常用的几种实时调度算法</h5><p>1．最早截止时间优先即 EDF(Earliest Deadline First)算法</p>
+<p>该算法是根据任务的开始截止时间来确定任务的优先级。截止时间愈早，其优先级愈高。该算法要求在系统中保持一个实时任务就绪队列，该队列按各任务截止时间的早晚排序；当然，具有最早截止时间的任务排在队列的最前面。调度程序在选择任务时，总是选择就绪队列中的第一个任务，为之分配处理机，使之投入运行。最早截止时间优先算法既可用于抢占式调度，也可用于非抢占式调度方式中。</p>
+<p>2．最低松弛度优先即 LLF(Least Laxity First)算法</p>
+<p>该算法是根据任务紧急(或松弛)的程度，来确定任务的优先级。任务的紧急程度愈高，为该任务所赋予的优先级就愈高，以使之优先执行。</p>
+<h4 id="3-3-产生死锁的原因和必要条件"><a href="#3-3-产生死锁的原因和必要条件" class="headerlink" title="3.3 产生死锁的原因和必要条件"></a>3.3 产生死锁的原因和必要条件</h4><h5 id="3-3-1-产生死锁的原因"><a href="#3-3-1-产生死锁的原因" class="headerlink" title="3.3.1 产生死锁的原因"></a>3.3.1 产生死锁的原因</h5><p>产生死锁的原因可归结为如下两点：</p>
+<p>(1) 竞争资源。当系统中供多个进程共享的资源如打印机、公用队列等，其数目不足以满足诸进程的需要时，会引起诸进程对资源的竞争而产生死锁。</p>
+<p>(2) 进程间推进顺序非法。进程在运行过程中，请求和释放资源的顺序不当，也同样会导致产生进程死锁。</p>
+<h5 id="3-3-2-产生死锁的必要条件"><a href="#3-3-2-产生死锁的必要条件" class="headerlink" title="3.3.2 产生死锁的必要条件"></a>3.3.2 产生死锁的必要条件</h5><p>死锁的发生必须具备下列四个必要条件。</p>
+<p>(1) 互斥条件：指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求该资源，则请求者只能等待，直至占有该资源的进程用毕释放。</p>
+<p>(2) 请求和保持条件：指进程已经保持了至少一个资源，但又提出了新的资源请求，而该资源又已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。</p>
+<p>(3) 不剥夺条件：指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。</p>
+<p>(4) 环路等待条件：指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，…，Pn}中的 P0正在等待一个 P1占用的资源； P1正在等待 P2占用的资源，……，Pn正在等待已被 P0占用的资源。</p>
+<h5 id="3-3-3-处理死锁的基本方法"><a href="#3-3-3-处理死锁的基本方法" class="headerlink" title="3.3.3 处理死锁的基本方法"></a>3.3.3 处理死锁的基本方法</h5><p>预防，避免，检测，解除</p>
+<h4 id="3-4-预防死锁的方法"><a href="#3-4-预防死锁的方法" class="headerlink" title="3.4 预防死锁的方法"></a>3.4 预防死锁的方法</h4><h5 id="3-4-1-预防死锁"><a href="#3-4-1-预防死锁" class="headerlink" title="3.4.1 预防死锁"></a>3.4.1 预防死锁</h5><p>预防死锁的方法是使四个必要条件中的第 2、3、4 个条件之一不能成立，来避免发生死锁。至于必要条件 1，因为它是由设备的固有特性所决定的，不仅不能改变，还应加以保证。</p>
+<ol>
+<li>摒弃“请求和保持”条件</li>
+</ol>
+<p>在采用这种方法时，系统规定所有进程在开始运行之前，都必须一次性地申请其在整个运行过程所需的全部资源。此时，若系统有足够的资源分配给某进程，便可把其需要的所有资源分配给该进程，这样，该进程在整个运行期间便不会再提出资源要求，从而摒弃了请求条件。</p>
+<p>这种预防死锁的方法其优点是简单、易于实现且很安全。但其缺点却也极其明显：首<br>先表现为资源被严重浪费，其次是使进程延迟运行，仅当进程在获得了其所需的全部资源后，才能开始运行，但可能因有些资源已长期被其它进程占用而致使等待该资源的进程迟迟不能运行。</p>
+<ol start="2">
+<li>摒弃“不剥夺”条件</li>
+</ol>
+<p>在采用这种方法时系统规定，进程是逐个地提出对资源的要求的。当一个已经保持了某些资源的进程，再提出新的资源请求而不能立即得到满足时，<u>必须释放它已经保持了的所有资源，待以后需要时再重新申请</u>。这意味着某一进程已经占有的资源，在运行过程中会被暂时地释放掉，也可认为是被剥夺了，从而摒弃了“不剥夺”条件。</p>
+<p>这种预防死锁的方法实现起来比较复杂且要付出很大的代价。此外，这种策略还可能因<br>为反复地申请和释放资源，致使进程的执行被无限地推迟，这不仅延长了进程的周转时间，<br>而且也增加了系统开销，降低了系统吞吐量。</p>
+<ol start="3">
+<li>摒弃“环路等待”条件</li>
+</ol>
+<p>这种方法中规定，系统将所有资源按类型进行线性排队，并赋予不同的序号。例如，令输入机的序号为 1，打印机的序号为 2，磁带机为 3，磁盘为 4。所有进程对资源的请求必须严格按照资源序号递增的次序提出，这样，在所形成的资源分配图中，不可能再出现环路，因而摒弃了“环路等待”条件。</p>
+<p>首先是为系统中各类资源所分配(确定)的序号必须相对稳定，这就限制了新类型设备的增加。为方便用户，系统对用户在编程时所施加的限制条件应尽量少。然而这种按规定次序申请的方法，必然会限制用户简单、自主地编程。</p>
+<h5 id="3-4-2-系统安全状态"><a href="#3-4-2-系统安全状态" class="headerlink" title="3.4.2 系统安全状态"></a>3.4.2 系统安全状态</h5><p>在该方法中把系统的状态分为安全状态和不安全状态，只要能使系统始终都处于安全状态，便可避免发生死锁。</p>
+<ol>
+<li>安全状态</li>
+</ol>
+<p>所谓安全状态，是指系统能按某种进程顺序(P1，P2，…，Pn)(称〈P1，P2，…，Pn〉序列为安全序列)，来为每个进程 Pi分配其所需资源，直至满足每个进程对资源的最大需求，使每个进程都可顺利地完成。如果系统无法找到这样一个安全序列，则称系统处于不安全状态。</p>
+<p>虽然并非所有的不安全状态都必然会转为死锁状态，但当系统进入不安全状态后，便有可能进而进入死锁状态；反之，只要系统处于安全状态，系统便可避免进入死锁状态。因此，避免死锁的实质在于：系统在进行资源分配时，如何使系统不进入不安全状态。</p>
+<h4 id="3-5-死锁的检测与解除"><a href="#3-5-死锁的检测与解除" class="headerlink" title="3.5 死锁的检测与解除"></a>3.5 死锁的检测与解除</h4><h5 id="3-5-1-死锁的解除"><a href="#3-5-1-死锁的解除" class="headerlink" title="3.5.1 死锁的解除"></a>3.5.1 死锁的解除</h5><p>当发现有进程死锁时，便应立即把它们从死锁状态中解脱出来。常采用解除死锁的两种方法是：</p>
+<p>(1) 剥夺资源。从其它进程剥夺足够数量的资源给死锁进程，以解除死锁状态。</p>
+<p>(2) 撤消进程。最简单的撤消进程的方法是使全部死锁进程都夭折掉；稍微温和一点的方法是按照某种顺序逐个地撤消进程，直至有足够的资源可用，使死锁状态消除为止。</p>
+<h3 id="第四章-存储器管理"><a href="#第四章-存储器管理" class="headerlink" title="第四章 存储器管理"></a>第四章 存储器管理</h3><h4 id="4-1-存储器的层次结构"><a href="#4-1-存储器的层次结构" class="headerlink" title="4.1 存储器的层次结构"></a>4.1 存储器的层次结构</h4><h5 id="4-1-1-多级存储器结构"><a href="#4-1-1-多级存储器结构" class="headerlink" title="4.1.1 多级存储器结构"></a>4.1.1 多级存储器结构</h5><p>对于通用计算机而言，存储层次至少应具有三级：最高层为 CPU 寄存器，中间为主存，最底层是辅存。在较高档的计算机中，还可以根据具体的功能分工细划为寄存器、高速缓存、主存储器、磁盘缓存、固定磁盘、可移动存储介质等 6 层。如图 4-1 所示，在存储层次中越往上，存储介质的访问速度越快，价格也越高，相对存储容量也越小。其中，寄存器、高速缓存、主存储器和磁盘缓存均属于操作系统存储管理的管辖范畴，掉电后它们存储的信息不再存在。固定磁盘和可移动存储介质属于设备管理的管辖范畴，它们存储的信息将被长期保存。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p489" alt="a6b6a0ef6feef838dcf1c316bf59ea92.png"></p>
+<h5 id="4-1-2-主存储器与寄存器"><a href="#4-1-2-主存储器与寄存器" class="headerlink" title="4.1.2 主存储器与寄存器"></a>4.1.2 主存储器与寄存器</h5><ol>
+<li>主存储器</li>
+</ol>
+<p>主存储器(简称内存或主存)是计算机系统中一个主要部件，用于保存进程运行时的程序和数据，也称可执行存储器，CPU的控制部件只能从主存储器中取得指令和数据，数据能够从主存储器读取并将它们装入到寄存器中，或者从寄存器存入到主存储器。CPU 与外围设备交换的信息一般也依托于主存储器地址空间。由于主存储器的访问速度远低于 CPU 执行指令的速度，为缓和这一矛盾，在计算机系统中引入了寄存器和高速缓存。</p>
+<ol start="2">
+<li>寄存器</li>
+</ol>
+<p>寄存器访问速度最快，完全能与 CPU 协调工作，但价格却十分昂贵，因此容量不可能做得很大。寄存器的长度一般以字(word)为单位。寄存器用于加速存储器的访问速度，如用寄存器存放操作数，或用作地址寄存器加快地址转换速度等。</p>
+<h5 id="4-1-3-高速缓存和磁盘缓存"><a href="#4-1-3-高速缓存和磁盘缓存" class="headerlink" title="4.1.3 高速缓存和磁盘缓存"></a>4.1.3 高速缓存和磁盘缓存</h5><ol>
+<li>高速缓存</li>
+</ol>
+<p>高速缓存是现代计算机结构中的一个重要部件，其容量大于或远大于寄存器，而比内存约小两到三个数量级左右，从几十 KB 到几 MB，访问速度快于主存储器。</p>
+<p>根据程序执行的局部性原理(即程序在执行时将呈现出局部性规律，在一较短的时间内，程序的执行仅局限于某个部分)，将主存中一些经常访问的信息存放在高速缓存中，减少访问主存储器的次数，可大幅度提高程序执行速度。通常，进程的程序和数据是存放在主存储器中，每当使用时，被临时复制到一个速度较快的高速缓存中。当 CPU 访问一组特定信息时，首先检查它是否在高速缓存中，如果已存在，可直接从中取出使用，以避免访问主存，否则，再从主存中读出信息。</p>
+<ol start="2">
+<li>磁盘缓存</li>
+</ol>
+<p>由于目前磁盘的 I/O 速度远低于对主存的访问速度，因此将频繁使用的一部分磁盘数据和信息，暂时存放在磁盘缓存中，可减少访问磁盘的次数。<u>磁盘缓存本身并不是一种实际存在的存储介质，它依托于固定磁盘，提供对主存储器存储空间的扩充，即利用主存中的存储空间，来暂存从磁盘中读出(或写入)的信息。</u>主存也可以看做是辅存的高速缓存，因为，辅存中的数据必须复制到主存方能使用；反之，数据也必须先存在主存中，才能输出到辅存。</p>
+<h4 id="4-2-程序的装入和链接"><a href="#4-2-程序的装入和链接" class="headerlink" title="4.2 程序的装入和链接"></a>4.2 程序的装入和链接</h4><p>在多道程序环境下，要使程序运行，必须先为之创建进程。而创建进程的第一件事，便是将程序和数据装入内存。如何将一个用户源程序变为一个可在内存中执行的程序，通常都要经过以下几个步骤：首先是要编译，由编译程序(Compiler)将用户源代码编译成若干个目标模块(Object Module)；其次是链接，由链接程序(Linker)将编译后形成的一组目标模块，以及它们所需要的库函数链接在一起，形成一个完整的装入模块(Load Module)；最后是装入，由装入程序(Loader)将装入模块装入内存。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p491" alt="db19481689d1d99082dc036a653630da.png"></p>
+<h5 id="4-2-1-程序的装入"><a href="#4-2-1-程序的装入" class="headerlink" title="4.2.1 程序的装入"></a>4.2.1 程序的装入</h5><ol>
+<li>绝对装入方式</li>
+</ol>
+<p>在编译时，如果知道程序将驻留在内存的什么位置，那么，编译程序将产生绝对地址的目标代码。</p>
+<p>绝对装入程序按照装入模块中的地址，将程序和数据装入内存。装入模块被装入内存后，由于程序中的逻辑地址与实际内存地址完全相同，故不须对程序和数据的地址进行修改。</p>
+<ol start="2">
+<li>可重定位装入方式</li>
+</ol>
+<p>在多道程序环境下，所得到的目标模块的起始地址通常是从 0 开始的，程序中的其它地址也都是相对于起始地址计算的。此时应采用可重定位装入方式，根据内存的当前情况，将装入模块装入到内存的适当位置。</p>
+<p>通常是把在装入时对目标程序中指令和数据的修改过程称为重定位。又因为地址变换通常是在装入时一次完成的，以后不再改变，故称为静态重定位。</p>
+<ol start="3">
+<li>动态运行时装入方式</li>
+</ol>
+<p>动态运行时的装入程序在把装入模块装入内存后，并不立即把装入模块中的相对地址转换为绝对地址，而是把这种地址转换推迟到程序真正要执行时才进行。因此，装入内存后的所有地址都仍是相对地址。为使地址转换不影响指令的执行速度，这种方式需要一个重定位寄存器的支持。</p>
+<h5 id="4-2-2-程序的链接"><a href="#4-2-2-程序的链接" class="headerlink" title="4.2.2 程序的链接"></a>4.2.2 程序的链接</h5><p>源程序经过编译后，可得到一组目标模块，再利用链接程序将这组目标模块链接，形<br>成装入模块。根据链接时间的不同，可把链接分成如下三种：</p>
+<p>(1) 静态链接。在程序运行之前，先将各目标模块及它们所需的库函数，链接成一个完整的装配模块，以后不再拆开。我们把这种事先进行链接的方式称为静态链接方式。</p>
+<p>(2) 装入时动态链接。这是指将用户源程序编译后所得到的一组目标模块，在装入内存时，采用边装入边链接的链接方式。</p>
+<p>(3) 运行时动态链接。这是指对某些目标模块的链接，是在程序执行中需要该(目标)模块时，才对它进行的链接。</p>
+<h4 id="4-3-连续分配方式"><a href="#4-3-连续分配方式" class="headerlink" title="4.3 连续分配方式"></a>4.3 连续分配方式</h4><p>连续分配方式，是指为一个用户程序分配一个连续的内存空间。</p>
+<h5 id="4-3-1-单一连续分配"><a href="#4-3-1-单一连续分配" class="headerlink" title="4.3.1 单一连续分配"></a>4.3.1 单一连续分配</h5><p>这是最简单的一种存储管理方式，但只能用于单用户、单任务的操作系统中。采用这种存储管理方式时，可把内存分为系统区和用户区两部分，系统区仅提供给 OS 使用，通常是放在内存的低址部分；用户区是指除系统区以外的全部内存空间，提供给用户使用。</p>
+<h5 id="4-3-2-固定分区分配"><a href="#4-3-2-固定分区分配" class="headerlink" title="4.3.2 固定分区分配"></a>4.3.2 固定分区分配</h5><p>固定分区式分配是最简单的一种可运行多道程序的存储管理方式。<u>这是将内存用户空间划分为若干个固定大小的区域，在每个分区中只装入一道作业，这样，把用户空间划分为几个分区，便允许有几道作业并发运行。</u>当有一空闲分区时，便可以再从外存的后备作业队列中选择一个适当大小的作业装入该分区，当该作业结束时，又可再从后备作业队列中找出另一作业调入该分区。</p>
+<ol>
+<li>划分分区的方法</li>
+</ol>
+<p>(1) 分区大小相等，即使所有的内存分区大小相等。其缺点是缺乏灵活性，即当程序太小时，会造成内存空间的浪费；当程序太大时，一个分区又不足以装入该程序，致使该程序无法运行。</p>
+<p>(2) 分区大小不等。为了克服分区大小相等而缺乏灵活性的这个缺点，可把内存区划分成含有多个较小的分区、适量的中等分区及少量的大分区。这样，便可根据程序的大小为之分配适当的分区。</p>
+<ol start="2">
+<li>内存分配</li>
+</ol>
+<p>为了便于内存分配，通常将分区按大小进行排队，并为之建立一张分区使用表，其中各表项包括每个分区的起始地址、大小及状态(是否已分配)，见图 4-5(a)所示。当有一用户程序要装入时，由内存分配程序检索该表，从中找出一个能满足要求的、尚未分配的分区，将之分配给该程序，然后将该表项中的状态置为“已分配”；若未找到大小足够的分区，则拒绝为该用户程序分配内存。存储空间分配情况如图 4-5(b)所示。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p492" alt="02124fbbc1172b16fb0188c2dda1f063.png"></p>
+<h5 id="4-3-3-动态分区分配"><a href="#4-3-3-动态分区分配" class="headerlink" title="4.3.3 动态分区分配"></a>4.3.3 动态分区分配</h5><ol>
+<li>分区分配算法</li>
+</ol>
+<p>(1) 首次适应算法(first fit) </p>
+<p>我们以空闲分区链为例来说明采用 FF 算法时的分配情况。FF 算法要求空闲分区链以地址递增的次序链接。在分配内存时，从链首开始顺序查找，直至找到一个大小能满足要求的空闲分区为止；然后再按照作业的大小，从该分区中划出一块内存空间分配给请求者，余下的空闲分区仍留在空闲链中。若从链首直至链尾都不能找到一个能满足要求的分区，则此次内存分配失败，返回。该算法倾向于优先利用内存中低址部分的空闲分区，从而保留了高址部分的大空闲区。这给为以后到达的大作业分配大的内存空间创造了条件。其缺点是低址部分不断被划分，会留下许多难以利用的、很小的空闲分区，而每次查找又都是从低址部分开始，这无疑会增加查找可用空闲分区时的开销。</p>
+<p>(2) 循环首次适应算法(next fit) </p>
+<p>该算法是由首次适应算法演变而成的。在为进程分配内存空间时，不再是每次都从链首开始查找，而是从上次找到的空闲分区的下一个空闲分区开始查找，直至找到一个能满足要求的空闲分区，从中划出一块与请求大小相等的内存空间分配给作业。为实现该算法，应置一起始查寻指针，用于指示下一次起始查寻的空闲分区，并采用循环查找方式，即如果最后一个(链尾)空闲分区的大小仍不能满足要求，则应返回到第一个空闲分区，比较其大小是否满足要求。找到后，应调整起始查寻指针。该算法能使内存中的空闲分区分布得更均匀，从而减少了查找空闲分区时的开销，但这样会缺乏大的空闲分区。</p>
+<p>(3) 最佳适应算法(best fit) </p>
+<p>所谓“最佳”是指每次为作业分配内存时，总是把能满足要求、又是最小的空闲分区分配给作业，避免“大材小用”。为了加速寻找，该算法要求将所有的空闲分区按其容量以从小到大的顺序形成一空闲分区链。这样，第一次找到的能满足要求的空闲区，必然是最佳的。孤立地看，最佳适应算法似乎是最佳的，然而在宏观上却不一定。因为每次分配后所切割下来的剩余部分总是最小的，这样，在存储器中会留下许多难以利用的小空闲区。</p>
+<p>(4) 最坏适应算法(worst fit)</p>
+<p>最坏适应分配算法要扫描整个空闲分区表或链表，总是挑选一个最大的空闲区分割给作业使用，其优点是可使剩下的空闲区不至于太小，产生碎片的几率最小，对中、小作业有利，同时最坏适应分配算法查找效率很高。该算法要求将所有的空闲分区按其容量以从大到小的顺序形成一空闲分区链，查找时只要看第一个分区能否满足作业要求。但是该算法的缺点也是明显的，它会使存储器中缺乏大的空闲分区。最坏适应算法与前面所述的首次适应算法、循环首次适应算法、最佳适应算法一起，也称为顺序搜索法。</p>
+<p>(5) 快速适应算法(quick fit) </p>
+<p>该算法又称为分类搜索法，是将空闲分区根据其容量大小进行分类，对于每一类具有相同容量的所有空闲分区，单独设立一个空闲分区链表，这样，系统中存在多个空闲分区链表，同时在内存中设立一张管理索引表，该表的每一个表项对应了一种空闲分区类型，并记录了该类型空闲分区链表表头的指针。空闲分区的分类是根据进程常用的空间大小进行划分，如 2 KB、4 KB、8 KB 等，对于其它大小的分区，如 7 KB 这样的空闲区，既可以放在 8 KB 的链表中，也可以放在一个特殊的空闲区链表中。</p>
+<p>该算法的优点是查找效率高，仅需要根据进程的长度，寻找到能容纳它的最小空闲区链表，并取下第一块进行分配即可。另外该算法在进行空闲分区分配时，不会对任何分区产生分割，所以能保留大的分区，满足对大空间的需求，也不会产生内存碎片。该算法的缺点是在分区归还主存时算法复杂，系统开销较大。此外，该算法在分配空闲分区时是以进程为单位，一个分区只属于一个进程，因此在为进程所分配的一个分区中，或多或少地存在一定的浪费。空闲分区划分越细，浪费则越严重，整体上会造成可观的存储空间浪费，这是典型的以空间换时间的作法。</p>
+<ol start="2">
+<li>分区分配操作</li>
+</ol>
+<p>(1) 分配内存</p>
+<p>系统应利用某种分配算法，从空闲分区链(表)中找到所需大小的分区。</p>
+<p>(2) 回收内存</p>
+<h5 id="4-3-4-可重定位分区分配"><a href="#4-3-4-可重定位分区分配" class="headerlink" title="4.3.4 可重定位分区分配"></a>4.3.4 可重定位分区分配</h5><ol>
+<li>动态重定位的引入</li>
+</ol>
+<p>在连续分配方式中，必须把一个系统或用户程序装入一连续的内存空间。如果在系统中只有若干个小的分区，即使它们容量的总和大于要装入的程序，但由于这些分区不相邻接，也无法把该程序装入内存。</p>
+<p>若想把作业装入，可采用的一种方法是：将内存中的所有作业进行移动，使它们全都相邻接，这样，即可把原来分散的多个小分区拼接成一个大分区，这时就可把作业装入该区。这种通过移动内存中作业的位置，以把原来多个分散的小分区拼接成一个大分区的方法，称为“拼接”或“紧凑”，见图 4-9(b)。由于经过紧凑后的某些用户程序在内存中的位置发生了变化，此时若不对程序和数据的地址加以修改(变换)，则程序必将无法执行。为此，在每次“紧凑”后，都必须对移动了的程序或数据进行重定位。</p>
+<ol start="2">
+<li>动态重定位的实现</li>
+</ol>
+<p>在动态运行时装入的方式中，作业装入内存后的所有地址都仍然是相对地址，将相对地址转换为物理地址的工作，被推迟到程序指令要真正执行时进行。为使地址的转换不会影响到指令的执行速度，必须有硬件地址变换机构的支持，即须在系统中增设一个重定位寄存器，用它来存放程序(数据)在内存中的起始地址。程序在执行时，真正访问的内存地址是相对地址与重定位寄存器中的地址相加而形成的。</p>
+<ol start="3">
+<li>动态重定位分区分配算法</li>
+</ol>
+<p>动态重定位分区分配算法与动态分区分配算法基本上相同，差别仅在于：在这种分配算法中，增加了紧凑的功能，通常，在找不到足够大的空闲分区来满足用户需求时进行紧凑。</p>
+<h5 id="4-3-5-对换"><a href="#4-3-5-对换" class="headerlink" title="4.3.5 对换"></a>4.3.5 对换</h5><ol>
+<li>对换的引入</li>
+</ol>
+<p>所谓“对换”，是指把内存中暂时不能运行的进程或者暂时不用的程序和数据调出到外存上，以便腾出足够的内存空间，再把已具备运行条件的进程或进程所需要的程序和数据调入内存。对换是提高内存利用率的有效措施。</p>
+<p>如果对换是以整个进程为单位的，便称之为“整体对换”或“进程对换”。</p>
+<p>而如果对换是以“页”或“段”为单位进行的，则分别称之为“页面对换”或“分段对换”，又统称为“部分对换”。</p>
+<ol start="2">
+<li>对换空间的管理</li>
+</ol>
+<p>在具有对换功能的 OS 中，通常把外存分为文件区和对换区。前者用于存放文件，后者用于存放从内存换出的进程。</p>
+<p>故对文件区管理的主要目标，是提高文件存储空间的利用率。对对换空间管理的主要目标，是提高进程换入和换出的速度。</p>
+<p>由于对换分区的分配是采用连续分配方式，因而对换空间的分配与回收，与动态分区方式时的内存分配与回收方法雷同。其分配算法可以是首次适应算法、循环首次适应算法或最佳适应算法。具体的分配操作，也与内存的分配过程相同，这里不再赘述。</p>
+<ol start="3">
+<li>进程的换入与换出</li>
+</ol>
+<p>(1) 进程的换出。每当一进程由于创建子进程而需要更多的内存空间，但又无足够的内存空间等情况发生时，系统应将某进程换出。其过程是：系统首先选择处于阻塞状态且优先级最低的进程作为换出进程，然后启动磁盘，将该进程的程序和数据传送到磁盘的对换区上。</p>
+<p>(2) 进程的换入。</p>
+<p>系统应定时地查看所有进程的状态，从中找出“就绪”状态但已换出的进程，将其中换出时间最久(换出到磁盘上)的进程作为换入进程，将之换入，直至已无可换入的进程或无可换出的进程为止。</p>
+<h4 id="4-4-基本分页存储管理方式"><a href="#4-4-基本分页存储管理方式" class="headerlink" title="4.4 基本分页存储管理方式"></a>4.4 基本分页存储管理方式</h4><h5 id="4-1-1-页面与页表"><a href="#4-1-1-页面与页表" class="headerlink" title="4.1.1 页面与页表"></a>4.1.1 页面与页表</h5><ol>
+<li>页面</li>
+</ol>
+<p>(1) 页面和物理块</p>
+<p>分页存储管理是将一个进程的逻辑地址空间分成若干个大小相等的片，称为页面或页，并为各页加以编号，从 0 开始，如第 0 页、第 1 页等。相应地，也把内存空间分成与页面相同大小的若干个存储块，称为(物理)块或页框(frame)，也同样为它们加以编号，如 0#块、1#块等等。在为进程分配内存时，以块为单位将进程中的若干个页分别装入到多个可以不相邻接的物理块中。由于进程的最后一页经常装不满一块而形成了不可利用的碎片，称之为“页内碎片”。</p>
+<p>(2) 页面大小</p>
+<p>在分页系统中的页面其大小应适中。页面若太小，一方面虽然可使内存碎片减小，从而减少了内存碎片的总空间，有利于提高内存利用率，但另一方面也会使每个进程占用较多的页面，从而导致进程的页表过长，占用大量内存；此外，还会降低页面换进换出的效率。然而，如果选择的页面较大，虽然可以减少页表的长度，提高页面换进换出的速度，但却又会使页内碎片增大。因此，页面的大小应选择适中，且页面大小应是 2 的幂，通常为 512 B～8 KB。</p>
+<ol start="2">
+<li>页表</li>
+</ol>
+<p>在分页系统中，允许将进程的各个页离散地存储在内存不同的物理块中，但系统应能保证进程的正确运行，即能在内存中找到每个页面所对应的物理块。为此，系统又为每个进程建立了一张页面映像表，简称页表。在进程地址空间内的所有页(0～n)，依次在页表中有一页表项，其中记录了相应页在内存中对应的物理块号，见图 4-12 的中间部分。在配置了页表后，进程执行时，通过查找该表，即可找到每页在内存中的物理块号。可见，页表的作用是实现从页号到物理块号的地址映射。</p>
+<p><img src="evernotecid://4633D8C1-4B94-48BA-9394-5D28A777C3AF/appyinxiangcom/13838219/ENResource/p493" alt="665de5bca9a6cb78d6469f6f22f7d447.png"></p>
+<h4 id="4-5-基本分段存储管理方式"><a href="#4-5-基本分段存储管理方式" class="headerlink" title="4.5 基本分段存储管理方式"></a>4.5 基本分段存储管理方式</h4><h5 id="4-5-1-分段系统的基本原理"><a href="#4-5-1-分段系统的基本原理" class="headerlink" title="4.5.1 分段系统的基本原理"></a>4.5.1 分段系统的基本原理</h5><ol>
+<li>分段</li>
+</ol>
+<p>在分段存储管理方式中，作业的地址空间被划分为若干个段，每个段定义了一组逻辑<br>信息。</p>
+<ol start="2">
+<li>段表</li>
+</ol>
+<p>在前面所介绍的动态分区分配方式中，系统为整个进程分配一个连续的内存空间。而在分段式存储管理系统中，则是为每个分段分配一个连续的分区，而进程中的各个段可以离散地移入内存中不同的分区中。为使程序能正常运行，亦即，能从物理内存中找出每个逻辑段所对应的位置，应像分页系统那样，在系统中为每个进程建立一张段映射表，简称“段表”。</p>
+<ol start="3">
+<li>分页和分段的主要区别</li>
+</ol>
+<p>(1) 页是信息的物理单位，分页是为实现离散分配方式，以消减内存的外零头，提高内存的利用率。或者说，分页仅仅是由于系统管理的需要而不是用户的需要。段则是信息的逻辑单位，它含有一组其意义相对完整的信息。分段的目的是为了能更好地满足用户的需要。</p>
+<p>(2) 页的大小固定且由系统决定，由系统把逻辑地址划分为页号和页内地址两部分，是由机器硬件实现的，因而在系统中只能有一种大小的页面；而段的长度却不固定，决定于用户所编写的程序，通常由编译程序在对源程序进行编译时，根据信息的性质来划分。</p>
+<p>(3) 分页的作业地址空间是一维的，即单一的线性地址空间，程序员只需利用一个记忆符，即可表示一个地址；而分段的作业地址空间则是二维的，程序员在标识一个地址时，既需给出段名，又需给出段内地址。</p>
+<h5 id="4-5-2-段页式存储管理方式"><a href="#4-5-2-段页式存储管理方式" class="headerlink" title="4.5.2 段页式存储管理方式"></a>4.5.2 段页式存储管理方式</h5><p>分页系统能有效地提高内存利用率，而分段系统则能很好地满足用户需要。如果能对两种存储管理方式“各取所长”，则可以将两者结合成一种新的存储管理方式系统。这种新系统既具有分段系统的便于实现、分段可共享、易于保护、可动态链接等一系列优点，又能像分页系统那样很好地解决内存的外部碎片问题，以及可为各个分段离散地分配内存等问题。把这种结合起来形成的新系统称为“段页式系统”。</p>
+<ol>
+<li>基本原理<br>段页式系统的基本原理，是分段和分页原理的结合，即先将用户程序分成若干个段，<br>再把每个段分成若干个页，并为每一个段赋予一个段名。</li>
+</ol>
+<h4 id="4-6-虚拟存储器的基本概念"><a href="#4-6-虚拟存储器的基本概念" class="headerlink" title="4.6 虚拟存储器的基本概念"></a>4.6 虚拟存储器的基本概念</h4><h5 id="4-6-1-虚拟存储器的引入"><a href="#4-6-1-虚拟存储器的引入" class="headerlink" title="4.6.1 虚拟存储器的引入"></a>4.6.1 虚拟存储器的引入</h5><ol>
+<li>局部性原理</li>
+</ol>
+<p>(1) 时间局限性。如果程序中的某条指令一旦执行，则不久以后该指令可能再次执行；如果某数据被访问过，则不久以后该数据可能再次被访问。产生时间局限性的典型原因是由于在程序中存在着大量的循环操作。</p>
+<p>(2) 空间局限性。一旦程序访问了某个存储单元，在不久之后，其附近的存储单元也将被访问，即程序在一段时间内所访问的地址，可能集中在一定的范围之内，其典型情况便是程序的顺序执行。</p>
+<ol start="2">
+<li>虚拟存储器的定义</li>
+</ol>
+<p>由上所述可以得知，所谓虚拟存储器，是指具有请求调入功能和置换功能，能从逻辑上对内存容量加以扩充的一种存储器系统。</p>
+<h5 id="4-6-2-虚拟存储器的实现方法"><a href="#4-6-2-虚拟存储器的实现方法" class="headerlink" title="4.6.2 虚拟存储器的实现方法"></a>4.6.2 虚拟存储器的实现方法</h5><p>1．分页请求系统</p>
+<p>2．请求分段系统</p>
+<h5 id="4-6-3-虚拟存储器的特征"><a href="#4-6-3-虚拟存储器的特征" class="headerlink" title="4.6.3 虚拟存储器的特征"></a>4.6.3 虚拟存储器的特征</h5><ol>
+<li>多次性</li>
+</ol>
+<p>多次性是指一个作业被分成多次调入内存运行，亦即在作业运行时没有必要将其全部装入，只需将当前要运行的那部分程序和数据装入内存即可。</p>
+<ol start="2">
+<li>对换性</li>
+</ol>
+<p>对换性是指允许在作业的运行过程中进行换进、换出，亦即，在进程运行期间，允许将那些暂不使用的程序和数据，从内存调至外存的对换区(换出)，待以后需要时再将它们从外存调至内存(换进)；甚至还允许将暂时不运行的进程调至外存，待它们重又具备运行条件时再调入内存。</p>
+<ol start="3">
+<li>虚拟性</li>
+</ol>
+<p>虚拟性是指能够从逻辑上扩充内存容量，使用户所看到的内存容量远大于实际内存容量。这是虚拟存储器所表现出来的最重要的特征，也是实现虚拟存储器的最重要的目标。</p>
+<h4 id="4-7-请求分页存储管理方式"><a href="#4-7-请求分页存储管理方式" class="headerlink" title="4.7 请求分页存储管理方式"></a>4.7 请求分页存储管理方式</h4><h4 id="4-8-页面置换算法"><a href="#4-8-页面置换算法" class="headerlink" title="4.8 页面置换算法"></a>4.8 页面置换算法</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/操作系统学习笔记/" data-id="cjps5wm12001c20fyx9pq2gh5" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Operation-System/">Operation System</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Mac-OS下配置多个GitHub账号" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Mac-OS下配置多个GitHub账号/" class="article-date">
+  <time class="post-time" datetime="2018-08-01T08:07:49.000Z" itemprop="datePublished">
+    <span class="post-month">8月</span><br/>
+    <span class="post-day">01</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Mac-OS下配置多个GitHub账号/">Mac OS下配置多个GitHub账号</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>以前在学校用的实验室的 iMac，现在大三出来实习了，给自己买了一台 MacBook Pro。之前在 GitHub 上搭建了个人博客，写写知识总结或者生活分享也还是不错的。后来到了公司，用的也是自己的电脑，刚来也不懂 Git，以前在学校也只把 GitHub 当做存放代码的地方，公司用的企业版的 GitHub，给了我一个账号，于是我傻乎乎地照着网上一顿配置，直接设置了全局的 name 和 email，给后来挖了一个坑。</p>
+<p>本来没打算折腾的，用简书或者掘金写写博客也还是不错的。可是最近在看一些技术博客，很喜欢 <a href="https://bestswifter.com" target="_blank" rel="noopener">bestswifter</a> 写的文章，不是说有多高深，而是能够把知识说得很通俗易懂，他自己也说“喜欢研究问题的本质，讨厌一切不说人话的描述”。能做到这一点，想必自己对问题已经理解得很透彻了。今天偶然点开霜神的博客 <a href="https://halfrost.com/ghost_feature/" target="_blank" rel="noopener">一缕殇流化隐半边冰霜</a>，糟了，是心动的感觉，也太好看了叭。于是下定决心要把博客给迁移过来。</p>
+<p>我的博客是在 GitHub 上搭建的，但是现在电脑上只配置了公司的 GitHub 账号。于是第一步，把我以前的 GitHub 账号配置到现在这台电脑上来，而且不能与公司的产生冲突。Google 了许多教程，对于一个小白来说，而且电脑上已经配置好了公司的账号，自然不敢瞎搞。参考对比了几篇教程，都或多或少有些许遗漏，（可能对于大神来说都知道了，但对于我这种小白来说，每一步都是很重要很谨慎的）。于是根据自己的经历，给大家分享一篇相对完整的教程。废话到此为止，let’s go。</p>
+<h4 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h4><p>要在同一台电脑上配置两个 GitHub 账号，（GitLab，码云同理）,需要生成各自配套的 SSH Key。这样，在 clone 和 push 代码的时候，就能区分用的是哪个账号。</p>
+<h4 id="取消全局设定"><a href="#取消全局设定" class="headerlink" title="取消全局设定"></a>取消全局设定</h4><p>如果之前在 git config 中全局设置过用户名和邮箱，则需要先取消设置。这个用户名和邮箱是记录每一次 commit 的用户和关联的邮箱。公司和个人用的是不同的邮箱，所以应该分别设置。这里在后面再说。</p>
+<pre><code>git config --global --unset user.name
+git config --global --unset user.email
+</code></pre><h4 id="生成-SSH-Key"><a href="#生成-SSH-Key" class="headerlink" title="生成 SSH Key"></a>生成 SSH Key</h4><pre><code>$ ssh-keygen -t rsa -C &quot;youremail@xxx.com&quot;
+</code></pre><p>按一次回车后：</p>
+<pre><code>Generating public/private rsa key pair.
+Enter file in which to save the key (/Users/Shinancao/.ssh/id_rsa): id_rsa_company(取个名字)
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in 
+id_rsa_company
+Your public key has been saved in 
+id_rsa_company.pub.
+</code></pre><p>这里我首先设置的是公司的 SSH Key，使用的是公司邮箱。记得要给 SSH Key 取一个名字，不然会使用默认的名字，当后面再设置个人的 SSH Key 时，如果还使用的默认的名字，则会把前面的覆盖掉。好了，接着按上面的方式创建个人的 SSH Key，这次我取的名字是 id_rsa_personal。这样，就生成了两套 SSH Key。如果生成的 Key 不在 .ssh 文件夹中，可以拖进去。</p>
+<h4 id="在-GitHub-上添加-Key"><a href="#在-GitHub-上添加-Key" class="headerlink" title="在 GitHub 上添加 Key"></a>在 GitHub 上添加 Key</h4><p>为了避免新手读者不知道怎么添加，在这里我还是提一下吧。在本地通过 <code>cat ~/.ssh/ssh_key_name.pub</code> 获取公钥的内容，复制，然后登录 GitHub 账号，点击 Settings-&gt;SSH and GPG keys&gt;New SSH Key 进行添加。</p>
+<h4 id="在本地-SSH-Agent-中添加-Key"><a href="#在本地-SSH-Agent-中添加-Key" class="headerlink" title="在本地 SSH Agent 中添加 Key"></a>在本地 SSH Agent 中添加 Key</h4><p>只有在本地的 SSH Agent 中添加了 Key，这样 SSH 服务器才能找到 id_rsa。</p>
+<pre><code>ssh-add -K ~/.ssh/id_rsa_personal
+ssh-add -K ~/.ssh/id_rsa_company
+</code></pre><h4 id="修改-SSH-config-文件"><a href="#修改-SSH-config-文件" class="headerlink" title="修改 SSH config 文件"></a>修改 SSH config 文件</h4><p>config 文件不是默认生产的，有些人可能会没有，所以可以先创建一个。先进入到 .ssh 文件中<code>cd ~/.ssh</code>，然后执行 <code>touch config</code>进行创建。</p>
+<p>打开刚才创建好的 config 文件，然后在里面添加如下内容：</p>
+<pre><code># personal
+Host personal.github.com
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa
+
+# company
+Host company.github.com  # 这个名字可任意设置
+HostName github.com
+User git
+IdentityFile ~/.ssh/id_rsa_work
+</code></pre><p>OK，现在让我们测试一下配置是否成功：</p>
+<pre><code>ssh -T git@personal.github.com
+ssh -T git@company.github.com
+</code></pre><p>如果输出以下内容：</p>
+<pre><code>Hi xxx! You&apos;ve successfully authenticated
+</code></pre><p>恭喜你，已经配置成功了！慢着慢着，刚才把全局设置给取消了，现在是不是要单独设置回来，没错，取消了全局设置的用户和邮箱后，我们要为每一个项目进行单独设置。我先给大家讲一下现在该如何对项目进行设置。</p>
+<h4 id="最后一步"><a href="#最后一步" class="headerlink" title="最后一步"></a>最后一步</h4><p>由于我们设置了 Host，这就相当于是 HostName 的别名。比如现在对个人 GitHub 上的 repo 进行 clone 的时候，要改成 <code>git clone git@personal.github.com:xxx/xxx.git</code>。如果是已经克隆到本地的项目，则可以在项目中修改：</p>
+<pre><code>$ git remote rm origin
+$ git remote add origin git@personal.github.com:xxx/xxx.git
+</code></pre><p>可以执行 <code>git remote -v</code> 查看是否修改成功。</p>
+<p>然后在每个项目中，执行：</p>
+<pre><code>git config user.email &quot;xxx@xxx.com&quot;
+git config user.name &quot;xxname&quot;
+</code></pre><p>对公司和个人项目单独设置用户名和邮箱。<br>可以查看一下：</p>
+<pre><code>git config user.name
+git config user.email
+</code></pre><p>push 的话还是照常使用：<code>git push origin master</code></p>
+<p>好啦，全部设置完了，终于可以继续把我 GitHub 上的博客迁移过来了。</p>
+<p>迁移的教程：<a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">使用hexo，如果换了电脑怎么更新博客？
+</a></p>
+<p>再贴一个我的个人博客：<a href="https://hzsss.github.io" target="_blank" rel="noopener">hzsss</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/Mac-OS下配置多个GitHub账号/" data-id="cjps5wlwp000120fy42a1yk17" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-在-Mac-OSX-上安装-Oh-My-Zsh" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/在-Mac-OSX-上安装-Oh-My-Zsh/" class="article-date">
+  <time class="post-time" datetime="2018-07-16T08:05:37.000Z" itemprop="datePublished">
+    <span class="post-month">7月</span><br/>
+    <span class="post-day">16</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/在-Mac-OSX-上安装-Oh-My-Zsh/">在 Mac OSX 上安装 Oh My Zsh</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="安装-Oh-My-Zsh"><a href="#安装-Oh-My-Zsh" class="headerlink" title="安装 Oh My Zsh"></a>安装 Oh My Zsh</h5><p>1、切换到 zsh<br>Mac OSX默认使用的是 bash shell，使用<code>chsh -s /bin/zsh</code>命令切换至 zsh<br>2、使用<code>curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh</code>进行安装</p>
+<pre><code>% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+Dload  Upload   Total   Spent    Left  Speed
+0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0
+100  3952  100  3952    0     0    821      0  0:00:04  0:00:04 --:--:--  4272
+Cloning Oh My Zsh...
+Cloning into &apos;/Users/huangzishan/.oh-my-zsh&apos;...
+remote: Counting objects: 883, done.
+remote: Compressing objects: 100% (746/746), done.
+remote: Total 883 (delta 16), reused 784 (delta 10), pack-reused 0
+Receiving objects: 100% (883/883), 585.10 KiB | 693.00 KiB/s, done.
+Resolving deltas: 100% (16/16), done.
+Looking for an existing zsh config...
+Using the Oh My Zsh template file and adding it to ~/.zshrc
+Time to change your default shell to zsh!
+Changing shell for huangzishan.
+Password for huangzishan: 
+chsh: no changes made
+__                                     __   
+____  / /_     ____ ___  __  __   ____  _____/ /_  
+/ __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ 
+/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / 
+\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  
+/____/                       ....is now installed!
+
+
+Please look over the ~/.zshrc file to select plugins, themes, and options.
+
+p.s. Follow us at https://twitter.com/ohmyzsh.
+
+p.p.s. Get stickers and t-shirts at https://shop.planetargon.com.
+</code></pre><h5 id="配置-Oh-My-Zsh"><a href="#配置-Oh-My-Zsh" class="headerlink" title="配置 Oh My Zsh"></a>配置 Oh My Zsh</h5><p>1、使用<code>vi ~/.zshrc</code>打开配置文件<br><img src="https://upload-images.jianshu.io/upload_images/6365912-61278c1df746d542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置文件"><br>2、在<a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">Oh My Zsh主题展示网站</a> ，选择喜欢的主题进行更改。这里使用的是 vim 来打开的配置文件，所以需要按字母 i 进行插入,然后把光标移动到 ZSH_THEME 这行,更改主题键值对，例如：ZSH_THEME=”agnoster”  ，按 ESC 键后， 键入 :wq 保存退出。<br>3、关闭终端，重新打开，键入 ls,效果如下：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-36c3f0e1327a8fa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果展示"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/在-Mac-OSX-上安装-Oh-My-Zsh/" data-id="cjps5wlx4000a20fytsm17ty1" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-weak原理探索" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/weak原理探索/" class="article-date">
+  <time class="post-time" datetime="2018-06-15T07:56:48.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">15</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/weak原理探索/">weak原理探索</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="weak-指针"><a href="#weak-指针" class="headerlink" title="weak 指针"></a>weak 指针</h3><p>weak是弱引用，所引用对象的计数器不会加一，并在引用对象被释放的时候自动被设置为nil。通常用于解决循环引用问题。</p>
+<h3 id="weak-表"><a href="#weak-表" class="headerlink" title="weak 表"></a>weak 表</h3><p>runtime 维护了一个 weak 表，用于存储指向某个对象的所有 weak 指针。weak 表是一个 hash 表：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-7bca92ed1c76841e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="weak 表"></p>
+<h3 id="weak-实现原理"><a href="#weak-实现原理" class="headerlink" title="weak 实现原理"></a>weak 实现原理</h3><h5 id="1、初始化时：runtime-会调用-objc-initWeak-函数，objc-initWeak-函数会初始化一个新的-weak-指针指向对象的地址。"><a href="#1、初始化时：runtime-会调用-objc-initWeak-函数，objc-initWeak-函数会初始化一个新的-weak-指针指向对象的地址。" class="headerlink" title="1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。"></a>1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。</h5><pre><code>// object 是要初始化的指针，value 是指针指向的对象
+id objc_initWeak(id *object, id value);
+</code></pre><p>objc_initWeak() 方法的实现如下：</p>
+<pre><code>id objc_initWeak(id *location, id newObj) {
+  // 查看对象实例是否有效
+  // 无效对象直接导致指针释放
+  if (!newObj) {
+    *location = nil;
+    return nil;
+  }
+  // 这里传递了三个 bool 数值
+  // 使用 template 进行常量参数传递是为了优化性能
+  return storeWeakfalse/*old*/, true/*new*/, true/*crash*/&gt;
+  (location, (objc_object*)newObj);
+}
+</code></pre><p>这里判断了其指针指向的对象是否有效，无效则直接释放，不再往调用深层函数。若有效，则调用 objc_storeWeak() 函数，要被初始化的指针（object）将被注册为一个指向对象（value）的 __weak 指针对象。</p>
+<blockquote>
+<p>objc_initWeak() 函数有一个前提条件：就是 object 必须是一个没有被注册为__weak 对象的有效指针。而 value 则可以是 null，或者指向一个有效的对象。</p>
+</blockquote>
+<h5 id="2、添加引用时：objc-initWeak-函数会调用-objc-storeWeak-函数，-objc-storeWeak-的作用是更新指针指向，创建对应的弱引用表。"><a href="#2、添加引用时：objc-initWeak-函数会调用-objc-storeWeak-函数，-objc-storeWeak-的作用是更新指针指向，创建对应的弱引用表。" class="headerlink" title="2、添加引用时：objc_initWeak() 函数会调用 objc_storeWeak() 函数， objc_storeWeak() 的作用是更新指针指向，创建对应的弱引用表。"></a>2、添加引用时：objc_initWeak() 函数会调用 objc_storeWeak() 函数， objc_storeWeak() 的作用是更新指针指向，创建对应的弱引用表。</h5><pre><code>id objc_storeWeak(id *location, id value);
+</code></pre><p>1）创建 weak 弱引用表<br>2）解除旧对象的弱引用表<br>3）将新的弱引用表与对象进行关联绑定</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-be5dc3924e9a8e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始化弱引用对象流程"></p>
+<h5 id="3、释放时，调用-clearDeallocating-函数。clearDeallocating-函数首先根据对象地址获取所有-weak-指针地址的数组，然后遍历这个数组把其中的数据设为-nil，最后把这个-entry-从-weak-表中删除，最后清理对象的记录。"><a href="#3、释放时，调用-clearDeallocating-函数。clearDeallocating-函数首先根据对象地址获取所有-weak-指针地址的数组，然后遍历这个数组把其中的数据设为-nil，最后把这个-entry-从-weak-表中删除，最后清理对象的记录。" class="headerlink" title="3、释放时，调用 clearDeallocating 函数。clearDeallocating 函数首先根据对象地址获取所有 weak 指针地址的数组，然后遍历这个数组把其中的数据设为 nil，最后把这个 entry 从 weak 表中删除，最后清理对象的记录。"></a>3、释放时，调用 clearDeallocating 函数。clearDeallocating 函数首先根据对象地址获取所有 weak 指针地址的数组，然后遍历这个数组把其中的数据设为 nil，最后把这个 entry 从 weak 表中删除，最后清理对象的记录。</h5>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/weak原理探索/" data-id="cjps5wlwy000520fyhlvn2qua" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-关于-block的一些思考" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/关于-block的一些思考/" class="article-date">
+  <time class="post-time" datetime="2018-06-15T07:48:51.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">15</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/关于-block的一些思考/">关于__block的一些思考</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://blog.csdn.net/abc649395594/article/details/47086751" target="_blank" rel="noopener">你真的理解__block修饰符的原理么？</a></p>
+<p><a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">深入研究Block捕获外部变量和__block实现原理</a></p>
+<h3 id="Block-的实现"><a href="#Block-的实现" class="headerlink" title="Block 的实现"></a>Block 的实现</h3><pre><code>// Block 源码
+int main(int argc, const char * argv[]) {
+@autoreleasepool {
+void (^blk)(void) = ^{
+printf(&quot;Block\n&quot;);
+};
+
+blk();
+}
+return 0;
+}
+</code></pre><p>使用 clang 命令将源码改成编译后的 C/C++ 语言：</p>
+<pre><code>struct __main_block_impl_0 { // block 对象
+  struct __block_impl impl; // 包含 block 的实现
+  struct __main_block_desc_0* Desc; // 包含了 block 的内存管理
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) { // 构造函数
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp; // block 中的代码，包含 __main_block_func_0 方法
+    Desc = desc;
+  }
+};
+// block 中的代码，传入 block 以便获取其中的捕获的值或变量
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+
+  printf(&quot;Block\n&quot;);
+}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+int main(int argc, const char * argv[]) {
+    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool;
+    // 创建一个 block，调用构造方法
+    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA));
+    // 调用 block，即调用 __main_block_func_0 方法
+    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);
+  }
+  return 0;
+}
+</code></pre><p>关系图：<br><img src="http://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<blockquote>
+<p>流程：定义 block 的时候，调用 <strong>main_block_impl_0 的构造函数，创建 block，</strong>main_block_impl_0 结构体中包括 <strong>block_impl（block 的实现，而这个结构体又包含 block 中的代码，及静态方法 </strong>main_block_func_0），并且把捕获进来的变量成为 __main_block_impl_0 的成员变量。</p>
+</blockquote>
+<blockquote>
+<p>调用 block 的时候，即调用 <strong>block_impl 结构体中的 </strong>main_block_func_0 方法，并且把 __block_impl 自身传入方法，以供方法取得值或变量。</p>
+</blockquote>
+<h3 id="为什么-block-可以修改自动变量的值"><a href="#为什么-block-可以修改自动变量的值" class="headerlink" title="为什么 __block 可以修改自动变量的值"></a>为什么 __block 可以修改自动变量的值</h3><pre><code>struct __Block_byref_i_0 {
+  void *__isa;
+  __Block_byref_i_0 *__forwarding;
+  int __flags;
+  int __size;
+  int i;
+};
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __Block_byref_i_0 *i; // by ref
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_i_0 *_i, int flags=0) : i(_i-&gt;__forwarding) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  __Block_byref_i_0 *i = __cself-&gt;i; // bound by ref
+
+  (i-&gt;__forwarding-&gt;i)++;
+  printf(&quot;%d\n&quot;,(i-&gt;__forwarding-&gt;i));
+}
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;i, (void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
+int main(int argc, const char * argv[]) {
+  /* @autoreleasepool */ { 
+    __AtAutoreleasePool __autoreleasepool; 
+    __attribute__((__blocks__(byref))) __Block_byref_i_0 i = {(void*)0,(__Block_byref_i_0 *)&amp;i, 0, sizeof(__Block_byref_i_0), 10};
+    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_i_0 *)&amp;i, 570425344));
+
+    (i.__forwarding-&gt;i)++;
+
+    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);
+  }
+  return 0;
+}
+</code></pre><p>block 拷贝到堆上，捕获的自动变量值也拷贝到了堆上。<br><img src="https://upload-images.jianshu.io/upload_images/1194012-5f5f486bab68191f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"></p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main(int argc, const char * argv[]) {
+  @autoreleasepool {
+  __block int i = 10;
+  void (^blk)(void) = ^{
+    i++;
+    printf(&quot;%d\n&quot;,i);
+  };
+
+  i++;
+
+  blk();
+  }
+  return 0;
+}
+// 输出
+12
+</code></pre><p>由于<strong>Block_byref_i_0 中有一个可以指向本类型的 </strong>forwarding 指针。</p>
+<p>在调用 block 之前，即未拷贝之前，栈上的 __forwarding 指向自己，进行一次自增。</p>
+<p>经过拷贝之后，栈上的 <strong>forwarding 指针指向堆上的变量，而堆上的 </strong>forwarding 指针又指向自己。</p>
+<p>这样不论是堆中的变量还是栈中的变量调用 (i-&gt;<strong>forwarding-&gt;i)++; ，都是堆上变量的值发生了改变，而栈中变量的值则指向了堆中变量的值，即对 block 中的变量进行自增操作，栈中的值也发生了改变（</strong>forwarding 指针改变了指向，指向堆中的变量）即对外部的自动变量也可以进行自增操作。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/关于-block的一些思考/" data-id="cjps5wlx0000620fy5ukk0gsz" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Core-ML" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Core-ML/" class="article-date">
+  <time class="post-time" datetime="2018-06-12T07:43:52.000Z" itemprop="datePublished">
+    <span class="post-month">6月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Core-ML/">Core ML</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Core-ML-概述"><a href="#Core-ML-概述" class="headerlink" title="Core ML 概述"></a>Core ML 概述</h3><p>借助 Core ML，我们可以将经过训练的机器学习模型整合到我们的应用程序中。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-84a5d1e3a0e74a5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>一个训练有素的模型是将机器学习算法来训练数据集合的结果。该模型根据新的输入数据进行预测。例如，一个在某个地区的历史房价上受过培训的模型可能能够在给定卧室和浴室的数量时预测房屋的价格。</p>
+<p>Core ML 是领域特定框架和功能的基础。Core ML 支持<a href="https://developer.apple.com/documentation/vision?language=objc" target="_blank" rel="noopener"><a href="https://developer.apple.com/documentation/vision?language=objc" target="_blank" rel="noopener">Vision</a>
+</a>图像分析，<a href="https://developer.apple.com/documentation/naturallanguage?language=objc" target="_blank" rel="noopener"><a href="https://developer.apple.com/documentation/naturallanguage?language=objc" target="_blank" rel="noopener">Natural Language</a>
+</a>的自然语言处理，以及评估学习决策树的<a href="https://developer.apple.com/documentation/gameplaykit?language=objc" target="_blank" rel="noopener">GameplayKit</a>。Core ML 本身建立在像<a href="https://developer.apple.com/documentation/accelerate?language=objc" target="_blank" rel="noopener">Accelerate</a>和<a href="https://developer.apple.com/documentation/accelerate/bnns?language=objc" target="_blank" rel="noopener">BNNS</a>这样的低级原语以及<a href="https://developer.apple.com/documentation/metalperformanceshaders?language=objc" target="_blank" rel="noopener"><a href="https://developer.apple.com/documentation/metalperformanceshaders?language=objc" target="_blank" rel="noopener">Metal Performance Shaders</a>
+</a><a href="https://developer.apple.com/documentation/accelerate/bnns?language=objc" target="_blank" rel="noopener"></a>之上。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-094e8ef7782e9847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>Core ML 针对器件性能进行了优化，最大限度地减少了内存占用量和功耗。在设备上严格运行可确保用户数据的隐私，并确保我们的应用在网络连接不可用时保持功能和响应。</p>
+<h3 id="获取-Core-ML-模型"><a href="#获取-Core-ML-模型" class="headerlink" title="获取 Core ML 模型"></a>获取 Core ML 模型</h3><p>Core ML 支持多种机器学习模型，包括神经网络，tree ensembles，支持向量机和广义线性模型。Core ML 需要 Core ML 模型格式（带有<code>.mlmodel</code>文件扩展名的模型）。</p>
+<p>使用 <a href="https://developer.apple.com/documentation/create_ml?language=objc" target="_blank" rel="noopener">Create ML</a> 和我们的数据，我们可以训练自定义模型来执行任务，如识别图像，从文本中提取含义或查找数值之间的关系。使用 Create ML 进行培训的模型采用 Core ML 模型格式，可以在我们的应用程序中使用。</p>
+<p>Apple还提供了几种已经是 Core ML 模型格式的流行的开源<a href="https://developer.apple.com/machine-learning" target="_blank" rel="noopener">模型</a>。我们可以下载这些模型并在我们的应用中使用它们。另外，各种研究团队和大学都会发布他们的模型和培训数据，这些数据可能不在 Core ML 模型中。如果我们要在应用中使用这些模型，需要转换它们，如<a href="https://developer.apple.com/documentation/coreml/converting_trained_models_to_core_ml?language=objc" target="_blank" rel="noopener">受训模型转换为 Core ML</a>。</p>
+<h3 id="集成-Core-ML-模型"><a href="#集成-Core-ML-模型" class="headerlink" title="集成 Core ML 模型"></a>集成 Core ML 模型</h3><h5 id="将模型添加到-Xcode-项目中"><a href="#将模型添加到-Xcode-项目中" class="headerlink" title="将模型添加到 Xcode 项目中"></a>将模型添加到 Xcode 项目中</h5><p>这里我使用的是已经训练好的<a href="https://developer.apple.com/machine-learning/run-a-model/" target="_blank" rel="noopener">MoblieNet</a>模型，将模型拖放到项目导航栏中，即可将模型添加到项目中：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-dc4777c5846f4ad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在Compile Source中添加 <code>.mlmodel</code> 文件：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-3b77c8794d4f1ca5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Compile Source"></p>
+<p>在 Xcode 中查看模型的信息：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-c07e16760c8aba07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="model"><br>我们可以看到具体的模型类 MoblieNet，数据输入格式以及输出格式，在这里输入的是 image 格式的图片，输出的是字典和字符串。</p>
+<h5 id="用代码创建模型"><a href="#用代码创建模型" class="headerlink" title="用代码创建模型"></a>用代码创建模型</h5><p>使用模型类的初始化程序来创建模型：MobileNet</p>
+<pre><code>let model = MobileNet()
+</code></pre><h5 id="获取输入值传递给模型"><a href="#获取输入值传递给模型" class="headerlink" title="获取输入值传递给模型"></a>获取输入值传递给模型</h5><p>在这里我们将相册中选中的图片传给模型：</p>
+<pre><code>let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+
+let pixelBuffer = image.pixelBuffer(width: 224, height: 224)
+</code></pre><h5 id="使用模型进行预测"><a href="#使用模型进行预测" class="headerlink" title="使用模型进行预测"></a>使用模型进行预测</h5><p>在这里我们将模型返回的值显示到界面中，包括结果以及匹配度：</p>
+<pre><code>let output = try?model.prediction(image: pixelBuffer!)
+
+let probs = output?.classLabelProbs.sorted { $0.value &gt; $1.value }
+
+if let prob = probs?.first {
+  resultLabel.text = &quot;结果：\(prob.key) &quot;
+
+  let probText = String(format:&quot;%.2f %&quot;, prob.value * 100)
+
+  probLabel.text = &quot;匹配度：\(probText)%&quot;
+}
+</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/6365912-f2ef9366ae5577ca.gif?imageMogr2/auto-orient/strip" alt="demo"></p>
+<p><a href="https://github.com/hzsss/Core-ML">demo 下载</a></p>
+<h3 id="使用-Create-ML-创建模型"><a href="#使用-Create-ML-创建模型" class="headerlink" title="使用 Create ML 创建模型"></a>使用 Create ML 创建模型</h3><p>在 WWDC18 中，苹果发布了最新的 Xcode10，在 Xcode10 中使用 Create ML 可以自己创建机器学习模型。</p>
+<p>图像分类器是经过训练识别图像的机器学习模型。当我们给它一张图片时，它会返回图片的名称。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-a816249c3669fe6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过显示大量已标记图像的示例来训练图像分类器。例如，我们可以通过展示大象，长颈鹿，狮子等各种照片来训练图像分类器来识别野生动物园动物。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-7bc90d02d00b6dde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="准备数据"><a href="#准备数据" class="headerlink" title="准备数据"></a>准备数据</h5><p>首先准备好用来训练和评估分类器的数据。选择约80％的图像创建一个训练数据集。从剩余的图像创建一个测试数据集。确保任何给定的图像仅出现在这两组中的一组中。</p>
+<p>接下来，创建一个名为 Training Data 的文件夹，另一个名为 Testing Data。在每个文件夹中，使用我们的标签作为名称创建子文件夹。然后将图像分类到每个数据集合适的子文件夹中。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-9a5ae81b087236e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>我们不需要以任何特定方式命名图像文件或向其添加元数据。只需将它们放入具有正确标签的文件夹中即可。</p>
+<p>每个标签至少使用10个图像作为训练集，当然了，越多越好。此外，需要均衡每个种类的图像数量。例如，不要使用10张猎豹的图像和1000大象张图像。</p>
+<p>图像可以是统一类型标识符合<code>public.image</code>的任何格式。这包括常见的格式，如JPEG和PNG。这些图像不需要是相同的尺寸，也不需要任何特定的尺寸，但最好使用至少为299x299像素的图像。如果可能的话，训练收集的图像的方式与收集图像以进行预测的方式类似。</p>
+<p>需要提供多种图像。例如，使用从不同角度和不同照明条件下显示动物的图像。对于给定标签几乎相同的图像进行训练的分类器往往比在不同图像集上训练的分类器性能更差。</p>
+<h5 id="在-Playground-显示图像分类器"><a href="#在-Playground-显示图像分类器" class="headerlink" title="在 Playground 显示图像分类器"></a>在 Playground 显示图像分类器</h5><p>准备好数据后，用 macOS 中创建一个新的 Xcode Playground。使用 Playground 创建 MLImageClassifierBuilder 实例并在实时视图中显示它：</p>
+<pre><code>// Import CreateMLUI to train the image classifier in the UI.
+// For other Create ML tasks, import CreateML instead.
+import CreateMLUI 
+
+let builder = MLImageClassifierBuilder()
+builder.showInLiveView()
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/6365912-1bf4208b1d96bfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h5><p>将 Training Data 文件夹从 Finder 拖到实时视图中的指定位置。训练过程开始，图像分类器显示其进展：<br><img src="http://upload-images.jianshu.io/upload_images/6365912-629cc26f9abc559f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为训练过程的一部分，图像分类器会自动将训练数据分成训练集和验证集。这些都会影响训练，但方式各不相同。由于分割是随机完成的，因此每次训练模型时可能会得到不同的结果。</p>
+<p>训练结束后，实时视图会显示培训和验证的准确性。这些报告了训练好的模型如何将来自相应组的图像分类。因为使用了这些图像训练模型，所以可以对它们进行很好的分类。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-c9abef1215c4eb55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="评估分类器的性能"><a href="#评估分类器的性能" class="headerlink" title="评估分类器的性能"></a>评估分类器的性能</h5><p>接下来，通过使用以前从未使用过的图像进行测试，评估训练好的模型的性能。使用在开始训练之前创建的测试数据集。就像使用培训数据一样，将 Test Data 文件夹拖到实时视图中。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-52e47d4eb409b653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>该模型处理所有的图像，为每个图像做出预测。因为这是标记数据，所以模型可以检查自己的预测。然后它将整体评估准确性作为 UI 中的最终指标。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-8bc4dc08d906d5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>如果评估表现不够好，可以重新培训更多数据，或更改其他一些培训配置。有关如何进行更详细的模型评估以及改进模型性能的策略的信息，可以参阅<a href="https://developer.apple.com/documentation/create_ml/improving_your_model_s_accuracy" target="_blank" rel="noopener">提高模型的准确性</a>。</p>
+<h5 id="保存-Core-ML-模型"><a href="#保存-Core-ML-模型" class="headerlink" title="保存 Core ML 模型"></a>保存 Core ML 模型</h5><p>当模型运行良好时，保存它以便在我们的应用程序中使用它。</p>
+<p>给分类器一个有意义的名字。通过将 UI 中默认的 ImageClassifier 改为 AnimalClassifier。还可以添加更多关于模型的信息，例如作者和简介。点击显示三角形显示这些元数据字段并填写详细信息。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-3c40275f0a71c87b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>点击保存。将该模型保存到指定目录中。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/Core-ML/" data-id="cjps5wlxu000p20fya4jhs4x8" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-iOS开发之Block详解" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS开发之Block详解/" class="article-date">
+  <time class="post-time" datetime="2018-04-24T07:22:14.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">24</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS开发之Block详解/">iOS开发之Block详解</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Block定义"><a href="#Block定义" class="headerlink" title="Block定义"></a>Block定义</h4><p>代码块<code>Block</code>是苹果在<code>iOS4</code>开始引入的对<code>C语言</code>的扩展,用来实现匿名函数的特性,<code>Block</code>是一种特殊的数据类型,其可以正常定义变量、作为参数、作为返回值,特殊地,<code>Block</code>还可以保存一段代码,在需要的时候调用,目前Block已经广泛应用于<code>iOS</code>开发中,常用于<code>GCD</code>、动画、排序及各类回调。一句话来形容<code>Block</code>，带有自动变量（局部变量）的匿名函数。</p>
+<blockquote>
+<p><code>Block</code>的声明与赋值只是保存了一段代码段,必须调用才能执行内部代码。</p>
+</blockquote>
+<h4 id="Block使用"><a href="#Block使用" class="headerlink" title="Block使用"></a>Block使用</h4><h6 id="1-标准声明与定义"><a href="#1-标准声明与定义" class="headerlink" title="(1) 标准声明与定义"></a>(1) 标准声明与定义</h6><pre><code>return_type (^blockName)(var_type) = ^return_type (var_type varName) {
+  // ...
+};
+blockName(var);
+</code></pre><h6 id="2-当返回类型为void"><a href="#2-当返回类型为void" class="headerlink" title="(2) 当返回类型为void"></a>(2) 当返回类型为void</h6><pre><code>void (^blockName)(var_type) = ^void (var_type varName) {
+  // ...
+};
+blockName(var);
+</code></pre><p>可省略写成</p>
+<pre><code>void (^blockName)(var_type) = ^(var_type varName) {
+  // ...
+};
+blockName(var);
+</code></pre><h6 id="3-当参数类型为void"><a href="#3-当参数类型为void" class="headerlink" title="(3) 当参数类型为void"></a>(3) 当参数类型为void</h6><pre><code>return_type (^blockName)(void) = ^return_type (void) {
+  // ...
+};
+blockName();
+</code></pre><p>可省略写成</p>
+<pre><code>return_type (^blockName)(void) = ^return_type {
+  // ...
+};
+blockName();
+</code></pre><h6 id="4-当返回类型和参数类型都为void"><a href="#4-当返回类型和参数类型都为void" class="headerlink" title="(4) 当返回类型和参数类型都为void"></a>(4) 当返回类型和参数类型都为void</h6><pre><code>void (^blockName)(void) = ^void (void) {
+  // ...
+};
+blockName();
+</code></pre><p>可省略写成</p>
+<pre><code>void (^blockName)(void) = ^{
+  // ...
+};
+blockName();
+</code></pre><h6 id="5-匿名Block"><a href="#5-匿名Block" class="headerlink" title="(5) 匿名Block"></a>(5) 匿名Block</h6><p>Block实现时，等号右边就是一个匿名Block，它没有blockName，称之为匿名Block：</p>
+<pre><code>^return_type (var_type varName)
+{
+  //...
+};
+</code></pre><h6 id="6-typedef简化Block的声明"><a href="#6-typedef简化Block的声明" class="headerlink" title="(6) typedef简化Block的声明"></a>(6) typedef简化Block的声明</h6><pre><code>// 定义一种无返回值无参数列表的Block类型
+typedef void(^SayHello)();
+
+// 我们可以像OC中声明变量一样使用Block类型SayHello来声明变量
+SayHello hello = ^(){
+  NSLog(@&quot;hello&quot;);
+};
+
+// 调用后控制台输出&quot;hello&quot;
+hello();
+</code></pre><h4 id="Block捕获外部变量"><a href="#Block捕获外部变量" class="headerlink" title="Block捕获外部变量"></a>Block捕获外部变量</h4><h6 id="1-捕获全局变量和静态全局变量"><a href="#1-捕获全局变量和静态全局变量" class="headerlink" title="(1)捕获全局变量和静态全局变量"></a>(1)捕获全局变量和静态全局变量</h6><pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int global_a = 1;
+static int global_b = 2;
+
+int main(int argc, const char * argv[]) {
+@autoreleasepool {
+
+  void (^myBlock)(void) = ^{
+    global_a++;
+    global_b++;
+
+    NSLog(@&quot;在Block中：global_a = %d, global_b = %d&quot;, global_a, global_b);
+  };
+
+  global_a++;
+  global_b++;
+
+  NSLog(@&quot;在Block外：global_a = %d, global_b = %d&quot;, global_a, global_b);
+
+  myBlock();
+}
+return 0;
+}
+</code></pre><p>输出：</p>
+<pre><code>2018-04-24 20:56:10.676151+0800 Block简书代码[83038:38449696] 在Block外：global_a = 2, global_b = 3
+2018-04-24 20:56:10.676303+0800 Block简书代码[83038:38449696] 在Block中：global_a = 3, global_b = 4
+</code></pre><p>可以看到全局变量<code>global_a</code>和静态全局变量<code>global_b</code>在<code>Block</code>中进行了<code>++</code>操作，<code>Block</code>结束后，它们的值依然保留了下来。</p>
+<blockquote>
+<p>通过clang命令将OC转为C++代码来查看一下Block底层实现</p>
+</blockquote>
+<pre><code>int global_a = 1;
+static int global_b = 2;
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+  static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+    global_a++;
+    global_b++;
+
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_s6_gg35g_r90q514w_6xv0vb4fr0000gp_T_main_fd88b4_mi_0, global_a, global_b);
+  }
+  static struct __main_block_desc_0 {
+    size_t reserved;
+    size_t Block_size;
+  } __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+  int main(int argc, const char * argv[]) {
+    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
+
+    void (*myBlock)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA));
+
+    global_a++;
+    global_b++;
+
+    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_s6_gg35g_r90q514w_6xv0vb4fr0000gp_T_main_fd88b4_mi_1, global_a, global_b);
+
+    ((void (*)(__block_impl *))((__block_impl *)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);
+  }
+  return 0;
+}
+</code></pre><p>首先全局变量<code>global_a</code>和静态全局变量<code>global_b</code>的值增加，以及它们被<code>Block</code>捕获进去，这一点很好理解，因为是全局的，作用域很广，他们并没有变成<code>Block</code>结构体<code>__main_block_impl_0</code>的成员变量，因为他们的作用域大，所以可以直接更改他们的值。<code>Block</code>捕获了它们进去之后，在<code>Block</code>里面进行<code>++</code>操作，<code>Block</code>结束之后，它们的值依旧可以得以保存下来。</p>
+<h6 id="2-捕获静态变量和局部变量"><a href="#2-捕获静态变量和局部变量" class="headerlink" title="(2)捕获静态变量和局部变量"></a>(2)捕获静态变量和局部变量</h6><pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main(int argc, const char * argv[]) { // 捕获静态变量
+@autoreleasepool {
+  static int static_a = 1;
+
+  void (^myBlock)(void) = ^{
+    static_a++;
+    NSLog(@&quot;static_a = %d&quot;, static_a);
+  };
+  myBlock();
+}
+return 0;
+}
+</code></pre><p>输出：</p>
+<pre><code>2018-04-24 21:11:11.337102+0800 Block简书代码[83204:38537226] static_a = 2
+
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  int *static_a;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int *_static_a, int flags=0) : static_a(_static_a) {
+  impl.isa = &amp;_NSConcreteStackBlock;
+  impl.Flags = flags;
+  impl.FuncPtr = fp;
+  Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  int *static_a = __cself-&gt;static_a; // bound by copy
+
+  (*static_a)++;
+
+  NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_s6_gg35g_r90q514w_6xv0vb4fr0000gp_T_main_74a550_mi_0, (*static_a));
+}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+int main(int argc, const char * argv[]) {
+  /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
+  static int static_a = 1;
+
+  void (*myBlock)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, &amp;static_a)); // 传入的是静态变量static_a的内存地址
+
+  ((void (*)(__block_impl *))((__block_impl *)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);
+
+  }
+  return 0;
+}
+</code></pre><p>可以看出，<code>Block</code>捕获了静态变量<code>static_a</code>的内存地址，故可以在<code>Block</code>中对静态变量进行修改。</p>
+<pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main(int argc, const char * argv[]) { // 捕获局部变量
+@autoreleasepool {
+  int part_a = 1;
+
+  void (^myBlock)(void) = ^{
+  NSLog(@&quot;part_a = %d&quot;, part_a);
+  };
+
+  myBlock();
+}
+  return 0;
+}
+</code></pre><p>输出：</p>
+<pre><code>2018-04-24 21:17:22.128069+0800 Block简书代码[83415:38568895] part_a = 1
+
+
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  int part_a;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int _part_a, int flags=0) : part_a(_part_a) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  int part_a = __cself-&gt;part_a; // bound by copy
+
+  NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_s6_gg35g_r90q514w_6xv0vb4fr0000gp_T_main_961862_mi_0, part_a);
+}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+int main(int argc, const char * argv[]) {
+  /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
+  int part_a = 1;
+
+  void (*myBlock)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, part_a)); // 传入的是局部变量part_a的值，故无法在Block中对part_a进行修改
+
+  ((void (*)(__block_impl *))((__block_impl *)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);
+
+  }
+  return 0;
+}
+</code></pre><p>我们可以发现，系统自动给我们加上的注释，<code>bound by copy</code>，局部变量<code>part_a</code>虽然被捕获进来了，但是是用 <code>__cself-&gt; part_a</code>来访问的。<code>Block</code>仅仅捕获了<code>part_a</code>的值，并没有捕获<code>part_a</code>的内存地址。所以在<code>__main_block_func_0</code>这个函数中即使我们重写这个局部变量<code>part_a</code>的值，依旧没法去改变<code>Block</code>外面自动变量<code>part_a</code>的值。</p>
+<p><code>OC</code>可能是基于这一点，在编译的层面就防止开发者可能犯的错误，因为局部变量没法在<code>Block</code>中改变外部变量的值，所以编译过程中就报编译错误。<br><img src="https://upload-images.jianshu.io/upload_images/6365912-b00130fa7fe41173.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Block中不能修改局部变量的值.png"></p>
+<h6 id="3-捕获静态变量和局部变量"><a href="#3-捕获静态变量和局部变量" class="headerlink" title="(3)捕获静态变量和局部变量"></a>(3)捕获静态变量和局部变量</h6><pre><code>#import &lt;Foundation/Foundation.h&gt;
+
+int main(int argc, const char * argv[]) { // 捕获局部变量
+  @autoreleasepool {
+      __block int part_a = 1;
+
+      void (^myBlock)(void) = ^{
+        part_a++;
+        NSLog(@&quot;part_a = %d&quot;, part_a);
+      };
+    myBlock();
+  }
+  return 0;
+}
+</code></pre><p>输出：</p>
+<pre><code>2018-04-24 21:35:20.456984+0800 Block简书代码[83648:38653724] part_a = 2
+
+
+
+struct __Block_byref_part_a_0 {
+  void *__isa;
+  __Block_byref_part_a_0 *__forwarding;
+  int __flags;
+  int __size;
+  int part_a;
+};
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __Block_byref_part_a_0 *part_a; // by ref
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_part_a_0 *_part_a, int flags=0) : part_a(_part_a-&gt;__forwarding) {
+    impl.isa = &amp;_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  __Block_byref_part_a_0 *part_a = __cself-&gt;part_a; // bound by ref
+
+  (part_a-&gt;__forwarding-&gt;part_a)++;
+  NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_s6_gg35g_r90q514w_6xv0vb4fr0000gp_T_main_61637c_mi_0, (part_a-&gt;__forwarding-&gt;part_a));
+}
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;part_a, (void*)src-&gt;part_a, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src-&gt;part_a, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
+int main(int argc, const char * argv[]) {
+  /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool; 
+  __attribute__((__blocks__(byref))) __Block_byref_part_a_0 part_a = {(void*)0,(__Block_byref_part_a_0 *)&amp;part_a, 0, sizeof(__Block_byref_part_a_0), 1};
+
+  void (*myBlock)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_part_a_0 *)&amp;part_a, 570425344)); // 传入的是part_a的内存地址，故可以在Block中修改它的值
+
+  ((void (*)(__block_impl *))((__block_impl *)myBlock)-&gt;FuncPtr)((__block_impl *)myBlock);
+
+  }
+  return 0;
+}
+</code></pre><h4 id="Block循环引用"><a href="#Block循环引用" class="headerlink" title="Block循环引用"></a>Block循环引用</h4><p>一般来说我们总会在设置<code>Block</code>之后，在合适的时间回调<code>Block</code>，而不希望回调<code>Block</code>的时候<code>Block</code>已经被释放了，所以我们需要对<code>Block</code>进行<code>copy</code>，<code>copy</code>到堆中，以便后用。<br><code>Block</code>可能会导致循环引用问题，因为<code>Block</code>在拷贝到堆上的时候，会<code>retain</code>其引用的外部变量，那么如果<code>Block</code>中如果引用了他的宿主对象，那很有可能引起循环引用，如：</p>
+<pre><code>TestCycleRetain
+
+- (void) dealloc {
+  NSLog(@&quot;no cycle retain&quot;);
+} 
+
+- (id) init {
+  self = [super init];
+if (self) {
+  #if TestCycleRetainCase1
+  //会循环引用
+  self.myblock = ^{
+    [self doSomething];
+  };
+
+  #elif TestCycleRetainCase2
+  //会循环引用
+  __block TestCycleRetain * weakSelf = self;
+  self.myblock = ^{
+    [weakSelf doSomething];
+  };
+
+  #elif TestCycleRetainCase3
+  //不会循环引用
+  __weak TestCycleRetain * weakSelf = self;
+  self.myblock = ^{
+    [weakSelf doSomething];
+  };
+
+  #elif TestCycleRetainCase4
+  //不会循环引用
+  __unsafe_unretained TestCycleRetain * weakSelf = self;
+  self.myblock = ^{
+    [weakSelf doSomething];
+  };
+
+  #endif NSLog(@&quot;myblock is %@&quot;, self.myblock);
+}
+return self;
+
+} 
+
+- (void) doSomething {
+  NSLog(@&quot;do Something&quot;);
+}
+
+
+
+main
+
+int main(int argc, char * argv[]) {
+  @autoreleasepool {
+    TestCycleRetain * obj = [[TestCycleRetain alloc] init];
+    obj = nil;
+    return 0;
+  }
+}
+</code></pre><ul>
+<li><code>MRC</code>情况下，用<code>__block</code>可以消除循环引用。</li>
+<li><code>ARC</code>情况下，必须用弱引用才可以解决循环引用问题，<code>iOS 5</code>之后可以直接使用<code>__weak</code></li>
+</ul>
+<p>在上述使用<code>Block</code>中，虽说使用<code>__weak</code>，但是此处会有一个隐患，你不知道<code>self</code>什么时候会被释放，为了保证在<code>Block</code>内不会被释放，我们添加<code>__strong</code>。更多的时候需要配合<code>strongSelf</code>使用，如下：</p>
+<pre><code>__weak __typeof(self) weakSelf = self; 
+self.testBlock =  ^{
+  __strong __typeof(weakSelf) strongSelf = weakSelf;
+  [strongSelf test]; 
+});
+</code></pre><h4 id="Block实现链式编程"><a href="#Block实现链式编程" class="headerlink" title="Block实现链式编程"></a>Block实现链式编程</h4><p>我们下面就需要使用这些基础知识来实现链式编程和函数式编程。</p>
+<h6 id="场景："><a href="#场景：" class="headerlink" title="场景："></a>场景：</h6><p>实现加法计算，比如我需要计算<code>1+2+5+14</code>。通常做法如下：<br>定义加法函数：</p>
+<pre><code>-(NSInteger)addWithParam1:(NSInteger)param1 param2:(NSInteger)param2 {
+  return param1 + param2;
+}
+</code></pre><p>然后调用：</p>
+<pre><code>NSInteger result = [self addWithParam1:1 param2:2];
+result = [self addWithParam1:result param2:5];
+result = [self addWithParam1:result param2:14];
+NSLog(@&quot;%zd&quot;,result);
+</code></pre><p>有多少个数字需要相加，我们就需要调用多少次这个方法，相当麻烦。<br>我们想实现如下效果的调用，类似于<code>masonry</code>，也就是所谓的链式编程，看起来就十分优雅。</p>
+<pre><code>int reslut = [NSObject makeCalculate:^(CalculateManager *mgr) {
+  mgr.add(5).add(6).add(7).add(10);
+}];
+</code></pre><p>下面我们就来看看具体的实现过程吧。</p>
+<h6 id="1、先定义一个NSObject的分类如下："><a href="#1、先定义一个NSObject的分类如下：" class="headerlink" title="1、先定义一个NSObject的分类如下："></a>1、先定义一个NSObject的分类如下：</h6><pre><code>#import 
+
+#import &quot;CalculateManager.h&quot;
+
+@interface NSObject (Calculate)
+
++ (int)makeCalculate:(void(^)(CalculateManager *))block;
+@end
+
+==============================================================================
+
+#import &quot;NSObject+Calculate.h&quot;
+#import &quot;CalculateManager.h&quot;
+
+@implementation NSObject (Calculate)
++ (int)makeCalculate:(void (^)(CalculateManager *))block
+{
+  // 创建计算管理者
+  CalculateManager *mgr = [[CalculateManager alloc] init];
+
+  // 执行计算
+  block(mgr);
+
+  return mgr.result;
+}
+@end
+</code></pre><h6 id="2、继续定义一个类实现计算过程，比如add："><a href="#2、继续定义一个类实现计算过程，比如add：" class="headerlink" title="2、继续定义一个类实现计算过程，比如add："></a>2、继续定义一个类实现计算过程，比如add：</h6><pre><code>#import 
+
+@interface CalculateManager : NSObject
+
+@property (nonatomic, assign) int result;
+
+- (CalculateManager *(^)(int))add;
+@end
+
+
+=======================================================
+
+
+#import &quot;CalculateManager.h&quot;
+
+@implementation CalculateManager
+
+- (CalculateManager * (^)(int))add
+{
+  return ^(int value){
+    _result += value;
+    return self;
+  };
+}
+
+@end
+</code></pre><h5 id="3、然后调用"><a href="#3、然后调用" class="headerlink" title="3、然后调用:"></a>3、然后调用:</h5><pre><code>int reslut = [NSObject makeCalculate:^(CalculateManager *mgr) {
+  mgr.add(5).add(6).add(7).add(10);
+}];
+NSLog(@&quot;%zd&quot;,reslut);
+</code></pre><p>要实现链式调用的一个关键点：就是每次调用<code>add</code>方法必须返回自身，然后才可以继续调用，如此一致循环下去，实现这一切都是<code>Block</code>的功劳。</p>
+<h6 id="4、实现过程分析："><a href="#4、实现过程分析：" class="headerlink" title="4、实现过程分析："></a>4、实现过程分析：</h6><p>上面的步骤3，调用<code>nsobject</code>的分类方法<code>makeCalculate:^(CalculateManager *mgr)block</code>，该方法的参数是一个<code>Block</code>，我们在这里传递一个定义好的<code>Block</code>到该函数。<code>Block</code>的实现是<code>mgr.add(5).add(6).add(7).add(10)</code><br>回到步骤1，是分类方法<code>makeCalculate:^(CalculateManager *mgr)block</code>的具体实现，该方法内部初始化一个<code>CalculateManager</code>实例对象<code>mgr</code>，然后作为<code>Block</code>的参数传入<code>block</code>，也就是步骤3的<code>Block</code>内部的<code>mgr</code>参数，然后调用该<code>Block</code>，也就是上一步实现的这句代码<code>mgr.add(5).add(6).add(7).add(10)</code>，然后返回执行完毕后的结果，也就是<code>mgr.result</code>。<br>回到步骤2，是链式调用代码<code>mgr.add(5).add(6).add(7).add(10)</code>的关键，可以看到<code>add</code>方法返回的是一个<code>Block</code>，该<code>Block</code>的实现是累加传递进来的值然后赋值给属性<code>result</code>保存下来，然后返回值是<code>self</code>，也就是<code>CalculateManager</code>实例对象。这样又可以实现点语法继续调用<code>add</code>方法。</p>
+<p>####Block实现函数式编程<br>不了解什么是函数编程的童鞋可以看看这篇文章，作为一个入门了解：</p>
+<p><a href="https://link.juejin.im?target=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog%2F2012%2F04%2Ffunctional_programming.html" target="_blank" rel="noopener">函数式编程初探</a></p>
+<p>函数编程有两个好处：</p>
+<blockquote>
+<ol>
+<li>去掉了中间变量</li>
+<li>把运算过程写成一系列的函数嵌套调用，逻辑更加清楚</li>
+</ol>
+</blockquote>
+<p>还是上面的例子，不过这次我们想如下写：</p>
+<pre><code>CalculateManager *mgr = [[CalculateManager alloc] init];
+[[[[mgr calculate:^(int result){
+  // 存放所有的计算代码
+  result += 5;
+  result *= 5;
+  return result;
+}]printResult:^(int result) {
+  NSLog(@&quot;第一次计算结果为：%d&quot;,result);
+}]calculate:^int(int result) {
+  result -= 2;
+  result /= 3;
+  return result;
+}]printResult:^(int result) {
+  NSLog(@&quot;第二次计算结果为：%d&quot;,result);
+}];
+</code></pre><p>可以看到计算函数<code>calculate</code>和输出函数<code>printResult</code>可以一直循环嵌套调用，所有的运算过程全部聚在一起，看起来逻辑更加清楚。</p>
+<h5 id="下面来看看如何实现："><a href="#下面来看看如何实现：" class="headerlink" title="下面来看看如何实现："></a>下面来看看如何实现：</h5><pre><code>#import 
+@interface CalculateManager : NSObject
+@property (nonatomic, assign) int result;
+- (instancetype)calculate:(int(^)(int))calculateBlock;
+-(instancetype)printResult:(void(^)(int))printBlock;
+@end
+
+===========================================================
+
+#import &quot;CalculateManager.h&quot;
+
+@implementation CalculateManager
+- (instancetype)calculate:(int (^)(int))calculateBlock
+{
+  _result =  calculateBlock(_result);
+  return self;
+}
+
+-(instancetype)printResult:(void(^)(int))printBlock{
+  printBlock(_result);
+  return self;
+}
+@end
+</code></pre><p>上面两个函数的关键点在于每次都必须返回<code>self</code>，这样才可以继续嵌套调用其他函数。函数的内部实现是做一些内部处理，然后传入参数来调用<code>block</code>。</p>
+<hr>
+<p>参考链接：</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">深入研究Block捕获外部变量和__block实现原理</a><br><a href="https://www.jianshu.com/p/14efa33b3562" target="_blank" rel="noopener">一篇文章看懂iOS代码块Block</a><br><a href="https://juejin.im/post/5add619f6fb9a07ac90cced6#heading-32" target="_blank" rel="noopener">iOS中Block的用法，示例，应用场景，与底层原理解析（这可能是最详细的Block解析）</a><br><a href="https://juejin.im/post/57ca8d475bbb500074e8c076" target="_blank" rel="noopener">Block使用场景</a><br><a href="https://juejin.im/post/5ab7739af265da237410f0d6" target="_blank" rel="noopener">网络回调：Block和Delegate的对比</a><br><a href="https://www.jianshu.com/p/2c7a7c53c91a" target="_blank" rel="noopener">使用FBRetainCycleDetector检测引用循环</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/iOS开发之Block详解/" data-id="cjps5wlz0001620fymocz8h7x" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-iOS开发之深复制和浅复制" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/iOS开发之深复制和浅复制/" class="article-date">
+  <time class="post-time" datetime="2018-04-09T07:09:35.000Z" itemprop="datePublished">
+    <span class="post-month">4月</span><br/>
+    <span class="post-day">09</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/iOS开发之深复制和浅复制/">iOS开发之深复制和浅复制</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###概述</p>
+<ul>
+<li>浅复制<br>并不拷贝对象本身，仅仅是拷贝指向对象的指针。</li>
+<li>深复制<br>直接拷贝整个对象内存到另一块内存中。</li>
+</ul>
+<p>无论是深复制还是浅复制，被复制的对象都会被复制一份。浅复制只是复制指针，而深复制除了复制指针外，还会复制指针指向的内容。如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-bc5ac092e0d62987.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="copy.png"></p>
+<h3 id="copy-与-mutableCopy"><a href="#copy-与-mutableCopy" class="headerlink" title="copy 与 mutableCopy"></a>copy 与 mutableCopy</h3><p>不论是集合类对象，还是非集合类对象，接受到<code>copy</code>和<code>mutableCopy</code>消息时，都会循序一下准则。</p>
+<ul>
+<li><code>copy</code>返回<code>immutable</code>对象。如果对<code>copy</code>返回值使用<code>mutable</code>对象接口，就会crash。</li>
+<li><code>mutableCopy</code>返回<code>mutable</code>对象。</li>
+</ul>
+<p>###非集合类对象的 copy 与 mutableCopy<br>系统非集合类对象指的是<code>NSString</code>，<code>NSNumber</code>之类的对象。下面来看一个例子：</p>
+<pre><code>// 不可变对象复制
+NSString *str = @&quot;haha&quot;;
+NSString *strCopy = [str copy];
+NSMutableString *strMCopy = [str mutableCopy];
+
+NSLog(@&quot;%p&quot;, str);
+NSLog(@&quot;%p&quot;, strCopy);
+NSLog(@&quot;%p&quot;, strMCopy);
+
+---------------------------------输出---------------------------------
+2018-04-09 18:21:08.339512+0800 copyTest[42882:16259329] 0x10314b078
+2018-04-09 18:21:08.339685+0800 copyTest[42882:16259329] 0x10314b078
+2018-04-09 18:21:08.339757+0800 copyTest[42882:16259329] 0x60c0002568c0
+</code></pre><p>我们可以看到，<code>strCopy</code>和<code>str</code>的地址一样，说明进行了指针复制，而<code>strMCopy</code>和<code>str</code>地址不一样，说明进行了内容复制。</p>
+<pre><code>// 可变对象复制
+NSMutableString *mStr = [NSMutableString stringWithString:@&quot;hahaha&quot;];
+NSString *mStrCopy = [mStr copy];
+NSString *mStrMCopy = [mStr mutableCopy];
+
+NSLog(@&quot;%p&quot;, mStr);
+NSLog(@&quot;%p&quot;, mStrCopy);
+NSLog(@&quot;%p&quot;, mStrMCopy);
+
+---------------------------------输出---------------------------------
+2018-04-09 18:21:08.339932+0800 copyTest[42882:16259329] 0x60800005d100
+2018-04-09 18:21:08.340003+0800 copyTest[42882:16259329] 0xa006168616861686
+2018-04-09 18:21:08.340051+0800 copyTest[42882:16259329] 0x608000241020
+</code></pre><p>此时<code>mStr</code>，<code>mstrCopy</code>和<code>mStrMCopy</code>返回的对象内存地址都不一样，说明进行了内容复制。</p>
+<p>可以总结为以下情况：</p>
+<blockquote>
+<pre><code>[immutableObject copy] 浅复制，不可变对象copy后，生成不可变对象，依然无法修改，指针指向同一块内存。
+[immutableObject mutableCopy] 深复制，不可变对象mutableCopy后，生成可变对象，可以修改，指针指向不同内存。
+[mutableObject copy] 深复制，可变对象copy后，生成不可变对象，变成无法修改，指针指向不同内存。
+[mutableObject mutableCopy] 深复制，可变对象mutableCopy后，生成可变对象，可以修改，指针指向不同内存。
+</code></pre></blockquote>
+<p>###集合类对象的 copy 与 mutableCopy<br>集合类对象是指NSArray、NSDictionary、NSSet之类的对象。下面来看一个例子：</p>
+<pre><code>// 不可变对象复制
+NSArray *array1 = @[@1, @&quot;asdas&quot;];
+
+NSArray *array1Copy = [array1 copy];
+NSMutableArray *array1MCopy = [array1 mutableCopy];
+
+NSLog(@&quot;%p&quot;, array1);
+NSLog(@&quot;%p&quot;, array1Copy);
+NSLog(@&quot;%p&quot;, array1MCopy);
+---------------------------------输出---------------------------------
+2018-04-09 18:33:17.954789+0800 copyTest[42935:16321517] 0x604000030160
+2018-04-09 18:33:17.954860+0800 copyTest[42935:16321517] 0x604000030160
+2018-04-09 18:33:17.954935+0800 copyTest[42935:16321517] 0x60400004aad0
+</code></pre><p>可以看到<code>array1</code>和<code>array1Copy</code>内存地址是一样的，而<code>array1</code>和<code>array1MCopy</code>内存地址是不一样的。说明<code>copy</code>进行了指针复制，而<code>mutableCopy</code>进行了内容复制。</p>
+<pre><code>// 可变对象复制
+NSMutableArray *array = [NSMutableArray array];
+[array addObject:@2];
+
+NSArray *arrayCopy = [array copy];
+NSMutableArray *arrayMCopy = [array mutableCopy];
+
+NSLog(@&quot;%p&quot;, array);
+NSLog(@&quot;%p&quot;, arrayCopy);
+NSLog(@&quot;%p&quot;, arrayMCopy);
+
+---------------------------------输出---------------------------------
+2018-04-09 18:33:17.954271+0800  copyTest[42935:16321517] 0x60400004ab30
+2018-04-09 18:33:17.954446+0800  copyTest[42935:16321517] 0x6040000065a0
+2018-04-09 18:33:17.954526+0800  copyTest[42935:16321517] 0x60400004ab60
+</code></pre><p>此时<code>array</code>，<code>arrayCopy</code>和<code>arrayMCopy</code>返回的对象内存地址都不一样，说明进行了内容复制。<br>同样我们可以得出结论：</p>
+<ul>
+<li>在集合类对象中，对<code>immutable</code>对象进行<code>copy</code>，是指针复制，<code>mutableCopy</code>是内容复制；对<code>mutable</code>对象进行<code>copy</code>和<code>mutableCopy</code>都是内容复制。但是：集合对象的内容复制仅限于对象本身，对象元素仍然是指针复制。<blockquote>
+<p>   <code>[immutableObject copy] // 浅复制</code><br><code>[immutableObject mutableCopy] //单层深复制</code><br><code>[mutableObject copy] //单层深复制</code><br><code>[mutableObject mutableCopy] //单层深复制</code></p>
+</blockquote>
+</li>
+</ul>
+<p>这个代码结论和非集合类的非常相似。但是如果要对集合中的对象复制元素怎么办？如果在多层数组中，对第一层进行内容拷贝，其它层进行指针拷贝，这种情况是属于深复制，还是浅复制？对此，<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/Collections/Articles/Copying.html" target="_blank" rel="noopener">苹果官网文档</a>有这样一句话描述</p>
+<blockquote>
+<p><code>This kind of copy is only capable of producing a one-level-deep copy. If you only need a one-level-deep copy, you can explicitly call for one as in Listing 2</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Listing 2 Making a deep copy:</span><br><span class="line">NSArray *deepCopyArray=[[NSArray alloc] initWithArray:someArray copyItems:YES];</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>对于集合类型的对象，将 <code>initWithArray:copyItems:</code>第二个参数设置成<code>YES</code>时，会对集合内每一个元素发送<code>copyWithZone:</code>消息，元素进行复制，但是对于元素中指针类型的成员变量，依然是浅拷贝，因此这种拷贝被称为单层深拷贝<code>（one-level-deep copy）</code>。</p>
+<p>###如何进行深复制呢？<br>如果想进行完全的深复制，可以先通过<code>NSKeyedArchiver</code>将对象归档，再通过 <code>NSKeyedUnarchiver</code> 将对象解归档。由于在归档时，对象中每个成员变量都会收到 <code>encodeWithCoder:</code>消息，相当于将对象所有的数据均序列化保存到磁盘上（可以看成换了种数据格式的复制），再通过<code>initWithCoder:</code>解归档时，就将拷贝过的数据经过转换后读取出来，深复制。</p>
+<pre><code>NSArray *trueDeepCopyArray = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:oldArray]];
+</code></pre><p>###小结</p>
+<ul>
+<li>浅复制<code>(shallow copy)</code>：在浅复制操作时，对于被复制对象的每一层都是指针复制。</li>
+<li>深复制<code>(one-level-deep copy)</code>：在深复制操作时，对于被复制对象，至少有一层是深复制。</li>
+<li>完全复制<code>(real-deep copy)</code>：在完全复制操作时，对于被复制对象的每一层都是对象复制。</li>
+</ul>
+<p>###补充</p>
+<pre><code>NSString *str = @&quot;string&quot;;
+NSLog(@&quot;%p&quot;, str);
+
+str = @&quot;newString&quot;;
+NSLog(@&quot;%p&quot;, str);
+---------------------------------输出---------------------------------
+2018-04-09 18:47:58.582265+0800 copyTest[43000:16423995] 0x10c96d158
+2018-04-09 18:47:58.582298+0800 copyTest[43000:16423995] 0x10c96d178
+</code></pre><p>此处修改的是内存地址。所以第二行应该这样理解：将<code>@”newStirng”</code>当做一个新的对象，将这段对象的内存地址赋值给<code>str</code>。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/iOS开发之深复制和浅复制/" data-id="cjps5wlwx000420fyp8jpbcg2" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-Object-C-Runtime-及消息发送与转发" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/Object-C-Runtime-及消息发送与转发/" class="article-date">
+  <time class="post-time" datetime="2018-03-29T06:51:45.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">29</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/Object-C-Runtime-及消息发送与转发/">Object-C Runtime 及消息发送与转发</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是-Runtime"><a href="#什么是-Runtime" class="headerlink" title="什么是 Runtime"></a>什么是 Runtime</h3><p>Objective-C语言是一门动态语言，它将很多静态语言在编译和链接时期做的事放到了运行时来处理。之所以能具备这种特性，离不开运行时系统即<code>objc Runtime</code>，<code>objc Runtime</code>即 <code>Runtime</code>库。<code>Runtime</code>很好的解决了如何在运行时期找到调用方法这样的问题。</p>
+<h3 id="类与对象基础数据结构"><a href="#类与对象基础数据结构" class="headerlink" title="类与对象基础数据结构"></a>类与对象基础数据结构</h3><h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p>Objective-C类是由Class类型来表示的，它实际上是一个指向objc_class结构体的指针。它的定义如下：<br><code>typedef struct objc_class *Class;</code><br>我们再来看<code>objc/runtime.h</code>中<code>objc_class</code>结构体的定义如下：</p>
+<pre><code>struct objc_class {
+  Class isa  OBJC_ISA_AVAILABILITY;
+  #if !__OBJC2__
+  Class super_class                     OBJC2_UNAVAILABLE;  // 父类
+  const char *name                        OBJC2_UNAVAILABLE;  // 类名
+  long version                            OBJC2_UNAVAILABLE;  // 类的版本信息，默认为0
+  long info                              OBJC2_UNAVAILABLE;  // 类信息，供运行期使用的一些位标识
+  long instance_size                     OBJC2_UNAVAILABLE;  // 该类的实例变量大小
+  struct objc_ivar_list *ivars           OBJC2_UNAVAILABLE;  // 该类的成员变量链表
+  struct objc_method_list **methodLists   OBJC2_UNAVAILABLE;  // 方法定义的链表
+  struct objc_cache *cache                OBJC2_UNAVAILABLE;  // 方法缓存
+  struct objc_protocol_list *protocols   OBJC2_UNAVAILABLE;  // 协议链表
+  #endif
+} OBJC2_UNAVAILABLE;
+</code></pre><p>其中，有几个字段是我们需要掌握的。<br>1.<code>isa</code>：需要注意的是在<code>Objective-C</code>中，所有的类自身也是一个对象，这个对象的<code>Class</code>里面也有一个<code>isa</code>指针，它指向<code>metaClass</code>(元类)。<br>2.<code>super_class</code>：指向该类的父类，如果该类已经是最顶层的根类(如NSObject或NSProxy)，则<code>super_class</code>为NULL。<br>3.<code>methodLists</code>：看名字也容易理解，这个<code>methodLists</code>就是用来存放方法列表的。<br>4.<code>cache</code>：用于缓存最近使用的方法。<br>5.<code>version</code>：我们可以使用这个字段来提供类的版本信息。这对于对象的序列化非常有用，它可是让我们识别出不同类定义版本中实例变量布局的改变。</p>
+<h3 id="元类（Meta-Class）"><a href="#元类（Meta-Class）" class="headerlink" title="元类（Meta Class）"></a>元类（Meta Class）</h3><p>所有的类自身也是一个对象，我们可以向这个对象发送消息(即调用类方法)。既然是对象，那么它也是一个<code>objc_object</code>指针，它包含一个指向其类的一个<code>isa</code>指针。那么这些就有一个问题了，这个<code>isa</code>指针指向什么呢？这个类的<code>isa</code>指针必须指向一个包含这些类方法的一个<code>objc_class</code>结构体。这就引出了<code>meta-class</code>的概念：<code>meta-class</code>是一个类对象的类。<br>当我们向一个对象发送消息时，<code>runtime</code>会在这个对象所属的这个类的方法列表中查找方法；而向一个类发送消息时，会在这个类的<code>meta-class</code>的方法列表中查找。<br><code>meta-class</code>之所以重要，是因为它存储着一个类的所有类方法。每个类都会有一个单独的<code>meta-class</code>，因为每个类的类方法基本不可能完全相同。<br>再深入一下，<code>meta-class</code>也是一个类，也可以向它发送一个消息，那么它的<code>isa</code>又是指向什么呢？为了不让这种结构无限延伸下去，<code>Objective-C</code>的设计者让所有的<code>meta-class</code>的<code>isa</code>指向基类的<code>meta-class</code>，以此作为它们的所属类。即，任何<code>NSObject</code>继承体系下的<code>meta-class</code>都使用<code>NSObject</code>的<code>meta-class</code>作为自己的所属类，而基类的<code>meta-class</code>的<code>isa</code>指针是指向它自己。这样就形成了一个完美的闭环。<br>通过上面的描述，再加上对<code>objc_class</code>结构体中<code>super_class</code>指针的分析，我们就可以描绘出类及相应<code>meta-class</code>类的一个继承体系了，如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-dcdc6ad08b4b4dbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<pre><code>MyClass *myClass = [[MyClass alloc] init];
+
+Class class = [myClass class];
+Class metaClass = object_getClass(class);
+Class metaOfMetaClass = object_getClass(metaClass);
+Class rootMetaClass = object_getClass(metaOfMetaClass);
+Class superclass = class_getSuperclass(class);
+Class superOfSuperclass = class_getSuperclass(superclass);
+Class superOfMetaOfSuperclass = class_getSuperclass(object_getClass(superclass));
+
+NSLog(@&quot;MyClass 实例对象是：%p&quot;,myClass);
+NSLog(@&quot;MyClass 类对象是：%p&quot;,class);
+NSLog(@&quot;MyClass 元类对象是：%p&quot;,metaClass);
+NSLog(@&quot;MyClass 元类对象的元类对象是：%p&quot;,metaOfMetaClass);
+NSLog(@&quot;MyClass 根元类对象是：%p&quot;,rootMetaClass);
+NSLog(@&quot;MyClass 父类是：%@&quot;,class_getSuperclass(class));
+NSLog(@&quot;MyClass 父类的父类是：%@&quot;,superOfSuperclass);
+NSLog(@&quot;MyClass 父类的元类的父类是：%@&quot;,superOfMetaOfSuperclass);
+
+NSLog(@&quot;NSObject 元类对象是：%p&quot;,object_getClass([NSObject class]));
+NSLog(@&quot;NSObject 父类是：%@&quot;,[[NSObject class] superclass]);
+NSLog(@&quot;NSObject 元类对象的父类是：%@&quot;,[object_getClass([NSObject class]) superclass]);
+
+//输出：
+MyClass 实例对象是：0x60c00000b8d0
+MyClass 类对象是：0x109ae3fd0
+MyClass 元类对象是：****0x109ae3fa8
+MyClass 元类对象的元类对象是：****0x10ab02e58**
+MyClass 根元类对象是：0x10ab02e58
+MyClass 父类是：NSObject
+MyClass 父类的父类是：(null)
+MyClass 父类的元类的父类是：NSObject
+NSObject 元类对象是：0x10ab02e58
+NSObject 父类是：(null)
+NSObject 元类对象的父类是：NSObject
+</code></pre><p>现在我们能知道各种对象之间的关系</p>
+<blockquote>
+<p>实例对象通过 isa 指针，找到类对象 Class；类对象同样通过 isa 指针，找到元类对象；元类对象也是通过 isa 指针，找到根元类对象；最后，根元类对象的 isa 指针，指向自己。可以发现 NSObject 是整个消息机制的核心，绝大数对象都继承自它。</p>
+</blockquote>
+<h3 id="methodLists"><a href="#methodLists" class="headerlink" title="methodLists"></a>methodLists</h3><p>我们再来看看<code>objc_method_list</code>这个结构体</p>
+<pre><code>struct objc_method_list {
+  struct objc_method_list * _Nullable obsolete OBJC2_UNAVAILABLE;
+
+  int method_count OBJC2_UNAVAILABLE;
+  #ifdef __LP64__
+  int space  OBJC2_UNAVAILABLE;
+  #endif
+  /* variable length structure */
+  struct objc_method method_list[1]  OBJC2_UNAVAILABLE;
+}
+</code></pre><p>里面的<code>objc_method</code>，也就是我们熟悉的<code>Method</code></p>
+<pre><code>struct objc_method {
+  SEL _Nonnull method_name OBJC2_UNAVAILABLE;         //方法的名称
+  char * _Nullable method_types  OBJC2_UNAVAILABLE;   //方法的类型
+  IMP _Nonnull method_imp  OBJC2_UNAVAILABLE;         // 方法的具体实现
+}
+</code></pre><p>由此我们可以得出实例对象调用方法的大致逻辑：</p>
+<pre><code>MyClass *myClass = [[MyClass alloc] init];
+[myClass printLog];
+</code></pre><blockquote>
+<p>先被编译成 <code>((void (*)(id, SEL))(void *) objc_msgSend)(myClass, @selector(printLog));</code><br>沿着入参<code>myClass</code>的<code>isa</code>指针，找到<code>myClass</code>的类对象（<code>Class</code>），也就是 <code>MyClass</code><br>接着在<code>MyClass</code>的方法列表<code>methodLists</code>中，找到对应的<code>Method</code><br>最后找到 <code>Method</code> 中的 <code>IMP</code> 指针，执行具体实现</p>
+</blockquote>
+<p>由上文，我们已经知道，实例对象是通过<code>isa</code>指针，找到其类对象（<code>Class</code>）中保存的方法列表中的具体实现的。<code>printLog</code>方法就是保存在<code>MyClass</code>中的。<br>那么如果是个类方法，又是保存在什么地方的呢？我们也知道了类对象的<code>isa</code>指针是指向元类对象的。那么不难得出：</p>
+<blockquote>
+<p>类对象的类方法，是保存在元类对象中的！</p>
+</blockquote>
+<h3 id="cache"><a href="#cache" class="headerlink" title="cache"></a>cache</h3><p>我们大概知道，方法是通过<code>isa</code>指针，查找<code>Class</code> 中的<code>methodLists</code>的。如果子类没实现对应的方法实现，还会沿着父类去查找。整个工程，可能有成万上亿个方法，是如何解决性能问题的呢？如果每调用一次都需要遍历<code>methodLists</code>，性能是非常差的。所以引入了 <code>Class Cache</code> 机制：<code>Class Cache</code> 认为，当一个方法被调用，那么它之后被调用的可能性就越大。<br>查找方法时，会先从缓存中查找，找到直接返回 ；找不到，再去<code>Class</code>的方法列表中找。<br>在上文中 Class 的定义中，我们可以发现 cache：<br><code>struct objc_cache * _Nonnull cache OBJC2_UNAVAILABLE;</code><br>说明了缓存是存在类中的，每个类都有一份方法缓存，而不是每个类的 object 都保存了一份。</p>
+<h3 id="父类（superclass）"><a href="#父类（superclass）" class="headerlink" title="父类（superclass）"></a>父类（superclass）</h3><p>在<code>Objective-C</code>中，子类调用一个方法，如果没有子类没有实现，父类实现了，会去调用父类的实现。上文中，找到<code>methodLists</code>后，寻找 <code>Method</code> 的大致过程如下：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-83f14b531a14d3ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<blockquote>
+<p>ps: 其实这里的寻找过程远没有这么简单，可能会遍历很多遍，因为我们可能会在运行时动态的添加方法（比如<code>category</code>）。遍历的过程中同样不时的去查询缓存表。</p>
+</blockquote>
+<h3 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h3><p>如果方法列表（methodLists）没找到对应的 selector 呢？<br><code>[self performSelector:@selector(myTestPrint:) withObject:@&quot;嘻嘻&quot;];</code><br>系统会提供三次补救的机会。</p>
+<h4 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h4><p><code>+ (BOOL)resolveInstanceMethod:(SEL)sel {} (实例方法)</code><br><code>+ (BOOL)resolveClassMethod:(SEL)sel {}  (类方法)</code></p>
+<p>这两个方法，一个针对实例方法；一个针对类方法。返回值都是<code>Bool</code>。</p>
+<pre><code>// ViewController.m 中
+
+void myMethod(id self, SEL _cmd,NSString *nub) {
+  NSLog(@&quot;ifelseboyxx%@&quot;,nub);
+}
+
++ (BOOL)resolveInstanceMethod:(SEL)sel {
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
+  if (sel == @selector(myTestPrint:)) {
+    #pragma clang diagnostic pop
+    class_addMethod([self class],sel,(IMP)myMethod,&quot;v@:@&quot;);
+    return YES;
+  }else {
+    return [super resolveInstanceMethod:sel];
+  }
+}
+</code></pre><p>我们只需要在 <code>resolveInstanceMethod:</code> 方法中，利用 <code>class_addMethod</code> 方法，将未实现的<code>myTestPrint:</code>绑定到 <code>myMethod</code>上就能完成转发，最后返回<code>YES</code>。</p>
+<h4 id="第二次"><a href="#第二次" class="headerlink" title="第二次"></a>第二次</h4><p><code>- (id)forwardingTargetForSelector:(SEL)aSelector {}</code><br>这个方法要求返回一个<code>id</code>。使用场景一般是将 A 类的某个方法，转发到 B 类的实现中去。<br>使用示例：<br>想转发到 <code>Person</code> 类中的<code>-myTestPrint:</code>方法中：</p>
+<pre><code>@interface Person : NSObject
+@end
+
+@implementation Person
+- (void)myTestPrint:(NSString *)str {
+  NSLog(@&quot;ifelseboyxx%@&quot;,str);
+}
+@end
+// ViewController.m 中
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
+  if (aSelector == @selector(myTestPrint:)) {
+  #pragma clang diagnostic pop
+    return [Person new];
+  }else{
+    return [super forwardingTargetForSelector:aSelector];
+  }
+}
+</code></pre><h4 id="第三次"><a href="#第三次" class="headerlink" title="第三次"></a>第三次</h4><p><code>- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {}</code><br><code>- (void)forwardInvocation:(NSInvocation *)anInvocation {}</code><br>第一个要求返回一个方法签名，第二个方法转发具体的实现。二者相互依赖，只有返回了正确的方法签名，才会执行第二个方法。<br>这次的转发作用和第二次的比较类似，都是将 A 类的某个方法，转发到 B 类的实现中去。不同的是，第三次的转发相对于第二次更加灵活，<code>forwardingTargetForSelector:</code>只能固定的转发到一个对象；<code>forwardInvocation:</code>可以让我们转发到多个对象中去。<br>使用实例：<br>想转发到 <code>Person</code> 类以及<code>Animal</code>类中的<code>-myTestPrint:</code>方法中：</p>
+<pre><code>@interface Person : NSObject
+@end
+
+@implementation Person
+- (void)myTestPrint:(NSString *)str {
+  NSLog(@&quot;ifelseboyxx%@&quot;,str);
+}
+@end
+@interface Animal : NSObject
+@end
+
+@implementation Animal
+- (void)myTestPrint:(NSString *)str {
+  NSLog(@&quot;tiger%@&quot;,str);
+}
+@end
+
+// ViewController.m 中
+
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
+  if (aSelector == @selector(myTestPrint:)) {
+    #pragma clang diagnostic pop
+    return [NSMethodSignature  signatureWithObjCTypes:&quot;v@:@&quot;];
+  }
+  return [super methodSignatureForSelector:aSelector];
+}
+
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+  Person *person = [Person new];
+  Animal *animal = [Animal new];
+  if ([person respondsToSelector:anInvocation.selector]) {
+    [anInvocation invokeWithTarget:person];
+  }
+  if ([animal respondsToSelector:anInvocation.selector]) {
+    [anInvocation invokeWithTarget:animal];
+  }
+}
+</code></pre><blockquote>
+<p>⚠️ 如果到了第三次机会，还没找到对应的实现，就会 crash：<br>unrecognized selector sent to instance 0x7f9f817072b0</p>
+</blockquote>
+<p>消息发送和消息转发的过程<br><img src="https://upload-images.jianshu.io/upload_images/6365912-1a12a79877ec160c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/Object-C-Runtime-及消息发送与转发/" data-id="cjps5wlxp000n20fywj6rjuw0" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+    <article id="post-App-Store被拒的一次经历（附解决方案）" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/App-Store被拒的一次经历（附解决方案）/" class="article-date">
+  <time class="post-time" datetime="2018-03-12T06:42:32.000Z" itemprop="datePublished">
+    <span class="post-month">3月</span><br/>
+    <span class="post-day">12</span>
+  </time>
+</a>
+   
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/App-Store被拒的一次经历（附解决方案）/">App Store被拒的一次经历（附解决方案）</a>
+    </h1>
+  
+
+        <div>
+          
+          
+              
+
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件"><a href="#第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件" class="headerlink" title="第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件"></a>第一次上架App被拒，苹果在解决方案中心发来了以下的说明邮件</h3><p>ITC.date.dateAtTime</p>
+<p>ITC.apps.resolutionCenter.header.from</p>
+<h4 id="3-1-4-Business-Payments-Content-Codes"><a href="#3-1-4-Business-Payments-Content-Codes" class="headerlink" title="3. 1.4 Business: Payments - Content Codes"></a>3. 1.4 Business: Payments - Content Codes</h4><h4 id="4-3-Design-Spam"><a href="#4-3-Design-Spam" class="headerlink" title="4. 3 Design: Spam"></a>4. 3 Design: Spam</h4><h4 id="5-1-1-Legal-Privacy-Data-Collection-and-Storage"><a href="#5-1-1-Legal-Privacy-Data-Collection-and-Storage" class="headerlink" title="5. 1.1 Legal: Privacy - Data Collection and Storage"></a>5. 1.1 Legal: Privacy - Data Collection and Storage</h4><h4 id="Guideline-3-1-4-Business-Payments-Content-Codes"><a href="#Guideline-3-1-4-Business-Payments-Content-Codes" class="headerlink" title="Guideline 3.1.4 - Business - Payments - Content Codes"></a>Guideline 3.1.4 - Business - Payments - Content Codes</h4><p>Your app enables additional features or functionality when used with augmented reality markers. However, those features are not available in the app to users without the necessary markers.</p>
+<h4 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h4><p>To resolve this issue, please provide a means to access the augmented reality features from within the app, such as through achievements or in-app purchase. If they can be freely obtained, such as through a link to a website, please revise your app to include clear instructions for obtaining the necessary markers.</p>
+<p>Please note that apps cannot require users to purchase unrelated products or engage in advertising or marketing activities to unlock app functionality.</p>
+<h4 id="Request-a-phone-call-from-App-Review"><a href="#Request-a-phone-call-from-App-Review" class="headerlink" title="Request a phone call from App Review"></a>Request a phone call from App Review</h4><p>At your request, we can arrange for an Apple Representative to call you within the next three to five business days to discuss your App Review issue. Our representative will be able to discuss the issue in English or Chinese.</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">Request a call to discuss your app’s review.</a></p>
+<h4 id="申请应用审核团队致电联系"><a href="#申请应用审核团队致电联系" class="headerlink" title="申请应用审核团队致电联系"></a>申请应用审核团队致电联系</h4><p>如果您有需要，我们将根据您的要求在三到五个工作日内安排一位精通中文的苹果公司代表致电与您联系，讨论您的应用审核结果。</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">申请应用审核团队致电联系</a></p>
+<h4 id="申請應用審核團隊致電聯繫"><a href="#申請應用審核團隊致電聯繫" class="headerlink" title="申請應用審核團隊致電聯繫"></a>申請應用審核團隊致電聯繫</h4><p>如果您有需要，我們將根據您的要求在三到五個工作日內安排一位精通中文的蘋果公司代表致電與您聯繫，討論您的應用審核結果。</p>
+<p><a href="https://developer.apple.com/contact/app-store/?topic=3.1.4" target="_blank" rel="noopener">申請應用審核團隊致電聯繫</a></p>
+<h3 id="Guideline-4-3-Design"><a href="#Guideline-4-3-Design" class="headerlink" title="Guideline 4.3 - Design"></a>Guideline 4.3 - Design</h3><p>This app duplicates the content and functionality of other apps submitted by you or another developer to the App Store, which is considered a form of spam.</p>
+<p>Apps that simply duplicate content or functionality create clutter, diminish the overall experience for the end user, and reduce the ability of developers to market their apps.</p>
+<p>The next submission of this app may require a longer review time, and this app will not be eligible for an expedited review until this issue is resolved.</p>
+<h4 id="Next-Steps-1"><a href="#Next-Steps-1" class="headerlink" title="Next Steps"></a>Next Steps</h4><ul>
+<li><p>Review the Design section of the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>.</p>
+</li>
+<li><p>Ensure your app is compliant with all sections of the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>and the<a href="https://developer.apple.com/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>of the Apple Developer Program.</p>
+</li>
+<li><p>Once your app is fully compliant, resubmit your app for review.</p>
+</li>
+</ul>
+<p>Submitting apps designed to mislead or harm customers or evade the review process may result in the termination of your Apple Developer Program account. Review the<a href="https://developer.apple.com/terms/" target="_blank" rel="noopener">Terms &amp; Conditions</a>of the Apple Developer Program to learn more about our policies regarding termination.</p>
+<p>If you believe your app is compliant with the<a href="https://developer.apple.com/app-store/review/guidelines/" target="_blank" rel="noopener">App Store Review Guidelines</a>, you may submit an appeal. Alternatively, you may provide additional details about your app by replying directly to this message.</p>
+<h3 id="Guideline-5-1-1-Legal-Privacy-Data-Collection-and-Storage"><a href="#Guideline-5-1-1-Legal-Privacy-Data-Collection-and-Storage" class="headerlink" title="Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage"></a>Guideline 5.1.1 - Legal - Privacy - Data Collection and Storage</h3><p>We noticed that your app requests the user’s consent to access their camera but does not clarify the use of this feature in the permission modal alert.</p>
+<p>Please see attached screenshots for details.</p>
+<h4 id="Next-Steps-2"><a href="#Next-Steps-2" class="headerlink" title="Next Steps"></a>Next Steps</h4><p>To resolve this issue, please revise the permission modal alert to specify why the app is requesting access to the user’s camera.</p>
+<h4 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h4><p>To learn more about requesting the user’s permission to access app features, visit the<a href="https://developer.apple.com/ios/human-interface-guidelines/app-architecture/requesting-permission/" target="_blank" rel="noopener">iOS Human Interface Guidelines</a>. You may also want to review the<a href="https://developer.apple.com/library/content/qa/qa1937/_index.html" target="_blank" rel="noopener">Technical Q&amp;A QA1937: Resolving the Privacy-Sensitive Data App Rejection</a>page for details on how to provide a usage description for permission request alerts.</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>其中此次提交违反了<a href="https://developer.apple.com/cn/app-store/review/guidelines/#content-codes" target="_blank" rel="noopener">苹果审核指南</a>中的3.1.4，4.3以及5.1.1。</p>
+<p><strong>3.1.4 内容代码</strong></p>
+<p>App 不得使用自身机制来解锁内容或功能，如许可证密钥、增强现实标记、二维码等。在为数不多的情形中，例如当功能依赖于特定的硬件功能时，app 可在不使用 App 内购买项目的情况下解锁该功能 (例如，天文 app 会在与望远镜同步后增加功能)。与经过批准的实际产品 (如玩具) 配合使用的<em>可选</em> app 功能可在不使用 App 内购买项目的情况下解锁特定功能，前提是同时也提供 App 内购买项目选项。您不得要求用户通过购买无关产品或参与广告或市场活动来解锁 app 功能。</p>
+<p><strong>4.3 重复 App</strong></p>
+<p>请不要为同一个 app 创建多个套装 ID。如果您的 app 针对特定位置、运动队、大学等存在不同版本，请考虑提交单个 app，并提供 App 内购买项目以提供不同的功能。同时，请避免继续在已有大量类似 app 的类别下进行开发；App Store 上已经有太多模拟放屁、打嗝声音的 app，以及手电筒和爱经 app。上传大量相似版本 app 的开发者会遭到 Apple Developer Program 的除名。</p>
+<p><strong>5.1.1 数据收集和存储</strong></p>
+<p><strong>(i)</strong> App 须先制定隐私政策，并征得用户的同意，才能对用户信息或使用数据进行收集。这包括 (但不限于) 以下 app：实施 HealthKit 或其他健康/医疗技术、使用 ARKit、相机 API、照片 API 或其他软件功能以获取深度面谱信息的 app，HomeKit、Keyboard 扩展、Apple Pay、Stickers和 iMessage 扩展的 app；包含登录信息的 app；或访问设备上用户数据的 app。App 描述中应当注明 app 会要求访问哪些内容类型 (例如，位置、通讯录和日历等)，并说明当用户不授予许可时，app 的哪些功能会无法正常工作。</p>
+<p><strong>(ii)</strong> 如果 app 不包含基于帐户的重要功能，请允许用户在不登录的情况下使用。App 不得要求用户提供个人信息才能正常使用，除非个人信息与 app 的核心功能直接相关，或是法律要求时。如果您的核心 app 功能与特定的社交网络 (如 Facebook、微信、微博或 Twitter 等) 不相关，您必须提供无需登录或其他类似机制的访问权限。调取基本档案信息、分享到社交网络或邀请朋友使用 app 等不视为核心 app 功能。</p>
+<p><strong>(iii)</strong> 如果开发者开发的 app 试图暗中收集用户密码或其他用户私人数据，那么该开发者会遭到 Apple Developer Program 的除名。</p>
+<p><strong>(iv)</strong> 必须使用 SafariViewController 在显著位置向用户显示信息；不得隐藏该控制器，也不能被其他视图或图层遮挡。此外，未经用户的知情和同意，app 不得私下利用 SafariViewController 来追踪用户。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>大致参考了一下苹果审核指南，再结合本次上架的App，是扫描实体图书中的图片，识别成功后播放对应的介绍视频和音频。</p>
+<p>这其中就涉及到两项，其一是需要在App中说明或添加要扫描的标记对象，其二就是需要对相机权限进行更加详细的说明。申请苹果的中文技术支持后，和她电话确认了3.1.4和5.1.1的解决方案。分别是添加电子书的下载链接，和对相机权限的描述进行更改。</p>
+<p>关于4.3，苹果这几年加大了对重复应用和马甲包的审核力度。搜索App Store中类似的App，也有很多针对各个博物馆的App，功能都是类似的，但是却都顺利上架了。第二次和技术支持通电话后，她很干脆地说出此次提交的版本是与其他两个帐号提交的版本高度类似。此时Boss才想起来，原来之前用过两个个人开发者帐号提交过，但都被拒了，一直放在那里。</p>
+<p>原来只要提交过，不管有没有上架的版本，后来别人提交的就不能与之类似。后来针对4.3给出的解决方案是，在那两个提交过的帐号下，在各自的解决方案中心，申请放弃审核此版本。然后在需要上架的开发者帐号中，说明与其他两个帐号的关系。</p>
+<p>信心满满地第三次提交，延迟审核了十天，结果被拒，没有道理呀，我明明都按要求改了。结果第二天一大早，又发邮件通知我在重新审核。到了晚上终于告诉我审核通过了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://github.com/hzsss/App-Store被拒的一次经历（附解决方案）/" data-id="cjps5wm08001a20fybjqq3fqo" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">next &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">Acan_Dev</h1>
+    <h2 class="blog-subtitle"></h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/20333903?v=3&amp;s=460">
+    <h2 class="author">Acan_Dev</h2>
+    <h3 class="description">You only live once</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>20</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>0</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/ShanaMaid" target="_blank" title="Github">
+          Github
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2017 - 2018 Acan_Dev<br>
+      由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 | 
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+    
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+            <a href="/xxxxxxxxx" title="" class="menuItem">xxx</a>
+          
+            <a href="/xxxxxxx" title="" class="menuItem">xxxx</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs"> 
+  <ul class="cb-slideshow"> 
+    <li><span>苟利</span></li> 
+    <li><span>国家</span></li> 
+    <li><span>生死以</span></li> 
+    <li><span>岂能</span></li> 
+    <li><span>祸福</span></li> 
+    <li><span>趋避之</span></li> 
+  </ul>
+</section>
+<script src="/js/script.js"></script>
+
+
+
+  </div>
 </body>
 </html>

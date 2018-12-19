@@ -429,7 +429,7 @@ weak 实现原理1、初始化时：runtime 会调用 objc_initWeak() 函数，o
         <p class="article-excerpt-content">
           参考文章你真的理解__block修饰符的原理么？
 深入研究Block捕获外部变量和__block实现原理
-Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &#123;  @autoreleasepool &#123;    void (^blk)(void) = ^&#123;      printf(&quot;Block\n&quot;);    &#125;;    blk();  &#...
+Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &#123;  @autoreleasepool &#123;    void (^blk)(void) = ^&#123;      printf("Block\n");    &#125;;    blk();  &#125;  retu...
         </p>
         <p class="article-more-link">
           <a href="/关于-block的一些思考/#more">阅读全文</a>

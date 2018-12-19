@@ -153,56 +153,6 @@
 
 
 
-  
-    <section class="awSlider">
-      <div class="carousel slide carousel-fade " data-ride="carousel">
-
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-           
-              
-                <div class="item active" style="max-height:600px; overflow: hidden;">
-              
-                <img id="carousel-img0" src="/css/images/pose.jpg">
-              </div>
-
-              <!-- 自适应大图 -->
-              <script>
-              	  var carouselResize = function() {
-              	  	  var h = document.body.clientHeight / 3;
-	                  var img0 = new Image();
-	                  var imageTag0 = document.getElementById("carousel-img0");
-	                  img0.src = imageTag0.src;
-	                  img0.onload=function(){
-	                    if (img0.width / img0.height <= document.body.clientWidth / h) {
-	                      imageTag0.style.width = document.body.clientWidth + "px";
-	                    } else {
-	                      imageTag0.style.height = h + "px";
-	                      imageTag0.style.marginLeft = -(h * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-	                    }
-	                  };
-              	  };
-                  carouselResize();
-              </script>
-            
-        </div>
-
-        <!-- Controls -->
-        <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Geri</span>
-        </a>
-        <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">İleri</span>
-        </a>
-      </div>
-    </section>
-    
-  
-
-
-
       
             
       <div id="content" class="outer">

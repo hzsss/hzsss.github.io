@@ -11,20 +11,20 @@
   
   
   
-  <meta name="description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现// Block 源码 int main(int argc, const char * argv[]) { @autoreleasepool { void (^blk)(void) = ^{ printf(&amp;quot;Block\n&amp;quot;); };  blk(); }">
+  <meta name="description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &amp;#123;@autoreleasepool &amp;#123;void (^blk)(void) = ^&amp;#123;printf(&amp;quot;Block">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于__block的一些思考">
 <meta property="og:url" content="https://github.com/hzsss/关于-block的一些思考/index.html">
 <meta property="og:site_name" content="Acan&#39;s blog">
-<meta property="og:description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现// Block 源码 int main(int argc, const char * argv[]) { @autoreleasepool { void (^blk)(void) = ^{ printf(&amp;quot;Block\n&amp;quot;); };  blk(); }">
+<meta property="og:description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &amp;#123;@autoreleasepool &amp;#123;void (^blk)(void) = ^&amp;#123;printf(&amp;quot;Block">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1194012-5f5f486bab68191f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-08-05T08:24:47.917Z">
+<meta property="og:updated_time" content="2018-12-19T08:05:38.648Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于__block的一些思考">
-<meta name="twitter:description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现// Block 源码 int main(int argc, const char * argv[]) { @autoreleasepool { void (^blk)(void) = ^{ printf(&amp;quot;Block\n&amp;quot;); };  blk(); }">
+<meta name="twitter:description" content="参考文章你真的理解__block修饰符的原理么？ 深入研究Block捕获外部变量和__block实现原理 Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &amp;#123;@autoreleasepool &amp;#123;void (^blk)(void) = ^&amp;#123;printf(&amp;quot;Block">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
 
@@ -196,121 +196,18 @@
       
         <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><p><a href="https://blog.csdn.net/abc649395594/article/details/47086751" target="_blank" rel="noopener">你真的理解__block修饰符的原理么？</a></p>
 <p><a href="https://www.jianshu.com/p/ee9756f3d5f6" target="_blank" rel="noopener">深入研究Block捕获外部变量和__block实现原理</a></p>
-<h3 id="Block-的实现"><a href="#Block-的实现" class="headerlink" title="Block 的实现"></a>Block 的实现</h3><pre><code>// Block 源码
-int main(int argc, const char * argv[]) {
-@autoreleasepool {
-void (^blk)(void) = ^{
-printf(&quot;Block\n&quot;);
-};
-
-blk();
-}
-return 0;
-}
-</code></pre><p>使用 clang 命令将源码改成编译后的 C/C++ 语言：</p>
-<pre><code>struct __main_block_impl_0 { // block 对象
-  struct __block_impl impl; // 包含 block 的实现
-  struct __main_block_desc_0* Desc; // 包含了 block 的内存管理
-  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) { // 构造函数
-    impl.isa = &amp;_NSConcreteStackBlock;
-    impl.Flags = flags;
-    impl.FuncPtr = fp; // block 中的代码，包含 __main_block_func_0 方法
-    Desc = desc;
-  }
-};
-// block 中的代码，传入 block 以便获取其中的捕获的值或变量
-static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
-
-  printf(&quot;Block\n&quot;);
-}
-
-static struct __main_block_desc_0 {
-  size_t reserved;
-  size_t Block_size;
-} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
-int main(int argc, const char * argv[]) {
-    /* @autoreleasepool */ { __AtAutoreleasePool __autoreleasepool;
-    // 创建一个 block，调用构造方法
-    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA));
-    // 调用 block，即调用 __main_block_func_0 方法
-    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);
-  }
-  return 0;
-}
-</code></pre><p>关系图：<br><img src="http://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<h3 id="Block-的实现"><a href="#Block-的实现" class="headerlink" title="Block 的实现"></a>Block 的实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Block 源码</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">@autoreleasepool &#123;</span><br><span class="line">void (^blk)(void) = ^&#123;</span><br><span class="line">printf(&quot;Block\n&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">blk();</span><br><span class="line">&#125;</span><br><span class="line">return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 clang 命令将源码改成编译后的 C/C++ 语言：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">struct __main_block_impl_0 &#123; // block 对象</span><br><span class="line">  struct __block_impl impl; // 包含 block 的实现</span><br><span class="line">  struct __main_block_desc_0* Desc; // 包含了 block 的内存管理</span><br><span class="line">  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) &#123; // 构造函数</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp; // block 中的代码，包含 __main_block_func_0 方法</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">// block 中的代码，传入 block 以便获取其中的捕获的值或变量</span><br><span class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line"></span><br><span class="line">  printf(&quot;Block\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static struct __main_block_desc_0 &#123;</span><br><span class="line">  size_t reserved;</span><br><span class="line">  size_t Block_size;</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; 0, sizeof(struct __main_block_impl_0)&#125;;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    /* @autoreleasepool */ &#123; __AtAutoreleasePool __autoreleasepool;</span><br><span class="line">    // 创建一个 block，调用构造方法</span><br><span class="line">    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA));</span><br><span class="line">    // 调用 block，即调用 __main_block_func_0 方法</span><br><span class="line">    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>关系图：<br><img src="http://upload-images.jianshu.io/upload_images/6365912-7eae193448c02f95?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
 <blockquote>
 <p>流程：定义 block 的时候，调用 <strong>main_block_impl_0 的构造函数，创建 block，</strong>main_block_impl_0 结构体中包括 <strong>block_impl（block 的实现，而这个结构体又包含 block 中的代码，及静态方法 </strong>main_block_func_0），并且把捕获进来的变量成为 __main_block_impl_0 的成员变量。</p>
 </blockquote>
 <blockquote>
 <p>调用 block 的时候，即调用 <strong>block_impl 结构体中的 </strong>main_block_func_0 方法，并且把 __block_impl 自身传入方法，以供方法取得值或变量。</p>
 </blockquote>
-<h3 id="为什么-block-可以修改自动变量的值"><a href="#为什么-block-可以修改自动变量的值" class="headerlink" title="为什么 __block 可以修改自动变量的值"></a>为什么 __block 可以修改自动变量的值</h3><pre><code>struct __Block_byref_i_0 {
-  void *__isa;
-  __Block_byref_i_0 *__forwarding;
-  int __flags;
-  int __size;
-  int i;
-};
-
-struct __main_block_impl_0 {
-  struct __block_impl impl;
-  struct __main_block_desc_0* Desc;
-  __Block_byref_i_0 *i; // by ref
-  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_i_0 *_i, int flags=0) : i(_i-&gt;__forwarding) {
-    impl.isa = &amp;_NSConcreteStackBlock;
-    impl.Flags = flags;
-    impl.FuncPtr = fp;
-    Desc = desc;
-  }
-};
-static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
-  __Block_byref_i_0 *i = __cself-&gt;i; // bound by ref
-
-  (i-&gt;__forwarding-&gt;i)++;
-  printf(&quot;%d\n&quot;,(i-&gt;__forwarding-&gt;i));
-}
-static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&amp;dst-&gt;i, (void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
-
-static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);}
-
-static struct __main_block_desc_0 {
-  size_t reserved;
-  size_t Block_size;
-  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
-  void (*dispose)(struct __main_block_impl_0*);
-} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
-int main(int argc, const char * argv[]) {
-  /* @autoreleasepool */ { 
-    __AtAutoreleasePool __autoreleasepool; 
-    __attribute__((__blocks__(byref))) __Block_byref_i_0 i = {(void*)0,(__Block_byref_i_0 *)&amp;i, 0, sizeof(__Block_byref_i_0), 10};
-    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_i_0 *)&amp;i, 570425344));
-
-    (i.__forwarding-&gt;i)++;
-
-    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);
-  }
-  return 0;
-}
-</code></pre><p>block 拷贝到堆上，捕获的自动变量值也拷贝到了堆上。<br><img src="https://upload-images.jianshu.io/upload_images/1194012-5f5f486bab68191f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"></p>
-<pre><code>#import &lt;Foundation/Foundation.h&gt;
-
-int main(int argc, const char * argv[]) {
-  @autoreleasepool {
-  __block int i = 10;
-  void (^blk)(void) = ^{
-    i++;
-    printf(&quot;%d\n&quot;,i);
-  };
-
-  i++;
-
-  blk();
-  }
-  return 0;
-}
-// 输出
-12
-</code></pre><p>由于<strong>Block_byref_i_0 中有一个可以指向本类型的 </strong>forwarding 指针。</p>
+<h3 id="为什么-block-可以修改自动变量的值"><a href="#为什么-block-可以修改自动变量的值" class="headerlink" title="为什么 __block 可以修改自动变量的值"></a>为什么 __block 可以修改自动变量的值</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">struct __Block_byref_i_0 &#123;</span><br><span class="line">  void *__isa;</span><br><span class="line">  __Block_byref_i_0 *__forwarding;</span><br><span class="line">  int __flags;</span><br><span class="line">  int __size;</span><br><span class="line">  int i;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">struct __main_block_impl_0 &#123;</span><br><span class="line">  struct __block_impl impl;</span><br><span class="line">  struct __main_block_desc_0* Desc;</span><br><span class="line">  __Block_byref_i_0 *i; // by ref</span><br><span class="line">  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_i_0 *_i, int flags=0) : i(_i-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">static void __main_block_func_0(struct __main_block_impl_0 *__cself) &#123;</span><br><span class="line">  __Block_byref_i_0 *i = __cself-&gt;i; // bound by ref</span><br><span class="line"></span><br><span class="line">  (i-&gt;__forwarding-&gt;i)++;</span><br><span class="line">  printf(&quot;%d\n&quot;,(i-&gt;__forwarding-&gt;i));</span><br><span class="line">&#125;</span><br><span class="line">static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) &#123;_Block_object_assign((void*)&amp;dst-&gt;i, (void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);&#125;</span><br><span class="line"></span><br><span class="line">static void __main_block_dispose_0(struct __main_block_impl_0*src) &#123;_Block_object_dispose((void*)src-&gt;i, 8/*BLOCK_FIELD_IS_BYREF*/);&#125;</span><br><span class="line"></span><br><span class="line">static struct __main_block_desc_0 &#123;</span><br><span class="line">  size_t reserved;</span><br><span class="line">  size_t Block_size;</span><br><span class="line">  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);</span><br><span class="line">  void (*dispose)(struct __main_block_impl_0*);</span><br><span class="line">&#125; __main_block_desc_0_DATA = &#123; 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0&#125;;</span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">  /* @autoreleasepool */ &#123; </span><br><span class="line">    __AtAutoreleasePool __autoreleasepool; </span><br><span class="line">    __attribute__((__blocks__(byref))) __Block_byref_i_0 i = &#123;(void*)0,(__Block_byref_i_0 *)&amp;i, 0, sizeof(__Block_byref_i_0), 10&#125;;</span><br><span class="line">    void (*blk)(void) = ((void (*)())&amp;__main_block_impl_0((void *)__main_block_func_0, &amp;__main_block_desc_0_DATA, (__Block_byref_i_0 *)&amp;i, 570425344));</span><br><span class="line"></span><br><span class="line">    (i.__forwarding-&gt;i)++;</span><br><span class="line"></span><br><span class="line">    ((void (*)(__block_impl *))((__block_impl *)blk)-&gt;FuncPtr)((__block_impl *)blk);</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>block 拷贝到堆上，捕获的自动变量值也拷贝到了堆上。<br><img src="https://upload-images.jianshu.io/upload_images/1194012-5f5f486bab68191f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt="image"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">  @autoreleasepool &#123;</span><br><span class="line">  __block int i = 10;</span><br><span class="line">  void (^blk)(void) = ^&#123;</span><br><span class="line">    i++;</span><br><span class="line">    printf(&quot;%d\n&quot;,i);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  i++;</span><br><span class="line"></span><br><span class="line">  blk();</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br><span class="line">// 输出</span><br><span class="line">12</span><br></pre></td></tr></table></figure></p>
+<p>由于<strong>Block_byref_i_0 中有一个可以指向本类型的 </strong>forwarding 指针。</p>
 <p>在调用 block 之前，即未拷贝之前，栈上的 __forwarding 指向自己，进行一次自增。</p>
 <p>经过拷贝之后，栈上的 <strong>forwarding 指针指向堆上的变量，而堆上的 </strong>forwarding 指针又指向自己。</p>
 <p>这样不论是堆中的变量还是栈中的变量调用 (i-&gt;<strong>forwarding-&gt;i)++; ，都是堆上变量的值发生了改变，而栈中变量的值则指向了堆中变量的值，即对 block 中的变量进行自增操作，栈中的值也发生了改变（</strong>forwarding 指针改变了指向，指向堆中的变量）即对外部的自动变量也可以进行自增操作。</p>

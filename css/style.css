@@ -1726,7 +1726,7 @@ a.article-title:hover {
   border-width: 1px 0;
   overflow: auto;
   color: $highlight-foreground;
-  font-size: 0.9em;
+  font-size: 1.5em;
   line-height: 1em;
 }
 .article-entry .highlight .gutter pre,

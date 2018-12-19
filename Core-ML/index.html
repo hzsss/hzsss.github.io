@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6365912-52e47d4eb409b653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6365912-8bc4dc08d906d5e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/6365912-3c40275f0a71c87b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-08-05T08:48:37.732Z">
+<meta property="og:updated_time" content="2018-12-19T08:06:13.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Core ML">
 <meta name="twitter:description" content="Core ML 概述借助 Core ML，我们可以将经过训练的机器学习模型整合到我们的应用程序中。 一个训练有素的模型是将机器学习算法来训练数据集合的结果。该模型根据新的输入数据进行预测。例如，一个在某个地区的历史房价上受过培训的模型可能能够在给定卧室和浴室的数量时预测房屋的价格。 Core ML 是领域特定框架和功能的基础。Core ML 支持Vision 图像分析，Natural Langua">
@@ -219,25 +219,10 @@
 <h3 id="集成-Core-ML-模型"><a href="#集成-Core-ML-模型" class="headerlink" title="集成 Core ML 模型"></a>集成 Core ML 模型</h3><h5 id="将模型添加到-Xcode-项目中"><a href="#将模型添加到-Xcode-项目中" class="headerlink" title="将模型添加到 Xcode 项目中"></a>将模型添加到 Xcode 项目中</h5><p>这里我使用的是已经训练好的<a href="https://developer.apple.com/machine-learning/run-a-model/" target="_blank" rel="noopener">MoblieNet</a>模型，将模型拖放到项目导航栏中，即可将模型添加到项目中：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-dc4777c5846f4ad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>在Compile Source中添加 <code>.mlmodel</code> 文件：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-3b77c8794d4f1ca5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Compile Source"></p>
 <p>在 Xcode 中查看模型的信息：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-c07e16760c8aba07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="model"><br>我们可以看到具体的模型类 MoblieNet，数据输入格式以及输出格式，在这里输入的是 image 格式的图片，输出的是字典和字符串。</p>
-<h5 id="用代码创建模型"><a href="#用代码创建模型" class="headerlink" title="用代码创建模型"></a>用代码创建模型</h5><p>使用模型类的初始化程序来创建模型：MobileNet</p>
-<pre><code>let model = MobileNet()
-</code></pre><h5 id="获取输入值传递给模型"><a href="#获取输入值传递给模型" class="headerlink" title="获取输入值传递给模型"></a>获取输入值传递给模型</h5><p>在这里我们将相册中选中的图片传给模型：</p>
-<pre><code>let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-
-let pixelBuffer = image.pixelBuffer(width: 224, height: 224)
-</code></pre><h5 id="使用模型进行预测"><a href="#使用模型进行预测" class="headerlink" title="使用模型进行预测"></a>使用模型进行预测</h5><p>在这里我们将模型返回的值显示到界面中，包括结果以及匹配度：</p>
-<pre><code>let output = try?model.prediction(image: pixelBuffer!)
-
-let probs = output?.classLabelProbs.sorted { $0.value &gt; $1.value }
-
-if let prob = probs?.first {
-  resultLabel.text = &quot;结果：\(prob.key) &quot;
-
-  let probText = String(format:&quot;%.2f %&quot;, prob.value * 100)
-
-  probLabel.text = &quot;匹配度：\(probText)%&quot;
-}
-</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/6365912-f2ef9366ae5577ca.gif?imageMogr2/auto-orient/strip" alt="demo"></p>
+<h5 id="用代码创建模型"><a href="#用代码创建模型" class="headerlink" title="用代码创建模型"></a>用代码创建模型</h5><p>使用模型类的初始化程序来创建模型：MobileNet<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let model = MobileNet()</span><br></pre></td></tr></table></figure></p>
+<h5 id="获取输入值传递给模型"><a href="#获取输入值传递给模型" class="headerlink" title="获取输入值传递给模型"></a>获取输入值传递给模型</h5><p>在这里我们将相册中选中的图片传给模型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let image = info[UIImagePickerControllerOriginalImage] as! UIImage</span><br><span class="line"></span><br><span class="line">let pixelBuffer = image.pixelBuffer(width: 224, height: 224)</span><br></pre></td></tr></table></figure></p>
+<h5 id="使用模型进行预测"><a href="#使用模型进行预测" class="headerlink" title="使用模型进行预测"></a>使用模型进行预测</h5><p>在这里我们将模型返回的值显示到界面中，包括结果以及匹配度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let output = try?model.prediction(image: pixelBuffer!)</span><br><span class="line"></span><br><span class="line">let probs = output?.classLabelProbs.sorted &#123; $0.value &gt; $1.value &#125;</span><br><span class="line"></span><br><span class="line">if let prob = probs?.first &#123;</span><br><span class="line">  resultLabel.text = &quot;结果：\(prob.key) &quot;</span><br><span class="line"></span><br><span class="line">  let probText = String(format:&quot;%.2f %&quot;, prob.value * 100)</span><br><span class="line"></span><br><span class="line">  probLabel.text = &quot;匹配度：\(probText)%&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-f2ef9366ae5577ca.gif?imageMogr2/auto-orient/strip" alt="demo"></p>
 <p><a href="https://github.com/hzsss/Core-ML">demo 下载</a></p>
 <h3 id="使用-Create-ML-创建模型"><a href="#使用-Create-ML-创建模型" class="headerlink" title="使用 Create ML 创建模型"></a>使用 Create ML 创建模型</h3><p>在 WWDC18 中，苹果发布了最新的 Xcode10，在 Xcode10 中使用 Create ML 可以自己创建机器学习模型。</p>
 <p>图像分类器是经过训练识别图像的机器学习模型。当我们给它一张图片时，它会返回图片的名称。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-a816249c3669fe6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>通过显示大量已标记图像的示例来训练图像分类器。例如，我们可以通过展示大象，长颈鹿，狮子等各种照片来训练图像分类器来识别野生动物园动物。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-7bc90d02d00b6dde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -246,14 +231,8 @@ if let prob = probs?.first {
 <p>每个标签至少使用10个图像作为训练集，当然了，越多越好。此外，需要均衡每个种类的图像数量。例如，不要使用10张猎豹的图像和1000大象张图像。</p>
 <p>图像可以是统一类型标识符合<code>public.image</code>的任何格式。这包括常见的格式，如JPEG和PNG。这些图像不需要是相同的尺寸，也不需要任何特定的尺寸，但最好使用至少为299x299像素的图像。如果可能的话，训练收集的图像的方式与收集图像以进行预测的方式类似。</p>
 <p>需要提供多种图像。例如，使用从不同角度和不同照明条件下显示动物的图像。对于给定标签几乎相同的图像进行训练的分类器往往比在不同图像集上训练的分类器性能更差。</p>
-<h5 id="在-Playground-显示图像分类器"><a href="#在-Playground-显示图像分类器" class="headerlink" title="在 Playground 显示图像分类器"></a>在 Playground 显示图像分类器</h5><p>准备好数据后，用 macOS 中创建一个新的 Xcode Playground。使用 Playground 创建 MLImageClassifierBuilder 实例并在实时视图中显示它：</p>
-<pre><code>// Import CreateMLUI to train the image classifier in the UI.
-// For other Create ML tasks, import CreateML instead.
-import CreateMLUI 
-
-let builder = MLImageClassifierBuilder()
-builder.showInLiveView()
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/6365912-1bf4208b1d96bfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h5 id="在-Playground-显示图像分类器"><a href="#在-Playground-显示图像分类器" class="headerlink" title="在 Playground 显示图像分类器"></a>在 Playground 显示图像分类器</h5><p>准备好数据后，用 macOS 中创建一个新的 Xcode Playground。使用 Playground 创建 MLImageClassifierBuilder 实例并在实时视图中显示它：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// Import CreateMLUI to train the image classifier in the UI.</span><br><span class="line">// For other Create ML tasks, import CreateML instead.</span><br><span class="line">import CreateMLUI </span><br><span class="line"></span><br><span class="line">let builder = MLImageClassifierBuilder()</span><br><span class="line">builder.showInLiveView()</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6365912-1bf4208b1d96bfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h5 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h5><p>将 Training Data 文件夹从 Finder 拖到实时视图中的指定位置。训练过程开始，图像分类器显示其进展：<br><img src="http://upload-images.jianshu.io/upload_images/6365912-629cc26f9abc559f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>作为训练过程的一部分，图像分类器会自动将训练数据分成训练集和验证集。这些都会影响训练，但方式各不相同。由于分割是随机完成的，因此每次训练模型时可能会得到不同的结果。</p>
 <p>训练结束后，实时视图会显示培训和验证的准确性。这些报告了训练好的模型如何将来自相应组的图像分类。因为使用了这些图像训练模型，所以可以对它们进行很好的分类。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-c9abef1215c4eb55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <h5 id="评估分类器的性能"><a href="#评估分类器的性能" class="headerlink" title="评估分类器的性能"></a>评估分类器的性能</h5><p>接下来，通过使用以前从未使用过的图像进行测试，评估训练好的模型的性能。使用在开始训练之前创建的测试数据集。就像使用培训数据一样，将 Test Data 文件夹拖到实时视图中。<br><img src="http://upload-images.jianshu.io/upload_images/6365912-52e47d4eb409b653.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>

@@ -325,9 +325,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p class="article-excerpt-content">
-          安装 Oh My Zsh1、切换到 zshMac OSX默认使用的是 bash shell，使用chsh -s /bin/zsh命令切换至 zsh2、使用curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh进行安装
-% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-Dload...
+          安装 Oh My Zsh1、切换到 zshMac OSX默认使用的是 bash shell，使用chsh -s /bin/zsh命令切换至 zsh2、使用curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh进行安装123456789101112131415161718192021222324252627282930% Total    % Received % Xferd  Av...
         </p>
         <p class="article-more-link">
           <a href="/在-Mac-OSX-上安装-Oh-My-Zsh/#more">阅读全文</a>
@@ -379,7 +377,7 @@ Dload...
         <p class="article-excerpt-content">
           weak 指针weak是弱引用，所引用对象的计数器不会加一，并在引用对象被释放的时候自动被设置为nil。通常用于解决循环引用问题。
 weak 表runtime 维护了一个 weak 表，用于存储指向某个对象的所有 weak 指针。weak 表是一个 hash 表：
-weak 实现原理1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。// object 是要初始化的指针，value ...
+weak 实现原理1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。12// object 是要初始化的指针，valu...
         </p>
         <p class="article-more-link">
           <a href="/weak原理探索/#more">阅读全文</a>
@@ -431,19 +429,8 @@ weak 实现原理1、初始化时：runtime 会调用 objc_initWeak() 函数，o
         <p class="article-excerpt-content">
           参考文章你真的理解__block修饰符的原理么？
 深入研究Block捕获外部变量和__block实现原理
-Block 的实现// Block 源码
-int main(int argc, const char * argv[]) {
-@autoreleasepool {
-void (^blk)(void) = ^{
-printf(&quot;Block\n&quot;);
-};
-
-blk();
-}
-return 0;
-}
-使用 clang 命令将源码改成编译后的 C/C++ 语言：
-stru...
+Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[]) &#123;@autoreleasepool &#123;void (^blk)(void) = ^&#123;printf(&quot;Block\n&quot;);&#125;;blk();&#125;return 0;&#125;
+使用...
         </p>
         <p class="article-more-link">
           <a href="/关于-block的一些思考/#more">阅读全文</a>
@@ -551,7 +538,7 @@ Core ML 是领域特定框架和功能的基础。Core ML 支持Vision
 
 Block的声明与赋值只是保存了一段代码段,必须调用才能执行内部代码。
 
-Block使用(1) 标准声明与定义return_t...
+Block使用(1) 标准声明与定义1234retu...
         </p>
         <p class="article-more-link">
           <a href="/iOS开发之Block详解/#more">阅读全文</a>

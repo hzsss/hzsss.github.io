@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-dcdc6ad08b4b4dbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-83f14b531a14d3ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-1a12a79877ec160c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-08-05T08:15:26.292Z">
+<meta property="og:updated_time" content="2018-12-19T08:10:25.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Object-C Runtime 及消息发送与转发">
 <meta name="twitter:description" content="什么是 RuntimeObjective-C语言是一门动态语言，它将很多静态语言在编译和链接时期做的事放到了运行时来处理。之所以能具备这种特性，离不开运行时系统即objc Runtime，objc Runtime即 Runtime库。Runtime很好的解决了如何在运行时期找到调用方法这样的问题。 类与对象基础数据结构ClassObjective-C类是由Class类型来表示的，它实际上是一个指向">
@@ -196,83 +196,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="什么是-Runtime"><a href="#什么是-Runtime" class="headerlink" title="什么是 Runtime"></a>什么是 Runtime</h3><p>Objective-C语言是一门动态语言，它将很多静态语言在编译和链接时期做的事放到了运行时来处理。之所以能具备这种特性，离不开运行时系统即<code>objc Runtime</code>，<code>objc Runtime</code>即 <code>Runtime</code>库。<code>Runtime</code>很好的解决了如何在运行时期找到调用方法这样的问题。</p>
-<h3 id="类与对象基础数据结构"><a href="#类与对象基础数据结构" class="headerlink" title="类与对象基础数据结构"></a>类与对象基础数据结构</h3><h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p>Objective-C类是由Class类型来表示的，它实际上是一个指向objc_class结构体的指针。它的定义如下：<br><code>typedef struct objc_class *Class;</code><br>我们再来看<code>objc/runtime.h</code>中<code>objc_class</code>结构体的定义如下：</p>
-<pre><code>struct objc_class {
-  Class isa  OBJC_ISA_AVAILABILITY;
-  #if !__OBJC2__
-  Class super_class                     OBJC2_UNAVAILABLE;  // 父类
-  const char *name                        OBJC2_UNAVAILABLE;  // 类名
-  long version                            OBJC2_UNAVAILABLE;  // 类的版本信息，默认为0
-  long info                              OBJC2_UNAVAILABLE;  // 类信息，供运行期使用的一些位标识
-  long instance_size                     OBJC2_UNAVAILABLE;  // 该类的实例变量大小
-  struct objc_ivar_list *ivars           OBJC2_UNAVAILABLE;  // 该类的成员变量链表
-  struct objc_method_list **methodLists   OBJC2_UNAVAILABLE;  // 方法定义的链表
-  struct objc_cache *cache                OBJC2_UNAVAILABLE;  // 方法缓存
-  struct objc_protocol_list *protocols   OBJC2_UNAVAILABLE;  // 协议链表
-  #endif
-} OBJC2_UNAVAILABLE;
-</code></pre><p>其中，有几个字段是我们需要掌握的。<br>1.<code>isa</code>：需要注意的是在<code>Objective-C</code>中，所有的类自身也是一个对象，这个对象的<code>Class</code>里面也有一个<code>isa</code>指针，它指向<code>metaClass</code>(元类)。<br>2.<code>super_class</code>：指向该类的父类，如果该类已经是最顶层的根类(如NSObject或NSProxy)，则<code>super_class</code>为NULL。<br>3.<code>methodLists</code>：看名字也容易理解，这个<code>methodLists</code>就是用来存放方法列表的。<br>4.<code>cache</code>：用于缓存最近使用的方法。<br>5.<code>version</code>：我们可以使用这个字段来提供类的版本信息。这对于对象的序列化非常有用，它可是让我们识别出不同类定义版本中实例变量布局的改变。</p>
-<h3 id="元类（Meta-Class）"><a href="#元类（Meta-Class）" class="headerlink" title="元类（Meta Class）"></a>元类（Meta Class）</h3><p>所有的类自身也是一个对象，我们可以向这个对象发送消息(即调用类方法)。既然是对象，那么它也是一个<code>objc_object</code>指针，它包含一个指向其类的一个<code>isa</code>指针。那么这些就有一个问题了，这个<code>isa</code>指针指向什么呢？这个类的<code>isa</code>指针必须指向一个包含这些类方法的一个<code>objc_class</code>结构体。这就引出了<code>meta-class</code>的概念：<code>meta-class</code>是一个类对象的类。<br>当我们向一个对象发送消息时，<code>runtime</code>会在这个对象所属的这个类的方法列表中查找方法；而向一个类发送消息时，会在这个类的<code>meta-class</code>的方法列表中查找。<br><code>meta-class</code>之所以重要，是因为它存储着一个类的所有类方法。每个类都会有一个单独的<code>meta-class</code>，因为每个类的类方法基本不可能完全相同。<br>再深入一下，<code>meta-class</code>也是一个类，也可以向它发送一个消息，那么它的<code>isa</code>又是指向什么呢？为了不让这种结构无限延伸下去，<code>Objective-C</code>的设计者让所有的<code>meta-class</code>的<code>isa</code>指向基类的<code>meta-class</code>，以此作为它们的所属类。即，任何<code>NSObject</code>继承体系下的<code>meta-class</code>都使用<code>NSObject</code>的<code>meta-class</code>作为自己的所属类，而基类的<code>meta-class</code>的<code>isa</code>指针是指向它自己。这样就形成了一个完美的闭环。<br>通过上面的描述，再加上对<code>objc_class</code>结构体中<code>super_class</code>指针的分析，我们就可以描绘出类及相应<code>meta-class</code>类的一个继承体系了，如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-dcdc6ad08b4b4dbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
-<pre><code>MyClass *myClass = [[MyClass alloc] init];
-
-Class class = [myClass class];
-Class metaClass = object_getClass(class);
-Class metaOfMetaClass = object_getClass(metaClass);
-Class rootMetaClass = object_getClass(metaOfMetaClass);
-Class superclass = class_getSuperclass(class);
-Class superOfSuperclass = class_getSuperclass(superclass);
-Class superOfMetaOfSuperclass = class_getSuperclass(object_getClass(superclass));
-
-NSLog(@&quot;MyClass 实例对象是：%p&quot;,myClass);
-NSLog(@&quot;MyClass 类对象是：%p&quot;,class);
-NSLog(@&quot;MyClass 元类对象是：%p&quot;,metaClass);
-NSLog(@&quot;MyClass 元类对象的元类对象是：%p&quot;,metaOfMetaClass);
-NSLog(@&quot;MyClass 根元类对象是：%p&quot;,rootMetaClass);
-NSLog(@&quot;MyClass 父类是：%@&quot;,class_getSuperclass(class));
-NSLog(@&quot;MyClass 父类的父类是：%@&quot;,superOfSuperclass);
-NSLog(@&quot;MyClass 父类的元类的父类是：%@&quot;,superOfMetaOfSuperclass);
-
-NSLog(@&quot;NSObject 元类对象是：%p&quot;,object_getClass([NSObject class]));
-NSLog(@&quot;NSObject 父类是：%@&quot;,[[NSObject class] superclass]);
-NSLog(@&quot;NSObject 元类对象的父类是：%@&quot;,[object_getClass([NSObject class]) superclass]);
-
-//输出：
-MyClass 实例对象是：0x60c00000b8d0
-MyClass 类对象是：0x109ae3fd0
-MyClass 元类对象是：****0x109ae3fa8
-MyClass 元类对象的元类对象是：****0x10ab02e58**
-MyClass 根元类对象是：0x10ab02e58
-MyClass 父类是：NSObject
-MyClass 父类的父类是：(null)
-MyClass 父类的元类的父类是：NSObject
-NSObject 元类对象是：0x10ab02e58
-NSObject 父类是：(null)
-NSObject 元类对象的父类是：NSObject
-</code></pre><p>现在我们能知道各种对象之间的关系</p>
+<h3 id="类与对象基础数据结构"><a href="#类与对象基础数据结构" class="headerlink" title="类与对象基础数据结构"></a>类与对象基础数据结构</h3><h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p>Objective-C类是由Class类型来表示的，它实际上是一个指向objc_class结构体的指针。它的定义如下：<br><code>typedef struct objc_class *Class;</code><br>我们再来看<code>objc/runtime.h</code>中<code>objc_class</code>结构体的定义如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">struct objc_class &#123;</span><br><span class="line">  Class isa  OBJC_ISA_AVAILABILITY;</span><br><span class="line">  #if !__OBJC2__</span><br><span class="line">  Class super_class                     OBJC2_UNAVAILABLE;  // 父类</span><br><span class="line">  const char *name                        OBJC2_UNAVAILABLE;  // 类名</span><br><span class="line">  long version                            OBJC2_UNAVAILABLE;  // 类的版本信息，默认为0</span><br><span class="line">  long info                              OBJC2_UNAVAILABLE;  // 类信息，供运行期使用的一些位标识</span><br><span class="line">  long instance_size                     OBJC2_UNAVAILABLE;  // 该类的实例变量大小</span><br><span class="line">  struct objc_ivar_list *ivars           OBJC2_UNAVAILABLE;  // 该类的成员变量链表</span><br><span class="line">  struct objc_method_list **methodLists   OBJC2_UNAVAILABLE;  // 方法定义的链表</span><br><span class="line">  struct objc_cache *cache                OBJC2_UNAVAILABLE;  // 方法缓存</span><br><span class="line">  struct objc_protocol_list *protocols   OBJC2_UNAVAILABLE;  // 协议链表</span><br><span class="line">  #endif</span><br><span class="line">&#125; OBJC2_UNAVAILABLE;</span><br></pre></td></tr></table></figure></p>
+<p>其中，有几个字段是我们需要掌握的。<br>1.<code>isa</code>：需要注意的是在<code>Objective-C</code>中，所有的类自身也是一个对象，这个对象的<code>Class</code>里面也有一个<code>isa</code>指针，它指向<code>metaClass</code>(元类)。<br>2.<code>super_class</code>：指向该类的父类，如果该类已经是最顶层的根类(如NSObject或NSProxy)，则<code>super_class</code>为NULL。<br>3.<code>methodLists</code>：看名字也容易理解，这个<code>methodLists</code>就是用来存放方法列表的。<br>4.<code>cache</code>：用于缓存最近使用的方法。<br>5.<code>version</code>：我们可以使用这个字段来提供类的版本信息。这对于对象的序列化非常有用，它可是让我们识别出不同类定义版本中实例变量布局的改变。</p>
+<h3 id="元类（Meta-Class）"><a href="#元类（Meta-Class）" class="headerlink" title="元类（Meta Class）"></a>元类（Meta Class）</h3><p>所有的类自身也是一个对象，我们可以向这个对象发送消息(即调用类方法)。既然是对象，那么它也是一个<code>objc_object</code>指针，它包含一个指向其类的一个<code>isa</code>指针。那么这些就有一个问题了，这个<code>isa</code>指针指向什么呢？这个类的<code>isa</code>指针必须指向一个包含这些类方法的一个<code>objc_class</code>结构体。这就引出了<code>meta-class</code>的概念：<code>meta-class</code>是一个类对象的类。<br>当我们向一个对象发送消息时，<code>runtime</code>会在这个对象所属的这个类的方法列表中查找方法；而向一个类发送消息时，会在这个类的<code>meta-class</code>的方法列表中查找。<br><code>meta-class</code>之所以重要，是因为它存储着一个类的所有类方法。每个类都会有一个单独的<code>meta-class</code>，因为每个类的类方法基本不可能完全相同。<br>再深入一下，<code>meta-class</code>也是一个类，也可以向它发送一个消息，那么它的<code>isa</code>又是指向什么呢？为了不让这种结构无限延伸下去，<code>Objective-C</code>的设计者让所有的<code>meta-class</code>的<code>isa</code>指向基类的<code>meta-class</code>，以此作为它们的所属类。即，任何<code>NSObject</code>继承体系下的<code>meta-class</code>都使用<code>NSObject</code>的<code>meta-class</code>作为自己的所属类，而基类的<code>meta-class</code>的<code>isa</code>指针是指向它自己。这样就形成了一个完美的闭环。<br>通过上面的描述，再加上对<code>objc_class</code>结构体中<code>super_class</code>指针的分析，我们就可以描绘出类及相应<code>meta-class</code>类的一个继承体系了，如下图所示：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-dcdc6ad08b4b4dbc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">MyClass *myClass = [[MyClass alloc] init];</span><br><span class="line"></span><br><span class="line">Class class = [myClass class];</span><br><span class="line">Class metaClass = object_getClass(class);</span><br><span class="line">Class metaOfMetaClass = object_getClass(metaClass);</span><br><span class="line">Class rootMetaClass = object_getClass(metaOfMetaClass);</span><br><span class="line">Class superclass = class_getSuperclass(class);</span><br><span class="line">Class superOfSuperclass = class_getSuperclass(superclass);</span><br><span class="line">Class superOfMetaOfSuperclass = class_getSuperclass(object_getClass(superclass));</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;MyClass 实例对象是：%p&quot;,myClass);</span><br><span class="line">NSLog(@&quot;MyClass 类对象是：%p&quot;,class);</span><br><span class="line">NSLog(@&quot;MyClass 元类对象是：%p&quot;,metaClass);</span><br><span class="line">NSLog(@&quot;MyClass 元类对象的元类对象是：%p&quot;,metaOfMetaClass);</span><br><span class="line">NSLog(@&quot;MyClass 根元类对象是：%p&quot;,rootMetaClass);</span><br><span class="line">NSLog(@&quot;MyClass 父类是：%@&quot;,class_getSuperclass(class));</span><br><span class="line">NSLog(@&quot;MyClass 父类的父类是：%@&quot;,superOfSuperclass);</span><br><span class="line">NSLog(@&quot;MyClass 父类的元类的父类是：%@&quot;,superOfMetaOfSuperclass);</span><br><span class="line"></span><br><span class="line">NSLog(@&quot;NSObject 元类对象是：%p&quot;,object_getClass([NSObject class]));</span><br><span class="line">NSLog(@&quot;NSObject 父类是：%@&quot;,[[NSObject class] superclass]);</span><br><span class="line">NSLog(@&quot;NSObject 元类对象的父类是：%@&quot;,[object_getClass([NSObject class]) superclass]);</span><br><span class="line"></span><br><span class="line">//输出：</span><br><span class="line">MyClass 实例对象是：0x60c00000b8d0</span><br><span class="line">MyClass 类对象是：0x109ae3fd0</span><br><span class="line">MyClass 元类对象是：****0x109ae3fa8</span><br><span class="line">MyClass 元类对象的元类对象是：****0x10ab02e58**</span><br><span class="line">MyClass 根元类对象是：0x10ab02e58</span><br><span class="line">MyClass 父类是：NSObject</span><br><span class="line">MyClass 父类的父类是：(null)</span><br><span class="line">MyClass 父类的元类的父类是：NSObject</span><br><span class="line">NSObject 元类对象是：0x10ab02e58</span><br><span class="line">NSObject 父类是：(null)</span><br><span class="line">NSObject 元类对象的父类是：NSObject</span><br></pre></td></tr></table></figure></p>
+<p>现在我们能知道各种对象之间的关系</p>
 <blockquote>
 <p>实例对象通过 isa 指针，找到类对象 Class；类对象同样通过 isa 指针，找到元类对象；元类对象也是通过 isa 指针，找到根元类对象；最后，根元类对象的 isa 指针，指向自己。可以发现 NSObject 是整个消息机制的核心，绝大数对象都继承自它。</p>
 </blockquote>
-<h3 id="methodLists"><a href="#methodLists" class="headerlink" title="methodLists"></a>methodLists</h3><p>我们再来看看<code>objc_method_list</code>这个结构体</p>
-<pre><code>struct objc_method_list {
-  struct objc_method_list * _Nullable obsolete OBJC2_UNAVAILABLE;
-
-  int method_count OBJC2_UNAVAILABLE;
-  #ifdef __LP64__
-  int space  OBJC2_UNAVAILABLE;
-  #endif
-  /* variable length structure */
-  struct objc_method method_list[1]  OBJC2_UNAVAILABLE;
-}
-</code></pre><p>里面的<code>objc_method</code>，也就是我们熟悉的<code>Method</code></p>
-<pre><code>struct objc_method {
-  SEL _Nonnull method_name OBJC2_UNAVAILABLE;         //方法的名称
-  char * _Nullable method_types  OBJC2_UNAVAILABLE;   //方法的类型
-  IMP _Nonnull method_imp  OBJC2_UNAVAILABLE;         // 方法的具体实现
-}
-</code></pre><p>由此我们可以得出实例对象调用方法的大致逻辑：</p>
-<pre><code>MyClass *myClass = [[MyClass alloc] init];
-[myClass printLog];
-</code></pre><blockquote>
+<h3 id="methodLists"><a href="#methodLists" class="headerlink" title="methodLists"></a>methodLists</h3><p>我们再来看看<code>objc_method_list</code>这个结构体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">struct objc_method_list &#123;</span><br><span class="line">  struct objc_method_list * _Nullable obsolete OBJC2_UNAVAILABLE;</span><br><span class="line"></span><br><span class="line">  int method_count OBJC2_UNAVAILABLE;</span><br><span class="line">  #ifdef __LP64__</span><br><span class="line">  int space  OBJC2_UNAVAILABLE;</span><br><span class="line">  #endif</span><br><span class="line">  /* variable length structure */</span><br><span class="line">  struct objc_method method_list[1]  OBJC2_UNAVAILABLE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>里面的<code>objc_method</code>，也就是我们熟悉的<code>Method</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct objc_method &#123;</span><br><span class="line">  SEL _Nonnull method_name OBJC2_UNAVAILABLE;         //方法的名称</span><br><span class="line">  char * _Nullable method_types  OBJC2_UNAVAILABLE;   //方法的类型</span><br><span class="line">  IMP _Nonnull method_imp  OBJC2_UNAVAILABLE;         // 方法的具体实现</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>由此我们可以得出实例对象调用方法的大致逻辑：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MyClass *myClass = [[MyClass alloc] init];</span><br><span class="line">[myClass printLog];</span><br></pre></td></tr></table></figure></p>
+<blockquote>
 <p>先被编译成 <code>((void (*)(id, SEL))(void *) objc_msgSend)(myClass, @selector(printLog));</code><br>沿着入参<code>myClass</code>的<code>isa</code>指针，找到<code>myClass</code>的类对象（<code>Class</code>），也就是 <code>MyClass</code><br>接着在<code>MyClass</code>的方法列表<code>methodLists</code>中，找到对应的<code>Method</code><br>最后找到 <code>Method</code> 中的 <code>IMP</code> 指针，执行具体实现</p>
 </blockquote>
 <p>由上文，我们已经知道，实例对象是通过<code>isa</code>指针，找到其类对象（<code>Class</code>）中保存的方法列表中的具体实现的。<code>printLog</code>方法就是保存在<code>MyClass</code>中的。<br>那么如果是个类方法，又是保存在什么地方的呢？我们也知道了类对象的<code>isa</code>指针是指向元类对象的。那么不难得出：</p>
@@ -286,87 +220,11 @@ NSObject 元类对象的父类是：NSObject
 </blockquote>
 <h3 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h3><p>如果方法列表（methodLists）没找到对应的 selector 呢？<br><code>[self performSelector:@selector(myTestPrint:) withObject:@&quot;嘻嘻&quot;];</code><br>系统会提供三次补救的机会。</p>
 <h4 id="第一次"><a href="#第一次" class="headerlink" title="第一次"></a>第一次</h4><p><code>+ (BOOL)resolveInstanceMethod:(SEL)sel {} (实例方法)</code><br><code>+ (BOOL)resolveClassMethod:(SEL)sel {}  (类方法)</code></p>
-<p>这两个方法，一个针对实例方法；一个针对类方法。返回值都是<code>Bool</code>。</p>
-<pre><code>// ViewController.m 中
-
-void myMethod(id self, SEL _cmd,NSString *nub) {
-  NSLog(@&quot;ifelseboyxx%@&quot;,nub);
-}
-
-+ (BOOL)resolveInstanceMethod:(SEL)sel {
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
-  if (sel == @selector(myTestPrint:)) {
-    #pragma clang diagnostic pop
-    class_addMethod([self class],sel,(IMP)myMethod,&quot;v@:@&quot;);
-    return YES;
-  }else {
-    return [super resolveInstanceMethod:sel];
-  }
-}
-</code></pre><p>我们只需要在 <code>resolveInstanceMethod:</code> 方法中，利用 <code>class_addMethod</code> 方法，将未实现的<code>myTestPrint:</code>绑定到 <code>myMethod</code>上就能完成转发，最后返回<code>YES</code>。</p>
-<h4 id="第二次"><a href="#第二次" class="headerlink" title="第二次"></a>第二次</h4><p><code>- (id)forwardingTargetForSelector:(SEL)aSelector {}</code><br>这个方法要求返回一个<code>id</code>。使用场景一般是将 A 类的某个方法，转发到 B 类的实现中去。<br>使用示例：<br>想转发到 <code>Person</code> 类中的<code>-myTestPrint:</code>方法中：</p>
-<pre><code>@interface Person : NSObject
-@end
-
-@implementation Person
-- (void)myTestPrint:(NSString *)str {
-  NSLog(@&quot;ifelseboyxx%@&quot;,str);
-}
-@end
-// ViewController.m 中
-
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
-  if (aSelector == @selector(myTestPrint:)) {
-  #pragma clang diagnostic pop
-    return [Person new];
-  }else{
-    return [super forwardingTargetForSelector:aSelector];
-  }
-}
-</code></pre><h4 id="第三次"><a href="#第三次" class="headerlink" title="第三次"></a>第三次</h4><p><code>- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {}</code><br><code>- (void)forwardInvocation:(NSInvocation *)anInvocation {}</code><br>第一个要求返回一个方法签名，第二个方法转发具体的实现。二者相互依赖，只有返回了正确的方法签名，才会执行第二个方法。<br>这次的转发作用和第二次的比较类似，都是将 A 类的某个方法，转发到 B 类的实现中去。不同的是，第三次的转发相对于第二次更加灵活，<code>forwardingTargetForSelector:</code>只能固定的转发到一个对象；<code>forwardInvocation:</code>可以让我们转发到多个对象中去。<br>使用实例：<br>想转发到 <code>Person</code> 类以及<code>Animal</code>类中的<code>-myTestPrint:</code>方法中：</p>
-<pre><code>@interface Person : NSObject
-@end
-
-@implementation Person
-- (void)myTestPrint:(NSString *)str {
-  NSLog(@&quot;ifelseboyxx%@&quot;,str);
-}
-@end
-@interface Animal : NSObject
-@end
-
-@implementation Animal
-- (void)myTestPrint:(NSString *)str {
-  NSLog(@&quot;tiger%@&quot;,str);
-}
-@end
-
-// ViewController.m 中
-
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-  #pragma clang diagnostic push
-  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;
-  if (aSelector == @selector(myTestPrint:)) {
-    #pragma clang diagnostic pop
-    return [NSMethodSignature  signatureWithObjCTypes:&quot;v@:@&quot;];
-  }
-  return [super methodSignatureForSelector:aSelector];
-}
-
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-  Person *person = [Person new];
-  Animal *animal = [Animal new];
-  if ([person respondsToSelector:anInvocation.selector]) {
-    [anInvocation invokeWithTarget:person];
-  }
-  if ([animal respondsToSelector:anInvocation.selector]) {
-    [anInvocation invokeWithTarget:animal];
-  }
-}
-</code></pre><blockquote>
+<p>这两个方法，一个针对实例方法；一个针对类方法。返回值都是<code>Bool</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// ViewController.m 中</span><br><span class="line"></span><br><span class="line">void myMethod(id self, SEL _cmd,NSString *nub) &#123;</span><br><span class="line">  NSLog(@&quot;ifelseboyxx%@&quot;,nub);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">+ (BOOL)resolveInstanceMethod:(SEL)sel &#123;</span><br><span class="line">  #pragma clang diagnostic push</span><br><span class="line">  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;</span><br><span class="line">  if (sel == @selector(myTestPrint:)) &#123;</span><br><span class="line">    #pragma clang diagnostic pop</span><br><span class="line">    class_addMethod([self class],sel,(IMP)myMethod,&quot;v@:@&quot;);</span><br><span class="line">    return YES;</span><br><span class="line">  &#125;else &#123;</span><br><span class="line">    return [super resolveInstanceMethod:sel];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们只需要在 <code>resolveInstanceMethod:</code> 方法中，利用 <code>class_addMethod</code> 方法，将未实现的<code>myTestPrint:</code>绑定到 <code>myMethod</code>上就能完成转发，最后返回<code>YES</code>。</p>
+<h4 id="第二次"><a href="#第二次" class="headerlink" title="第二次"></a>第二次</h4><p><code>- (id)forwardingTargetForSelector:(SEL)aSelector {}</code><br>这个方法要求返回一个<code>id</code>。使用场景一般是将 A 类的某个方法，转发到 B 类的实现中去。<br>使用示例：<br>想转发到 <code>Person</code> 类中的<code>-myTestPrint:</code>方法中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Person</span><br><span class="line">- (void)myTestPrint:(NSString *)str &#123;</span><br><span class="line">  NSLog(@&quot;ifelseboyxx%@&quot;,str);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line">// ViewController.m 中</span><br><span class="line"></span><br><span class="line">- (id)forwardingTargetForSelector:(SEL)aSelector &#123;</span><br><span class="line">  #pragma clang diagnostic push</span><br><span class="line">  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;</span><br><span class="line">  if (aSelector == @selector(myTestPrint:)) &#123;</span><br><span class="line">  #pragma clang diagnostic pop</span><br><span class="line">    return [Person new];</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">    return [super forwardingTargetForSelector:aSelector];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="第三次"><a href="#第三次" class="headerlink" title="第三次"></a>第三次</h4><p><code>- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {}</code><br><code>- (void)forwardInvocation:(NSInvocation *)anInvocation {}</code><br>第一个要求返回一个方法签名，第二个方法转发具体的实现。二者相互依赖，只有返回了正确的方法签名，才会执行第二个方法。<br>这次的转发作用和第二次的比较类似，都是将 A 类的某个方法，转发到 B 类的实现中去。不同的是，第三次的转发相对于第二次更加灵活，<code>forwardingTargetForSelector:</code>只能固定的转发到一个对象；<code>forwardInvocation:</code>可以让我们转发到多个对象中去。<br>使用实例：<br>想转发到 <code>Person</code> 类以及<code>Animal</code>类中的<code>-myTestPrint:</code>方法中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Person</span><br><span class="line">- (void)myTestPrint:(NSString *)str &#123;</span><br><span class="line">  NSLog(@&quot;ifelseboyxx%@&quot;,str);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line">@interface Animal : NSObject</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Animal</span><br><span class="line">- (void)myTestPrint:(NSString *)str &#123;</span><br><span class="line">  NSLog(@&quot;tiger%@&quot;,str);</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">// ViewController.m 中</span><br><span class="line"></span><br><span class="line">- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector &#123;</span><br><span class="line">  #pragma clang diagnostic push</span><br><span class="line">  #pragma clang diagnostic ignored &quot;-Wundeclared-selector&quot;</span><br><span class="line">  if (aSelector == @selector(myTestPrint:)) &#123;</span><br><span class="line">    #pragma clang diagnostic pop</span><br><span class="line">    return [NSMethodSignature  signatureWithObjCTypes:&quot;v@:@&quot;];</span><br><span class="line">  &#125;</span><br><span class="line">  return [super methodSignatureForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)forwardInvocation:(NSInvocation *)anInvocation &#123;</span><br><span class="line">  Person *person = [Person new];</span><br><span class="line">  Animal *animal = [Animal new];</span><br><span class="line">  if ([person respondsToSelector:anInvocation.selector]) &#123;</span><br><span class="line">    [anInvocation invokeWithTarget:person];</span><br><span class="line">  &#125;</span><br><span class="line">  if ([animal respondsToSelector:anInvocation.selector]) &#123;</span><br><span class="line">    [anInvocation invokeWithTarget:animal];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
 <p>⚠️ 如果到了第三次机会，还没找到对应的实现，就会 crash：<br>unrecognized selector sent to instance 0x7f9f817072b0</p>
 </blockquote>
 <p>消息发送和消息转发的过程<br><img src="https://upload-images.jianshu.io/upload_images/6365912-1a12a79877ec160c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>

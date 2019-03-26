@@ -187,6 +187,67 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-制作-iOS-framework-静态库的一些总结"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/制作-iOS-framework-静态库的一些总结/">制作 iOS framework 静态库的一些总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/制作-iOS-framework-静态库的一些总结/" class="article-date">
+	  <time datetime="2019-03-26T05:47:05.000Z" itemprop="datePublished">2019-03-26</time>
+	</a>
+
+      
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          制作步骤这部分资料很多，这里就不再赘述。
+参考资料：
+Xcode10制作 framework详细步骤及坑说明
+
+iOS 制作 framework
+iOS静态库 【.a 和framework】【超详细】
+要点
+如果需要调用 framework 中的分类（category）方法，需要在使用静态库的工程中配置 other linker flags 为 -Objc
+
+默认 framework 是动态库，制作静态库需要设置 Mach-O Type 为 Static Library
+
+想要在 fram...
+        </p>
+        <p class="article-more-link">
+          <a href="/制作-iOS-framework-静态库的一些总结/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-HomePod-测评"  class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="article-inner">
     
@@ -676,60 +737,6 @@ Block 的实现1234567891011// Block 源码int main(int argc, const char * argv[
         </p>
         <p class="article-more-link">
           <a href="/关于-block的一些思考/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-Core-ML"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/Core-ML/">Core ML</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/Core-ML/" class="article-date">
-	  <time datetime="2018-06-12T07:43:52.000Z" itemprop="datePublished">2018-06-12</time>
-	</a>
-
-      
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          Core ML 概述借助 Core ML，我们可以将经过训练的机器学习模型整合到我们的应用程序中。
-一个训练有素的模型是将机器学习算法来训练数据集合的结果。该模型根据新的输入数据进行预测。例如，一个在某个地区的历史房价上受过培训的模型可能能够在给定卧室和浴室的数量时预测房屋的价格。
-Core ML 是领域特定框架和功能的基础。Core ML 支持Vision
-图像分析，Natural Language
-的自然语言处理，以及评估学习决策树的GameplayKit。Core ML 本身建立在像...
-        </p>
-        <p class="article-more-link">
-          <a href="/Core-ML/#more">阅读全文</a>
         </p>
       
     </div>

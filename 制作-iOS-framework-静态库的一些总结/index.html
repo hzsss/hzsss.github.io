@@ -19,10 +19,19 @@
 <meta property="og:site_name" content="Acan&#39;s blog">
 <meta property="og:description" content="制作步骤这部分资料很多，这里就不再赘述。 参考资料： Xcode10制作 framework详细步骤及坑说明  iOS 制作 framework iOS静态库 【.a 和framework】【超详细】 要点 如果需要调用 framework 中的分类（category）方法，需要在使用静态库的工程中配置 other linker flags 为 -Objc  默认 framework 是动态库，制">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-26T06:02:54.454Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-0749955141545ee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-32477702542b63ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-7e72e64b95e5603b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-b2fe861f03a9edc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-8a776dcdc094eaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-3b394fa80ba90fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-d24d960247d8323b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-dc38829ba06a38ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-26T10:03:02.060Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="制作 iOS framework 静态库的一些总结">
 <meta name="twitter:description" content="制作步骤这部分资料很多，这里就不再赘述。 参考资料： Xcode10制作 framework详细步骤及坑说明  iOS 制作 framework iOS静态库 【.a 和framework】【超详细】 要点 如果需要调用 framework 中的分类（category）方法，需要在使用静态库的工程中配置 other linker flags 为 -Objc  默认 framework 是动态库，制">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6365912-0749955141545ee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
 
   
@@ -210,71 +219,51 @@
 </li>
 <li><p>工程中要使用 framework 中的资源，需要在工程中的 Build Phases -&gt; Copy Bundle Resources 中添加 framework</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (<span class="built_in">UIImage</span> *)downloadImage &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSBundle</span> *bundle = [<span class="built_in">NSBundle</span> bundleWithPath:[[<span class="built_in">NSBundle</span> mainBundle] pathForResource:<span class="string">@"DownloadAndPrint"</span> ofType:<span class="string">@"framework"</span>]];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSString</span>* imagesPath = [bundle.resourcePath stringByAppendingPathComponent:<span class="string">@"images"</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@"imagesPath:\%@"</span>, imagesPath);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">NSBundle</span>* imageBundle = [<span class="built_in">NSBundle</span> bundleWithPath:imagesPath];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>  [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"test"</span> inBundle:imageBundle compatibleWithTraitCollection:<span class="literal">nil</span>];</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h3 id="iOS-framework-合并和拆分多种架构"><a href="#iOS-framework-合并和拆分多种架构" class="headerlink" title="iOS framework 合并和拆分多种架构"></a>iOS framework 合并和拆分多种架构</h3><p>参考资料：</p>
 <p><a href="https://www.jianshu.com/p/3995c79874c1" target="_blank" rel="noopener">iOS静态库支持架构查看、分离、合并</a></p>
 <p><a href="http://msching.github.io/blog/2014/05/05/custom-framework-merging/" target="_blank" rel="noopener">合并生成模拟器和真机通用的framework</a></p>
 <p>合并：</p>
-<p>Target -&gt; Build Settings -&gt; Build Active Architecture Only（是否只编译当前架构） -&gt; Debug 改为 NO（改为 NO，模拟器可以直接合成两种架构）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo -create /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNTestFrameworking /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphoneos/AFNTestFrameworking.framework/AFNTestFrameworking -output /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework</span><br></pre></td></tr></table></figure>
-<p>查看：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo -info /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework</span><br><span class="line">    </span><br><span class="line">Architectures in the fat file: /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework are: i386 armv7 x86_64 arm64</span><br></pre></td></tr></table></figure>
-<p>拆分：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNTestFrameworking -thin x86_64 -output /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNSingleFrameworking</span><br></pre></td></tr></table></figure>
-<p>查看</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Non-fat file: /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNSingleFrameworking is architecture: x86_64</span><br></pre></td></tr></table></figure>
-<h3 id="查看-framework-中包含的文件"><a href="#查看-framework-中包含的文件" class="headerlink" title="查看 framework 中包含的文件"></a>查看 framework 中包含的文件</h3><p>使用 <code>ar -t</code> 命令，如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ar -t /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphoneos/AFNTestFrameworking.framework/AFNTestFrameworking</span><br><span class="line">    </span><br><span class="line">__.SYMDEF SORTED</span><br><span class="line">    </span><br><span class="line">AFNTestManager.o</span><br><span class="line">    </span><br><span class="line">AFNTestFrameworking_vers.o</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>Target -&gt; Build Settings -&gt; Build Active Architecture Only（是否只编译当前架构） -&gt; Debug 改为 NO（改为 NO，模拟器可以直接合成两种架构）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo -create /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNTestFrameworking /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphoneos/AFNTestFrameworking.framework/AFNTestFrameworking -output /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework</span><br></pre></td></tr></table></figure></p>
+<p>查看：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo -info /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework</span><br><span class="line">    </span><br><span class="line">Architectures in the fat file: /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNAllFramework are: i386 armv7 x86_64 arm64</span><br></pre></td></tr></table></figure></p>
+<p>拆分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ lipo /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNTestFrameworking -thin x86_64 -output /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNSingleFrameworking</span><br></pre></td></tr></table></figure></p>
+<p>查看<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Non-fat file: /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphonesimulator/AFNTestFrameworking.framework/AFNSingleFrameworking is architecture: x86_64</span><br></pre></td></tr></table></figure></p>
+<h3 id="查看-framework-中包含的文件"><a href="#查看-framework-中包含的文件" class="headerlink" title="查看 framework 中包含的文件"></a>查看 framework 中包含的文件</h3><p>使用 <code>ar -t</code> 命令，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ ar -t /Users/acan/Library/Developer/Xcode/DerivedData/AFNTestFrameworking-dbzgzczpzorkzxakdyptgdkckcee/Build/Products/Debug-iphoneos/AFNTestFrameworking.framework/AFNTestFrameworking</span><br><span class="line">    </span><br><span class="line">__.SYMDEF SORTED</span><br><span class="line">    </span><br><span class="line">AFNTestManager.o</span><br><span class="line">    </span><br><span class="line">AFNTestFrameworking_vers.o</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">~ ar -t /Users/acan/Library/Developer/Xcode/DerivedData/DownloadAndPrint-esbkggakvotbghavvyrahlbwezwq/Build/Products/Debug-iphonesimulator/DownloadAndPrint.framework/DownloadAndPrint</span><br><span class="line">    </span><br><span class="line">__.SYMDEF</span><br><span class="line">    </span><br><span class="line">KUIProgressView+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da30783bb34d0b01752ff79431573398a33e.o</span><br><span class="line">    </span><br><span class="line">KUIRefreshControl+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da30f1f87774da2328e9287dd2097ab84517.o</span><br><span class="line">    </span><br><span class="line">KAFNetworkActivityIndicatorManager-a1a40cc17fc24f3f1ceddd74a693da30f6671dc689dbfeba653612a231d647e7.o</span><br><span class="line">    </span><br><span class="line">KUIImageView+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da30d53daed08856f37e76e6d82b576e6c02.o</span><br><span class="line">    </span><br><span class="line">KUIButton+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da309068630115bb1ea9a64e2af147e2d7cc.o</span><br><span class="line">    </span><br><span class="line">KUIActivityIndicatorView+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da30367e3613ffc21cd2355caeca550a3ec7.o</span><br><span class="line">    </span><br><span class="line">KUIWebView+AFNetworking-a1a40cc17fc24f3f1ceddd74a693da308d779735f99bde934e571a128acba67d.o</span><br><span class="line">    </span><br><span class="line">KAFAutoPurgingImageCache-a1a40cc17fc24f3f1ceddd74a693da309beb5c005faa1444982c7565da4f9d8f.o</span><br><span class="line">    </span><br><span class="line">KAFImageDownloader-a1a40cc17fc24f3f1ceddd74a693da306a9a96f20bb980ab71772976283c0ecd.o</span><br><span class="line">    </span><br><span class="line">KAFURLResponseSerialization-a1a40cc17fc24f3f1ceddd74a693da30f0f5d2b89304980be949d764a3365c6d.o</span><br><span class="line">    </span><br><span class="line">KAFHTTPSessionManager-a1a40cc17fc24f3f1ceddd74a693da30c4b25aedaa55956bff8fcbbbeb00c3d3.o</span><br><span class="line">    </span><br><span class="line">KAFURLSessionManager-a1a40cc17fc24f3f1ceddd74a693da306e27ec6df912b8bec430b6a53d149649.o</span><br><span class="line">    </span><br><span class="line">KAFURLRequestSerialization-a1a40cc17fc24f3f1ceddd74a693da30005e720b8baa25b301ab087d70369baf.o</span><br><span class="line">    </span><br><span class="line">KAFNetworkReachabilityManager-a1a40cc17fc24f3f1ceddd74a693da306313f935294440fda518e03d49d37daa.o</span><br><span class="line">    </span><br><span class="line">KAFSecurityPolicy-a1a40cc17fc24f3f1ceddd74a693da3015da43421ec97c77d75192b90a53efa1.o</span><br><span class="line">    </span><br><span class="line">Print.o</span><br><span class="line">    </span><br><span class="line">DownloadImage.o</span><br><span class="line">    </span><br><span class="line">FrameworkManager.o</span><br><span class="line">    </span><br><span class="line">Print+test.o</span><br><span class="line">    </span><br><span class="line">DownloadAndPrint_vers.o</span><br></pre></td></tr></table></figure>
-<pre><code>### 报错及解决办法
+<h3 id="报错及解决办法"><a href="#报错及解决办法" class="headerlink" title="报错及解决办法"></a>报错及解决办法</h3><ol>
+<li>找不到头文件</li>
+</ol>
+<p>创建了一个名为 AFNTestFrameworking 的静态 framework，里面包含一个 AFNTestManager 的类：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-0749955141545ee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>在 AFNTestFramework.h 类中，引入需要暴露出来的类：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-32477702542b63ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>编译的时候没有问题，但是将这个 framework 导入到测试项目时，报错：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-7e72e64b95e5603b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>解决办法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-b2fe861f03a9edc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-8a776dcdc094eaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ol start="2">
+<li>动态链接找不到对应的库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/AFNetworking.framework/AFNetworking</span><br><span class="line">    </span><br><span class="line">  Referenced from: /Users/acan/Library/Developer/CoreSimulator/Devices/8B9DBFCA-F796-4142-ABC1-203A91E58762/data/Containers/Bundle/Application/D9084DBC-C80C-4774-BAA0-D71FA86991DD/TestFramework.app/TestFramework</span><br><span class="line">      </span><br><span class="line">    Reason: image not found</span><br><span class="line">        </span><br><span class="line">    Message from debugger: Terminated due to signal 6</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-3b394fa80ba90fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ol start="3">
+<li>符号表冲突的问题</li>
+</ol>
+<p>场景描述：我制作了一个 .framework 静态库，静态库引用了 AFNetworking，在我的 Demo 工程中也引用了 AFNetworking，报了以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: 165 duplicate symbols for architecture x86_64</span><br><span class="line">        </span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p>把  framework 中用到的第三方库的类更改名字</p>
+<p>Step 1：修改类名</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-d24d960247d8323b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Step 2：根据报错提示，全局搜索，手动修改冲突的类名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uplicate symbol _OBJC_CLASS_$__AFURLSessionTaskSwizzling in:</span><br><span class="line">        </span><br><span class="line">    /Users/acan/Library/Developer/Xcode/DerivedData/DownloadAndPrint-esbkggakvotbghavvyrahlbwezwq/Build/Intermediates.noindex/DownloadAndPrint.build/Debug-iphonesimulator/DownloadAndPrintDemo.build/Objects-normal/x86_64/AFURLSessionManager.o</span><br></pre></td></tr></table></figure>
+<p> 如：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-dc38829ba06a38ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>过程比较繁琐，但是有效。</p>
 
-1.  找不到头文件
-
-创建了一个名为 AFNTestFrameworking 的静态 framework，里面包含一个 AFNTestManager 的类：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-0749955141545ee2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-在 AFNTestFramework.h 类中，引入需要暴露出来的类：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-32477702542b63ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-编译的时候没有问题，但是将这个 framework 导入到测试项目时，报错：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-7e72e64b95e5603b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-解决办法：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-b2fe861f03a9edc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![](https://upload-images.jianshu.io/upload_images/6365912-8a776dcdc094eaca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-2.  动态链接找不到对应的库
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dyld: Library not loaded: @rpath/AFNetworking.framework/AFNetworking</span><br><span class="line">    </span><br><span class="line">  Referenced from: /Users/acan/Library/Developer/CoreSimulator/Devices/8B9DBFCA-F796-4142-ABC1-203A91E58762/data/Containers/Bundle/Application/D9084DBC-C80C-4774-BAA0-D71FA86991DD/TestFramework.app/TestFramework</span><br><span class="line">      </span><br><span class="line">    Reason: image not found</span><br><span class="line">        </span><br><span class="line">    Message from debugger: Terminated due to signal 6</span><br></pre></td></tr></table></figure>
-<pre><code>解决办法：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-3b394fa80ba90fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-3.  符号表冲突的问题
-
-场景描述：我制作了一个 .framework 静态库，静态库引用了 AFNetworking，在我的 Demo 工程中也引用了 AFNetworking，报了以下错误：
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: 165 duplicate symbols for architecture x86_64</span><br><span class="line">        </span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br></pre></td></tr></table></figure>
-<pre><code>解决办法：
-
-把  framework 中用到的第三方库的类更改名字
-
-Step 1：修改类名
-
-![](https://upload-images.jianshu.io/upload_images/6365912-d24d960247d8323b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-Step 2：根据报错提示，全局搜索，手动修改冲突的类名
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">uplicate symbol _OBJC_CLASS_$__AFURLSessionTaskSwizzling in:</span><br><span class="line">        </span><br><span class="line">    /Users/acan/Library/Developer/Xcode/DerivedData/DownloadAndPrint-esbkggakvotbghavvyrahlbwezwq/Build/Intermediates.noindex/DownloadAndPrint.build/Debug-iphonesimulator/DownloadAndPrintDemo.build/Objects-normal/x86_64/AFURLSessionManager.o</span><br></pre></td></tr></table></figure>
-<pre><code>如：
-
-![](https://upload-images.jianshu.io/upload_images/6365912-dc38829ba06a38ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-过程比较繁琐，但是有效。
-</code></pre>
       
     </div>
     <footer class="article-footer">
@@ -363,7 +352,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作步骤"><span class="nav-number">1.</span> <span class="nav-text">制作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要点"><span class="nav-number">2.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-framework-合并和拆分多种架构"><span class="nav-number">3.</span> <span class="nav-text">iOS framework 合并和拆分多种架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-framework-中包含的文件"><span class="nav-number">4.</span> <span class="nav-text">查看 framework 中包含的文件</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作步骤"><span class="nav-number">1.</span> <span class="nav-text">制作步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#要点"><span class="nav-number">2.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iOS-framework-合并和拆分多种架构"><span class="nav-number">3.</span> <span class="nav-text">iOS framework 合并和拆分多种架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看-framework-中包含的文件"><span class="nav-number">4.</span> <span class="nav-text">查看 framework 中包含的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报错及解决办法"><span class="nav-number">5.</span> <span class="nav-text">报错及解决办法</span></a></li></ol>
     
     </div>
   </aside>

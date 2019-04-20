@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>给博客添加一只萌萌的血小板 | Acan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="life">
+  
+  
+  
+  
+  <meta name="description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
+<meta name="keywords" content="life">
+<meta property="og:type" content="article">
+<meta property="og:title" content="给博客添加一只萌萌的血小板">
+<meta property="og:url" content="https://github.com/hzsss/给博客添加一只萌萌的血小板/index.html">
+<meta property="og:site_name" content="Acan&#39;s blog">
+<meta property="og:description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-61f8e219779987a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-9cd70eb9f81f72a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-f02caeb65f93ddc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-f71ae92fd07be649.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-664137efe53d541e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-4daeaa2c96e5654a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-e32a01bb16389360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-a9a84a657de5d238.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-323b0985a6990d03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-20T13:53:17.322Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="给博客添加一只萌萌的血小板">
+<meta name="twitter:description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6365912-61f8e219779987a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+
+  
+
+  <link rel="icon" href="https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+  <link rel="apple-touch-icon" href="/https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-给博客添加一只萌萌的血小板" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      给博客添加一只萌萌的血小板
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/给博客添加一只萌萌的血小板/" class="article-date">
+	  <time datetime="2019-04-20T10:03:50.000Z" itemprop="datePublished">2019-04-20</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在搭建博客之初就有了解过 <a href="https://www.live2d.com/ja/" target="_blank" rel="noopener">live2d</a>，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。</p>
+<p>我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（<a href="https://imjad.cn" target="_blank" rel="noopener">猫与向日葵</a>），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-61f8e219779987a5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>打开主页，虽然这种风格不属于我的菜，因为我一般还是比较正经滴，嘿嘿。正要关掉网页，wait，右下角是啥…一只超级萌的血小板！<br><img src="https://upload-images.jianshu.io/upload_images/6365912-9cd70eb9f81f72a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>太可爱了，比那些大众化的模板好看多了，博主使用的是 Typecho 搭建的博客，所以基于 Hexo 搭建的博客上不会有太多人用这个模型。于是乎，我下定决心要把这只血小板抠出来放到我的博客上。</p>
+<h3 id="下载模型文件"><a href="#下载模型文件" class="headerlink" title="下载模型文件"></a>下载模型文件</h3><p>博主在他的博客上已经有了相关的教程 – <a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-03" target="_blank" rel="noopener">给博客添加能动的看板娘(Live2D)</a>，但不是基于 Hexo 平台的，要想把模型放到我的博客，对于我这种前端小白来说还是需要折腾一下的。</p>
+<p>感谢博主给出了下载模型的<a href="https://cdn.imjad.cn/usr/uploads/kesshouban_v2.7z" target="_blank" rel="noopener">链接</a>，首先我们点击链接，下载血小板的模型文件。</p>
+<p>解压后，可以看到它的文件结构是这样婶的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-f02caeb65f93ddc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>其中 model.json 包含了模型的一些基本信息，model.moc 包含了图层、参数、坐标系和组件等信息，texture_00.png 是血小板的图像文件，motions 文件夹中的 .mtn 是模型一些动作文件。</p>
+<p>目前还不能确定这个模型的通用性，于是我按照之前<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">在 Hexo 博客添加看板娘的教程</a>安装了一个适用于 Hexo 博客的看板娘，是这样婶的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-f71ae92fd07be649.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>这个好像叫 shizuku，其实也还好啦，但是已经被滥用了，看到好多博客都用了这个，当然还有一些其他的模型可以参考这篇<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">博客</a>，给出了一些常见的模型预览图。不嫌大众化或者不想折腾的同学可以在那里挑一个自己喜欢的模型装到自己的博客上。</p>
+<h3 id="修改模型文件"><a href="#修改模型文件" class="headerlink" title="修改模型文件"></a>修改模型文件</h3><p>安装完 shizuku 后，打开我本地的 Hexo 博客文件，打开博客根目录 -&gt; node_modules -&gt; live2d-widget-model-shizuku，这个就是刚才下载的适用于 Hexo 博客的 shizuku 模型了，来分析一下它的文件结构：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-664137efe53d541e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>除了本身的文件层级有些区别之外，还多了一个 package.json，暂且不知道这是干嘛的，从文件名推测应该是一个文件包描述文件。多了个 shizuku.physics.json，推测应该是模型的物理信息。其他的文件基本上是和血小板模型是一致的，嘿嘿，有戏。可以看出这里的 assets 文件夹就是模型文件了。</p>
+<p>我的思路是使用安装 shizuku 的方式，去安装血小板模型，首先能想到的就是先把血小板的文件结构梳理成和 shizuku 的一样。梳理之后的结构如下：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-4daeaa2c96e5654a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<h3 id="安装模型"><a href="#安装模型" class="headerlink" title="安装模型"></a>安装模型</h3><p><a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">在 Hexo 博客添加看板娘的教程</a>中，除了可以使用预设的几个模型之外，还给了两种方式去加载自定义的模型，一种是保存到本地，使用本地的模型。另一种是将模型发布到 npm，然后再和使用预设模型一样来安装模型。</p>
+<p>加载本地模型，可能和使用 npm 安装模型有一些区别，我尝试后是失败的。于是我决定尝试第二种方法。</p>
+<ol>
+<li><p>新建一个目录, 用你的 Node 环境执行 npm init, 推荐使用 live2d-widget-model-xxx 的包名。</p>
+</li>
+<li><p>在刚刚创建的目录下创建 assets 子目录, 把模型放进去。</p>
+</li>
+<li><p>使用 npm publish 来发布。</p>
+</li>
+<li><p>然后使用 npm install –save live2d-widget-model-xxx 来安装。</p>
+</li>
+<li><p>通过向 model.use 键入包名 (live2d-widget-model-xxx) 来使用。</p>
+</li>
+</ol>
+<p>执行完 npm init 命令后，需要填写一些关于模型的一些信息，然后文件夹中出现了 package.json 文件，可以看到文件中包含了我们刚才填写的信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;live2d-widget-model-platelet&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.1.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;live2d-widget-model-platelet&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [</span><br><span class="line">    &quot;live2d-widget-model-platelet&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;author&quot;: &quot;huangzishan&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>package.json 文件里记录了项目的描述信息，比如项目作者、项目描述、项目依赖哪些包、插件配置信息等等。至此我们的血小板文件已经可以确定是通用的了。</p>
+<p>然后我就兴致冲冲地输入 hexo clean 清楚缓存，hexo g 生成静态页面，然后 hexo d 发布到仓库中，然后清楚 chrome 浏览器的缓存，输入我的博客网址。我的血小板呢???</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-e32a01bb16389360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>可谓是一顿操作猛如虎，定睛一看原地杵。我哭了，你呢？</p>
+<h3 id="细节调整"><a href="#细节调整" class="headerlink" title="细节调整"></a>细节调整</h3><p>作为卷福和柯南的粉丝，我怎么可能就此屈服，于是我回想所有可能漏掉的细节，等等，有一个 json 文件我漏了，没错，就是 platelet.model.json 文件。看一下它里面是什么内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;type&quot;: &quot;Live2D Model Setting&quot;,</span><br><span class="line">	&quot;name&quot;: &quot;model&quot;,</span><br><span class="line">	&quot;model&quot;: &quot;model.moc&quot;,</span><br><span class="line">	&quot;textures&quot;: [</span><br><span class="line">		&quot;model.2048/texture_00.png&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;motions&quot;:&#123;</span><br><span class="line">		&quot;idle&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;motions/Idle.mtn&quot;&#125;</span><br><span class="line">		],</span><br><span class="line">        &quot;sleepy&quot;:[</span><br><span class="line">            &#123;&quot;file&quot;:&quot;motions/Nemui.mtn&quot;&#125;</span><br><span class="line">        ],</span><br><span class="line">		&quot;flick_head&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;motions/Anone_Synced.mtn&quot;&#125;</span><br><span class="line">		],</span><br><span class="line">		&quot;tap_body&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;motions/Dance.mtn&quot;&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，这里是模型的描述文件，包括模型的模块名称和一些动作组件的相对路径等，但里面的信息还是梳理之前的。哼，我一声冷笑，此刻我自己眼中的我是这样的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-a9a84a657de5d238.gif?imageMogr2/auto-orient/strip" alt></p>
+<p>但现实中的我是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-323b0985a6990d03.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>卷福说过，当你排除了所有不可能性，剩下的无论多不可能，都是真相。 于是我把 platelet.model.json 文件的信息调整了一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;type&quot;: &quot;Live2D Model Setting&quot;,</span><br><span class="line">	&quot;name&quot;: &quot;live2d-widget-model-platelet&quot;,</span><br><span class="line">	&quot;model&quot;: &quot;moc/platelet.moc&quot;,</span><br><span class="line">	&quot;textures&quot;: [</span><br><span class="line">		&quot;moc/platelet.2048/texture_00.png&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;motions&quot;:&#123;</span><br><span class="line">		&quot;idle&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;mtn/Idle.mtn&quot;&#125;</span><br><span class="line">		],</span><br><span class="line">        &quot;sleepy&quot;:[</span><br><span class="line">            &#123;&quot;file&quot;:&quot;mtn/Nemui.mtn&quot;&#125;</span><br><span class="line">        ],</span><br><span class="line">		&quot;flick_head&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;mtn/Anone_Synced.mtn&quot;&#125;</span><br><span class="line">		],</span><br><span class="line">		&quot;tap_body&quot;:[</span><br><span class="line">			&#123;&quot;file&quot;:&quot;mtn/Dance.mtn&quot;&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>emmm…这就对了嘛，于是我又一顿操作猛如虎，清空浏览器缓存，再次输入我的博客地址。接下来就是见证奇迹的时刻！</p>
+<p>当当当当！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://user-images.githubusercontent.com/27425237/50208622-99bbf100-03ac-11e9-95c7-00ccda6b5040.png',
+  alipayImage: 'https://user-images.githubusercontent.com/27425237/50208621-99235a80-03ac-11e9-818e-b31c541a2533.png'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Acan_Dev
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/给博客添加一只萌萌的血小板/" target="_blank" title="给博客添加一只萌萌的血小板">https://github.com/hzsss/给博客添加一只萌萌的血小板/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/Final-Cut-Pro-入门教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Final Cut Pro 入门教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载模型文件"><span class="nav-number">1.</span> <span class="nav-text">下载模型文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改模型文件"><span class="nav-number">2.</span> <span class="nav-text">修改模型文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装模型"><span class="nav-number">3.</span> <span class="nav-text">安装模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节调整"><span class="nav-number">4.</span> <span class="nav-text">细节调整</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Acan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Acan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Acan_Dev All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body>
+</html>

@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-d48d59aa7fa09d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-3ecc7ad385b2934e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-208af8537466f264.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-20T14:30:29.737Z">
+<meta property="og:updated_time" content="2019-04-20T14:34:04.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给博客添加一只萌萌的血小板">
 <meta name="twitter:description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
@@ -231,7 +231,7 @@
 <p>执行完 npm init 命令后，需要填写一些关于模型的一些信息，然后文件夹中出现了 package.json 文件，可以看到文件中包含了我们刚才填写的信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot;: &quot;live2d-widget-model-platelet&quot;,</span><br><span class="line">  &quot;version&quot;: &quot;1.1.0&quot;,</span><br><span class="line">  &quot;description&quot;: &quot;live2d-widget-model-platelet&quot;,</span><br><span class="line">  &quot;main&quot;: &quot;index.js&quot;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;keywords&quot;: [</span><br><span class="line">    &quot;live2d-widget-model-platelet&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;author&quot;: &quot;huangzishan&quot;,</span><br><span class="line">  &quot;license&quot;: &quot;ISC&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>package.json 文件里记录了项目的描述信息，比如项目作者、项目描述、项目依赖哪些包、插件配置信息等等。至此我们的血小板文件已经可以确定是通用的了。</p>
-<p>然后我就兴致冲冲地输入 hexo clean 清楚缓存，hexo g 生成静态页面，然后 hexo d 发布到仓库中，然后清除浏览器的缓存，输入我的博客网址。我的血小板呢???</p>
+<p>然后我就兴致冲冲地输入 hexo clean 清除缓存，hexo g 生成静态页面，然后 hexo d 发布到仓库中，然后清除浏览器的缓存，输入我的博客网址。我的血小板呢???</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/6365912-e32a01bb16389360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>可谓是一顿操作猛如虎，定睛一看原地杵。我哭了，你呢？</p>
 <h3 id="细节调整"><a href="#细节调整" class="headerlink" title="细节调整"></a>细节调整</h3><p>作为卷福和柯南的粉丝，我怎么可能就此屈服，于是我回想所有可能漏掉的细节，等等，有一个 json 文件我漏了，没错，就是 platelet.model.json 文件。看一下它里面是什么内容：</p>

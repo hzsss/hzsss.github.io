@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-d48d59aa7fa09d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-3ecc7ad385b2934e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-208af8537466f264.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-20T14:25:53.315Z">
+<meta property="og:updated_time" content="2019-04-20T14:28:45.501Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给博客添加一只萌萌的血小板">
 <meta name="twitter:description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
@@ -209,7 +209,7 @@
 <p>打开主页，虽然这种风格不属于我的菜，因为我一般还是比较正经滴，嘿嘿。正要关掉网页，wait，右下角是啥…一只超级萌的血小板！<br><img src="https://upload-images.jianshu.io/upload_images/6365912-9cd70eb9f81f72a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>糟了，是心动的感觉！太可爱了，比那些大众化的模板好看多了，博主使用的是 Typecho 搭建的博客，所以基于 Hexo 搭建的博客上不会有太多人用这个模型。于是乎，我下定决心要把这只血小板抠出来放到我的博客上。</p>
 <h3 id="下载模型文件"><a href="#下载模型文件" class="headerlink" title="下载模型文件"></a>下载模型文件</h3><p>博主在他的博客上已经有了相关的教程 – <a href="https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-03" target="_blank" rel="noopener">给博客添加能动的看板娘(Live2D)</a>，但不是基于 Hexo 平台的，要想把模型放到我的博客，对于我这种前端小白来说还是需要折腾一下的。</p>
-<p>感谢博主给出了下载模型的<a href="https://cdn.imjad.cn/usr/uploads/kesshouban_v2.7z" target="_blank" rel="noopener">链接</a>，首先我们点击链接，下载血小板的模型文件。</p>
+<p>感谢博主给出了下载模型的<a href="https://cdn.imjad.cn/usr/uploads/kesshouban_v2.7z" target="_blank" rel="noopener">链接</a>，首先点击链接，下载血小板的模型文件。</p>
 <p>解压后，可以看到它的文件结构是这样婶的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-f02caeb65f93ddc9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>其中 model.json 包含了模型的一些基本信息，model.moc 包含了图层、参数、坐标系和组件等信息，texture_00.png 是血小板的图像文件，motions 文件夹中的 .mtn 是模型一些动作文件。</p>
 <p>目前还不能确定这个模型的通用性，于是我按照之前<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">在 Hexo 博客添加看板娘的教程</a>安装了一个适用于 Hexo 博客的看板娘，是这样婶的：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-f71ae92fd07be649.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>这个好像叫 shizuku，其实也还好啦，但是已经被滥用了，看到好多博客都用了这个，当然还有一些其他的模型可以参考这篇<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">博客</a>，给出了一些常见的模型预览图。不嫌大众化或者不想折腾的同学可以在那里挑一个自己喜欢的模型装到自己的博客上。</p>
 <h3 id="修改模型文件"><a href="#修改模型文件" class="headerlink" title="修改模型文件"></a>修改模型文件</h3><p>安装完 shizuku 后，打开我本地的 Hexo 博客文件，打开博客根目录 -&gt; node_modules -&gt; live2d-widget-model-shizuku，这个就是刚才下载的适用于 Hexo 博客的 shizuku 模型了，来分析一下它的文件结构：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-664137efe53d541e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>除了本身的文件层级有些区别之外，还多了一个 package.json，暂且不知道这是干嘛的，从文件名推测应该是一个文件包描述文件。多了个 shizuku.physics.json，推测应该是模型的物理信息。其他的文件基本上是和血小板模型是一致的，嘿嘿，有戏。可以看出这里的 assets 文件夹就是模型文件了。</p>

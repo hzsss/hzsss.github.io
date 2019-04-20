@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
   <title>weak原理探索 | Acan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="iOS" />
+  <meta name="keywords" content="iOS">
   
   
   
@@ -49,7 +49,7 @@
   <script src="/js/bootstrap.js"></script>
 
   <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css">
 
   
     <link rel="stylesheet" href="/css/dialog.css">
@@ -58,17 +58,17 @@
   
 
   
-    <link rel="stylesheet" href="/css/header-post.css" >
+    <link rel="stylesheet" href="/css/header-post.css">
   
 
   
   
   
-    <link rel="stylesheet" href="/css/vdonate.css" >
+    <link rel="stylesheet" href="/css/vdonate.css">
   
 
 </head>
-
+</html>
 
 
   <body data-spy="scroll" data-target="#toc" data-offset="50">
@@ -93,8 +93,7 @@
 
             
               <a class="brand" style="
-                 margin-top: 0px;"  
-                href="#" data-toggle="modal" data-target="#myModal" >
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
                   <img width="124px" height="124px" alt="Hike News" src="https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
               </a>
             
@@ -113,14 +112,14 @@
                   <li><div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <input type="text" class="ins-search-input search-form-input" placeholder>
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -147,7 +146,7 @@
 <script src="/js/insight.js"></script>
 
 </div></li>
-            </div>
+            </ul></div>
           </div>
                 
       </div>
@@ -161,14 +160,14 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-weak原理探索" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-weak原理探索" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
       <header class="article-header">
         
   
-    <h1 class="thumb" class="article-title" itemprop="name">
+    <h1 class="thumb" itemprop="name">
       weak原理探索
     </h1>
   
@@ -227,7 +226,7 @@ var a = new Donate({
       <div>
         <ul class="post-copyright">
           <li class="post-copyright-author">
-          <strong>本文作者:  </strong>Acan_Dev</a>
+          <strong>本文作者:  </strong>Acan_Dev
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
@@ -241,7 +240,7 @@ var a = new Donate({
          
         </ul>
 <div>
-
+</div></div>
       
       
         
@@ -303,7 +302,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-指针"><span class="nav-number">1.</span> <span class="nav-text">weak 指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-表"><span class="nav-number">2.</span> <span class="nav-text">weak 表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-实现原理"><span class="nav-number">3.</span> <span class="nav-text">weak 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、初始化时：runtime-会调用-objc-initWeak-函数，objc-initWeak-函数会初始化一个新的-weak-指针指向对象的地址。"><span class="nav-number">3.0.1.</span> <span class="nav-text">1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、添加引用时：objc-initWeak-函数会调用-objc-storeWeak-函数，-objc-storeWeak-的作用是更新指针指向，创建对应的弱引用表。"><span class="nav-number">3.0.2.</span> <span class="nav-text">2、添加引用时：objc_initWeak() 函数会调用 objc_storeWeak() 函数， objc_storeWeak() 的作用是更新指针指向，创建对应的弱引用表。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、释放时，调用-clearDeallocating-函数。clearDeallocating-函数首先根据对象地址获取所有-weak-指针地址的数组，然后遍历这个数组把其中的数据设为-nil，最后把这个-entry-从-weak-表中删除，最后清理对象的记录。"><span class="nav-number">3.0.3.</span> <span class="nav-text">3、释放时，调用 clearDeallocating 函数。clearDeallocating 函数首先根据对象地址获取所有 weak 指针地址的数组，然后遍历这个数组把其中的数据设为 nil，最后把这个 entry 从 weak 表中删除，最后清理对象的记录。</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-指针"><span class="nav-number">1.</span> <span class="nav-text">weak 指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-表"><span class="nav-number">2.</span> <span class="nav-text">weak 表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weak-实现原理"><span class="nav-number">3.</span> <span class="nav-text">weak 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、初始化时：runtime-会调用-objc-initWeak-函数，objc-initWeak-函数会初始化一个新的-weak-指针指向对象的地址。"><span class="nav-number">3.0.1.</span> <span class="nav-text">1、初始化时：runtime 会调用 objc_initWeak() 函数，objc_initWeak() 函数会初始化一个新的 weak 指针指向对象的地址。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、添加引用时：objc-initWeak-函数会调用-objc-storeWeak-函数，-objc-storeWeak-的作用是更新指针指向，创建对应的弱引用表。"><span class="nav-number">3.0.2.</span> <span class="nav-text">2、添加引用时：objc_initWeak() 函数会调用 objc_storeWeak() 函数， objc_storeWeak() 的作用是更新指针指向，创建对应的弱引用表。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、释放时，调用-clearDeallocating-函数。clearDeallocating-函数首先根据对象地址获取所有-weak-指针地址的数组，然后遍历这个数组把其中的数据设为-nil，最后把这个-entry-从-weak-表中删除，最后清理对象的记录。"><span class="nav-number">3.0.3.</span> <span class="nav-text">3、释放时，调用 clearDeallocating 函数。clearDeallocating 函数首先根据对象地址获取所有 weak 指针地址的数组，然后遍历这个数组把其中的数据设为 nil，最后把这个 entry 从 weak 表中删除，最后清理对象的记录。</span></a></li></ol></li></ol>
     
     </div>
   </aside>
@@ -490,5 +489,5 @@ var a = new Donate({
   
     <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"model":{"jsonPath":"/null"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"model":{"jsonPath":"/live2dw/assets/assets/platelet.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 </html>

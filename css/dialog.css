@@ -18,9 +18,9 @@
 }
 .modal-body>div>a{
 	text-decoration:none;
-	padding: 20px;
+	padding: 50px;
 	line-height:300%;
-	font-size: 50px;
+	font-size: 20px;
 	color: #000;
 }
 .modal-body>div>a:hover,.modal-body>div>a:focus{

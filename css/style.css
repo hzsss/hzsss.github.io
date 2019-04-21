@@ -1726,13 +1726,13 @@ a.article-title:hover {
   border-width: 1px 0;
   overflow: auto;
   color: $highlight-foreground;
-  font-size: 1em;
+  font-size: 0.9em;
   line-height: 1em;
 }
 .article-entry .highlight .gutter pre,
 .article-entry .gist .gist-file .gist-data .line-numbers {
   color: #666;
-  font-size: 0.85em;
+  font-size: 0.9em;
 }
 figure.highlight::-webkit-scrollbar {
   width: 10px;

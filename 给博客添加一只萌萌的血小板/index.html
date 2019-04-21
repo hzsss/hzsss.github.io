@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-d48d59aa7fa09d84.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-3ecc7ad385b2934e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-208af8537466f264.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-04-20T23:57:30.874Z">
+<meta property="og:updated_time" content="2019-04-21T00:07:28.020Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给博客添加一只萌萌的血小板">
 <meta name="twitter:description" content="在搭建博客之初就有了解过 live2d，也跟着教程尝试给博客添加过 live2d 看板娘，但是使用的是预设的那几个模板，总觉得吧太大众化了，我能用别人也能用，那还不如不用，于是就把之前的看板娘给撤了。 我一般浏览博客的时候，都喜欢点他们的友链，然后看看其他大佬的博客。今天点了一个前端大佬的博客（猫与向日葵），emmm…日系卖萌可爱风格，大佬都喜欢这样的么。  打开主页，虽然这种风格不属于我的菜，因">
@@ -214,7 +214,7 @@
 <p>目前还不能确定这个模型的通用性，于是我按照之前<a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">在 Hexo 博客添加看板娘的教程</a>安装了一个适用于 Hexo 博客的看板娘，是这样婶的：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/6365912-7566efd2e32a897d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p>这个好像叫 shizuku，其实也还好啦，但是已经被滥用了，看到好多博客都用了这个，当然还有一些其他的模型可以参考这篇<a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">博客</a>，给出了一些常见的模型预览图。不嫌大众化或者不想折腾的同学可以在那里挑一个自己喜欢的模型装到自己的博客上。</p>
-<h3 id="修改模型文件"><a href="#修改模型文件" class="headerlink" title="修改模型文件"></a>修改模型文件</h3><p>安装完 shizuku 后，打开我本地的 Hexo 博客文件，打开博客根目录 -&gt; node_modules -&gt; live2d-widget-model-shizuku，这个就是刚才下载的适用于 Hexo 博客的 shizuku 模型了，来分析一下它的文件结构：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-664137efe53d541e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>除了本身的文件层级有些区别之外，还多了一个 package.json，暂且不知道这是干嘛的，从文件名推测应该是一个文件包描述文件。多了个 shizuku.physics.json，推测应该是模型的物理信息。其他的文件基本上是和血小板模型是一致的，嘿嘿，有戏。可以看出这里的 assets 文件夹就是模型文件了。</p>
+<h3 id="修改模型文件"><a href="#修改模型文件" class="headerlink" title="修改模型文件"></a>修改模型文件</h3><p>安装完 shizuku 后，打开我本地的 Hexo 博客文件，打开博客根目录 -&gt; node_modules -&gt; live2d-widget-model-shizuku，这个就是刚才下载的适用于 Hexo 博客的 shizuku 模型了，来分析一下它的文件结构：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-664137efe53d541e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt><br>除了本身的文件层级有些区别之外，还多了一个 package.json，暂且不知道这是干嘛的，从文件名推测应该是一个文件包描述文件。多了个 shizuku.physics.json，推测应该是模型的物理信息。其他的文件基本上和血小板模型是一致的，嘿嘿，有戏。可以看出这里的 assets 文件夹就是模型文件了。</p>
 <p>我的思路是使用安装 shizuku 的方式，去安装血小板模型，首先能想到的就是先把血小板的文件结构梳理成和 shizuku 的一样。梳理之后的结构如下：<br><img src="https://upload-images.jianshu.io/upload_images/6365912-4daeaa2c96e5654a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <h3 id="安装模型"><a href="#安装模型" class="headerlink" title="安装模型"></a>安装模型</h3><p><a href="https://github.com/EYHN/hexo-helper-live2d/blob/master/README.zh-CN.md">在 Hexo 博客添加看板娘的教程</a>中，除了可以使用预设的几个模型之外，还给了两种方式去加载自定义的模型，一种是保存到本地，使用本地的模型。另一种是将模型发布到 npm，然后再和使用预设模型一样来安装模型。</p>
 <p>加载本地模型，可能和使用 npm 安装模型有一些区别，我尝试后是失败的。于是我决定尝试第二种方法。</p>

@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Acan&#39;s blog">
 <meta property="og:description" content="题目描述给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 示例12345给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。 12345给定 n">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-27T07:47:53.761Z">
+<meta property="og:updated_time" content="2019-04-27T08:14:09.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="26.删除排序数组中的重复项[easy]">
 <meta name="twitter:description" content="题目描述给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 示例12345给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。 12345给定 n">
@@ -200,7 +200,7 @@
 <p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
 <p>你可以想象内部操作如下:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line">for (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    print(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h5 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1.哈希表"></a>1.哈希表</h5><ol>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><h4 id="1-哈希表-这个方法不符合原地修改数组的要求"><a href="#1-哈希表-这个方法不符合原地修改数组的要求" class="headerlink" title="1.哈希表 这个方法不符合原地修改数组的要求"></a>1.哈希表 <del>这个方法不符合原地修改数组的要求</del></h4><ol>
 <li><p>将数组中的值和下标存入哈希表。</p>
 </li>
 <li><p>如果哈希表中存在与相同的值，则删除当前位置的值，并前移。</p>
@@ -211,8 +211,6 @@
 </li>
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; myMap;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (myMap.find(nums[i]) != myMap.end()) &#123;</span><br><span class="line">                nums.erase(nums.begin()+i);</span><br><span class="line">                i = i - <span class="number">1</span>; <span class="comment">// 这里数组的长度变化了，当前位置的值变成了下一个位置的值，下次循环还是应该从这个位置开始，为了防止 ++i，所以这里先 -1</span></span><br><span class="line">            &#125;</span><br><span class="line">            myMap[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(n)</p>
-<p>空间复杂度：O(n)</p>
 <table>
 <thead>
 <tr>
@@ -229,7 +227,37 @@
 </tr>
 </tbody>
 </table>
-<hr>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(n)</p>
+<h4 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h4><ol>
+<li><p>设置两个指针，i 为慢指针，j 为快指针。</p>
+</li>
+<li><p>nums[i] == nums[j] 时，则 j 继续往后走，直到找到 nums[i] != nums[j]。</p>
+</li>
+<li><p>当 nums[i] != nums[j] 时，则说明 j 之前的元素都是相等的，于是将 j 指向元素的值赋给 i 的下一个位置。直到 j 到达数组末尾。</p>
+</li>
+<li><p>此时 i 指向的是不重复元素的最后一个下标，返回其长度：i + 1。</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; nums.size(); j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">                i++;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>执行用时</th>
+<th>消耗内存</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过</td>
+<td>32 ms</td>
+<td>10 MB</td>
+</tr>
+</tbody>
+</table>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
 
       
     </div>
@@ -323,7 +351,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明："><span class="nav-number">3.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">4.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-哈希表"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.哈希表</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">2.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说明："><span class="nav-number">3.</span> <span class="nav-text">说明：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方法"><span class="nav-number">4.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-哈希表-这个方法不符合原地修改数组的要求"><span class="nav-number">4.1.</span> <span class="nav-text">1.哈希表 这个方法不符合原地修改数组的要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#双指针"><span class="nav-number">4.2.</span> <span class="nav-text">双指针</span></a></li></ol></li></ol>
     
     </div>
   </aside>

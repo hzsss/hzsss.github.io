@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>用c++写算法题需要掌握的一些知识 | Acan&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="技术">
+  
+  
+  
+  
+  <meta name="description" content="vector向量，相当于一个能够动态扩容的数组。 方法begin() 返回指向容器中第一个元素的迭代器 end() 返回指向容器中最后一个元素后面的位置的迭代器 rbegin() 返回指向容器中最后一个元素的反向迭代器 rend() 返回指向容器中第一个元素前面的反向迭代器 erase(…) 传入一个下标值，删除该下标对应的元素值，后面的元素会自动往前移动。 clear() 从容器中删除所有元素。">
+<meta name="keywords" content="技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用C++写算法题需要掌握的一些知识">
+<meta property="og:url" content="https://github.com/hzsss/用C-写算法题需要掌握的一些知识/index.html">
+<meta property="og:site_name" content="Acan&#39;s blog">
+<meta property="og:description" content="vector向量，相当于一个能够动态扩容的数组。 方法begin() 返回指向容器中第一个元素的迭代器 end() 返回指向容器中最后一个元素后面的位置的迭代器 rbegin() 返回指向容器中最后一个元素的反向迭代器 rend() 返回指向容器中第一个元素前面的反向迭代器 erase(…) 传入一个下标值，删除该下标对应的元素值，后面的元素会自动往前移动。 clear() 从容器中删除所有元素。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-28T06:49:13.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用C++写算法题需要掌握的一些知识">
+<meta name="twitter:description" content="vector向量，相当于一个能够动态扩容的数组。 方法begin() 返回指向容器中第一个元素的迭代器 end() 返回指向容器中最后一个元素后面的位置的迭代器 rbegin() 返回指向容器中最后一个元素的反向迭代器 rend() 返回指向容器中第一个元素前面的反向迭代器 erase(…) 传入一个下标值，删除该下标对应的元素值，后面的元素会自动往前移动。 clear() 从容器中删除所有元素。">
+  
+
+  
+
+  <link rel="icon" href="https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+  <link rel="apple-touch-icon" href="/https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;" href="#" data-toggle="modal" data-target="#myModal">
+                  <img width="124px" height="124px" alt="Hike News" src="https://avatars0.githubusercontent.com/u/27425237?s=460&v=4">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">关于</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/friends">友链</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder>
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </ul></div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-用C-写算法题需要掌握的一些知识" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      用C++写算法题需要掌握的一些知识
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/用C-写算法题需要掌握的一些知识/" class="article-date">
+	  <time datetime="2019-04-28T06:48:08.000Z" itemprop="datePublished">2019-04-28</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>向量，相当于一个能够动态扩容的数组。</p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><p>begin() 返回指向容器中<code>第一个元素</code>的迭代器</p>
+<p>end() 返回指向容器中<code>最后一个元素后面</code>的位置的迭代器</p>
+<p>rbegin() 返回指向容器中<code>最后一个元素</code>的反向迭代器</p>
+<p>rend() 返回指向容器中<code>第一个元素前面</code>的反向迭代器</p>
+<p>erase(…) 传入一个下标值，删除该下标对应的元素值，后面的元素会自动往前移动。</p>
+<p>clear() 从容器中删除所有元素。</p>
+<p>size() 返回容器的长度</p>
+<p>max_size() 返回容器最大长度</p>
+<p>push_back(…) 在容器末尾插入数据</p>
+<p>pop_back() 删除容器最后一个元素</p>
+<p>empty() 返回一个 bool 值，判断容器是否为空</p>
+<p>at(…) 传入下标值，返回该下标位置保存的元素值</p>
+<p>front() 返回容器中第一个元素的引用。</p>
+<p>back() 返回容器中最后一个元素的引用。</p>
+<p>iterator insert(iterator i, const T &amp; val) 将 val 插入迭代器 i 指向的位置，返回 i</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><p>find()</p>
+<p>将迭代器输入到序列中的初始位置和最终位置。的范围内搜索就是[first,last)，它包含所有的元件第一和最后一个，包括由指向的元件第一但不被指向的元素最后。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int a[10] = &#123;10,20,30,40&#125;;</span><br><span class="line">vector&lt;int&gt; v;</span><br><span class="line">v.push_back(1);    v.push_back(2);</span><br><span class="line">v.push_back(3);    v.push_back(4); //此后v里放着4个元素：1,2,3,4</span><br><span class="line">vector&lt;int&gt;::iterator p;</span><br><span class="line">p = find(v.begin(),v.end(),3); //在v中查找3</span><br><span class="line"></span><br><span class="line">if(p != v.end()) //若找不到,find返回 v.end()</span><br><span class="line">cout &lt;&lt; &quot;1) &quot; &lt;&lt;  * p &lt;&lt; endl; //找到了</span><br><span class="line"></span><br><span class="line">// v.end() 是最后一个元素的后一个位置，而 find 函数第一个参数是 左闭右开 区间,[first, last) 则 find(v.begin(), v.end(), 3) 则表示在第一个位置到最后一个位置（包含最后一个元素）查找元素3。</span><br></pre></td></tr></table></figure>
+<p>sort()</p>
+<p>该算法可以用来对区间 [first, last) 从小到大进行排序。下面两行程序就能对数组 a 排序：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int a[4] = &#123;3, 4, 2, 1&#125;;</span><br><span class="line">sort(a, a+4);</span><br></pre></td></tr></table></figure></p>
+<h3 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h3><p>通过迭代器可以读取它指向的元素，<code>*迭代器名</code>就表示迭代器指向的元素。通过非常量迭代器还能修改其指向的元素。</p>
+<p>迭代器都可以进行++操作。反向迭代器和正向迭代器的区别在于：</p>
+<p>对正向迭代器进行++操作时，迭代器会指向容器中的后一个元素；<br>而对反向迭代器进行++操作时，迭代器会指向容器中的前一个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; v;  //v是存放int类型变量的可变长数组，开始时没有元素</span><br><span class="line">    for (int n = 0; n&lt;5; ++n)</span><br><span class="line">        v.push_back(n);  //push_back成员函数在vector容器尾部添加一个元素</span><br><span class="line">    vector&lt;int&gt;::iterator i;  //定义正向迭代器</span><br><span class="line">    for (i = v.begin(); i != v.end(); ++i) &#123;  //用迭代器遍历容器</span><br><span class="line">        cout &lt;&lt; *i &lt;&lt; &quot; &quot;;  //*i 就是迭代器i指向的元素</span><br><span class="line">        *i *= 2;  //每个元素变为原来的2倍</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">    //用反向迭代器遍历容器</span><br><span class="line">    for (vector&lt;int&gt;::reverse_iterator j = v.rbegin(); j != v.rend(); ++j)</span><br><span class="line">        cout &lt;&lt; *j &lt;&lt; &quot; &quot;;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写++i、++j相比于写i++、j++，程序的执行速度更快。回顾++被重载成前置和后置运算符的例子如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CDemo CDemo::operator++ ()</span><br><span class="line">&#123;  //前置++</span><br><span class="line">    ++n;</span><br><span class="line">    return *this;</span><br><span class="line">&#125;</span><br><span class="line">CDemo CDemo::operator ++(int k)</span><br><span class="line">&#123;  //后置++</span><br><span class="line">    CDemo tmp(*this);  //记录修改前的对象</span><br><span class="line">    n++;</span><br><span class="line">    return tmp;  //返回修改前的对象</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="stack"><a href="#stack" class="headerlink" title="stack"></a>stack</h3><p>void pop();    弹出（即删除）栈顶元素</p>
+<p>T &amp; top();    返回栈顶元素的引用。通过此函数可以读取栈顶元素的值，也可以修改栈顶元素</p>
+<p>void push (const T &amp; x);    将 x 压入栈顶</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;stack&gt;  //使用stack需要包含此头文件</span><br><span class="line">using namespace std;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n, k;</span><br><span class="line">    stack &lt;int&gt; stk;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; k;  //将n转换为k进制数</span><br><span class="line">    if (n == 0) &#123;</span><br><span class="line">        cout &lt;&lt; 0;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    while (n) &#123;</span><br><span class="line">        stk.push(n%k);</span><br><span class="line">        n /= k;</span><br><span class="line">    &#125;</span><br><span class="line">    while (!stk.empty()) &#123;</span><br><span class="line">        cout &lt;&lt; stk.top();</span><br><span class="line">        stk.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="queue（队列）"><a href="#queue（队列）" class="headerlink" title="queue（队列）"></a>queue（队列）</h3><p>FIFO 队列，先进先出</p>
+<p>empty</p>
+<p>size</p>
+<p>front</p>
+<p>back</p>
+<p>push_back</p>
+<p>pop_front</p>
+<p>push 插入数据</p>
+<p>pop 弹出数据</p>
+<h3 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h3><p>和 NSDictionary 类似</p>
+<p>unordered_map&lt;int, int&gt; map;</p>
+<p>map[i] = 1;</p>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><p><a href="http://c.biancheng.net/view/400.html" target="_blank" rel="noopener">string</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s1;</span><br><span class="line">s1 = &quot;Hello&quot;;  // s1 = &quot;Hello&quot;</span><br><span class="line">s2 = &apos;K&apos;;  // s2 = &quot;K”</span><br></pre></td></tr></table></figure>
+<p>length 成员函数返回字符串的长度。size 成员函数可以实现同样的功能。</p>
+<p>除了可以使用+和+=运算符对 string 对象执行字符串的连接操作外，string 类还有 append 成员函数，可以用来向字符串后面添加内容。append 成员函数返回对象自身的引用。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">string s1(&quot;123&quot;), s2(&quot;abc&quot;);</span><br><span class="line">s1.append(s2);  // s1 = &quot;123abc&quot;</span><br><span class="line">s1.append(s2, 1, 2);  // s1 = &quot;123abcbc&quot;</span><br><span class="line">s1.append(3, &apos;K&apos;);  // s1 = &quot;123abcbcKKK&quot;</span><br><span class="line">s1.append(&quot;ABCDE&quot;, 2, 3);  // s1 = &quot;123abcbcKKKCDE&quot;，添加 &quot;ABCDE&quot; 的子串(2, 3)</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>string对象的比较</li>
+<li>除了可以用 &lt;、&lt;=、==、!=、&gt;=、&gt; 运算符比较 string 对象外，string 类还有 compare 成员函数，可用于比较字符串。compare 成员函数有以下返回值：</li>
+</ol>
+<p>小于 0 表示当前的字符串小；</p>
+<p>等于 0 表示两个字符串相等；</p>
+<p>大于 0 表示另一个字符串小。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string s1(&quot;hello&quot;), s2(&quot;hello, world&quot;);</span><br><span class="line">int n = s1.compare(s2);</span><br><span class="line">n = s1.compare(1, 2, s2, 0, 3);  //比较s1的子串 (1,2) 和s2的子串 (0,3)</span><br><span class="line">n = s1.compare(0, 2, s2);  // 比较s1的子串 (0,2) 和 s2</span><br><span class="line">n = s1.compare(&quot;Hello&quot;);</span><br><span class="line">n = s1.compare(1, 2, &quot;Hello&quot;);  //比较 s1 的子串(1,2)和&quot;Hello”</span><br><span class="line">n = s1.compare(1, 2, &quot;Hello&quot;, 1, 2);  //比较 s1 的子串(1,2)和 &quot;Hello&quot; 的子串(1,2)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://user-images.githubusercontent.com/27425237/50208622-99bbf100-03ac-11e9-95c7-00ccda6b5040.png',
+  alipayImage: 'https://user-images.githubusercontent.com/27425237/50208621-99235a80-03ac-11e9-818e-b31c541a2533.png'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>本文作者:  </strong>Acan
+          </li>
+          <li class="post-copyright-link">
+          <strong>本文链接:  </strong>
+          <a href="/用C-写算法题需要掌握的一些知识/" target="_blank" title="用C++写算法题需要掌握的一些知识">https://github.com/hzsss/用C-写算法题需要掌握的一些知识/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>版权声明:   </strong>
+            本博客所有文章除特别声明外，均采用 <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            许可协议。转载请注明出处
+          </li>
+         
+        </ul>
+<div>
+</div></div>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/35-搜索插入位置-easy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">35.搜索插入位置[easy]</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vector"><span class="nav-number">1.</span> <span class="nav-text">vector</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法"><span class="nav-number">1.1.</span> <span class="nav-text">方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#算法"><span class="nav-number">2.</span> <span class="nav-text">算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iterator"><span class="nav-number">3.</span> <span class="nav-text">iterator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stack"><span class="nav-number">4.</span> <span class="nav-text">stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#queue（队列）"><span class="nav-number">5.</span> <span class="nav-text">queue（队列）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unordered-map"><span class="nav-number">6.</span> <span class="nav-text">unordered_map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#string"><span class="nav-number">7.</span> <span class="nav-text">string</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 Acan&#39;s blog All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/friends" class="mobile-nav-link">友链</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            Acan&#39;s blog
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Acan All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":true,"model":{"jsonPath":"/live2dw/assets/platelet.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":1},"log":false});</script></body>
+</html>

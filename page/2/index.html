@@ -191,6 +191,67 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-制作-iOS-framework-静态库的一些总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/制作-iOS-framework-静态库的一些总结/">制作 iOS framework 静态库的一些总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/制作-iOS-framework-静态库的一些总结/" class="article-date">
+	  <time datetime="2019-03-26T05:47:05.000Z" itemprop="datePublished">2019-03-26</time>
+	</a>
+
+      
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          制作步骤这部分资料很多，这里就不再赘述。
+参考资料：
+Xcode10制作 framework详细步骤及坑说明
+
+iOS 制作 framework
+iOS静态库 【.a 和framework】【超详细】
+要点
+如果需要调用 framework 中的分类（category）方法，需要在使用静态库的工程中配置 other linker flags 为 -Objc
+
+默认 framework 是动态库，制作静态库需要设置 Mach-O Type 为 Static Library
+
+想要在 fram...
+        </p>
+        <p class="article-more-link">
+          <a href="/制作-iOS-framework-静态库的一些总结/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-HomePod-测评" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -652,64 +713,6 @@ Block使用(1) 标准声明与定义1234retu...
         </p>
         <p class="article-more-link">
           <a href="/iOS开发之Block详解/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-iOS开发之深复制和浅复制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/iOS开发之深复制和浅复制/">iOS开发之深复制和浅复制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/iOS开发之深复制和浅复制/" class="article-date">
-	  <time datetime="2018-04-09T07:09:35.000Z" itemprop="datePublished">2018-04-09</time>
-	</a>
-
-      
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          概述
-浅复制并不拷贝对象本身，仅仅是拷贝指向对象的指针。
-深复制直接拷贝整个对象内存到另一块内存中。
-
-无论是深复制还是浅复制，被复制的对象都会被复制一份。浅复制只是复制指针，而深复制除了复制指针外，还会复制指针指向的内容。如下图所示：
-copy 与 mutableCopy不论是集合类对象，还是非集合类对象，接受到copy和mutableCopy消息时，都会循序一下准则。
-
-copy返回immutable对象。如果对copy返回值使用mutable对象接口，就会crash。
-mutable...
-        </p>
-        <p class="article-more-link">
-          <a href="/iOS开发之深复制和浅复制/#more">阅读全文</a>
         </p>
       
     </div>

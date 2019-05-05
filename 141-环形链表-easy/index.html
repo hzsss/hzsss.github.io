@@ -3,26 +3,26 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>排序算法 | Acan&#39;s blog</title>
+  <title>141.环形链表[easy] | Acan&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="技术">
+  <meta name="keywords" content="LeetCode">
   
   
   
   
-  <meta name="description" content="冒泡排序   4 5 3 6 2 1     4 5 3 6 2 1   4 5 3 6 2 1   4 3 5 6 2 1   4 3 5 6 2 1   4 3 5 2 6 1   4 3 5 2 1 6    一次冒泡操作，可以将最大的数浮到最后面。 循环 array.size() 次，即可完成排序。 当某次冒泡操作已经没有数据交换时，说明已经达到了完全有序，不用再执行后续的冒泡排序了。 1">
-<meta name="keywords" content="技术">
+  <meta name="description" content="题目地址141. 环形链表 题目描述给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。 解题方法1.哈希表 使用哈希表来存储节点，key 为当前节点，value 为当前节点的下一节点，存储形式为 [node : node -&amp;gt; next]  访问当前节点时，先在字">
+<meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法">
-<meta property="og:url" content="https://github.com/hzsss/排序算法/index.html">
+<meta property="og:title" content="141.环形链表[easy]">
+<meta property="og:url" content="https://github.com/hzsss/141-环形链表-easy/index.html">
 <meta property="og:site_name" content="Acan&#39;s blog">
-<meta property="og:description" content="冒泡排序   4 5 3 6 2 1     4 5 3 6 2 1   4 5 3 6 2 1   4 3 5 6 2 1   4 3 5 6 2 1   4 3 5 2 6 1   4 3 5 2 1 6    一次冒泡操作，可以将最大的数浮到最后面。 循环 array.size() 次，即可完成排序。 当某次冒泡操作已经没有数据交换时，说明已经达到了完全有序，不用再执行后续的冒泡排序了。 1">
+<meta property="og:description" content="题目地址141. 环形链表 题目描述给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。 解题方法1.哈希表 使用哈希表来存储节点，key 为当前节点，value 为当前节点的下一节点，存储形式为 [node : node -&amp;gt; next]  访问当前节点时，先在字">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-29T07:55:29.029Z">
+<meta property="og:updated_time" content="2019-05-05T11:11:08.038Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法">
-<meta name="twitter:description" content="冒泡排序   4 5 3 6 2 1     4 5 3 6 2 1   4 5 3 6 2 1   4 3 5 6 2 1   4 3 5 6 2 1   4 3 5 2 6 1   4 3 5 2 1 6    一次冒泡操作，可以将最大的数浮到最后面。 循环 array.size() 次，即可完成排序。 当某次冒泡操作已经没有数据交换时，说明已经达到了完全有序，不用再执行后续的冒泡排序了。 1">
+<meta name="twitter:title" content="141.环形链表[easy]">
+<meta name="twitter:description" content="题目地址141. 环形链表 题目描述给定一个链表，判断链表中是否有环。 为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。 解题方法1.哈希表 使用哈希表来存储节点，key 为当前节点，value 为当前节点的下一节点，存储形式为 [node : node -&amp;gt; next]  访问当前节点时，先在字">
   
 
   
@@ -161,7 +161,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-排序算法" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
+          <section id="main" style="float:none;"><article id="post-141-环形链表-easy" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
     
@@ -169,7 +169,7 @@
         
   
     <h1 class="thumb" itemprop="name">
-      排序算法
+      141.环形链表[easy]
     </h1>
   
 
@@ -177,8 +177,8 @@
     
     <div class="article-meta">
       
-	<a href="/排序算法/" class="article-date">
-	  <time datetime="2019-04-29T06:10:36.000Z" itemprop="datePublished">2019-04-29</time>
+	<a href="/141-环形链表-easy/" class="article-date">
+	  <time datetime="2019-05-05T11:10:39.000Z" itemprop="datePublished">2019-05-05</time>
 	</a>
 
       
@@ -194,181 +194,29 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><table>
-<thead>
-<tr>
-<th>4</th>
-<th>5</th>
-<th>3</th>
-<th>6</th>
-<th>2</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td>3</td>
-<td>6</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td><u>5</u></td>
-<td><u>3</u></td>
-<td>6</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>3</td>
-<td><u>5</u></td>
-<td><u>6</u></td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>3</td>
-<td>5</td>
-<td><u>6</u></td>
-<td><u>2</u></td>
-<td>1</td>
-</tr>
-<tr>
-<td>4</td>
-<td>3</td>
-<td>5</td>
-<td>2</td>
-<td><u>6</u></td>
-<td><u>1</u></td>
-</tr>
-<tr>
-<td>4</td>
-<td>3</td>
-<td>5</td>
-<td>2</td>
-<td>1</td>
-<td><u>6<u></u></u></td>
-</tr>
-</tbody>
-</table>
-<p>一次冒泡操作，可以将最大的数浮到最后面。</p>
-<p>循环 array.size() 次，即可完成排序。</p>
-<p>当某次冒泡操作已经没有数据交换时，说明已经达到了完全有序，不用再执行后续的冒泡排序了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(vecotr&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">int</span> n)</span> </span>&#123; <span class="comment">// n 为数组长度</span></span><br><span class="line">	<span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123; <span class="comment">// 这是需要进行冒泡操作的次数</span></span><br><span class="line">		<span class="keyword">bool</span> flag = <span class="literal">false</span>; <span class="comment">// 用来记录是否有数据交换</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; i &lt; n - <span class="number">1</span> - i; j++) &#123; <span class="comment">// 这是一次冒泡操作，n - 1 - i 是这次冒泡排序中最大的数能够浮动到的位置的前一位</span></span><br><span class="line">			a[j] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">			a[j+<span class="number">1</span>] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">			a[j] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">			</span><br><span class="line">			flag = <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (!flag) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>冒泡排序是原地排序算法吗？</li>
-</ol>
-<ul>
-<li>是，空间复杂度为 O(1)</li>
-</ul>
-<ol start="2">
-<li>冒泡排序是稳定的排序算法吗？</li>
-</ol>
-<ul>
-<li>是，当两个相邻的元素大小相等的时候，不会进行交换，元素的排列顺序不变。</li>
-</ul>
-<ol start="3">
-<li>冒泡排序的时间复杂度是多少？</li>
-</ol>
-<ul>
-<li><p>最好情况：[1, 2, 3, 4, 5, 6]，1次冒泡，时间复杂度：O(n)</p>
+        <h3 id="题目地址"><a href="#题目地址" class="headerlink" title="题目地址"></a>题目地址</h3><p><a href="https://leetcode-cn.com/problems/linked-list-cycle/solution/" target="_blank" rel="noopener">141. 环形链表</a></p>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个链表，判断链表中是否有环。</p>
+<p>为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
+<h3 id="解题方法"><a href="#解题方法" class="headerlink" title="解题方法"></a>解题方法</h3><h4 id="1-哈希表"><a href="#1-哈希表" class="headerlink" title="1.哈希表"></a>1.哈希表</h4><ol>
+<li><p>使用哈希表来存储节点，key 为当前节点，value 为当前节点的下一节点，存储形式为 [node : node -&gt; next]</p>
 </li>
-<li><p>最坏情况：[6, 5, 4, 3, 2, 1]，6次冒泡，时间复杂度：O(n^2)</p>
+<li><p>访问当前节点时，先在字典中取出当前节点对应的 value，也就是取出当前节点的下一节点，如果下一节点在字典中的 key 存在，则说明当前节点的下一节点为链表中的某一个节点，即链表有环。如果下一节点在 key 中不存在，则说明链表没有环。</p>
 </li>
-<li><p>平均时间复杂度：O(n^2)</p>
-</li>
-</ul>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><table>
-<thead>
-<tr>
-<th>4</th>
-<th>5</th>
-<th>3</th>
-<th>6</th>
-<th>2</th>
-<th>1</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><u>4</u></td>
-<td>5</td>
-<td>3</td>
-<td>6</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td>3</td>
-<td>6</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td><u>3</u></td>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td>6</td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td><u>3</u></td>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td><u>6</u></td>
-<td>2</td>
-<td>1</td>
-</tr>
-<tr>
-<td><u>2</u></td>
-<td><u>3</u></td>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td><u>6</u></td>
-<td>1</td>
-</tr>
-<tr>
-<td><u>1</u></td>
-<td><u>2</u></td>
-<td><u>3</u></td>
-<td><u>4</u></td>
-<td><u>5</u></td>
-<td><u>6</u></td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> value = a[i];</span><br><span class="line">		<span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span> (; j &gt;=<span class="number">0</span>; j--) &#123;</span><br><span class="line">			<span class="keyword">if</span> (a[j] &gt; value) &#123;</span><br><span class="line">				a[i + <span class="number">1</span>] = a[j];</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		a[j + <span class="number">1</span>] = value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>插入排序是原地排序算法吗？</li>
 </ol>
-<ul>
-<li>是，空间复杂度为 O(1)</li>
-</ul>
-<ol start="2">
-<li>插入排序是稳定的排序算法吗？</li>
-</ol>
-<ul>
-<li>是。</li>
-</ul>
-<ol start="3">
-<li>冒泡排序的时间复杂度是多少？</li>
-</ol>
-<ul>
-<li><p>最好情况：[1, 2, 3, 4, 5, 6]，1次冒泡，时间复杂度：O(n)</p>
-</li>
-<li><p>最坏情况：[6, 5, 4, 3, 2, 1]，6次冒泡，时间复杂度：O(n^2)</p>
-</li>
-<li><p>平均时间复杂度：O(n^2)</p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasCycle(ListNode *head) &#123;</span><br><span class="line">        if (head == NULL || head -&gt; next == NULL) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        unordered_map&lt;ListNode *, ListNode *&gt; map;</span><br><span class="line">        </span><br><span class="line">        while (head) &#123;</span><br><span class="line">            // map 中存储的是 [head : head -&gt; next]</span><br><span class="line">            map[head] = head -&gt; next;</span><br><span class="line">            </span><br><span class="line">            // map[head] 取出的是 head -&gt; next；如果 head -&gt; next 存在字典的 key 中，则说明有环。</span><br><span class="line">            if (map.find(map[head]) != map.end()) return true;</span><br><span class="line">            </span><br><span class="line">            head = head -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>执行用时 : 32 ms, 在Linked List Cycle的C++提交中击败了23.23% 的用户</p>
+<p>内存消耗 : 12.5 MB, 在Linked List Cycle的C++提交中击败了5.02% 的用户</p>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(n)</p>
+<h4 id="2-双指针法"><a href="#2-双指针法" class="headerlink" title="2.双指针法"></a>2.双指针法</h4><p>通过使用具有 不同速度 的快、慢两个指针遍历链表，空间复杂度可以被降低至 O(1)O(1)。慢指针每次移动一步，而快指针每次移动两步。</p>
+<p>如果列表中不存在环，最终快指针将会最先到达尾部，此时我们可以返回 false。</p>
+<p>现在考虑一个环形链表，把慢指针和快指针想象成两个在环形赛道上跑步的运动员（分别称之为慢跑者与快跑者）。而快跑者最终一定会追上慢跑者。这是为什么呢？考虑下面这种情况（记作情况 A） - 假如快跑者只落后慢跑者一步，在下一次迭代中，它们就会分别跑了一步或两步并相遇。</p>
+<p>其他情况又会怎样呢？例如，我们没有考虑快跑者在慢跑者之后两步或三步的情况。但其实不难想到，因为在下一次或者下下次迭代后，又会变成上面提到的情况 A。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span><br><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool hasCycle(ListNode *head) &#123;</span><br><span class="line">        if (head == NULL || head -&gt; next == NULL) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *slow = head;</span><br><span class="line">        ListNode *fast = head -&gt; next;</span><br><span class="line">        while (slow != fast) &#123;</span><br><span class="line">            if (fast == NULL || fast -&gt; next == NULL) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow -&gt; next;</span><br><span class="line">            fast = fast -&gt; next -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>执行用时 : 24 ms, 在Linked List Cycle的C++提交中击败了50.14% 的用户</p>
+<p>内存消耗 : 9.7 MB, 在Linked List Cycle的C++提交中击败了55.64% 的用户</p>
+<p>时间复杂度：O(n)</p>
+<p>空间复杂度：O(1)</p>
 
       
     </div>
@@ -395,7 +243,7 @@ var a = new Donate({
           </li>
           <li class="post-copyright-link">
           <strong>本文链接:  </strong>
-          <a href="/排序算法/" target="_blank" title="排序算法">https://github.com/hzsss/排序算法/</a>
+          <a href="/141-环形链表-easy/" target="_blank" title="141.环形链表[easy]">https://github.com/hzsss/141-环形链表-easy/</a>
           </li>
           <li class="post-copyright-license">
             <strong>版权声明:   </strong>
@@ -435,7 +283,7 @@ var a = new Donate({
       
       
         
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
 
       
 
@@ -445,19 +293,19 @@ var a = new Donate({
     
 <nav id="article-nav">
   
-    <a href="/83-删除顺序链表中的重复元素-easy/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/206-反转链表-easy/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">上一篇</strong>
       <div class="article-nav-title">
         
-          83.删除顺序链表中的重复元素[easy]
+          206. 反转链表[easy]
         
       </div>
     </a>
   
   
-    <a href="/344-反转字符串-easy/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/83-删除顺序链表中的重复元素-easy/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">下一篇</strong>
-      <div class="article-nav-title">344.反转字符串[easy]</div>
+      <div class="article-nav-title">83.删除顺序链表中的重复元素[easy]</div>
     </a>
   
 </nav>
@@ -471,7 +319,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">2.</span> <span class="nav-text">插入排序</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目地址"><span class="nav-number">1.</span> <span class="nav-text">题目地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">2.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题方法"><span class="nav-number">3.</span> <span class="nav-text">解题方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-哈希表"><span class="nav-number">3.1.</span> <span class="nav-text">1.哈希表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-双指针法"><span class="nav-number">3.2.</span> <span class="nav-text">2.双指针法</span></a></li></ol></li></ol>
     
     </div>
   </aside>

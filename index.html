@@ -191,6 +191,170 @@
         
           <section id="main" style="float:none;">
   
+    <article id="post-206-反转链表-easy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/206-反转链表-easy/">206. 反转链表[easy]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/206-反转链表-easy/" class="article-date">
+	  <time datetime="2019-05-05T11:11:30.000Z" itemprop="datePublished">2019-05-05</time>
+	</a>
+
+      
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          题目地址206. 反转链表
+题目描述反转一个单链表。
+解题方法1.双指针法
+使用两个指针分别表示当前节点的前一个节点和后一个节点。
+
+12345678910111213141516171819202122232425/** * Definition for singly-linked list. * struct ListNode &#123; *     int val; *     ListNode *next; *     ListNode(int x) : val(x), next...
+        </p>
+        <p class="article-more-link">
+          <a href="/206-反转链表-easy/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-141-环形链表-easy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/141-环形链表-easy/">141.环形链表[easy]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/141-环形链表-easy/" class="article-date">
+	  <time datetime="2019-05-05T11:10:39.000Z" itemprop="datePublished">2019-05-05</time>
+	</a>
+
+      
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          题目地址141. 环形链表
+题目描述给定一个链表，判断链表中是否有环。
+为了表示给定链表中的环，我们使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。
+解题方法1.哈希表
+使用哈希表来存储节点，key 为当前节点，value 为当前节点的下一节点，存储形式为 [node : node -&gt; next]
+
+访问当前节点时，先在字典中取出当前节点对应的 value，也就是取出当前节点的下一节点，如果下一节点在字典中的 ke...
+        </p>
+        <p class="article-more-link">
+          <a href="/141-环形链表-easy/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
+    <article id="post-83-删除顺序链表中的重复元素-easy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/83-删除顺序链表中的重复元素-easy/">83.删除顺序链表中的重复元素[easy]</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/83-删除顺序链表中的重复元素-easy/" class="article-date">
+	  <time datetime="2019-05-05T11:08:13.000Z" itemprop="datePublished">2019-05-05</time>
+	</a>
+
+      
+      
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="article-excerpt-content">
+          题目地址206.删除排序链表中的重复元素
+题目描述给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+解题方法1.直接法把当前的节点值和下一个节点值作比较，如果相等，则直接删除下一个节点的值，这里注意，删除下一个节点后，不能直接移动当前指针到新的下一个节点，因为新的下一节点也有可能和当前节点值相等，而是要继续比较一次。注意边界条件，避免出现空指针错误。
+123456789101112131415161718192021222324/** * Definition for sin...
+        </p>
+        <p class="article-more-link">
+          <a href="/83-删除顺序链表中的重复元素-easy/#more">阅读全文</a>
+        </p>
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+
+  
     <article id="post-排序算法" class="article article-type-post" itemscope itemprop="blogPost">
   <div id="articleInner" class="article-inner">
     
@@ -633,168 +797,6 @@ target 不存在需要插入数组中的情况，由于数...
         </p>
         <p class="article-more-link">
           <a href="/35-搜索插入位置-easy/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-27-移除元素-easy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/27-移除元素-easy/">27.移除元素[easy]</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/27-移除元素-easy/" class="article-date">
-	  <time datetime="2019-04-28T02:02:23.000Z" itemprop="datePublished">2019-04-28</time>
-	</a>
-
-      
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          题目描述给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
-元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。
-示例12345给定 nums = [3,2,2,3], val = 3,函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。
-1234567给定 nums = [0...
-        </p>
-        <p class="article-more-link">
-          <a href="/27-移除元素-easy/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-509-斐波那契数列-easy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/509-斐波那契数列-easy/">509.斐波那契数列[easy]</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/509-斐波那契数列-easy/" class="article-date">
-	  <time datetime="2019-04-27T14:43:03.000Z" itemprop="datePublished">2019-04-27</time>
-	</a>
-
-      
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          题目描述斐波那契数，通常用 F(n) 表示，形成的序列称为斐波那契数列。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
-12F(0) = 0,   F(1) = 1F(N) = F(N - 1) + F(N - 2), 其中 N &gt; 1.
-给定 N，计算 F(N)。
-示例123输入：2输出：1解释：F(2) = F(1) + F(0) = 1 + 0 = 1.
-123输入：3输出：2解释：F(3) = F(2) + F(1) = 1 + 1 = 2.
-12...
-        </p>
-        <p class="article-more-link">
-          <a href="/509-斐波那契数列-easy/#more">阅读全文</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-26-删除排序数组中的重复项-easy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/26-删除排序数组中的重复项-easy/">26.删除排序数组中的重复项[easy]</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/26-删除排序数组中的重复项-easy/" class="article-date">
-	  <time datetime="2019-04-27T07:37:06.000Z" itemprop="datePublished">2019-04-27</time>
-	</a>
-
-      
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          题目描述给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
-不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。
-示例12345给定数组 nums = [1,1,2], 函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 你不需要考虑数组中超出新长度后面的元素。
-12345给定 nums = [0,0,1,1,1,2,2,3,3,4],函数应该返回新的长度 5, 并且原数组...
-        </p>
-        <p class="article-more-link">
-          <a href="/26-删除排序数组中的重复项-easy/#more">阅读全文</a>
         </p>
       
     </div>

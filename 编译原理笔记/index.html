@@ -27,7 +27,9 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-0a44354438540943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-027065629bd6fe87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-f4424ff30d013e9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-14T02:42:24.674Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4146031-62bda7bf4f38e87d.png">
+<meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600">
+<meta property="og:updated_time" content="2019-06-14T03:18:45.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -224,7 +226,7 @@
 <li>删除所有的 #define，并展开所有的宏定义。</li>
 <li>处理所有的<code>条件预编译指令</code>，比如 #if、#ifdef、#elif、#else、#endif。</li>
 <li>处理 #include 预编译指令，将被包含的文件插入到该预编译指令的位置。（这个过程是递归进行的，即被包含的文件可能还包含其它文件）。</li>
-<li>删除所有的注释，比如 // 和 /<em> </em>/。</li>
+<li>删除所有的注释，比如 //。</li>
 <li>添加行号和文件名标识，比如 #2 “hello.c” 2，以便于编译时编译器产生调试用的行号信息以及用于编译时产生编译错误或警告时能显示行号。</li>
 <li>保留所有的 #pragma 编译器指令，因为编译器需要使用它们。</li>
 </ul>
@@ -403,6 +405,35 @@
 </blockquote>
 <p><strong>2.消除回溯：提取左公共因子</strong></p>
 <p>为了消除回溯必须保证对于文法的任何非终结符，当要它去匹配输入串时，能够根据它所面临的输入符号准确地指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的。</p>
+<p><strong>语法分析的过程</strong></p>
+<p>语法分析器（Grammar Parser）将对由扫描器产生的记号进行语法分析。从而产生语法树（Syntax Tree）。整个分析过程采用了上下文无关语法（Context-freeGrammar）的分析手段。简单地讲，由语法分析器生成的语法树是以表达式（Expression）为节点的树。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int fun(int a, int b) &#123;</span><br><span class="line">    int <span class="built_in">c</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">c</span> = a + b;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">c</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上述代码为例，其中的语句就是一个由赋值表达式、加法表达式、乘法表达式、数组表达式、括号表达式组成的复杂语句，下图所示为该语句经过语法分析器后生成的语法树。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4146031-62bda7bf4f38e87d.png" alt></p>
+<p>在语法分析的同时，很多运算符号的优先级和含义也被确定下来了。如：乘法表达式的优先级比加法高，圆括号表达式的优先级比乘法高，等等。另外，有些符号具有多重含义，如“*”在C语言中可以表示乘法表达式，也可以表示对指针取内容的表达式，因此语法分析阶段必须对这些内容进行区分。如果出现了表达式不合法，如各种括号不匹配、表达式中缺少操作符等，编译器就会报告语法分析阶段的错误。</p>
+<p>有一个名为yacc（Yet Another Compiler Compiler）的工具可以实现语法分析。其根据用户给定的语法规则对输入的记号序列进行解析，从而构建出语法树。对于不同的编程语言，编译器的开发者只需改变语法规则，而无需为每个编译器编写一个语法分析器。因此，其也称为“编译器编译器（Compiler Compiler）”</p>
+<h5 id="3-语义分析"><a href="#3-语义分析" class="headerlink" title="3.语义分析"></a>3.语义分析</h5><p><strong>语义分析的范围</strong></p>
+<ol>
+<li><p>确定类型：确定标识符所关联的数据类型。</p>
+</li>
+<li><p>类型检查：按语言的类型规则，检查运算的合法性与运算分量类型的一致性，必要时作类型转换。 </p>
+</li>
+<li><p>识别含义：根据语言的语义定义（形式或非形式），识别程序中各构造成分组合到一起的含义，并作相应的语义处理（生成中间代码或目标代码）。 </p>
+</li>
+<li><p>控制流检查：控制流语句必须转移到合法的地方。如C中，break语句规定跳出最内层的循环或switch语句。 </p>
+</li>
+<li><p>一致性检查：在很多场合要求对象只能被说明一次。如：pascal语言规定同一个标识符在一个分程序中只能被说明一次等。</p>
+</li>
+<li><p>相关名字检查：如：Ada，循环或块可以有一个名字，它出现在这些结构的开头或结尾。编译程序必须检查这两个地方用的名字是否相同。 </p>
+</li>
+<li><p>其它：如名字的作用域分析等也是语义分析的工作。</p>
+</li>
+</ol>
+<p><strong>语法分析仅仅完成了对表达式的语法层面的分析，但它并不了解这个语句的真正含义</strong>，如：C语言里两个指针做乘法运算是没有意义的，但这个语句在语法上是合法的。编译器所能分析的语义是<strong>静态语义（Static Semantic）</strong>，所谓静态语义是指在编译期间可以确定的语义，与之对应的<strong>动态语义（Dynamic Semantic）</strong>就是只有在运行期才能确定的语义。</p>
+<p>静态语义通常包括声明和类型的匹配，类型的转换。比如当一个浮点型的表达式赋值给一个整型的表达式时，其中隐含了一个浮点型到整型的转换过程，语义分析过程中需要完成该步骤。比如讲一个浮点赋值给一个指针时，语义分析程序会发现这个类型不匹配，编译器将会报错。动态语义一般是指在运行期出现的语义相关的问题，<code>比如将0作为除数是一个运行期语义错误</code>。</p>
+<p>经过语义分析阶段之后，整个语法树的表达式都被标识了类型，如果有些类型需要做隐式转换，语义分析程序会在语法树中插入相应的转换节点。下图所示为标记语义后的语法树。</p>
+<p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600" alt></p>
+<p>语义分析还对符号表里的符号类型做了更新。</p>
 
       
     </div>
@@ -496,7 +527,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

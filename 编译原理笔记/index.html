@@ -29,7 +29,8 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-f4424ff30d013e9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4146031-62bda7bf4f38e87d.png">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600">
-<meta property="og:updated_time" content="2019-06-14T03:18:45.449Z">
+<meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600">
+<meta property="og:updated_time" content="2019-06-14T03:40:06.162Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -434,6 +435,13 @@
 <p>经过语义分析阶段之后，整个语法树的表达式都被标识了类型，如果有些类型需要做隐式转换，语义分析程序会在语法树中插入相应的转换节点。下图所示为标记语义后的语法树。</p>
 <p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600" alt></p>
 <p>语义分析还对符号表里的符号类型做了更新。</p>
+<h5 id="4-生成中间代码（优化）"><a href="#4-生成中间代码（优化）" class="headerlink" title="4.生成中间代码（优化）"></a>4.生成中间代码（优化）</h5><p><strong>为什么要生成中间代码？</strong></p>
+<p>理论上来说，中间代码是可以直接被省略的，因为抽象语法树可以直接转为目标代码(汇编代码)。然而不同的 CPU 架构采用的汇编语法并不一样，如: Intel 架构和 AT&amp;T 架构的汇编码中，源操作数和目标操作数位置恰好相反参考链接。</p>
+<p>中间代码可以理解为抽象的代码，<strong>一方面它和语言无关，同时也和 CPU 无关，它仅仅只是描述了代码要做的事情</strong>，可以将其理解为是全世界通用的语言，任何语言都可以转换为世界语言，而世界语言又能被任何人翻译理解。</p>
+<p>要知道，中间代码的存在使得编译器被分为前端和后端。<strong>其中编译器前端主要负责产生与机器无关的中间代码，编译器后端主要是将中间代码转换成目标机器代码</strong>。因为这意味着针对那些跨平台的编译器而言，可以针对不同的平台使用同一个前端和针对不同机器平台的多个后端。</p>
+<p>现代编译器有着很多层次的优化，源码优化器（Source Code Optimizer）则是在源代码级别进行优化。上述例子中，（2 + 6）这个表达式可以被优化掉。因为它的值在编译期就可以被确定。下图所示为优化后的语法树。</p>
+<p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600" alt></p>
+<p>事实上，直接在语法树上作优化比较困难，所以源代码优化器往往将整个语法树转换成中间代码（Intermediate Code），它是语法树的顺序表示，其实它已经非常接近目标代码了。但它一般与目标机器和运行时环境是无关的，比如它不包含数据的尺寸、变量地址和寄存器的名字等。</p>
 
       
     </div>
@@ -527,7 +535,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-生成中间代码（优化）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.生成中间代码（优化）</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

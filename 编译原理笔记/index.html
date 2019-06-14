@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4146031-62bda7bf4f38e87d.png">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600">
-<meta property="og:updated_time" content="2019-06-14T03:40:06.162Z">
+<meta property="og:updated_time" content="2019-06-14T08:09:21.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -441,7 +441,25 @@
 <p>要知道，中间代码的存在使得编译器被分为前端和后端。<strong>其中编译器前端主要负责产生与机器无关的中间代码，编译器后端主要是将中间代码转换成目标机器代码</strong>。因为这意味着针对那些跨平台的编译器而言，可以针对不同的平台使用同一个前端和针对不同机器平台的多个后端。</p>
 <p>现代编译器有着很多层次的优化，源码优化器（Source Code Optimizer）则是在源代码级别进行优化。上述例子中，（2 + 6）这个表达式可以被优化掉。因为它的值在编译期就可以被确定。下图所示为优化后的语法树。</p>
 <p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600" alt></p>
-<p>事实上，直接在语法树上作优化比较困难，所以源代码优化器往往将整个语法树转换成中间代码（Intermediate Code），它是语法树的顺序表示，其实它已经非常接近目标代码了。但它一般与目标机器和运行时环境是无关的，比如它不包含数据的尺寸、变量地址和寄存器的名字等。</p>
+<p>事实上，直接在语法树上作优化比较困难，所以源代码优化器往往将整个语法树转换成<strong>中间代码（Intermediate Code）</strong>，它是语法树的顺序表示，其实它已经非常接近目标代码了。但它一般与目标机器和运行时环境是无关的，比如它不包含数据的尺寸、变量地址和寄存器的名字等。</p>
+<p><strong>几种常用的中间语言形式</strong></p>
+<ol>
+<li>三地址码（Three-address Code）</li>
+<li>P-代码（P-Code）</li>
+</ol>
+<p>三地址码示例：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = y op z</span><br><span class="line"># 表示将变量y和z进行op操作后，赋值给x。</span><br></pre></td></tr></table></figure>
+<p>翻译成三地址码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">t1 = <span class="number">2</span> + <span class="number">6</span></span><br><span class="line">t2 = index + <span class="number">4</span></span><br><span class="line">t3 = t2 * t1</span><br><span class="line">array[index] = t3</span><br></pre></td></tr></table></figure>
+<p>为了使所有的操作符合三地址码形式，这里使用了几个临时变量：t1、t2和t3。在三地址码的基础上进行优化时，优化程序会将2+6的结果计算出来，得到t1 = 6。因此，进一步优化后可以得到如下的代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t2 = index + <span class="number">4</span></span><br><span class="line">t2 = t2 * <span class="number">8</span></span><br><span class="line">array[index] = t2</span><br></pre></td></tr></table></figure>
+<p>中间代码将编译器分为<strong>前端（Front End）</strong>和<strong>后端（Back End）</strong>。<code>编译器前端负责产生机器无关的中间代码，编译器后端负责将中间代码转换成目标机器代码</code>。这样，对于一些可跨平台的编译器，它们可以针对不同的平台使用同一个前端和针对不同机器平台的数个后端。比如clange就是一个前端工具，而LLVM则负责后端处理。GCC则是一个套装，包揽了前后端的所有任务。</p>
+<h5 id="5-目标代码生成与优化"><a href="#5-目标代码生成与优化" class="headerlink" title="5.目标代码生成与优化"></a>5.目标代码生成与优化</h5><p>经过上面生成中间代码步骤之后，这一步骤属于<strong>编译器后端</strong>。该步骤主要的任务是生成并优化目标代码，<strong>目标代码亦称为汇编代码（其实和汇编代码非常接近）</strong>。编译器后端主要包括目标代码生成器和目标代码优化。</p>
+<p>上述例子的中间代码，经过代码生成器的处理之后可能会生成如下所示的代码序列（以x86汇编为例，假设 index 的类型为 int 型，array 的类型为 int 型数组）：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">movl index, %ecx            ; value of index to ecx</span><br><span class="line">addl $<span class="number">4</span>, %ecx               ; ecx = ecx + <span class="number">4</span></span><br><span class="line">mull $<span class="number">8</span>, %ecx               ; ecx = ecx * <span class="number">8</span></span><br><span class="line">movl index, %eax            ; value of index to eax</span><br><span class="line">movl %ecx, array(,%eax,<span class="number">4</span>)    ; array[index] = ecx</span><br></pre></td></tr></table></figure>
+<p>目标代码生成后，由<strong>目标代码优化器（Target Code Optimizer</strong>）来进行优化。比如选择合适的寻址方式、使用位移来代替乘法运算、删除多余的指令等。</p>
+<p>上述例子中，乘法由一条相对复杂的基址比例变址寻址（Base Index Scale Addressing）的 lea 指令完成，随后由一条 mov 指令完成最后的赋值操作，这条 mov 指令的寻址方式与 lea 是一样的。如下所示为优化后的目标代码：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movl index, %edx</span><br><span class="line">leal <span class="number">32</span>(,%edx,<span class="number">8</span>), %eax</span><br><span class="line">movl %eax, array(,%edx,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -535,7 +553,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-生成中间代码（优化）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.生成中间代码（优化）</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-生成中间代码（优化）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.生成中间代码（优化）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-目标代码生成与优化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.目标代码生成与优化</span></a></li></ol></li></ol></li></ol>
     
     </div>
   </aside>

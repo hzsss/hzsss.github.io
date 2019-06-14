@@ -30,7 +30,8 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4146031-62bda7bf4f38e87d.png">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600">
-<meta property="og:updated_time" content="2019-06-14T08:09:21.779Z">
+<meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/linking-process.png?x-oss-process=image/resize,w_600">
+<meta property="og:updated_time" content="2019-06-14T09:15:50.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -439,7 +440,7 @@
 <p>理论上来说，中间代码是可以直接被省略的，因为抽象语法树可以直接转为目标代码(汇编代码)。然而不同的 CPU 架构采用的汇编语法并不一样，如: Intel 架构和 AT&amp;T 架构的汇编码中，源操作数和目标操作数位置恰好相反参考链接。</p>
 <p>中间代码可以理解为抽象的代码，<strong>一方面它和语言无关，同时也和 CPU 无关，它仅仅只是描述了代码要做的事情</strong>，可以将其理解为是全世界通用的语言，任何语言都可以转换为世界语言，而世界语言又能被任何人翻译理解。</p>
 <p>要知道，中间代码的存在使得编译器被分为前端和后端。<strong>其中编译器前端主要负责产生与机器无关的中间代码，编译器后端主要是将中间代码转换成目标机器代码</strong>。因为这意味着针对那些跨平台的编译器而言，可以针对不同的平台使用同一个前端和针对不同机器平台的多个后端。</p>
-<p>现代编译器有着很多层次的优化，源码优化器（Source Code Optimizer）则是在源代码级别进行优化。上述例子中，（2 + 6）这个表达式可以被优化掉。因为它的值在编译期就可以被确定。下图所示为优化后的语法树。</p>
+<p>现代编译器有着很多层次的优化，<strong>源码优化器（Source Code Optimizer）</strong>则是在源代码级别进行优化。上述例子中，（2 + 6）这个表达式可以被优化掉。因为它的值在编译期就可以被确定。下图所示为优化后的语法树。</p>
 <p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600" alt></p>
 <p>事实上，直接在语法树上作优化比较困难，所以源代码优化器往往将整个语法树转换成<strong>中间代码（Intermediate Code）</strong>，它是语法树的顺序表示，其实它已经非常接近目标代码了。但它一般与目标机器和运行时环境是无关的，比如它不包含数据的尺寸、变量地址和寄存器的名字等。</p>
 <p><strong>几种常用的中间语言形式</strong></p>
@@ -460,6 +461,73 @@
 <p>目标代码生成后，由<strong>目标代码优化器（Target Code Optimizer</strong>）来进行优化。比如选择合适的寻址方式、使用位移来代替乘法运算、删除多余的指令等。</p>
 <p>上述例子中，乘法由一条相对复杂的基址比例变址寻址（Base Index Scale Addressing）的 lea 指令完成，随后由一条 mov 指令完成最后的赋值操作，这条 mov 指令的寻址方式与 lea 是一样的。如下所示为优化后的目标代码：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">movl index, %edx</span><br><span class="line">leal <span class="number">32</span>(,%edx,<span class="number">8</span>), %eax</span><br><span class="line">movl %eax, array(,%edx,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>输出结果：</strong>后缀为 .s 的汇编文件。</p>
+<h4 id="3-汇编"><a href="#3-汇编" class="headerlink" title="3.汇编"></a>3.汇编</h4><p>把汇编语言翻译成机器语言的过程称为汇编。</p>
+<p>汇编过程中输入源是<strong>汇编代码</strong>，输出是<strong>二进制机器码</strong>。输出的二进制机器码可以直接被 CPU 识别并执行。汇编过程相对于编译器过程而言相对简单些，因为没有复杂的语法、没有语义、不需要做指令优化，根据汇编指令和机器指令的对照表一一翻译即可。</p>
+<p>由于汇编更接近机器语言，能够直接对硬件进行操作，生成的程序与其他的语言相比具有更高的运行速度，占用更小的内存，因此在一些对于时效性要求很高的程序、许多大型程序的核心模块以及工业控制方面大量应用。</p>
+<p><strong>输出结果：</strong>后缀为 .o 的目标文件。</p>
+<h4 id="4-链接"><a href="#4-链接" class="headerlink" title="4.链接"></a>4.链接</h4><p>参考文章：</p>
+<p><a href="http://chuquan.me/2018/06/03/linking-static-linking-dynamic-linking/" target="_blank" rel="noopener">计算机那些事(5)——链接、静态链接、动态链接</a></p>
+<p><a href="https://www.jianshu.com/p/0913993a4c3f" target="_blank" rel="noopener">开发者应知道的编译原理和语言基础知识</a></p>
+<p>这里只做一个简单的概括：</p>
+<p>模块化设计是软件开发中最常用的设计思想。链接（Linking） 本质上就是把各个模块之间相互引用的部分处理好，使得各个模块之间能够正确衔接。比如：</p>
+<blockquote>
+<p>我们在模块 main.c 中使用另一个模块 func.c 中的 foo() 函数。我们在 main.c 模块中每一处调用 foo() 时都必须确切知道 foo() 函数的地址。但由于每个模块都是单独编译的。编译器在编译 main.c 的时候并不知道 foo() 函数的地址。所以编译器会暂时把这些调用 foo() 的指令的目标地址搁置，等待最后链接时由链接器将这些指令的目标地址修正。这就是静态链接最基本的过程和作用。</p>
+</blockquote>
+<p>如下图所示为最基本的静态链接过程示意图。每个模块的源代码文件（如.c）文件经过编译器编译成目标文件（Object File，一般扩展名为.o或.obj）。<strong>目标文件</strong>和<strong>库（Library）</strong> 一起链接形成最终的<strong>可执行文件</strong>。</p>
+<p>其中，最常见的库就是<strong>运行时库（Runtime Library</strong>），它是支持程序运行的基本函数的集合。<strong>库本质上是一组目标文件的包，由一些最常用的代码编译成目标文件后打包而成</strong>。</p>
+<p><img src="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/linking-process.png?x-oss-process=image/resize,w_600" alt></p>
+<p>链接过程主要有以下三个步骤：</p>
+<ol>
+<li>地址与空间分配（Address and Storage Allocation）</li>
+<li>符号解析（Symbol Resolution）</li>
+<li>重定位（Relocation）</li>
+</ol>
+<p><strong>什么是重定位</strong></p>
+<p>假设有个全局变量叫做 var ，它在目标文件 A 里面。我们在目标文件 B 里面要访问这个全局变量。由于在编译目标文件 B 的时候，编译器并不知道变量 var 的目标地址，所以编译器在没法确定的情况下，将目标地址设置为0，等待链接器在目标文件 A 和 B 连接起来的时候将其修正。这个地址修正的过程被叫做重定位，每个被修正的地方叫一个重定位入口。</p>
+<p>链接器就是靠着<strong>重定位表</strong>来知道哪些地方需要被重定位的。每个可能存在重定位的段都会有对应的重定位表。在链接阶段，链接器会根据重定位表中，需要重定位的内容，去别的目标文件中找到地址并进行重定位。</p>
+<p><strong>静态链接</strong></p>
+<p>事实上，静态链接的过程就是上文所描述的过程。在Linux中，静态链接器（static linker）ld以一组可重定位目标文件和命令行参数作为输入，生成一个完全链接的、可以加载和运行的可执行目标文件作为输出。输入的可重定位目标文件由各种不同的节组成，每一节都是一个连续的字节序列。</p>
+<p><strong>动态链接</strong></p>
+<p>静态链接使得进行模块化开发，大大提供了程序的开发效率。随着，程序规模的扩大，静态链接的诸多缺点也逐渐暴露出来，如：浪费内存和磁盘空间、模块更新困难等。在静态链接中，C语言静态库是很典型的浪费空间的例子。关于模块更新，静态链接的程序有任何更新，都必须重新编译链接，用户则需要重新下载安装该程序。</p>
+<p>解决空间浪费和更新困难最简单的方法便是将程序的模块相互分割开来，形成独立文件。简而言之，就是不对那些组成程序的目标文件进行链接，而是等到程序要运行时才进行链接。</p>
+<h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><p><strong>符号表的作用：</strong></p>
+<ol>
+<li><p>收集符号属性；（词法分析）</p>
+</li>
+<li><p>上下文语义的合法性检查的依据；（语法分析）</p>
+</li>
+<li><p>作为目标代码生成阶段地址分配的依据；（语义分析）<br>符号表中语言符号可分为关键字（保留字）符号，操作符符号及标识符符号</p>
+</li>
+</ol>
+<p><strong>符号表中的标识符一般设置的属性项目有：</strong></p>
+<ol>
+<li><p>符号名</p>
+</li>
+<li><p>符号的类型</p>
+</li>
+<li><p>符号的存储类别</p>
+</li>
+<li><p>符号的作用域及可视性</p>
+</li>
+<li><p>符号变量的存储分配信息</p>
+</li>
+<li><p>符号的其它属性</p>
+</li>
+</ol>
+<p><strong>实现符号表的常用数据结构</strong></p>
+<ul>
+<li>一般的线性表：如：数组，链表，等</li>
+<li>有序表：查询较无序表快，如可以采用折半查找</li>
+<li>二叉搜索树</li>
+<li>Hash表</li>
+</ul>
+<p><strong>符号表的总体组织</strong></p>
+<ol>
+<li>多张表：把属性种类完全相同的那些符号组织在一起，构造出多张符号表。</li>
+<li>一张表：把所有符号都组织在一张符号表中。</li>
+<li>折中组表：根据符号属性的相似程度分类组成若干张表，每张表中记录的符号都有比较多的相同属性。</li>
+</ol>
 
       
     </div>
@@ -553,7 +621,7 @@ var a = new Donate({
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
     
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-生成中间代码（优化）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.生成中间代码（优化）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-目标代码生成与优化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.目标代码生成与优化</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#程序如何被机器识别"><span class="nav-number">1.</span> <span class="nav-text">程序如何被机器识别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-预编译"><span class="nav-number">1.1.</span> <span class="nav-text">1.预编译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-编译"><span class="nav-number">1.2.</span> <span class="nav-text">2.编译</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-词法分析"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.词法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-语法分析"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.语法分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-语义分析"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.语义分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-生成中间代码（优化）"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.生成中间代码（优化）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-目标代码生成与优化"><span class="nav-number">1.2.5.</span> <span class="nav-text">5.目标代码生成与优化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-汇编"><span class="nav-number">1.3.</span> <span class="nav-text">3.汇编</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-链接"><span class="nav-number">1.4.</span> <span class="nav-text">4.链接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#符号表"><span class="nav-number">2.</span> <span class="nav-text">符号表</span></a></li></ol>
     
     </div>
   </aside>

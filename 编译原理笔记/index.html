@@ -26,7 +26,8 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-5a25d29ee83338aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-0a44354438540943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-027065629bd6fe87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-14T02:19:12.256Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6365912-f4424ff30d013e9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-14T02:42:24.674Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -354,18 +355,14 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/6365912-0a44354438540943.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p><img src="https://upload-images.jianshu.io/upload_images/6365912-027065629bd6fe87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
 <p><strong>语法分析的方法主要有两类</strong></p>
-<ol>
-<li>自下而上（Bottom-up）</li>
-</ol>
+<p>1.自下而上（Bottom-up）</p>
 <ul>
 <li>从输入串开始，逐步进行规约，直到文法的开始符号</li>
 <li>规约：根据文法的产生式规则，把串中出现的产生式的右部替换成左部符号（是推导的逆过程）</li>
 <li>从叶节点开始，构造语法树</li>
 <li>算法优先分析法、LR分析法</li>
 </ul>
-<ol start="2">
-<li>自上而下（Top-down）</li>
-</ol>
+<p>2.自上而下（Top-down）</p>
 <ul>
 <li>从文法的开始符号出发，反复使用各种产生式，寻找“匹配”的推导</li>
 <li>推导：根据文法的产生式规则，把串中出现的产生式的左部符号替换成右部符号</li>
@@ -380,6 +377,32 @@
 </blockquote>
 <p><strong>自上而下分析示例</strong></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">假定有文法 <span class="type">G</span>(<span class="type">S</span>):</span><br><span class="line">	(<span class="number">1</span>) <span class="type">S</span> -&gt; xAy</span><br><span class="line">	(<span class="number">2</span>) <span class="type">A</span> -&gt; **|*    (|表示或)</span><br><span class="line">	</span><br><span class="line">分析输入串 x*y （记为 α）</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>)<span class="type">IP</span> 指针用来读取单词</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line">↑</span><br><span class="line"><span class="type">IP</span></span><br><span class="line"></span><br><span class="line">(<span class="number">2</span>)把 <span class="type">S</span> 推导为 xAy</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line">↑      / | \</span><br><span class="line"><span class="type">IP</span>     x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">       ↑</span><br><span class="line">       </span><br><span class="line">(<span class="number">3</span>)读取 <span class="type">A</span></span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line"> ↑     / | \</span><br><span class="line"><span class="type">IP</span>     x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">         ↑</span><br><span class="line">	     </span><br><span class="line">(<span class="number">4</span>)把 <span class="type">A</span> 推导为 **</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line"> ↑     / | \</span><br><span class="line"><span class="type">IP</span>     x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">        / \</span><br><span class="line">        *  *</span><br><span class="line">        ↑</span><br><span class="line"></span><br><span class="line">(<span class="number">5</span>)继续读取单词 y</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line">  ↑    / | \</span><br><span class="line"> <span class="type">IP</span>    x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">        / \</span><br><span class="line">        *  *</span><br><span class="line">           ↑</span><br><span class="line">	       </span><br><span class="line">(<span class="number">6</span>)不符合，进行回溯</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line"> ↑     / | \</span><br><span class="line"><span class="type">IP</span>     x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">         ↑</span><br><span class="line"></span><br><span class="line">(<span class="number">7</span>)把 <span class="type">A</span> 推导为 *</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line"> ↑     / | \</span><br><span class="line"> <span class="type">IP</span>    x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">         |</span><br><span class="line">         *</span><br><span class="line">         ↑</span><br><span class="line"></span><br><span class="line">(<span class="number">8</span>)读取下一单词</span><br><span class="line"></span><br><span class="line">x*y	 <span class="type">S</span></span><br><span class="line">  ↑    / | \</span><br><span class="line"> <span class="type">IP</span>    x <span class="type">A</span> <span class="type">Y</span></span><br><span class="line">         |</span><br><span class="line">         *</span><br><span class="line">         ↑</span><br><span class="line"></span><br><span class="line"><span class="type">S</span>已经拓展到了所有叶节点，并且都匹配成功，可以断言这个输入串是一个合格的句子。</span><br></pre></td></tr></table></figure>
+<p><strong>自上而下分析面临的问题</strong></p>
+<p>1.回溯问题（使分析工作变得复杂）</p>
+<ul>
+<li>分析过程中，当一个非终结符用某一个候选匹配成功时，这种匹配可能是暂时的</li>
+<li>匹配失败时，不得不进行回溯</li>
+</ul>
+<p>2.文法左递归问题（使分析工作陷入死循环）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6365912-f4424ff30d013e9f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><strong>构造不带回溯的自上而下分析算法</strong></p>
+<ul>
+<li>消除文法的左递归</li>
+<li>消除回溯</li>
+</ul>
+<p><strong>1.消除左递归：把左递归变右递归</strong></p>
+<p>P -&gt; Pα|β</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">左递归的情况：</span><br><span class="line"></span><br><span class="line"><span class="type">P</span> =&gt; <span class="type">P</span>α</span><br><span class="line">  =&gt; <span class="type">P</span>αα</span><br><span class="line">  ...</span><br><span class="line">  =&gt; βαα...α</span><br><span class="line"></span><br><span class="line">最终产生的串是以 β 开头后接 α 的串</span><br></pre></td></tr></table></figure>
+<p>解决方法：左递归变右递归</p>
+<p>P -&gt; βP’</p>
+<p>P’ -&gt; αP’|ε</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">P</span> =&gt; β<span class="type">P'</span></span><br><span class="line">  =&gt; βα<span class="type">P'</span></span><br><span class="line">  =&gt; βαα<span class="type">P'</span></span><br><span class="line">  ...</span><br><span class="line">  =&gt; βαα...α<span class="type">P'</span></span><br><span class="line">  =&gt; βαα...α</span><br><span class="line"></span><br><span class="line">最终产生的串也是以 β 开头后接 α 的串</span><br></pre></td></tr></table></figure>
+<p>左递归会把程序带入死循环，右递归会吗？</p>
+<blockquote>
+<p>右递归的非终结符是在最右边，它的左边 α 会不断地产生终结符，如果分析的句子是一个正确的句子的话，左边的 α 的终结符会跟当前的输入串中的单词进行匹配，从而使得这个输入串不断地被读入，分析进程不断地推进，所以不会陷入一种死循环的地步，因为总有一天所有的单词都会被分析完。</p>
+</blockquote>
+<p><strong>2.消除回溯：提取左公共因子</strong></p>
+<p>为了消除回溯必须保证对于文法的任何非终结符，当要它去匹配输入串时，能够根据它所面临的输入符号准确地指派它的一个候选去执行任务，并且此候选的工作结果应是确信无疑的。</p>
 
       
     </div>

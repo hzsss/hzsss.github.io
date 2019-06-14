@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-commented-syntax-tree.png?x-oss-process=image/resize,w_600">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/compile-optimized-syntax-tree.png?x-oss-process=image/resize,w_600">
 <meta property="og:image" content="https://chuquan-public-r-001.oss-cn-shanghai.aliyuncs.com/sketch-images/linking-process.png?x-oss-process=image/resize,w_600">
-<meta property="og:updated_time" content="2019-06-14T09:15:50.380Z">
+<meta property="og:updated_time" content="2019-06-14T09:20:02.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译原理笔记">
 <meta name="twitter:description" content="程序如何被机器识别机器只能识别010101这样的机器码，使用高级语言编写的程序，必须转换成机器码才能够被机器识别。 高级语言程序转换成机器码经历了以下几个步骤：  预编译（Propressing） 编译（Compilation） 汇编（Assembly） 链接（Linking）   接下来依次讲解这个几个步骤的详细过程。 1.预编译对于 C 语言而言，源代码文件 hello.c 和头文件 stdi">
@@ -493,27 +493,18 @@
 <p>解决空间浪费和更新困难最简单的方法便是将程序的模块相互分割开来，形成独立文件。简而言之，就是不对那些组成程序的目标文件进行链接，而是等到程序要运行时才进行链接。</p>
 <h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a>符号表</h3><p><strong>符号表的作用：</strong></p>
 <ol>
-<li><p>收集符号属性；（词法分析）</p>
-</li>
-<li><p>上下文语义的合法性检查的依据；（语法分析）</p>
-</li>
-<li><p>作为目标代码生成阶段地址分配的依据；（语义分析）<br>符号表中语言符号可分为关键字（保留字）符号，操作符符号及标识符符号</p>
-</li>
+<li>收集符号属性；（词法分析）</li>
+<li>上下文语义的合法性检查的依据；（语法分析）</li>
+<li>作为目标代码生成阶段地址分配的依据；（语义分析）<br>符号表中语言符号可分为关键字（保留字）符号，操作符符号及标识符符号</li>
 </ol>
 <p><strong>符号表中的标识符一般设置的属性项目有：</strong></p>
 <ol>
-<li><p>符号名</p>
-</li>
-<li><p>符号的类型</p>
-</li>
-<li><p>符号的存储类别</p>
-</li>
-<li><p>符号的作用域及可视性</p>
-</li>
-<li><p>符号变量的存储分配信息</p>
-</li>
-<li><p>符号的其它属性</p>
-</li>
+<li>符号名</li>
+<li>符号的类型</li>
+<li>符号的存储类别</li>
+<li>符号的作用域及可视性</li>
+<li>符号变量的存储分配信息</li>
+<li>符号的其它属性</li>
 </ol>
 <p><strong>实现符号表的常用数据结构</strong></p>
 <ul>
@@ -528,6 +519,11 @@
 <li>一张表：把所有符号都组织在一张符号表中。</li>
 <li>折中组表：根据符号属性的相似程度分类组成若干张表，每张表中记录的符号都有比较多的相同属性。</li>
 </ol>
+<p><strong>iOS 开发符号表冲突的问题</strong></p>
+<p>场景描述：制作一个 .framework 静态库，静态库引用了 AFNetworking，在 Demo 工程中也引用了 AFNetworking，报了以下错误：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: <span class="number">165</span> duplicate symbols <span class="keyword">for</span> architecture x86_64</span><br><span class="line">        </span><br><span class="line">clang: error: linker command failed with exit code <span class="number">1</span> (use -v to see invocation)</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p>把 framework 中用到的第三方库的类更改名字。</p>
 
       
     </div>
